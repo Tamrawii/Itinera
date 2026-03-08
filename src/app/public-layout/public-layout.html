@@ -1,0 +1,188 @@
+<app-navbar></app-navbar>
+<!--Hero Section-->
+<section class="hero">
+  <div class="hero-content flex flex-col gap-7 justify-center items-center h-full">
+    <div class="hero-text">
+      <h1 class="text-white text-7xl mb-7 text-center">
+        <strong
+          >Discover
+          <span class="relative inline-block mb-3"
+            >Tunisia,<svg
+              class="absolute w-full"
+              viewBox="0 0 200 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2 8 C50 2, 150 2, 198 8"
+                stroke="hsl(210 86% 57%)"
+                stroke-width="3"
+                stroke-linecap="round"
+              /></svg></span
+        ></strong>
+        <br />
+        <em class="font-light">Your Way</em>
+      </h1>
+      <p class="text-center text-gray-300 text-[1.5rem]">
+        Plan unforgettable journeys with verified local providers.<br />
+        Authentic experiences, transparent booking.
+      </p>
+    </div>
+
+    <!--Search bar-->
+    <div
+      class="hero-search-bar flex justify-center items-center bg-white rounded-full px-2 py-2 pl-4 mb-24 gap-1"
+    >
+      <svg
+        class="w-6 h-6 text-gray-800"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-width="1"
+          d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
+        />
+      </svg>
+      <input
+        type="email"
+        id="email"
+        class="text-heading rounded-base block w-125 px-3 py-2.5 placeholder:text-gray-400 focus:outline-none"
+        placeholder="Where do you want to go?"
+      />
+      <button
+        class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium font-medium leading-5 rounded-full text-md px-4 py-3 focus:outline-none"
+      >
+        Search
+      </button>
+    </div>
+
+    <!--Services cards-->
+    <div class="hero-services grid grid-cols-2 md:grid-cols-4 gap-7">
+      <div
+        class="bg-neutral-primary-soft block max-w-sm text-center py-5 border border-default rounded-base shadow-xs"
+      >
+        <svg
+          class="w-12 h-12 text-blue-5 mx-auto"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1"
+            d="M6 4h12M6 4v16M6 4H5m13 0v16m0-16h1m-1 16H6m12 0h1M6 20H5M9 7h1v1H9V7Zm5 0h1v1h-1V7Zm-5 4h1v1H9v-1Zm5 0h1v1h-1v-1Zm-3 4h2a1 1 0 0 1 1 1v4h-4v-4a1 1 0 0 1 1-1Z"
+          />
+        </svg>
+
+        <a href="#">
+          <h5 class="mb-2 text-2xl font-semibold tracking-tight text-heading">Hotels</h5>
+        </a>
+        <p class="mb-3 text-body">248 listings</p>
+      </div>
+
+      <div
+        class="bg-neutral-primary-soft block max-w-sm text-center p-6 border border-default rounded-base shadow-xs"
+      >
+        <!-- Restaurants -->
+        <svg
+          class="w-12 h-12 text-blue-5 mx-auto"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1"
+            d="M6 2v6a3 3 0 0 0 6 0V2M9 8v14M15 2l-1 7h4l-1-7m-1 7v11"
+          />
+        </svg>
+
+        <a href="#">
+          <h5 class="mb-2 text-2xl font-semibold tracking-tight text-heading">Restaurents</h5>
+        </a>
+        <p class="mb-3 text-body">500 listings</p>
+      </div>
+
+      <div
+        class="bg-neutral-primary-soft block max-w-sm text-center p-6 border border-default rounded-base shadow-xs"
+      >
+        <!-- Tours & Activities -->
+        <svg
+          class="w-12 h-12 text-blue-5 mx-auto"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1"
+            d="M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
+          />
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1"
+            d="M17.8 13.938h-.011a7 7 0 1 0-11.464.144h-.016l.14.171c.1.127.2.251.3.371L12 21l5.13-6.248c.194-.209.374-.429.54-.659l.13-.155Z"
+          />
+        </svg>
+
+        <a href="#">
+          <h5 class="mb-2 text-2xl font-semibold tracking-tight text-heading">
+            Tours & Activities
+          </h5>
+        </a>
+        <p class="mb-3 text-body">70 listings</p>
+      </div>
+
+      <div
+        class="bg-neutral-primary-soft block max-w-sm text-center p-6 border border-default rounded-base shadow-xs"
+      >
+        <!-- Transportation -->
+        <svg
+          class="w-12 h-12 text-blue-5 mx-auto"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1"
+            d="M3 10a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-6Zm0 0 2-5h14l2 5M7 15a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"
+          />
+        </svg>
+
+        <a href="#">
+          <h5 class="mb-2 text-2xl font-semibold tracking-tight text-heading">Transport</h5>
+        </a>
+        <p class="mb-3 text-base">35 listings</p>
+      </div>
+    </div>
+  </div>
+</section>

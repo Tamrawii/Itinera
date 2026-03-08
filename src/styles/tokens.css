@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@theme {
+  /* ─────────────────────────────────────────────
+   * TYPOGRAPHY
+   * ─────────────────────────────────────────────
+   * Base font: Inter — a clean, modern sans-serif
+   * that harmonizes well with the blue brand palette.
+   * --font-sans  → used for UI elements, labels, buttons
+   * --font-body  → used for body copy, paragraphs
+   * ───────────────────────────────────────────── */
+  --font-sans: 'Inter', 'ui-sans-serif', 'system-ui', sans-serif;
+  --font-body: 'Inter', 'ui-sans-serif', 'system-ui', sans-serif;
+
+  /* ─────────────────────────────────────────────
+   * COLOR PALETTE
+   * ─────────────────────────────────────────────
+
+
+   * ── Primary: Blue ──────────────────────────
+   * Usage: CTAs, links, active states, focus rings
+   * ─────────────────────────────────────────── */
+  --color-blue-0: #e7f5ff; /* Backgrounds, subtle highlights            */
+  --color-blue-1: #d0ebff; /* Hover backgrounds                         */
+  --color-blue-2: #a5d8ff; /* Disabled states, borders                  */
+  --color-blue-3: #74c0fc; /* Icons, secondary elements                 */
+  --color-blue-4: #4dabf7; /* Hover on interactive elements             */
+  --color-blue-5: #339af0; /* PRIMARY — main CTAs, links                */
+  --color-blue-6: #228be6; /* Primary hover                             */
+  --color-blue-7: #1c7ed6; /* Primary active / pressed                  */
+  --color-blue-8: #1971c2; /* Dark mode primary                         */
+  --color-blue-9: #1864ab; /* Dark mode primary hover                   */
+
+  /* ── Neutral: Cool Gray (blue-tinted) ─────────
+   * Generated to harmonize with the blue palette.
+   * Usage: text, borders, backgrounds, cards
+   * ─────────────────────────────────────────── */
+  --color-neutral-0: #f8fafc; /* Page background (light)               */
+  --color-neutral-1: #f1f5f9; /* Card / surface background             */
+  --color-neutral-2: #e2e8f0; /* Borders, dividers                     */
+  --color-neutral-3: #cbd5e1; /* Placeholder text, disabled borders    */
+  --color-neutral-4: #94a3b8; /* Muted text, icons                     */
+  --color-neutral-5: #64748b; /* Secondary text                        */
+  --color-neutral-6: #475569; /* Body text (light mode)                */
+  --color-neutral-7: #334155; /* Strong body text                      */
+  --color-neutral-8: #1e293b; /* Headings                              */
+  --color-neutral-9: #0f172a; /* Page background (dark)                */
+
+  /* ── Semantic: Success ─────────────────────────
+   * Usage: confirmations, booking success, positive reviews
+   * ─────────────────────────────────────────── */
+  --color-success-light: #d3f9d8; /* Subtle success backgrounds        */
+  --color-success: #40c057; /* Base success — badges, icons      */
+  --color-success-dark: #2f9e44; /* Hover / pressed success state     */
+
+  /* ── Semantic: Warning ─────────────────────────
+   * Usage: pending states, slow response alerts, partial refunds
+   * ─────────────────────────────────────────── */
+  --color-warning-light: #fff3bf; /* Subtle warning backgrounds        */
+  --color-warning: #fab005; /* Base warning — badges, icons      */
+  --color-warning-dark: #e67700; /* Hover / pressed warning state     */
+
+  /* ── Semantic: Danger ──────────────────────────
+   * Usage: cancellations, errors, disputes, destructive actions
+   * ─────────────────────────────────────────── */
+  --color-danger-light: #ffe3e3; /* Subtle danger backgrounds          */
+  --color-danger: #fa5252; /* Base danger — badges, icons        */
+  --color-danger-dark: #c92a2a; /* Hover / pressed danger state       */
+
+  /* ── Semantic: Info ────────────────────────────
+   * Usage: tips, informational banners, AI itinerary hints
+   * ─────────────────────────────────────────── */
+  --color-info-light: #e3fafc; /* Subtle info backgrounds              */
+  --color-info: #22b8cf; /* Base info — badges, icons            */
+  --color-info-dark: #0c8599; /* Hover / pressed info state           */
+
+  /* ── Brand Aliases ─────────────────────────────
+   * Semantic shortcuts used by Flowbite components
+   * and anywhere a brand color is needed without
+   * specifying a numeric step.
+   * ─────────────────────────────────────────── */
+  --color-brand-soft: var(--color-blue-0); /* Tinted backgrounds, chips   */
+  --color-brand: var(--color-blue-5); /* Primary brand color         */
+  --color-brand-strong: var(--color-blue-8); /* High-contrast brand accent  */
+
+  /* ─────────────────────────────────────────────
+   * BOX SHADOW
+   * ─────────────────────────────────────────────
+   * Cool-blue-tinted shadows to match the brand palette.
+
+
+   * ── Elevation system (light mode) ────────── */
+  --shadow-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.08), 0 1px 2px -1px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+
+  /* ── Brand-tinted (blue glow) ───────────────
+   * For CTAs, focused cards, interactive highlights
+   * ─────────────────────────────────────────── */
+  --shadow-brand: 0 4px 14px 0 rgba(51, 154, 240, 0.3);
+
+  /* ── Focus ring ─────────────────────────────
+   * Accessibility — visible keyboard-focus indicator
+   * ─────────────────────────────────────────── */
+  --shadow-focus: 0 0 0 3px rgba(51, 154, 240, 0.45);
+
+  /* ── Semantic glows ─────────────────────────
+   * Reinforce status colors on elevated elements
+   * ─────────────────────────────────────────── */
+  --shadow-success: 0 4px 14px 0 rgba(64, 192, 87, 0.25);
+  --shadow-warning: 0 4px 14px 0 rgba(250, 176, 5, 0.25);
+  --shadow-danger: 0 4px 14px 0 rgba(250, 82, 82, 0.25);
+}
+
+/* ── Base styles ───────────────────────────────────
+ * Applied globally to establish a consistent baseline:
+ * - Inter as the body font
+ * - Antialiased rendering for crisp text on all screens
+ * - Neutral-0 page background (light mode default)
+ * - Neutral-7 as the default text color (strong body text)
+ * ─────────────────────────────────────────────────── */
+body {
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--color-neutral-0);
+  color: var(--color-neutral-7);
+}
