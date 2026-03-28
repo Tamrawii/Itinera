@@ -1,7 +1,81 @@
-.hero {
+.hero-section {
   background:
     linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/hero-tunisia.jpg');
-  height: 100vh;
+  height: 80vh;
   background-size: cover;
   background-position: center;
+}
+
+.card {
+  background-color: var(--color-neutral-1);
+  border-radius: 16px;
+  box-shadow: var(--shadow-md);
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-4px);
+}
+
+.location {
+  font-size: 16px;
+}
+
+.rating,
+.price {
+  font-size: 16px;
+}
+
+.price-per-night {
+  font-size: 14px;
+}
+
+.destination-card {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3)), url('/images/sidi-bou-said.jpg');
+  background-size: cover;
+  background-position: center;
+  background-size: 100%;
+  height: 250px;
+  border-radius: 16px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-size 0.3s ease;
+}
+
+.destination-card:nth-of-type(2) {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3)), url('/images/sahara-tunisia.jpg');
+}
+
+.destination-card:nth-of-type(3) {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3)), url('/images/medina-tunisia.jpg');
+}
+
+.destination-card:hover {
+  background-size: 110%;
+}
+
+.cta > div {
+  border-radius: 48px;
+}
+
+.cta-span {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.cta-btn {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  to {
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+  }
 }

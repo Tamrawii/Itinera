@@ -1,4 +1,18 @@
+@import './styles/tokens.css';
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 @import 'tailwindcss';
 @import 'flowbite/src/themes/default';
-@import './styles/tokens.css';
+
+a:link,
+a:visited {
+  color: var(--color-blue-5);
+}
+
+a:hover {
+  color: var(--color-blue-3);
+  text-decoration: underline;
+}
+
+a:active {
+  color: var(--color-blue-8);
+}

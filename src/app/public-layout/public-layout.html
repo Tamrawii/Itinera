@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <!--Hero Section-->
-<section class="hero">
-  <div class="hero-content flex flex-col gap-7 justify-center items-center h-full">
+<section class="hero-section">
+  <div class="hero-content flex flex-col gap-7 justify-end items-center pb-8 h-full">
     <div class="hero-text">
       <h1 class="text-white text-7xl mb-7 text-center">
         <strong
@@ -33,31 +33,15 @@
     <div
       class="hero-search-bar flex justify-center items-center bg-white rounded-full px-2 py-2 pl-4 mb-24 gap-1"
     >
-      <svg
-        class="w-6 h-6 text-gray-800"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        fill="none"
-        viewBox="0 0 24 24"
-      >
-        <path
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-width="1"
-          d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
-        />
-      </svg>
       <input
-        type="email"
-        id="email"
+        type="text"
         class="text-heading rounded-base block w-125 px-3 py-2.5 placeholder:text-gray-400 focus:outline-none"
         placeholder="Where do you want to go?"
       />
       <button
-        class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium font-medium leading-5 rounded-full text-md px-4 py-3 focus:outline-none"
+        class="text-white bg-brand box-border border border-transparent flex items-center gap-3 hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium font-medium leading-5 rounded-full text-md px-4 py-3 focus:outline-none"
       >
+        <lineicons [icon]="Search1Outlined" [size]="20"></lineicons>
         Search
       </button>
     </div>
@@ -67,24 +51,9 @@
       <div
         class="bg-neutral-primary-soft block max-w-sm text-center py-5 border border-default rounded-base shadow-xs"
       >
-        <svg
-          class="w-12 h-12 text-blue-5 mx-auto"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          fill="none"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="1"
-            d="M6 4h12M6 4v16M6 4H5m13 0v16m0-16h1m-1 16H6m12 0h1M6 20H5M9 7h1v1H9V7Zm5 0h1v1h-1V7Zm-5 4h1v1H9v-1Zm5 0h1v1h-1v-1Zm-3 4h2a1 1 0 0 1 1 1v4h-4v-4a1 1 0 0 1 1-1Z"
-          />
-        </svg>
-
+        <div class="w-12 h-12 text-blue-5 mx-auto flex items-center justify-center">
+          <lineicons [icon]="Buildings1Solid" [size]="48" [strokeWidth]="1.5"></lineicons>
+        </div>
         <a href="#">
           <h5 class="mb-2 text-2xl font-semibold tracking-tight text-heading">Hotels</h5>
         </a>
@@ -95,23 +64,9 @@
         class="bg-neutral-primary-soft block max-w-sm text-center p-6 border border-default rounded-base shadow-xs"
       >
         <!-- Restaurants -->
-        <svg
-          class="w-12 h-12 text-blue-5 mx-auto"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          fill="none"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="1"
-            d="M6 2v6a3 3 0 0 0 6 0V2M9 8v14M15 2l-1 7h4l-1-7m-1 7v11"
-          />
-        </svg>
+        <div class="w-12 h-12 text-blue-5 mx-auto flex items-center justify-center">
+          <lineicons [icon]="KnifeFork1Solid" [size]="48" [strokeWidth]="1.5"></lineicons>
+        </div>
 
         <a href="#">
           <h5 class="mb-2 text-2xl font-semibold tracking-tight text-heading">Restaurents</h5>
@@ -123,30 +78,9 @@
         class="bg-neutral-primary-soft block max-w-sm text-center p-6 border border-default rounded-base shadow-xs"
       >
         <!-- Tours & Activities -->
-        <svg
-          class="w-12 h-12 text-blue-5 mx-auto"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          fill="none"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="1"
-            d="M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
-          />
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="1"
-            d="M17.8 13.938h-.011a7 7 0 1 0-11.464.144h-.016l.14.171c.1.127.2.251.3.371L12 21l5.13-6.248c.194-.209.374-.429.54-.659l.13-.155Z"
-          />
-        </svg>
+        <div class="w-12 h-12 text-blue-5 mx-auto flex items-center justify-center">
+          <lineicons [icon]="MapMarker5Solid" [size]="48" [strokeWidth]="1.5"></lineicons>
+        </div>
 
         <a href="#">
           <h5 class="mb-2 text-2xl font-semibold tracking-tight text-heading">
@@ -160,23 +94,9 @@
         class="bg-neutral-primary-soft block max-w-sm text-center p-6 border border-default rounded-base shadow-xs"
       >
         <!-- Transportation -->
-        <svg
-          class="w-12 h-12 text-blue-5 mx-auto"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          fill="none"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="1"
-            d="M3 10a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-6Zm0 0 2-5h14l2 5M7 15a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"
-          />
-        </svg>
+        <div class="w-12 h-12 text-blue-5 mx-auto flex items-center justify-center">
+          <lineicons [icon]="Car2Solid" [size]="48" [strokeWidth]="1.5"></lineicons>
+        </div>
 
         <a href="#">
           <h5 class="mb-2 text-2xl font-semibold tracking-tight text-heading">Transport</h5>
@@ -186,3 +106,252 @@
     </div>
   </div>
 </section>
+
+<!--Featured Experiences-->
+<section class="featured-section">
+  <div class="flex justify-between items-end p-12 pl-48 pr-48">
+    <div class="feautred-text">
+      <h2 class="font-bold text-2xl">Featured Experiences</h2>
+      <p class="text-gray-500">Hand-picked by our team for an authentic Tunisia</p>
+    </div>
+    <a href="#">View All &LongRightArrow;</a>
+  </div>
+
+  <div class="cards grid grid-cols-4 gap-6 pl-48 pr-48 pb-12">
+    <!--Card 1-->
+    <div class="card">
+      <img src="images/hotel-tunisia.jpg" alt="" class="w-full h-48 object-cover rounded-t-base" />
+      <div class="p-4">
+        <h3 class="text-xl font-semibold mb-1">Dar El Medina</h3>
+        <p class="location text-gray-400 flex items-center gap-1">
+          <lineicons [icon]="MapMarker5Outlined" [size]="18"></lineicons>
+          Tunis Medina
+        </p>
+        <div class="details flex justify-between items-end mb-4">
+          <div class="rating text-blue-5 flex items-center gap-1">
+            <lineicons [icon]="StarFatSolid" [size]="22"></lineicons>
+            <span class="rating-text text-gray-900 font-semibold">4.5</span>
+            <span class="rating-count text-gray-400">(35)</span>
+          </div>
+          <p class="price text-gray-900 font-semibold mt-2">
+            $85<span class="price-per-night text-gray-500">/night</span>
+          </p>
+        </div>
+        <div class="flex justify-between items-center gap-4">
+          <button
+            type="button"
+            class="text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none w-full text-center cursor-pointer"
+          >
+            Book Now
+          </button>
+
+          <button
+            type="button"
+            class="inline-flex items-center justify-center text-fg-brand border border-brand hover:bg-brand hover:text-white focus:ring-4 focus:ring-brand-subtle rounded-base p-2 focus:outline-none"
+          >
+            <lineicons [icon]="HeartOutlined" [size]="22"></lineicons>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!--Card 2-->
+    <div class="card">
+      <img
+        src="images/restaurant-tunisia.jpg"
+        alt=""
+        class="w-full h-48 object-cover rounded-t-base"
+      />
+      <div class="p-4">
+        <h3 class="text-xl font-semibold mb-1">Le Pirate</h3>
+        <p class="location text-gray-400 flex items-center gap-1">
+          <lineicons [icon]="MapMarker5Outlined" [size]="18"></lineicons>
+          Sidi Bou Said
+        </p>
+        <div class="details flex justify-between items-end mb-4">
+          <div class="rating text-blue-5 flex items-center gap-1">
+            <lineicons [icon]="StarFatSolid" [size]="22"></lineicons>
+            <span class="rating-text text-gray-900 font-semibold">4.5</span>
+            <span class="rating-count text-gray-400">(35)</span>
+          </div>
+          <p class="price text-gray-900 font-semibold mt-2">$85</p>
+        </div>
+        <div class="flex justify-between items-center gap-4">
+          <button
+            type="button"
+            class="text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none w-full text-center cursor-pointer"
+          >
+            Book Now
+          </button>
+
+          <button
+            type="button"
+            class="inline-flex items-center justify-center text-fg-brand border border-brand hover:bg-brand hover:text-white focus:ring-4 focus:ring-brand-subtle rounded-base p-2 focus:outline-none"
+          >
+            <lineicons [icon]="HeartOutlined" [size]="22"></lineicons>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!--Card 3-->
+    <div class="card">
+      <img src="images/sahara-tunisia.jpg" alt="" class="w-full h-48 object-cover rounded-t-base" />
+      <div class="p-4">
+        <h3 class="text-xl font-semibold mb-1">Sahara Desert Trek</h3>
+        <p class="location text-gray-400 flex items-center gap-1">
+          <lineicons [icon]="MapMarker5Outlined" [size]="18"></lineicons>
+          Douz, Tozer
+        </p>
+        <div class="details flex justify-between items-end mb-4">
+          <div class="rating text-blue-5 flex items-center gap-1">
+            <lineicons [icon]="StarFatSolid" [size]="22"></lineicons>
+            <span class="rating-text text-gray-900 font-semibold">4.5</span>
+            <span class="rating-count text-gray-400">(35)</span>
+          </div>
+          <p class="price text-gray-900 font-semibold mt-2">$120</p>
+        </div>
+        <div class="flex justify-between items-center gap-4">
+          <button
+            type="button"
+            class="text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none w-full text-center cursor-pointer"
+          >
+            Book Now
+          </button>
+
+          <button
+            type="button"
+            class="inline-flex items-center justify-center text-fg-brand border border-brand hover:bg-brand hover:text-white focus:ring-4 focus:ring-brand-subtle rounded-base p-2 focus:outline-none"
+          >
+            <lineicons [icon]="HeartOutlined" [size]="22"></lineicons>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!--Card 4-->
+    <div class="card">
+      <img src="images/medina-tunisia.jpg" alt="" class="w-full h-48 object-cover rounded-t-base" />
+      <div class="p-4">
+        <h3 class="text-xl font-semibold mb-1">Medina Walking Tour</h3>
+        <p class="location text-gray-400 flex items-center gap-1">
+          <lineicons [icon]="MapMarker5Outlined" [size]="18"></lineicons>
+          Tunis
+        </p>
+        <div class="details flex justify-between items-end mb-4">
+          <div class="rating text-blue-5 flex items-center gap-1">
+            <lineicons [icon]="StarFatSolid" [size]="22"></lineicons>
+            <span class="rating-text text-gray-900 font-semibold">4.5</span>
+            <span class="rating-count text-gray-400">(35)</span>
+          </div>
+          <p class="price text-gray-900 font-semibold mt-2">$20</p>
+        </div>
+        <div class="flex justify-between items-center gap-4">
+          <button
+            type="button"
+            class="text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none w-full text-center cursor-pointer"
+          >
+            Book Now
+          </button>
+
+          <button
+            type="button"
+            class="inline-flex items-center justify-center text-fg-brand border border-brand hover:bg-brand hover:text-white focus:ring-4 focus:ring-brand-subtle rounded-base p-2 focus:outline-none"
+          >
+            <lineicons [icon]="HeartOutlined" [size]="22"></lineicons>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--Popular Destinations-->
+<section class="popular-destinations">
+  <div class="cards grid gap-4 pl-48 pr-48 pb-12">
+    <div class="feautred-text">
+      <h2 class="font-bold text-2xl">Popular Destinations</h2>
+      <p class="text-gray-500">Explore the most loved regions of Tunisia</p>
+    </div>
+
+    <!--Destination Cards-->
+    <div class="grid grid-cols-3 gap-7">
+      <!--Destination Card 1-->
+      <div class="destination-card flex items-end p-6">
+        <h3 class="text-white font-semibold">Sidi Bou Said</h3>
+      </div>
+
+      <!--Destination Card 2-->
+      <div class="destination-card flex items-end p-6">
+        <h3 class="text-white font-semibold">Sahara Desert</h3>
+      </div>
+
+      <!--Destination Card 3-->
+      <div class="destination-card flex items-end p-6">
+        <h3 class="text-white font-semibold">Tunis Medina</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--CTA-->
+<section class="cta">
+  <div
+    class="bg-blue-6 flex flex-col items-center justify-center text-center ml-48 mr-48 mb-12 p-14"
+  >
+    <span
+      class="cta-span inline-flex items-center text-white text-sm font-medium leading-none px-3 py-2 mb-3 rounded-full gap-1.5"
+    >
+      <lineicons [icon]="Bolt3Solid" [size]="16" [strokeWidth]="1.5"></lineicons>
+      AI-Powered Planning
+    </span>
+
+    <h2 class="text-4xl text-white font-bold mb-3">
+      Your Dream Trip to Tunisia,<br />Planned in Seconds
+    </h2>
+    <p class="text-gray-200 mb-8">
+      Tell us your dates, budget, and interests — our AI combines the best hotels<br />
+      restaurants, and experiences into one seamless itinerary.
+    </p>
+
+    <button
+      type="button"
+      class="cta-btn text-blue-6 bg-white hover:bg-gray-200 focus:ring-4 focus:ring-brand-medium font-semibold leading-5 rounded-full text-4xs px-12 py-5 focus:outline-none"
+    >
+      Create My Itinerary
+    </button>
+  </div>
+</section>
+
+<footer>
+  <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+    <div class="sm:flex sm:items-center sm:justify-between">
+      <a href="#" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+        <img src="https://flowbite.com/docs/images/logo.svg" class="h-7" alt="Flowbite Logo" />
+        <span class="text-heading self-center text-2xl font-semibold whitespace-nowrap"
+          >Itinera</span
+        >
+      </a>
+      <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-body sm:mb-0">
+        <li>
+          <a href="#" class="hover:underline me-4 md:me-6">About</a>
+        </li>
+        <li>
+          <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+        </li>
+        <li>
+          <a href="#" class="hover:underline">Contact</a>
+        </li>
+      </ul>
+    </div>
+    <hr class="my-6 border-default sm:mx-auto lg:my-8" />
+    <span class="block text-sm text-body sm:text-center"
+      >© <span>{{ year }}</span> Itinera. All Rights Reserved. <br />
+      Developed by <a href="">Mohamed Chahine Tamraoui</a> & <a href="">Ahmed Mekaouer</a> with
+      ❤️</span
+    >
+  </div>
+</footer>
