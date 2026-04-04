@@ -3,21 +3,21 @@
     <div class="sign-in-card">
       <header class="sign-in-header text-center">
         <img src="/images/logo.png" alt="Itinera Logo" class="h-16 mx-auto mb-4" />
-        <h1 class="text-3xl font-bold text-gray-900 mb-2">Welcome back!</h1>
-        <p class="text-base text-gray-600">Sign in to access your itineraries and bookings</p>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Create your account</h1>
+        <p class="text-base text-gray-600">Start planning your Tunisian adventure today</p>
       </header>
 
       <div class="social-actions grid grid-cols-2 gap-3 mt-8">
         <button
           type="button"
-          class="inline-flex items-center justify-center gap-2 text-gray-700 bg-white hover:bg-gray-50 border border-gray-300 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-3 focus:outline-none transition-all cursor-pointer"
+          class="inline-flex items-center justify-center gap-2 text-gray-700 bg-white hover:bg-gray-50 border border-gray-300 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-3 focus:outline-none transition-all"
         >
           <lineicons [icon]="GoogleOutlined" [size]="20" [strokeWidth]="1.8"></lineicons>
           <span>Google</span>
         </button>
         <button
           type="button"
-          class="inline-flex items-center justify-center gap-2 text-gray-700 bg-white hover:bg-gray-50 border border-gray-300 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-3 focus:outline-none transition-all cursor-pointer"
+          class="inline-flex items-center justify-center gap-2 text-gray-700 bg-white hover:bg-gray-50 border border-gray-300 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-3 focus:outline-none transition-all"
         >
           <lineicons [icon]="AppleBrandOutlined" [size]="20" [strokeWidth]="1.8"></lineicons>
           <span>Apple</span>
@@ -29,6 +29,25 @@
       </div>
 
       <form class="sign-in-form">
+        <div class="form-group">
+          <label for="fullname" class="block text-sm font-semibold text-gray-700 mb-2"
+            >Full Name</label
+          >
+          <div class="relative">
+            <div
+              class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-gray-500"
+            >
+              <lineicons [icon]="User4Outlined" [size]="20" [strokeWidth]="1.8"></lineicons>
+            </div>
+            <input
+              type="text"
+              id="fullname"
+              class="block w-full pl-11 pr-4 py-3 text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-4 focus:ring-blue-100 focus:border-blue-500 placeholder-gray-400 text-sm focus:outline-none transition-all"
+              placeholder="Your full name"
+            />
+          </div>
+        </div>
+
         <div class="form-group">
           <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email</label>
           <div class="relative">
@@ -79,20 +98,20 @@
 
         <button
           type="submit"
-          class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 font-semibold rounded-lg text-base px-5 py-3.5 focus:outline-none transition-all mt-2 cursor-pointer"
+          class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 font-semibold rounded-lg text-base px-5 py-3.5 focus:outline-none transition-all mt-2"
           routerLink="/home"
         >
-          Sign In
+          Create Account
         </button>
       </form>
 
       <p class="sign-in-footer text-center text-sm text-gray-600 mt-6">
-        Don't have an account?
+        Already have an account?
         <a
           href="#"
           class="font-semibold text-blue-600 hover:text-blue-700 ml-1"
-          routerLink="/sign-up"
-          >Sign up</a
+          routerLink="/sign-in"
+          >Sign in</a
         >
       </p>
     </div>

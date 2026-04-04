@@ -14,12 +14,12 @@ import {
 } from '@lineiconshq/free-icons';
 
 @Component({
-  selector: 'app-sign-in',
+  selector: 'app-sign-up',
   imports: [LineiconsComponent, RouterLink],
-  templateUrl: './sign-in.html',
-  styleUrl: './sign-in.css',
+  templateUrl: './sign-up.html',
+  styleUrl: './sign-up.css',
 })
-export class SignIn {
+export class SignUp {
   AppleBrandOutlined = AppleBrandOutlined;
   Envelope1Outlined = Envelope1Outlined;
   EyeOutlined = EyeOutlined;
@@ -27,7 +27,7 @@ export class SignIn {
   GoogleOutlined = GoogleOutlined;
   Locked1Outlined = Locked1Outlined;
   MapMarker5Outlined = MapMarker5Outlined;
-  User2Outlined = User4Outlined;
+  User4Outlined = User4Outlined;
   Bolt3Solid = Bolt3Solid;
 
   showPassword = false;

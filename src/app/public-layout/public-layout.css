@@ -96,3 +96,9 @@
 .margin-top {
   margin-top: 82px;
 }
+
+.link-cards {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}

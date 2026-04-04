@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Navbar } from './navbar/navbar';
 import { LineiconsComponent } from '@lineiconshq/angular-lineicons';
 import {
@@ -16,7 +17,7 @@ import { Footer } from '../footer/footer';
 
 @Component({
   selector: 'app-public-layout',
-  imports: [Navbar, LineiconsComponent, Footer],
+  imports: [RouterLink, Navbar, LineiconsComponent, Footer],
   templateUrl: './public-layout.html',
   styleUrl: './public-layout.css',
 })

@@ -9,8 +9,11 @@ import {
   StopwatchOutlined,
   User4Outlined,
   Shield2Outlined,
+  ArrowLeftOutlined,
 } from '@lineiconshq/free-icons';
 import { Footer } from '../footer/footer';
+import { RouterLink } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-service-details',
@@ -19,6 +22,8 @@ import { Footer } from '../footer/footer';
   styleUrl: './service-details.css',
 })
 export class ServiceDetails {
+  constructor(private location: Location) {}
+
   MapMarker5Outlined = MapMarker5Outlined;
   StarFatSolid = StarFatSolid;
   HeartOutlined = HeartOutlined;
@@ -26,4 +31,9 @@ export class ServiceDetails {
   StopwatchOutlined = StopwatchOutlined;
   User4Outlined = User4Outlined;
   Shield2Outlined = Shield2Outlined;
+  ArrowLeftOutlined = ArrowLeftOutlined;
+
+  goBack() {
+    this.location.back();
+  }
 }

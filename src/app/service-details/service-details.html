@@ -2,7 +2,10 @@
 
 <main class="service-details-page margin-top">
   <div class="container">
-    <a href="#" class="back-link"> &larr; Back to services </a>
+    <a (click)="goBack()" class="back-link">
+      <lineicons [icon]="ArrowLeftOutlined" [size]="22"></lineicons>
+      Back to services
+    </a>
 
     <section class="top-section">
       <div class="hero-card">

@@ -38,6 +38,7 @@
 
 .back-link:hover {
   color: var(--details-primary);
+  cursor: pointer;
 }
 
 .top-section {

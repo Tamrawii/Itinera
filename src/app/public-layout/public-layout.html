@@ -99,162 +99,170 @@
 
     <div class="cards grid grid-cols-4 gap-6 pl-48 pr-48 pb-12">
       <!--Card 1-->
-      <div class="card">
-        <img
-          src="images/hotel-tunisia.jpg"
-          alt=""
-          class="w-full h-48 object-cover rounded-t-base"
-        />
-        <div class="p-4">
-          <h3 class="text-xl font-semibold mb-1">Dar El Medina</h3>
-          <p class="location text-gray-400 flex items-center gap-1">
-            <lineicons [icon]="MapMarker5Outlined" [size]="18"></lineicons>
-            Tunis Medina
-          </p>
-          <div class="details flex justify-between items-end mb-4">
-            <div class="rating text-blue-5 flex items-center gap-1">
-              <lineicons [icon]="StarFatSolid" [size]="22"></lineicons>
-              <span class="rating-text text-gray-900 font-semibold">4.5</span>
-              <span class="rating-count text-gray-400">(35)</span>
-            </div>
-            <p class="price text-gray-900 font-semibold mt-2">
-              $85<span class="price-per-night text-gray-500">/night</span>
+      <a routerLink="/service-details" class="link-cards">
+        <div class="card">
+          <img
+            src="images/hotel-tunisia.jpg"
+            alt=""
+            class="w-full h-48 object-cover rounded-t-base"
+          />
+          <div class="p-4">
+            <h3 class="text-xl font-semibold mb-1">Dar El Medina</h3>
+            <p class="location text-gray-400 flex items-center gap-1">
+              <lineicons [icon]="MapMarker5Outlined" [size]="18"></lineicons>
+              Tunis Medina
             </p>
-          </div>
-          <div class="flex justify-between items-center gap-4">
-            <button
-              type="button"
-              class="text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none w-full text-center cursor-pointer"
-            >
-              Book Now
-            </button>
+            <div class="details flex justify-between items-end mb-4">
+              <div class="rating text-blue-5 flex items-center gap-1">
+                <lineicons [icon]="StarFatSolid" [size]="22"></lineicons>
+                <span class="rating-text text-gray-900 font-semibold">4.5</span>
+                <span class="rating-count text-gray-400">(35)</span>
+              </div>
+              <p class="price text-gray-900 font-semibold mt-2">
+                $85<span class="price-per-night text-gray-500">/night</span>
+              </p>
+            </div>
+            <div class="flex justify-between items-center gap-4">
+              <button
+                type="button"
+                class="text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none w-full text-center cursor-pointer"
+              >
+                Book Now
+              </button>
 
-            <button
-              type="button"
-              class="inline-flex items-center justify-center text-fg-brand border border-brand hover:bg-brand hover:text-white focus:ring-4 focus:ring-brand-subtle rounded-base p-2 focus:outline-none"
-            >
-              <lineicons [icon]="HeartOutlined" [size]="22"></lineicons>
-            </button>
+              <button
+                type="button"
+                class="inline-flex items-center justify-center text-fg-brand border border-brand hover:bg-brand hover:text-white focus:ring-4 focus:ring-brand-subtle rounded-base p-2 focus:outline-none"
+              >
+                <lineicons [icon]="HeartOutlined" [size]="22"></lineicons>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      </a>
 
       <!--Card 2-->
-      <div class="card">
-        <img
-          src="images/restaurant-tunisia.jpg"
-          alt=""
-          class="w-full h-48 object-cover rounded-t-base"
-        />
-        <div class="p-4">
-          <h3 class="text-xl font-semibold mb-1">Le Pirate</h3>
-          <p class="location text-gray-400 flex items-center gap-1">
-            <lineicons [icon]="MapMarker5Outlined" [size]="18"></lineicons>
-            Sidi Bou Said
-          </p>
-          <div class="details flex justify-between items-end mb-4">
-            <div class="rating text-blue-5 flex items-center gap-1">
-              <lineicons [icon]="StarFatSolid" [size]="22"></lineicons>
-              <span class="rating-text text-gray-900 font-semibold">4.5</span>
-              <span class="rating-count text-gray-400">(35)</span>
+      <a routerLink="/service-details" class="link-cards">
+        <div class="card">
+          <img
+            src="images/restaurant-tunisia.jpg"
+            alt=""
+            class="w-full h-48 object-cover rounded-t-base"
+          />
+          <div class="p-4">
+            <h3 class="text-xl font-semibold mb-1">Le Pirate</h3>
+            <p class="location text-gray-400 flex items-center gap-1">
+              <lineicons [icon]="MapMarker5Outlined" [size]="18"></lineicons>
+              Sidi Bou Said
+            </p>
+            <div class="details flex justify-between items-end mb-4">
+              <div class="rating text-blue-5 flex items-center gap-1">
+                <lineicons [icon]="StarFatSolid" [size]="22"></lineicons>
+                <span class="rating-text text-gray-900 font-semibold">4.5</span>
+                <span class="rating-count text-gray-400">(35)</span>
+              </div>
+              <p class="price text-gray-900 font-semibold mt-2">$85</p>
             </div>
-            <p class="price text-gray-900 font-semibold mt-2">$85</p>
-          </div>
-          <div class="flex justify-between items-center gap-4">
-            <button
-              type="button"
-              class="text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none w-full text-center cursor-pointer"
-            >
-              Book Now
-            </button>
+            <div class="flex justify-between items-center gap-4">
+              <button
+                type="button"
+                class="text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none w-full text-center cursor-pointer"
+              >
+                Book Now
+              </button>
 
-            <button
-              type="button"
-              class="inline-flex items-center justify-center text-fg-brand border border-brand hover:bg-brand hover:text-white focus:ring-4 focus:ring-brand-subtle rounded-base p-2 focus:outline-none"
-            >
-              <lineicons [icon]="HeartOutlined" [size]="22"></lineicons>
-            </button>
+              <button
+                type="button"
+                class="inline-flex items-center justify-center text-fg-brand border border-brand hover:bg-brand hover:text-white focus:ring-4 focus:ring-brand-subtle rounded-base p-2 focus:outline-none"
+              >
+                <lineicons [icon]="HeartOutlined" [size]="22"></lineicons>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      </a>
 
       <!--Card 3-->
-      <div class="card">
-        <img
-          src="images/sahara-tunisia.jpg"
-          alt=""
-          class="w-full h-48 object-cover rounded-t-base"
-        />
-        <div class="p-4">
-          <h3 class="text-xl font-semibold mb-1">Sahara Desert Trek</h3>
-          <p class="location text-gray-400 flex items-center gap-1">
-            <lineicons [icon]="MapMarker5Outlined" [size]="18"></lineicons>
-            Douz, Tozer
-          </p>
-          <div class="details flex justify-between items-end mb-4">
-            <div class="rating text-blue-5 flex items-center gap-1">
-              <lineicons [icon]="StarFatSolid" [size]="22"></lineicons>
-              <span class="rating-text text-gray-900 font-semibold">4.5</span>
-              <span class="rating-count text-gray-400">(35)</span>
+      <a routerLink="/service-details" class="link-cards">
+        <div class="card">
+          <img
+            src="images/sahara-tunisia.jpg"
+            alt=""
+            class="w-full h-48 object-cover rounded-t-base"
+          />
+          <div class="p-4">
+            <h3 class="text-xl font-semibold mb-1">Sahara Desert Trek</h3>
+            <p class="location text-gray-400 flex items-center gap-1">
+              <lineicons [icon]="MapMarker5Outlined" [size]="18"></lineicons>
+              Douz, Tozer
+            </p>
+            <div class="details flex justify-between items-end mb-4">
+              <div class="rating text-blue-5 flex items-center gap-1">
+                <lineicons [icon]="StarFatSolid" [size]="22"></lineicons>
+                <span class="rating-text text-gray-900 font-semibold">4.5</span>
+                <span class="rating-count text-gray-400">(35)</span>
+              </div>
+              <p class="price text-gray-900 font-semibold mt-2">$120</p>
             </div>
-            <p class="price text-gray-900 font-semibold mt-2">$120</p>
-          </div>
-          <div class="flex justify-between items-center gap-4">
-            <button
-              type="button"
-              class="text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none w-full text-center cursor-pointer"
-            >
-              Book Now
-            </button>
+            <div class="flex justify-between items-center gap-4">
+              <button
+                type="button"
+                class="text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none w-full text-center cursor-pointer"
+              >
+                Book Now
+              </button>
 
-            <button
-              type="button"
-              class="inline-flex items-center justify-center text-fg-brand border border-brand hover:bg-brand hover:text-white focus:ring-4 focus:ring-brand-subtle rounded-base p-2 focus:outline-none"
-            >
-              <lineicons [icon]="HeartOutlined" [size]="22"></lineicons>
-            </button>
+              <button
+                type="button"
+                class="inline-flex items-center justify-center text-fg-brand border border-brand hover:bg-brand hover:text-white focus:ring-4 focus:ring-brand-subtle rounded-base p-2 focus:outline-none"
+              >
+                <lineicons [icon]="HeartOutlined" [size]="22"></lineicons>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      </a>
 
       <!--Card 4-->
-      <div class="card">
-        <img
-          src="images/medina-tunisia.jpg"
-          alt=""
-          class="w-full h-48 object-cover rounded-t-base"
-        />
-        <div class="p-4">
-          <h3 class="text-xl font-semibold mb-1">Medina Walking Tour</h3>
-          <p class="location text-gray-400 flex items-center gap-1">
-            <lineicons [icon]="MapMarker5Outlined" [size]="18"></lineicons>
-            Tunis
-          </p>
-          <div class="details flex justify-between items-end mb-4">
-            <div class="rating text-blue-5 flex items-center gap-1">
-              <lineicons [icon]="StarFatSolid" [size]="22"></lineicons>
-              <span class="rating-text text-gray-900 font-semibold">4.5</span>
-              <span class="rating-count text-gray-400">(35)</span>
+      <a routerLink="/service-details" class="link-cards">
+        <div class="card">
+          <img
+            src="images/medina-tunisia.jpg"
+            alt=""
+            class="w-full h-48 object-cover rounded-t-base"
+          />
+          <div class="p-4">
+            <h3 class="text-xl font-semibold mb-">Medina Walking Tour</h3>
+            <p class="location text-gray-400 flex items-center gap-1">
+              <lineicons [icon]="MapMarker5Outlined" [size]="18"></lineicons>
+              Tunis
+            </p>
+            <div class="details flex justify-between items-end mb-4">
+              <div class="rating text-blue-5 flex items-center gap-1">
+                <lineicons [icon]="StarFatSolid" [size]="22"></lineicons>
+                <span class="rating-text text-gray-900 font-semibold">4.5</span>
+                <span class="rating-count text-gray-400">(35)</span>
+              </div>
+              <p class="price text-gray-900 font-semibold mt-2">$20</p>
             </div>
-            <p class="price text-gray-900 font-semibold mt-2">$20</p>
-          </div>
-          <div class="flex justify-between items-center gap-4">
-            <button
-              type="button"
-              class="text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none w-full text-center cursor-pointer"
-            >
-              Book Now
-            </button>
+            <div class="flex justify-between items-center gap-4">
+              <button
+                type="button"
+                class="text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none w-full text-center cursor-pointer"
+              >
+                Book Now
+              </button>
 
-            <button
-              type="button"
-              class="inline-flex items-center justify-center text-fg-brand border border-brand hover:bg-brand hover:text-white focus:ring-4 focus:ring-brand-subtle rounded-base p-2 focus:outline-none"
-            >
-              <lineicons [icon]="HeartOutlined" [size]="22"></lineicons>
-            </button>
+              <button
+                type="button"
+                class="inline-flex items-center justify-center text-fg-brand border border-brand hover:bg-brand hover:text-white focus:ring-4 focus:ring-brand-subtle rounded-base p-2 focus:outline-none"
+              >
+                <lineicons [icon]="HeartOutlined" [size]="22"></lineicons>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      </a>
     </div>
   </section>
 

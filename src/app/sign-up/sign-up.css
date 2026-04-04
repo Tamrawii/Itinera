@@ -9,13 +9,13 @@
 
 .sign-in-container {
   width: 100%;
-  max-width: 37rem;
+  max-width: 32rem;
 }
 
 .sign-in-card {
   background: white;
   border-radius: 12px;
-  padding: 2.5rem;
+  padding: 3rem 2rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
