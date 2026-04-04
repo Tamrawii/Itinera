@@ -1,0 +1,360 @@
+:root {
+  --details-bg: var(--color-neutral-2, #f8fafc);
+  --details-card: var(--color-neutral-1, #ffffff);
+  --details-text: var(--color-heading, #1e293b);
+  --details-muted: var(--color-body, #64748b);
+  --details-border: var(--color-border, #e2e8f0);
+  --details-primary: var(--color-brand, #3b82f6);
+  --details-primary-hover: var(--color-brand-strong, #2563eb);
+}
+
+.service-details-page {
+  background: var(--details-bg);
+  color: var(--details-text);
+  min-height: 100vh;
+  padding: 2rem 0 3rem;
+}
+
+.margin-top {
+  margin-top: 82px;
+}
+
+.container {
+  width: min(1200px, calc(100% - 3rem));
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--details-muted);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  margin-bottom: 1rem;
+  transition: color 0.2s ease;
+}
+
+.back-link:hover {
+  color: var(--details-primary);
+}
+
+.top-section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 1.5rem;
+  align-items: start;
+  margin-bottom: 1.5rem;
+}
+
+.hero-card {
+  background: var(--details-card);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm, 0 2px 12px rgba(15, 23, 42, 0.06));
+}
+
+.hero-image {
+  width: 100%;
+  height: 390px;
+  object-fit: cover;
+  display: block;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.content-main {
+  background: transparent;
+}
+
+.title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.service-type {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--color-blue-5);
+  color: var(--color-white);
+  border-radius: 9999px;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.favorite-btn {
+  background: transparent;
+  border: 0;
+  color: var(--details-muted);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.2rem;
+  transition: color 0.2s ease;
+}
+
+.favorite-btn:hover {
+  color: var(--color-blue-5);
+}
+
+.service-title {
+  font-size: clamp(1.9rem, 3vw, 2.4rem);
+  line-height: 1.15;
+  margin: 0 0 0.5rem;
+  color: var(--details-text);
+}
+
+.location,
+.rating {
+  margin: 0;
+  color: var(--details-muted);
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.rating {
+  color: var(--color-blue-5);
+  font-weight: 700;
+  margin-top: 0.55rem;
+}
+
+.content-main hr {
+  border: 0;
+  border-top: 1px solid var(--details-border);
+  margin: 1.35rem 0;
+}
+
+.booking-sidebar hr {
+  /*border: 0;*/
+  border-top: 1px solid var(--color-neutral-3);
+  margin: 12px 0;
+}
+
+.section-block {
+  margin-bottom: 1.5rem;
+}
+
+.section-block h2 {
+  margin: 0 0 0.85rem;
+  font-size: 1.8rem;
+  color: var(--details-text);
+}
+
+.section-block p {
+  margin: 0;
+  color: var(--details-muted);
+  line-height: 1.7;
+  font-size: 1.05rem;
+  max-width: 70ch;
+}
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(180px, 1fr));
+  gap: 0.5rem 2rem;
+  margin-top: 0.75rem;
+}
+
+.highlights-grid ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.highlights-grid li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--details-muted);
+  font-size: 1.05rem;
+  line-height: 1.9;
+}
+
+.highlights-grid li lineicons {
+  color: var(--color-blue-5);
+}
+
+.review-card {
+  background: #f1f5f9;
+  border: 1px solid #e8eef5;
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  margin-bottom: 0.9rem;
+}
+
+.review-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.review-top h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--details-text);
+}
+
+.review-top span {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.stars {
+  margin: 0 0 0.35rem;
+  color: var(--details-primary);
+  letter-spacing: 0.08em;
+  font-size: 0.95rem;
+}
+
+.booking-sidebar {
+  background: var(--details-card);
+  border: 1px solid #edf2f7;
+  border-radius: 16px;
+  padding: 1.3rem;
+  box-shadow: var(--shadow-sm, 0 2px 12px rgba(15, 23, 42, 0.06));
+}
+
+.booking-sidebar-sticky {
+  position: sticky;
+  top: 108px;
+}
+
+.price-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-bottom: 0.2rem;
+}
+
+.price {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: var(--details-text);
+}
+
+.per-person {
+  color: #94a3b8;
+  font-size: 1.35rem;
+  font-weight: 300;
+}
+
+.booking-features {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+}
+
+.booking-features li {
+  color: var(--details-muted);
+  line-height: 1.95;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.booking-features li lineicons {
+  color: var(--color-blue-5);
+}
+
+.btn {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 0.9rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 0.65rem;
+}
+
+.btn-primary {
+  background: var(--details-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--details-primary-hover);
+}
+
+.btn-secondary {
+  background: #f8fafc;
+  border-color: #d8e0ea;
+  color: #475569;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  padding: 0.625rem 1rem;
+}
+
+.btn-secondary:hover {
+  background: #eef2f7;
+}
+
+.cancel-note {
+  text-align: center;
+  color: #94a3b8;
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin: 1rem 0 0;
+}
+
+@media (max-width: 1080px) {
+  .top-section,
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-sidebar-sticky {
+    position: static;
+    top: auto;
+  }
+
+  .top-section > .booking-sidebar {
+    display: none;
+  }
+
+  .hero-image {
+    height: 340px;
+  }
+}
+
+@media (max-width: 768px) {
+  .service-details-page {
+    padding: 1.25rem 0 2rem;
+  }
+
+  .container {
+    width: min(100%, calc(100% - 1.25rem));
+  }
+
+  .hero-image {
+    height: 250px;
+  }
+
+  .service-title {
+    font-size: 1.7rem;
+  }
+
+  .highlights-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}

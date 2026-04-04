@@ -6,6 +6,19 @@
   background-position: center;
 }
 
+.search-options {
+  color: var(--color-blue-2);
+}
+
+.search-options:hover {
+  color: var(--color-blue-1);
+}
+
+.selected {
+  color: white;
+  border-bottom: 1px solid white;
+}
+
 .card {
   background-color: var(--color-neutral-1);
   border-radius: 16px;

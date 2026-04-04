@@ -1,0 +1,130 @@
+<app-navbar></app-navbar>
+
+<main class="service-details-page margin-top">
+  <div class="container">
+    <a href="#" class="back-link"> &larr; Back to services </a>
+
+    <section class="top-section">
+      <div class="hero-card">
+        <img src="images/hotel-tunisia.jpg" alt="Dar El Medina" class="hero-image" />
+      </div>
+    </section>
+
+    <section class="content-grid">
+      <div class="content-main">
+        <div class="title-row">
+          <span class="service-type">Hotel</span>
+          <button class="favorite-btn" type="button" aria-label="Add to favorites">
+            <lineicons [icon]="HeartOutlined" [size]="22"></lineicons>
+          </button>
+        </div>
+
+        <h1 class="service-title">Dar El Medina</h1>
+
+        <p class="location">
+          <lineicons [icon]="MapMarker5Outlined" [size]="18"></lineicons> Tunis Medina, Tunisia
+        </p>
+        <p class="rating">
+          <lineicons [icon]="StarFatSolid" [size]="22"></lineicons
+          ><span class="rating-text text-gray-900 font-semibold">4.5</span>
+          <span class="rating-count text-gray-400 font-light">(35 reviews)</span>
+        </p>
+
+        <hr />
+
+        <section class="section-block">
+          <h3>About</h3>
+          <p>
+            A beautifully restored traditional riad in the heart of the Tunis Medina. Experience
+            authentic Tunisian hospitality with modern comforts, rooftop terrace views, and a
+            tranquil courtyard garden.
+          </p>
+        </section>
+
+        <section class="section-block">
+          <h3>Highlights</h3>
+          <div class="highlights-grid">
+            <ul>
+              <li><lineicons [icon]="CheckOutlined" [size]="16"></lineicons> Free Wi‑Fi</li>
+              <li><lineicons [icon]="CheckOutlined" [size]="16"></lineicons> Rooftop terrace</li>
+            </ul>
+            <ul>
+              <li><lineicons [icon]="CheckOutlined" [size]="16"></lineicons> Breakfast included</li>
+              <li><lineicons [icon]="CheckOutlined" [size]="16"></lineicons> Airport transfer</li>
+            </ul>
+          </div>
+        </section>
+
+        <hr />
+
+        <section class="section-block">
+          <h3>Reviews</h3>
+
+          <article class="review-card">
+            <div class="review-top">
+              <h3>Sarah M.</h3>
+              <span>Feb 2025</span>
+            </div>
+            <p class="stars">★★★★★</p>
+            <p>
+              Absolutely wonderful experience. The host was incredibly welcoming and the location is
+              perfect.
+            </p>
+          </article>
+
+          <article class="review-card">
+            <div class="review-top">
+              <h3>James L.</h3>
+              <span>Jan 2025</span>
+            </div>
+            <p class="stars">★★★★☆</p>
+            <p>
+              Great value for money. The room was clean and comfortable. Would definitely come back.
+            </p>
+          </article>
+
+          <article class="review-card">
+            <div class="review-top">
+              <h3>Amina K.</h3>
+              <span>Dec 2024</span>
+            </div>
+            <p class="stars">★★★★★</p>
+            <p>
+              One of the best experiences I've had traveling. Highly recommended for anyone visiting
+              Tunisia.
+            </p>
+          </article>
+        </section>
+      </div>
+
+      <aside class="booking-sidebar booking-sidebar-sticky">
+        <div class="price-row">
+          <span class="price">$85</span>
+          <span class="per-person">/ person</span>
+        </div>
+
+        <hr />
+
+        <ul class="booking-features">
+          <li>
+            <lineicons [icon]="StopwatchOutlined" [size]="18"></lineicons> Instant confirmation
+          </li>
+          <li><lineicons [icon]="User4Outlined" [size]="18"></lineicons> Small groups available</li>
+          <li><lineicons [icon]="Shield2Outlined" [size]="18"></lineicons> Verified provider</li>
+        </ul>
+
+        <button
+          type="button"
+          class="text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none w-full text-center cursor-pointer"
+        >
+          Book Now
+        </button>
+        <button type="button" class="btn btn-secondary">Message Provider</button>
+
+        <p class="cancel-note">Free cancellation up to 48 hours before</p>
+      </aside>
+    </section>
+  </div>
+</main>
+
+<app-footer></app-footer>
