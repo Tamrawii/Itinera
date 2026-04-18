@@ -1,0 +1,39 @@
+.margin-top {
+  margin-top: 71px;
+}
+
+.hero-panel {
+  background-color: #dbe8f6;
+}
+
+.results-panel {
+  background-color: #f8fafc;
+}
+
+.search-wrap {
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.filter-btn {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #334155;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.chip {
+  border: none;
+  border-radius: 9999px;
+  background-color: #e2e8f0;
+  color: #334155;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 10px 22px;
+  cursor: pointer;
+}
+
+.chip-active {
+  background-color: #3b82f6;
+  color: #ffffff;
+}
