@@ -1,1 +1,36 @@
-<p>provider-layout works!</p>
+<main class="provider-shell">
+  <app-sidebar></app-sidebar>
+
+  <section class="provider-content">
+    <header
+      class="sticky top-0 z-20 flex items-center justify-between border-b border-slate-200 bg-white px-6 py-4"
+    >
+      <p class="font-semibold text-gray-500">Provider Dashboard</p>
+
+      <div class="flex items-center gap-4">
+        <button
+          type="button"
+          class="rounded-full border border-slate-200 p-2.5 text-slate-500 transition hover:text-blue-600"
+          aria-label="Notifications"
+        >
+          <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path
+              d="M10 3a4 4 0 0 0-4 4v1.7c0 .59-.19 1.17-.54 1.65L4.4 11.8a1 1 0 0 0 .8 1.6h9.6a1 1 0 0 0 .8-1.6l-1.05-1.46A2.8 2.8 0 0 1 14 8.7V7a4 4 0 0 0-4-4Z"
+              stroke="currentColor"
+              stroke-width="1.5"
+            />
+            <path d="M8.5 15a1.5 1.5 0 0 0 3 0" stroke="currentColor" stroke-width="1.5" />
+          </svg>
+        </button>
+        <span
+          class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-700"
+          >BC</span
+        >
+      </div>
+    </header>
+
+    <div class="p-6">
+      <router-outlet></router-outlet>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,90 @@
+<section class="space-y-6">
+  <header>
+    <h1 class="text-3xl font-bold text-slate-800">Reviews</h1>
+    <p class="mt-1 text-slate-500">See what your guests are saying</p>
+  </header>
+
+  <div class="stats-grid">
+    <article class="stat-card stat-card--rating">
+      <div class="rating-icon">
+        <lineicons [icon]="starFatSolid" [size]="26"></lineicons>
+      </div>
+      <div>
+        <p class="stat-value">{{ averageRating }}</p>
+        <p class="stat-label">Average Rating</p>
+      </div>
+    </article>
+
+    <article class="stat-card">
+      <p class="stat-value">{{ totalReviews }}</p>
+      <p class="stat-label">Total Reviews</p>
+    </article>
+
+    <article class="stat-card">
+      <p class="stat-value">{{ fiveStarPercent }}%</p>
+      <p class="stat-label">5-Star Reviews</p>
+    </article>
+  </div>
+
+  <article class="panel-card">
+    <h2 class="panel-title">Rating Breakdown</h2>
+
+    <div class="breakdown-list">
+      @for (band of breakdown; track band.stars) {
+      <div class="breakdown-row">
+        <p class="band-label">
+          {{ band.stars }}
+          <lineicons [icon]="starFatSolid" [size]="22"></lineicons>
+        </p>
+        <div class="track">
+          <span class="fill" [style.width.%]="band.percent"></span>
+        </div>
+        <p class="band-count">{{ band.count }}</p>
+      </div>
+      }
+    </div>
+  </article>
+
+  <div class="space-y-4">
+    @for (review of reviews; track review.guest) {
+    <article class="review-card">
+      <div class="review-head">
+        <div class="review-user">
+          <span class="avatar">{{ review.initials }}</span>
+          <div>
+            <p class="guest">{{ review.guest }}</p>
+            <p class="service">{{ review.service }}</p>
+          </div>
+        </div>
+
+        <p class="date">{{ review.date }}</p>
+      </div>
+
+      <div class="stars-row">
+        @for (filled of stars(review.rating); track $index) {
+        <svg
+          class="star"
+          [class.star--empty]="filled === 0"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path d="m10 3 2.2 4.5 5 .7-3.6 3.5.9 4.9L10 14.4l-4.5 2.2.9-4.9L2.8 8.2l5-.7L10 3Z" />
+        </svg>
+        }
+      </div>
+
+      <p class="review-text">{{ review.content }}</p>
+
+      @if (review.replied) {
+      <p class="replied-tag">You replied</p>
+      } @else {
+      <button type="button" class="reply-btn flex gap-2">
+        <lineicons [icon]="comment10Outlined" [size]="20"></lineicons>
+        Reply
+      </button>
+      }
+    </article>
+    }
+  </div>
+</section>

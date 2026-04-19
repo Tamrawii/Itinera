@@ -1,0 +1,279 @@
+<section class="space-y-5">
+  <div>
+    <h1 class="text-4xl font-bold text-slate-800">Welcome back, Blue Coast Tours 👋</h1>
+    <p class="mt-1 text-base text-slate-500">Here's how your business is doing this month.</p>
+  </div>
+
+  <div class="grid gap-4 lg:grid-cols-4">
+    @for (stat of stats; track stat.label) {
+    <article class="rounded-2xl border border-slate-200 bg-white p-5">
+      <div class="mb-4 flex items-center justify-between">
+        <span
+          class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100 text-sm font-semibold text-blue-600"
+        >
+          @if (stat.icon === '$') {
+          <lineicons [icon]="dollarOutlined" [size]="25" [strokeWidth]="1.5"></lineicons>
+          } @else if (stat.icon === 'cal') {
+          <lineicons [icon]="calendarDaysStroke" [size]="25" [strokeWidth]="1.5"></lineicons>
+          } @else if (stat.icon === 'eye') {
+          <lineicons [icon]="eyeOutlined" [size]="25" [strokeWidth]="1.5"></lineicons>
+          } @else {
+          <lineicons [icon]="starFatOutlined" [size]="25" [strokeWidth]="1.5"></lineicons>
+          }
+        </span>
+
+        <span class="text-sm font-semibold text-emerald-500">{{ stat.trend }}</span>
+      </div>
+      <p class="text-4xl font-bold text-slate-800">{{ stat.value }}</p>
+      <p class="mt-1 text-sm text-slate-500">{{ stat.label }}</p>
+    </article>
+    }
+  </div>
+
+  <article class="rounded-2xl border border-slate-200 bg-white p-5">
+    <div class="chart-wrap">
+      <div class="w-full rounded-2xl border border-slate-200 bg-slate-50 p-4 md:p-6">
+        <div class="flex justify-between">
+          <div>
+            <h5 class="text-2xl font-bold text-slate-800">$12,423</h5>
+            <p class="text-sm text-slate-500">Sales this week</p>
+          </div>
+          <div
+            class="flex items-center px-2.5 py-0.5 text-center text-sm font-medium text-emerald-600"
+          >
+            <svg
+              class="h-5 w-5"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 6v13m0-13 4 4m-4-4-4 4"
+              />
+            </svg>
+            12%
+          </div>
+        </div>
+
+        <div id="labels-chart" class="py-4 md:py-6">
+          <svg
+            class="min-w-[960px]"
+            viewBox="0 0 1120 300"
+            role="img"
+            aria-label="Weekly sales chart"
+          >
+            <defs>
+              <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#60a5fa" stop-opacity=".25" />
+                <stop offset="100%" stop-color="#60a5fa" stop-opacity=".06" />
+              </linearGradient>
+            </defs>
+
+            <line x1="55" y1="255" x2="1080" y2="255" class="chart-grid-base" />
+
+            <g class="chart-grid">
+              <line x1="55" y1="195" x2="1080" y2="195" />
+              <line x1="55" y1="135" x2="1080" y2="135" />
+              <line x1="55" y1="75" x2="1080" y2="75" />
+              <line x1="55" y1="15" x2="1080" y2="15" />
+            </g>
+
+            <g class="chart-grid">
+              <line x1="265" y1="15" x2="265" y2="255" />
+              <line x1="475" y1="15" x2="475" y2="255" />
+              <line x1="685" y1="15" x2="685" y2="255" />
+              <line x1="895" y1="15" x2="895" y2="255" />
+            </g>
+
+            <path
+              d="M55,135 C120,123 200,108 265,104 C330,100 410,120 475,125 C540,130 620,70 685,61 C750,52 830,88 895,92 C960,96 1020,58 1080,20 L1080,255 L55,255 Z"
+              fill="url(#areaFill)"
+            />
+            <path
+              d="M55,135 C120,123 200,108 265,104 C330,100 410,120 475,125 C540,130 620,70 685,61 C750,52 830,88 895,92 C960,96 1020,58 1080,20"
+              class="chart-line"
+            />
+
+            <g class="chart-y-labels">
+              <text x="46" y="260">0</text>
+              <text x="46" y="200">500</text>
+              <text x="46" y="140">1000</text>
+              <text x="46" y="80">1500</text>
+              <text x="46" y="20">2000</text>
+            </g>
+
+            <g class="chart-labels">
+              <text x="55" y="272">W1</text>
+              <text x="265" y="272">W2</text>
+              <text x="475" y="272">W3</text>
+              <text x="685" y="272">W4</text>
+              <text x="895" y="272">W5</text>
+              <text x="1080" y="272">W6</text>
+            </g>
+          </svg>
+        </div>
+
+        <div class="grid grid-cols-1 items-center justify-between border-t border-slate-200">
+          <div class="flex items-center justify-between pt-4 md:pt-6">
+            <button
+              id="dropdownLastDays9Button"
+              data-dropdown-toggle="LastDays9dropdown"
+              data-dropdown-placement="bottom"
+              class="inline-flex items-center text-center text-sm font-medium text-slate-500 hover:text-slate-700"
+              type="button"
+            >
+              Last 7 days
+              <svg
+                class="ms-1.5 h-4 w-4"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m19 9-7 7-7-7"
+                />
+              </svg>
+            </button>
+
+            <div
+              id="LastDays9dropdown"
+              class="z-10 hidden w-44 rounded-xl border border-slate-200 bg-white shadow-lg"
+            >
+              <ul
+                class="p-2 text-sm font-medium text-slate-600"
+                aria-labelledby="dropdownLastDays9Button"
+              >
+                <li>
+                  <a
+                    href="#"
+                    class="inline-flex w-full items-center rounded-lg p-2 hover:bg-slate-100 hover:text-slate-800"
+                    >Yesterday</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="inline-flex w-full items-center rounded-lg p-2 hover:bg-slate-100 hover:text-slate-800"
+                    >Today</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="inline-flex w-full items-center rounded-lg p-2 hover:bg-slate-100 hover:text-slate-800"
+                    >Last 7 days</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="inline-flex w-full items-center rounded-lg p-2 hover:bg-slate-100 hover:text-slate-800"
+                    >Last 30 days</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="inline-flex w-full items-center rounded-lg p-2 hover:bg-slate-100 hover:text-slate-800"
+                    >Last 90 days</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <a
+              href="#"
+              class="inline-flex items-center rounded-lg border border-transparent bg-transparent px-3 py-2 text-sm font-medium text-blue-600 hover:bg-slate-200 focus:outline-none focus:ring-4 focus:ring-slate-200"
+            >
+              Progress report
+              <svg
+                class="-me-0.5 ms-1.5 h-4 w-4 rtl:rotate-180"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 12H5m14 0-4 4m4-4-4-4"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <div class="grid gap-4 xl:grid-cols-2">
+    <article class="rounded-2xl border border-slate-200 bg-white p-5">
+      <div class="mb-4 flex items-center justify-between">
+        <h2 class="text-2xl font-semibold text-slate-800">Incoming Bookings</h2>
+        <a href="#" class="text-sm font-semibold text-slate-500">View all</a>
+      </div>
+
+      <div class="space-y-3">
+        @for (booking of bookings; track booking.customer) {
+        <div class="rounded-xl bg-slate-50 p-4">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="font-semibold text-slate-800">{{ booking.customer }}</p>
+              <p class="text-sm text-slate-500">{{ booking.room }}</p>
+              <p class="mt-1 text-sm text-slate-400">
+                {{ booking.dateRange }} · {{ booking.guests }}
+              </p>
+            </div>
+            <div class="text-right">
+              <p class="font-semibold text-slate-800">{{ booking.amount }}</p>
+              <span
+                class="mt-1 inline-flex rounded-full px-2.5 py-1 text-xs font-semibold"
+                [class.bg-emerald-100]="booking.status === 'Confirmed'"
+                [class.text-emerald-700]="booking.status === 'Confirmed'"
+                [class.bg-amber-100]="booking.status === 'Pending'"
+                [class.text-amber-700]="booking.status === 'Pending'"
+              >
+                {{ booking.status }}
+              </span>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+    </article>
+
+    <article class="rounded-2xl border border-slate-200 bg-white p-5">
+      <div class="mb-4 flex items-center justify-between">
+        <h2 class="text-2xl font-semibold text-slate-800">Recent Reviews</h2>
+        <a href="#" class="text-sm font-semibold text-slate-500">View all</a>
+      </div>
+
+      <div class="space-y-3">
+        @for (review of reviews; track review.customer) {
+        <div class="rounded-xl bg-slate-50 p-4">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="font-semibold text-slate-800">{{ review.customer }}</p>
+              <p class="text-blue-500">★★★★★</p>
+              <p class="text-sm text-slate-500">{{ review.text }}</p>
+            </div>
+            <p class="text-sm text-slate-400">{{ review.ago }}</p>
+          </div>
+        </div>
+        }
+      </div>
+    </article>
+  </div>
+</section>

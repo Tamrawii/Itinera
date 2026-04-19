@@ -1,0 +1,181 @@
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.service-card {
+  overflow: hidden;
+  border: 1px solid #dbe2ea;
+  border-radius: 1rem;
+  background-color: var(--color-neutral-1);
+  box-shadow: var(--shadow-xs);
+  transition:
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+.service-card:hover {
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  transform: translateY(-3px);
+}
+
+.service-card--draft {
+  opacity: 0.55;
+}
+
+.service-card--draft:hover {
+  transform: none;
+}
+
+.card-image-wrapper {
+  position: relative;
+}
+
+.service-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.category-pill {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.94);
+  color: #334155;
+  padding: 6px 12px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.menu-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #64748b;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.service-title {
+  margin: 0 0 4px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.location-row {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.details-row {
+  margin-top: 0.55rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 0.8rem;
+}
+
+.rating-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #3b82f6;
+}
+
+.rating-text {
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.rating-count {
+  color: #94a3b8;
+}
+
+.no-reviews {
+  margin: 0;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.price {
+  margin: 0;
+  font-weight: 700;
+  color: #334155;
+}
+
+.meta-row {
+  margin-top: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bookings {
+  margin: 0;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.status-pill {
+  border-radius: 9999px;
+  padding: 6px 14px;
+  background: #dcfce7;
+  color: #16a34a;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.status-pill--draft {
+  background: #e2e8f0;
+  color: #64748b;
+}
+
+.add-card {
+  min-height: 100%;
+  border: 2px dashed #cbd5e1;
+  border-radius: 1rem;
+  background: transparent;
+  color: #64748b;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.add-card:hover {
+  border-color: #93c5fd;
+  color: #2563eb;
+  background: #f8fbff;
+}
+
+@media (max-width: 1400px) {
+  .services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .services-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

@@ -5,6 +5,13 @@ import { SignIn } from './sign-in/sign-in';
 import { SignUp } from './sign-up/sign-up';
 import { About } from './about/about';
 import { ViewAll } from './public-layout/view-all/view-all';
+import { ProviderLayout } from './provider-layout/provider-layout';
+import { Dashboard } from './provider-layout/dashboard/dashboard';
+import { MyServices } from './provider-layout/my-services/my-services';
+import { Bookings } from './provider-layout/bookings/bookings';
+import { Messages } from './provider-layout/messages/messages';
+import { Reviews } from './provider-layout/reviews/reviews';
+import { ProfileSettings } from './provider-layout/profile-settings/profile-settings';
 
 export const routes: Routes = [
   {
@@ -41,6 +48,47 @@ export const routes: Routes = [
     path: 'view-all',
     component: ViewAll,
     title: 'Explore Services - Itinera',
+  },
+  {
+    path: 'provider',
+    component: ProviderLayout,
+    children: [
+      {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full',
+      },
+      {
+        path: 'dashboard',
+        component: Dashboard,
+        title: 'Provider Dashboard - Itinera',
+      },
+      {
+        path: 'my-services',
+        component: MyServices,
+        title: 'My Services - Itinera',
+      },
+      {
+        path: 'bookings',
+        component: Bookings,
+        title: 'Bookings - Itinera',
+      },
+      {
+        path: 'messages',
+        component: Messages,
+        title: 'Messages - Itinera',
+      },
+      {
+        path: 'reviews',
+        component: Reviews,
+        title: 'Reviews - Itinera',
+      },
+      {
+        path: 'profile-settings',
+        component: ProfileSettings,
+        title: 'Profile & Settings - Itinera',
+      },
+    ],
   },
   {
     path: '**',

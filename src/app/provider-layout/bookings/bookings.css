@@ -1,0 +1,94 @@
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.stat-card {
+  border: 1px solid #dbe2ea;
+  border-radius: 1rem;
+  background: #fff;
+  padding: 1.15rem 1.4rem;
+}
+
+.stat-card--warning {
+  border-color: #facc15;
+}
+
+.stat-value {
+  margin: 0;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #1e293b;
+  line-height: 1.1;
+}
+
+.stat-label {
+  margin: 0.45rem 0 0;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.filter-chip {
+  border: 1px solid transparent;
+  border-radius: 9999px;
+  padding: 0.55rem 1.1rem;
+  background: #e2e8f0;
+  color: #334155;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.filter-chip--active {
+  background: #3b82f6;
+  color: #fff;
+}
+
+.status-pill {
+  display: inline-flex;
+  border-radius: 9999px;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.84rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.status-pill--pending {
+  color: #a16207;
+  background: #fef08a;
+}
+
+.status-pill--confirmed {
+  color: #15803d;
+  background: #bbf7d0;
+}
+
+.status-pill--completed {
+  color: #2563eb;
+  background: #dbeafe;
+}
+
+.status-pill--cancelled {
+  color: #dc2626;
+  background: #fee2e2;
+}
+
+.color-gray {
+  color: var(--color-neutral-6);
+}
+
+.color-green {
+  color: var(--color-success);
+}
+
+.color-red {
+  color: var(--color-danger);
+}
+
+@media (max-width: 1200px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}

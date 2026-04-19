@@ -1,0 +1,87 @@
+<section class="space-y-6">
+  <header class="flex items-start justify-between">
+    <div>
+      <h1 class="text-3xl font-bold text-slate-800">My Services</h1>
+      <p class="mt-1 text-slate-500">{{ services.length }} services listed</p>
+    </div>
+
+    <button
+      type="button"
+      class="inline-flex items-center gap-2 rounded-2xl bg-blue-600 px-6 py-3 font-semibold text-white shadow-sm transition hover:bg-blue-700 cursor-pointer"
+    >
+      <svg class="h-6 w-6" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </svg>
+      Add New Service
+    </button>
+  </header>
+
+  <div class="services-grid">
+    @for (service of services; track service.title) {
+    <article class="service-card" [class.service-card--draft]="service.status === 'Draft'">
+      <div class="card-image-wrapper">
+        <img [src]="service.image" [alt]="service.imageAlt" class="service-image" />
+
+        <span class="category-pill">{{ service.category }}</span>
+
+        <button type="button" class="menu-btn" aria-label="Service actions">
+          <svg class="h-5 w-5" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <circle cx="5" cy="10" r="1.4" fill="currentColor" />
+            <circle cx="10" cy="10" r="1.4" fill="currentColor" />
+            <circle cx="15" cy="10" r="1.4" fill="currentColor" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="p-4">
+        <h3 class="service-title text-xl">{{ service.title }}</h3>
+        <p class="location-row">
+          <svg class="h-5 w-5" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path
+              d="M10 17s5-4.6 5-8.9A5 5 0 0 0 5 8.1C5 12.4 10 17 10 17Z"
+              stroke="currentColor"
+              stroke-width="1.7"
+            />
+            <circle cx="10" cy="8" r="1.8" stroke="currentColor" stroke-width="1.5" />
+          </svg>
+          {{ service.location }}
+        </p>
+
+        <div class="details-row">
+          @if (service.rating && service.ratingCount) {
+          <div class="rating-row">
+            <lineicons [icon]="starFatSolid" [size]="20"></lineicons>
+            <span class="rating-text">{{ service.rating }}</span>
+            <span class="rating-count">({{ service.ratingCount }})</span>
+          </div>
+          } @else {
+          <p class="no-reviews">No reviews yet</p>
+          }
+
+          <p class="price">${{ service.price }}</p>
+        </div>
+
+        <div class="meta-row">
+          <p class="bookings">{{ service.bookings }} bookings</p>
+          <span class="status-pill" [class.status-pill--draft]="service.status === 'Draft'">
+            {{ service.status }}
+          </span>
+        </div>
+      </div>
+    </article>
+    }
+
+    <button type="button" class="add-card">
+      <svg class="h-12 w-12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path
+          d="M12 5v14M5 12h14"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <span>Add New Service</span>
+    </button>
+  </div>
+</section>

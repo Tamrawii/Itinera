@@ -1,0 +1,38 @@
+:host {
+  display: block;
+  align-self: stretch;
+  width: 260px;
+  min-width: 260px;
+}
+
+.sidebar-link {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  gap: 0.65rem;
+  border-radius: 0.75rem;
+  padding: 0.58rem 0.65rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #475569;
+  transition: 0.2s ease;
+}
+
+.sidebar-link:hover {
+  background-color: #e2e8f0;
+  color: #1e293b;
+  text-decoration: none;
+}
+
+.sidebar-icon {
+  color: #64748b;
+}
+
+.sidebar-active {
+  background: #e0ecff;
+  color: #2563eb;
+}
+
+.sidebar-active .sidebar-icon {
+  color: #2563eb;
+}

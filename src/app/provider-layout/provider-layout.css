@@ -1,0 +1,16 @@
+:host {
+  display: block;
+}
+
+.provider-shell {
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: 260px minmax(0, 1fr);
+  background: #f8fafc;
+  overflow-x: hidden;
+}
+
+.provider-content {
+  min-width: 0;
+  overflow-x: hidden;
+}

@@ -1,0 +1,122 @@
+<section class="space-y-6">
+  <header>
+    <h1 class="text-3xl font-bold text-slate-800">Bookings</h1>
+    <p class="mt-1 text-slate-500">Manage incoming and past bookings for your services</p>
+  </header>
+
+  <div class="stats-grid">
+    <article class="stat-card">
+      <p class="stat-value">{{ totalBookings }}</p>
+      <p class="stat-label">Total Bookings</p>
+    </article>
+    <article class="stat-card stat-card--warning">
+      <p class="stat-value">{{ awaitingResponse }}</p>
+      <p class="stat-label">Awaiting Response</p>
+    </article>
+    <article class="stat-card">
+      <p class="stat-value">${{ totalEarnings }}</p>
+      <p class="stat-label">Total Earnings</p>
+    </article>
+  </div>
+
+  <div class="relative overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-xs">
+    <div
+      class="flex flex-col flex-wrap items-center justify-between space-y-4 p-4 md:flex-row md:space-y-0"
+    >
+      <label for="input-group-1" class="sr-only">Search</label>
+      <div class="relative w-full max-w-lg">
+        <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
+          <svg
+            class="h-4 w-4 text-slate-500"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-width="2"
+              d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
+            />
+          </svg>
+        </div>
+        <input
+          type="text"
+          id="input-group-1"
+          class="block w-full rounded-lg border border-slate-200 bg-slate-100 ps-9 pe-3 py-2.5 text-sm text-slate-700 placeholder:text-slate-500 focus:border-blue-500 focus:ring-blue-500"
+          placeholder="Search by guest, service, or booking ID..."
+        />
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button type="button" class="filter-chip filter-chip--active">All</button>
+        <button type="button" class="filter-chip">Pending</button>
+        <button type="button" class="filter-chip">Confirmed</button>
+        <button type="button" class="filter-chip">Completed</button>
+        <button type="button" class="filter-chip">Cancelled</button>
+      </div>
+    </div>
+
+    <table class="w-full text-left text-sm text-slate-600">
+      <thead class="border-y border-slate-200 bg-slate-100 text-sm text-slate-500">
+        <tr>
+          <th scope="col" class="px-6 py-3 font-medium">Guest</th>
+          <th scope="col" class="px-6 py-3 font-medium">Service</th>
+          <th scope="col" class="px-6 py-3 font-medium">Schedule</th>
+          <th scope="col" class="px-6 py-3 font-medium">Status</th>
+          <th scope="col" class="px-6 py-3 font-medium">Amount</th>
+          <th scope="col" class="px-6 py-3 font-medium">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (booking of bookings; track booking.bookingId) {
+        <tr class="border-b border-slate-200 bg-white hover:bg-slate-50">
+          <th scope="row" class="whitespace-nowrap px-6 py-4 text-slate-800">
+            <div class="font-semibold">{{ booking.guestName }}</div>
+            <div class="text-sm font-normal text-slate-500">#{{ booking.bookingId }}</div>
+          </th>
+
+          <td class="px-6 py-4">
+            <div class="font-medium text-slate-700">{{ booking.serviceName }}</div>
+            @if (booking.note) {
+            <div class="text-sm italic text-slate-500">{{ booking.note }}</div>
+            }
+          </td>
+
+          <td class="px-6 py-4">
+            <div>{{ booking.schedule }}</div>
+            <div class="text-sm text-slate-500">{{ booking.guests }}</div>
+          </td>
+
+          <td class="px-6 py-4">
+            <span
+              class="status-pill"
+              [class.status-pill--pending]="booking.status === 'Pending'"
+              [class.status-pill--confirmed]="booking.status === 'Confirmed'"
+              [class.status-pill--completed]="booking.status === 'Completed'"
+              [class.status-pill--cancelled]="booking.status === 'Cancelled'"
+            >
+              {{ booking.status }}
+            </span>
+          </td>
+
+          <td class="px-6 py-4 font-semibold text-slate-800">${{ booking.amount }}</td>
+
+          <td class="px-6 py-4 flex gap-2">
+            <a href="#" class="font-medium color-gray hover:underline">
+              <lineicons [icon]="comment10Outlined" [size]="22"></lineicons>
+            </a>
+            <a href="#" class="font-medium color-green hover:underline">
+              <lineicons [icon]="checkSolid" [size]="22"></lineicons>
+            </a>
+            <a href="#" class="font-medium color-red hover:underline">
+              <lineicons [icon]="xmarkSolid" [size]="22"></lineicons>
+            </a>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>

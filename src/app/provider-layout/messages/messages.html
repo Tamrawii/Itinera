@@ -1,0 +1,120 @@
+<section class="messages-shell">
+  <aside class="conversations-panel">
+    <div class="conversations-header">
+      <h1 class="panel-title">Messages</h1>
+      <div class="search-wrap">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path
+            d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </svg>
+        <input type="text" placeholder="Search conversations..." />
+      </div>
+    </div>
+
+    <div class="conversation-list">
+      @for (conversation of conversations; track conversation.name) {
+      <button
+        type="button"
+        class="conversation-item"
+        [class.conversation-item--active]="conversation.active"
+      >
+        <span class="avatar">{{ conversation.initials }}</span>
+
+        <div class="conversation-main">
+          <div class="name-row">
+            <p class="name">{{ conversation.name }}</p>
+            <p class="time">{{ conversation.time }}</p>
+          </div>
+          <div class="preview-row">
+            @if (conversation.online) {
+            <span class="online-dot"></span>
+            }
+            <p class="preview">{{ conversation.preview }}</p>
+          </div>
+        </div>
+
+        @if (conversation.unread > 0) {
+        <span class="unread-pill">{{ conversation.unread }}</span>
+        }
+      </button>
+      }
+    </div>
+  </aside>
+
+  <section class="chat-panel">
+    <header class="chat-header">
+      <span class="avatar avatar--large">{{ activeGuest.initials }}</span>
+      <div>
+        <p class="chat-name">{{ activeGuest.name }}</p>
+        <!--<p class="chat-role">{{ activeGuest.role }}</p>-->
+      </div>
+    </header>
+
+    <div class="chat-body">
+      @for (message of messages; track message.text) {
+      <div class="message-row" [class.message-row--outgoing]="message.outgoing">
+        <article class="bubble" [class.bubble--outgoing]="message.outgoing">
+          <p>{{ message.text }}</p>
+          <p class="message-time">
+            {{ message.time }} @if (message.outgoing) {
+            <!--<span class="sent-mark">✓✓</span>-->
+            }
+          </p>
+        </article>
+      </div>
+      }
+    </div>
+
+    <footer class="composer">
+      <button type="button" class="icon-btn" aria-label="Attach file">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path
+            d="m15 7-6.9 6.9a3 3 0 1 0 4.2 4.2l7.1-7.1A5 5 0 0 0 12.3 3.9L5.2 11a7 7 0 0 0 9.9 9.9L21 15"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+
+      <button type="button" class="icon-btn" aria-label="Upload image">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect
+            x="4"
+            y="5"
+            width="16"
+            height="14"
+            rx="2"
+            stroke="currentColor"
+            stroke-width="1.8"
+          />
+          <path
+            d="m7 15 3.5-3.5 2.5 2.5 3.5-3.5 2.5 2.5"
+            stroke="currentColor"
+            stroke-width="1.8"
+          />
+          <circle cx="9" cy="9" r="1.2" fill="currentColor" />
+        </svg>
+      </button>
+
+      <input type="text" placeholder="Type a message..." />
+
+      <button type="button" class="send-btn" aria-label="Send message">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path
+            d="m21 3-9 9m9-9-6 18-3-9-9-3L21 3Z"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+    </footer>
+  </section>
+</section>
