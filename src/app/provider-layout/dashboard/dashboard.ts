@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy } from '@angular/core';
+import type ApexCharts from 'apexcharts';
+import { initFlowbite } from 'flowbite';
 import { LineiconsComponent } from '@lineiconshq/angular-lineicons';
 import {
   DashboardSquare1Outlined,
@@ -40,7 +42,9 @@ interface Review {
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })
-export class Dashboard {
+export class Dashboard implements AfterViewInit, OnDestroy {
+  private salesChart: ApexCharts | null = null;
+
   starFatOutlined = StarFatOutlined;
   dollarOutlined = DollarOutlined;
   calendarDaysStroke = CalendarDaysStroke;
@@ -92,4 +96,97 @@ export class Dashboard {
       ago: '5 days ago',
     },
   ];
+
+  ngAfterViewInit(): void {
+    void this.renderSalesChart();
+    initFlowbite();
+  }
+
+  ngOnDestroy(): void {
+    this.salesChart?.destroy();
+    this.salesChart = null;
+  }
+
+  private async renderSalesChart(): Promise<void> {
+    const chartContainer = document.getElementById('provider-sales-chart');
+    if (!chartContainer) {
+      return;
+    }
+
+    this.salesChart?.destroy();
+    const { default: ApexChartsLib } = await import('apexcharts');
+
+    this.salesChart = new ApexChartsLib(chartContainer, {
+      chart: {
+        type: 'area',
+        height: 260,
+        toolbar: { show: false },
+        fontFamily: 'Inter, sans-serif',
+        sparkline: { enabled: false },
+      },
+      stroke: {
+        curve: 'smooth',
+        width: 3,
+        colors: ['#60A5FA'],
+      },
+      fill: {
+        type: 'gradient',
+        gradient: {
+          opacityFrom: 0.35,
+          opacityTo: 0.08,
+          shadeIntensity: 1,
+          gradientToColors: ['#60A5FA'],
+          stops: [0, 100],
+        },
+      },
+      dataLabels: { enabled: false },
+      grid: {
+        show: true,
+        strokeDashArray: 4,
+        borderColor: '#cbd5e1',
+        xaxis: { lines: { show: true } },
+        yaxis: { lines: { show: true } },
+      },
+      series: [
+        {
+          name: 'Sales',
+          data: [1000, 1260, 1080, 1600, 1360, 1960],
+        },
+      ],
+      xaxis: {
+        categories: ['W1', 'W2', 'W3', 'W4', 'W5', 'W6'],
+        labels: {
+          style: {
+            colors: '#64748b',
+            fontSize: '12px',
+            fontWeight: '600',
+          },
+        },
+        axisBorder: { show: false },
+        axisTicks: { show: false },
+      },
+      yaxis: {
+        min: 0,
+        max: 2000,
+        tickAmount: 4,
+        labels: {
+          formatter: (value: number) => `${Math.round(value)}`,
+          style: {
+            colors: '#64748b',
+            fontSize: '12px',
+            fontWeight: '500',
+          },
+        },
+      },
+      tooltip: {
+        y: {
+          formatter: (value: number) => `${Math.round(value)}`,
+        },
+      },
+      colors: ['#60A5FA'],
+      legend: { show: false },
+    });
+
+    this.salesChart.render();
+  }
 }

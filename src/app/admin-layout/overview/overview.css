@@ -1,0 +1,170 @@
+@import '../providers/providers.css';
+
+.stats-grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.stat-card {
+  border: 1px solid #dbe2ea;
+  border-radius: 0.95rem;
+  background: #f8fafc;
+  padding: 0.95rem 1rem;
+}
+
+.stat-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stat-icon {
+  width: 2.15rem;
+  height: 2.15rem;
+  border-radius: 0.75rem;
+  background: #dbeafe;
+  color: #3b82f6;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-icon svg {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.trend {
+  color: #22c55e;
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.stat-value {
+  margin: 0.62rem 0 0;
+  color: #1e293b;
+  font-size: 1.9rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.stat-label {
+  margin: 0.28rem 0 0;
+  color: #64748b;
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+.charts-grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+.revenue-card {
+  border: 1px solid #dbe2ea;
+  border-radius: 0.95rem;
+  background: #f8fafc;
+  padding: 1rem;
+}
+
+.revenue-total {
+  margin: 0.35rem 0 0;
+  color: #1e293b;
+  font-size: 1.9rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.revenue-subtitle {
+  margin: 0.25rem 0 0;
+  color: #64748b;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.revenue-trend {
+  display: inline-flex;
+  align-items: center;
+  color: #22c55e;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.weekly-card {
+  border: 1px solid #dbe2ea;
+  border-radius: 0.95rem;
+  background: #f8fafc;
+  padding: 1rem;
+}
+
+.chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.axis {
+  stroke: #94a3b8;
+  stroke-width: 1.3;
+}
+
+.grid,
+.grid-v {
+  stroke: #dbe2ea;
+  stroke-width: 1;
+  stroke-dasharray: 4 5;
+}
+
+.area {
+  fill: rgba(59, 130, 246, 0.22);
+}
+
+.line {
+  fill: none;
+  stroke: #60a5fa;
+  stroke-width: 2;
+}
+
+.bar {
+  fill: #3b82f6;
+}
+
+.labels text {
+  fill: #64748b;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+#admin-revenue-chart .apexcharts-tooltip {
+  border: 1px solid #dbe2ea !important;
+  border-radius: 0.5rem !important;
+  box-shadow: none !important;
+}
+
+#admin-revenue-chart .apexcharts-xaxistooltip {
+  display: none !important;
+}
+
+#admin-weekly-bookings-chart .apexcharts-tooltip {
+  border: 1px solid #dbe2ea !important;
+  border-radius: 0.5rem !important;
+  box-shadow: none !important;
+}
+
+#admin-weekly-bookings-chart .apexcharts-xaxistooltip {
+  display: none !important;
+}
+
+@media (max-width: 1300px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+}

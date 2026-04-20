@@ -33,6 +33,7 @@
     "@lineiconshq/free-icons": "^1.0.4",
     "@lucide/angular": "^1.7.0",
     "@tailwindcss/postcss": "^4.2.1",
+    "apexcharts": "^5.10.6",
     "flowbite": "^4.0.1",
     "lineicons": "^1.3.2",
     "postcss": "^8.5.8",

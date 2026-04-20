@@ -1,0 +1,109 @@
+<section class="admin-page">
+  <header class="page-head">
+    <div>
+      <h1>Bookings</h1>
+      <p>8 total bookings</p>
+    </div>
+
+    <button type="button" class="export-btn">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 4v10m0 0 4-4m-4 4-4-4M5 16v2a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Export
+    </button>
+  </header>
+
+  <section class="metric-grid">
+    <article class="metric-card">
+      <p class="metric-value">8</p>
+      <p class="metric-label">Total Bookings</p>
+    </article>
+    <article class="metric-card">
+      <p class="metric-value">$1100</p>
+      <p class="metric-label">Total Revenue</p>
+    </article>
+    <article class="metric-card">
+      <p class="metric-value metric-value--confirmed">3</p>
+      <p class="metric-label">Confirmed</p>
+    </article>
+    <article class="metric-card">
+      <p class="metric-value metric-value--pending">1</p>
+      <p class="metric-label">Pending</p>
+    </article>
+  </section>
+
+  <section class="admin-panel">
+    <div class="toolbar">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.8" />
+          <path d="m16 16 4.3 4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+        </svg>
+        <input type="text" placeholder="Search bookings..." />
+      </div>
+
+      <div class="filters">
+        <button type="button" class="filter-chip filter-chip--active">All</button>
+        <button type="button" class="filter-chip">Confirmed</button>
+        <button type="button" class="filter-chip">Pending</button>
+        <button type="button" class="filter-chip">Cancelled</button>
+        <button type="button" class="filter-chip">Completed</button>
+      </div>
+    </div>
+
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Booking ID</th>
+          <th>Customer</th>
+          <th>Service</th>
+          <th>Date</th>
+          <th>Guests</th>
+          <th>Amount</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (booking of bookings; track booking.id) {
+          <tr>
+            <td class="id-cell">{{ booking.id }}</td>
+            <td>{{ booking.customer }}</td>
+            <td>{{ booking.service }}</td>
+            <td>{{ booking.date }}</td>
+            <td>{{ booking.guests }}</td>
+            <td class="amount-cell">{{ booking.amount }}</td>
+            <td>
+              <span
+                class="status-chip"
+                [class.status-chip--pending]="booking.status === 'Pending'"
+                [class.status-chip--danger]="booking.status === 'Cancelled'"
+                [class.status-chip--completed]="booking.status === 'Completed'"
+              >
+                {{ booking.status }}
+              </span>
+            </td>
+            <td>
+              <div class="actions-wrap">
+                <svg class="action-eye" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z" stroke="currentColor" stroke-width="1.7" />
+                  <circle cx="12" cy="12" r="2.4" stroke="currentColor" stroke-width="1.7" />
+                </svg>
+                @if (booking.pendingActions) {
+                  <svg class="action-accept" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.7" />
+                    <path d="m8.5 12.3 2.3 2.3 4.7-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                  <svg class="action-reject" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.7" />
+                    <path d="m9.4 9.4 5.2 5.2m0-5.2-5.2 5.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                  </svg>
+                }
+              </div>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </section>
+</section>

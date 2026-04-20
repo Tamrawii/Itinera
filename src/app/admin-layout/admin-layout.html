@@ -1,1 +1,104 @@
-<p>admin-layout works!</p>
+<main class="admin-shell">
+  <aside class="admin-sidebar">
+    <div class="admin-brand">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path
+          d="M12 20c-3.5-3.2-5.5-6-5.5-8.7A5.5 5.5 0 0 1 12 5.8a5.5 5.5 0 0 1 5.5 5.5C17.5 14 15.5 16.8 12 20Z"
+          stroke="currentColor"
+          stroke-width="1.7"
+        />
+        <circle cx="12" cy="11.4" r="1.8" stroke="currentColor" stroke-width="1.7" />
+      </svg>
+      <span>Itinera</span>
+    </div>
+
+    <nav class="admin-nav">
+      <p class="nav-label">Main</p>
+
+      <a
+        routerLink="/admin/overview"
+        routerLinkActive="admin-nav__link--active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="admin-nav__link"
+      >
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="4" y="4" width="6.5" height="6.5" rx="1.2" stroke="currentColor" stroke-width="1.7" />
+          <rect x="13.5" y="4" width="6.5" height="6.5" rx="1.2" stroke="currentColor" stroke-width="1.7" />
+          <rect x="4" y="13.5" width="6.5" height="6.5" rx="1.2" stroke="currentColor" stroke-width="1.7" />
+          <rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.2" stroke="currentColor" stroke-width="1.7" />
+        </svg>
+        Overview
+      </a>
+
+      <a routerLink="/admin/services" routerLinkActive="admin-nav__link--active" class="admin-nav__link">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M5 9.5 12 5l7 4.5-7 4.5-7-4.5Z" stroke="currentColor" stroke-width="1.7" />
+          <path d="M5 9.5V16l7 4 7-4V9.5" stroke="currentColor" stroke-width="1.7" />
+        </svg>
+        Services
+      </a>
+
+      <a routerLink="/admin/providers" routerLinkActive="admin-nav__link--active" class="admin-nav__link">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 7.2a2.7 2.7 0 1 0 0-5.4 2.7 2.7 0 0 0 0 5.4Z" stroke="currentColor" stroke-width="1.7" />
+          <path d="M6 14.3a3 3 0 0 1 2.9-2.9h6.2a3 3 0 0 1 2.9 2.9v2.5H6v-2.5Z" stroke="currentColor" stroke-width="1.7" />
+        </svg>
+        Providers
+      </a>
+
+      <a routerLink="/admin/users" routerLinkActive="admin-nav__link--active" class="admin-nav__link">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.7" />
+          <path d="M3.5 18a4.5 4.5 0 0 1 9 0" stroke="currentColor" stroke-width="1.7" />
+          <circle cx="17" cy="9" r="2.5" stroke="currentColor" stroke-width="1.7" />
+          <path d="M14.5 18a3.5 3.5 0 0 1 7 0" stroke="currentColor" stroke-width="1.7" />
+        </svg>
+        Users
+      </a>
+
+      <a routerLink="/admin/bookings" routerLinkActive="admin-nav__link--active" class="admin-nav__link">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="4" y="5.5" width="16" height="14" rx="2" stroke="currentColor" stroke-width="1.7" />
+          <path d="M8 3.5v4M16 3.5v4M4 10h16" stroke="currentColor" stroke-width="1.7" />
+        </svg>
+        Bookings
+      </a>
+
+      <p class="nav-label nav-label--system">System</p>
+
+      <a routerLink="/admin/settings" routerLinkActive="admin-nav__link--active" class="admin-nav__link">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path
+            d="m12 3 1.5.6.7 1.7 1.8.3 1 1.6-1 1.6.4 1.8 1.3 1.2-.6 1.8-1.7.7-.8 1.6-1.8.1-1.2 1.4-1.7-.6-1.7.6-1.2-1.4-1.8-.1-.8-1.6-1.7-.7-.6-1.8 1.3-1.2.4-1.8-1-1.6 1-1.6 1.8-.3.7-1.7L12 3Z"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linejoin="round"
+          />
+          <circle cx="12" cy="12" r="2.6" stroke="currentColor" stroke-width="1.7" />
+        </svg>
+        Settings
+      </a>
+    </nav>
+
+    <a routerLink="/" class="back-link">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M10 6 4 12l6 6M4 12h12a4 4 0 0 0 0-8" stroke="currentColor" stroke-width="1.7" />
+      </svg>
+      Back to site
+    </a>
+  </aside>
+
+  <section class="admin-main">
+    <header class="admin-topbar">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="5" y="4" width="14" height="16" rx="2" stroke="currentColor" stroke-width="1.7" />
+        <path d="M9 8h6M9 12h6M9 16h4" stroke="currentColor" stroke-width="1.7" />
+      </svg>
+      <span>Admin Dashboard</span>
+    </header>
+
+    <div class="admin-content">
+      <router-outlet></router-outlet>
+    </div>
+  </section>
+</main>

@@ -1,6 +1,6 @@
 <section class="space-y-5">
   <div>
-    <h1 class="text-4xl font-bold text-slate-800">Welcome back, Blue Coast Tours 👋</h1>
+    <h1 class="text-3xl font-bold text-slate-800">Welcome back, Blue Coast Tours 👋</h1>
     <p class="mt-1 text-base text-slate-500">Here's how your business is doing this month.</p>
   </div>
 
@@ -60,63 +60,7 @@
           </div>
         </div>
 
-        <div id="labels-chart" class="py-4 md:py-6">
-          <svg
-            class="min-w-[960px]"
-            viewBox="0 0 1120 300"
-            role="img"
-            aria-label="Weekly sales chart"
-          >
-            <defs>
-              <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#60a5fa" stop-opacity=".25" />
-                <stop offset="100%" stop-color="#60a5fa" stop-opacity=".06" />
-              </linearGradient>
-            </defs>
-
-            <line x1="55" y1="255" x2="1080" y2="255" class="chart-grid-base" />
-
-            <g class="chart-grid">
-              <line x1="55" y1="195" x2="1080" y2="195" />
-              <line x1="55" y1="135" x2="1080" y2="135" />
-              <line x1="55" y1="75" x2="1080" y2="75" />
-              <line x1="55" y1="15" x2="1080" y2="15" />
-            </g>
-
-            <g class="chart-grid">
-              <line x1="265" y1="15" x2="265" y2="255" />
-              <line x1="475" y1="15" x2="475" y2="255" />
-              <line x1="685" y1="15" x2="685" y2="255" />
-              <line x1="895" y1="15" x2="895" y2="255" />
-            </g>
-
-            <path
-              d="M55,135 C120,123 200,108 265,104 C330,100 410,120 475,125 C540,130 620,70 685,61 C750,52 830,88 895,92 C960,96 1020,58 1080,20 L1080,255 L55,255 Z"
-              fill="url(#areaFill)"
-            />
-            <path
-              d="M55,135 C120,123 200,108 265,104 C330,100 410,120 475,125 C540,130 620,70 685,61 C750,52 830,88 895,92 C960,96 1020,58 1080,20"
-              class="chart-line"
-            />
-
-            <g class="chart-y-labels">
-              <text x="46" y="260">0</text>
-              <text x="46" y="200">500</text>
-              <text x="46" y="140">1000</text>
-              <text x="46" y="80">1500</text>
-              <text x="46" y="20">2000</text>
-            </g>
-
-            <g class="chart-labels">
-              <text x="55" y="272">W1</text>
-              <text x="265" y="272">W2</text>
-              <text x="475" y="272">W3</text>
-              <text x="685" y="272">W4</text>
-              <text x="895" y="272">W5</text>
-              <text x="1080" y="272">W6</text>
-            </g>
-          </svg>
-        </div>
+        <div id="provider-sales-chart" class="py-4 md:py-6"></div>
 
         <div class="grid grid-cols-1 items-center justify-between border-t border-slate-200">
           <div class="flex items-center justify-between pt-4 md:pt-6">

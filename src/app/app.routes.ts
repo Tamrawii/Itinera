@@ -8,10 +8,16 @@ import { ViewAll } from './public-layout/view-all/view-all';
 import { ProviderLayout } from './provider-layout/provider-layout';
 import { Dashboard } from './provider-layout/dashboard/dashboard';
 import { MyServices } from './provider-layout/my-services/my-services';
-import { Bookings } from './provider-layout/bookings/bookings';
+import { Bookings as ProviderBookings } from './provider-layout/bookings/bookings';
 import { Messages } from './provider-layout/messages/messages';
 import { Reviews } from './provider-layout/reviews/reviews';
 import { ProfileSettings } from './provider-layout/profile-settings/profile-settings';
+import { AdminLayout } from './admin-layout/admin-layout';
+import { Overview } from './admin-layout/overview/overview';
+import { Providers } from './admin-layout/providers/providers';
+import { Services } from './admin-layout/admin-services/services';
+import { Users } from './admin-layout/users/users';
+import { Bookings as AdminBookings } from './admin-layout/bookings/bookings';
 
 export const routes: Routes = [
   {
@@ -70,7 +76,7 @@ export const routes: Routes = [
       },
       {
         path: 'bookings',
-        component: Bookings,
+        component: ProviderBookings,
         title: 'Bookings - Itinera',
       },
       {
@@ -87,6 +93,47 @@ export const routes: Routes = [
         path: 'profile-settings',
         component: ProfileSettings,
         title: 'Profile & Settings - Itinera',
+      },
+    ],
+  },
+  {
+    path: 'admin',
+    component: AdminLayout,
+    children: [
+      {
+        path: '',
+        redirectTo: 'overview',
+        pathMatch: 'full',
+      },
+      {
+        path: 'overview',
+        component: Overview,
+        title: 'Admin Dashboard - Itinera',
+      },
+      {
+        path: 'providers',
+        component: Providers,
+        title: 'Providers - Admin - Itinera',
+      },
+      {
+        path: 'services',
+        component: Services,
+        title: 'Services - Admin - Itinera',
+      },
+      {
+        path: 'users',
+        component: Users,
+        title: 'Users - Admin - Itinera',
+      },
+      {
+        path: 'bookings',
+        component: AdminBookings,
+        title: 'Bookings - Admin - Itinera',
+      },
+      {
+        path: 'settings',
+        redirectTo: 'overview',
+        pathMatch: 'full',
       },
     ],
   },

@@ -1,0 +1,71 @@
+<section class="admin-page">
+  <header class="page-head">
+    <h1>Users</h1>
+    <p>6 registered users</p>
+  </header>
+
+  <section class="metric-grid metric-grid--three">
+    <article class="metric-card">
+      <p class="metric-value">5</p>
+      <p class="metric-label">Active Users</p>
+    </article>
+    <article class="metric-card">
+      <p class="metric-value">1</p>
+      <p class="metric-label">Providers</p>
+    </article>
+    <article class="metric-card">
+      <p class="metric-value">1</p>
+      <p class="metric-label">Admins</p>
+    </article>
+  </section>
+
+  <section class="admin-panel">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.8" />
+        <path d="m16 16 4.3 4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+      </svg>
+      <input type="text" placeholder="Search by name or email..." />
+    </div>
+
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Joined</th>
+          <th>Bookings</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (user of users; track user.email) {
+          <tr>
+            <td>
+              <div class="name-cell">
+                <span class="avatar">{{ user.initials }}</span>
+                <span class="name-text">{{ user.name }}</span>
+              </div>
+            </td>
+            <td>{{ user.email }}</td>
+            <td>
+              <span class="role-chip" [class.role-chip--accent]="user.role !== 'User'">
+                {{ user.role }}
+              </span>
+            </td>
+            <td>{{ user.joined }}</td>
+            <td>{{ user.bookings }}</td>
+            <td>
+              <span class="status-chip" [class.status-chip--danger]="user.status === 'Suspended'">
+                {{ user.status }}
+              </span>
+            </td>
+            <td class="actions-cell">...</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </section>
+</section>

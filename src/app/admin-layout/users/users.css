@@ -1,0 +1,183 @@
+:host {
+  display: block;
+}
+
+.admin-page {
+  color: #1e293b;
+}
+
+.page-head h1 {
+  margin: 0;
+  font-size: 1.85rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.page-head p {
+  margin: 0.25rem 0 0;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.metric-grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.metric-grid--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.metric-card {
+  border: 1px solid #dbe2ea;
+  border-radius: 0.95rem;
+  background: #f8fafc;
+  padding: 1.05rem;
+}
+
+.metric-value {
+  margin: 0;
+  font-size: 1.55rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.metric-label {
+  margin: 0.3rem 0 0;
+  color: #64748b;
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+.admin-panel {
+  margin-top: 1rem;
+  border: 1px solid #dbe2ea;
+  border-radius: 0.95rem;
+  background: #f8fafc;
+  padding: 1rem;
+}
+
+.search-wrap {
+  position: relative;
+}
+
+.search-wrap svg {
+  position: absolute;
+  left: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 1rem;
+  color: #94a3b8;
+}
+
+.search-wrap input {
+  width: 100%;
+  border: 1px solid #dbe2ea;
+  border-radius: 0.75rem;
+  background: #e2e8f0;
+  color: #334155;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.62rem 0.85rem 0.62rem 2.35rem;
+  outline: none;
+}
+
+.search-wrap input::placeholder {
+  color: #64748b;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.7rem;
+}
+
+.admin-table th,
+.admin-table td {
+  border-top: 1px solid #dbe2ea;
+  padding: 0.68rem 0.8rem;
+  text-align: left;
+}
+
+.admin-table th {
+  border-top: none;
+  color: #64748b;
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.admin-table td {
+  color: #334155;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.name-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.avatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  background: #dbeafe;
+  color: #3b82f6;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.name-text {
+  color: #334155;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.role-chip {
+  border-radius: 9999px;
+  padding: 0.26rem 0.58rem;
+  background: #e2e8f0;
+  color: #64748b;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.role-chip--accent {
+  background: #dbeafe;
+  color: #3b82f6;
+}
+
+.status-chip {
+  border-radius: 9999px;
+  padding: 0.26rem 0.58rem;
+  background: #d1fae5;
+  color: #16a34a;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.status-chip--danger {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+.actions-cell {
+  color: #334155 !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 1100px) {
+  .metric-grid--three {
+    grid-template-columns: 1fr;
+  }
+}

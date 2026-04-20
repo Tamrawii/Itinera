@@ -1,0 +1,142 @@
+:host {
+  display: block;
+}
+
+.services-page {
+  color: #1e293b;
+}
+
+.services-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.services-head h1 {
+  margin: 0;
+  font-size: 1.85rem;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+.services-head p {
+  margin: 0.3rem 0 0;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.add-btn {
+  border: 1px solid #60a5fa;
+  border-radius: 0.85rem;
+  background: #3b82f6;
+  color: #fff;
+  font-weight: 600;
+  line-height: 1;
+  padding: 0.72rem 1.15rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: pointer;
+}
+
+.add-btn span {
+  font-size: 1.4rem;
+}
+
+.services-card {
+  margin-top: 1.1rem;
+  border: 1px solid #dbe2ea;
+  border-radius: 1rem;
+  background: #f8fafc;
+  padding: 1.05rem;
+}
+
+.search-wrap {
+  position: relative;
+}
+
+.search-wrap svg {
+  position: absolute;
+  left: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 1rem;
+  color: #94a3b8;
+}
+
+.search-wrap input {
+  width: 100%;
+  border: 1px solid #dbe2ea;
+  border-radius: 0.75rem;
+  background: #e2e8f0;
+  color: #334155;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.62rem 0.85rem 0.62rem 2.35rem;
+  outline: none;
+}
+
+.search-wrap input::placeholder {
+  color: #64748b;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.7rem;
+}
+
+.admin-table th,
+.admin-table td {
+  text-align: left;
+  padding: 0.92rem 0.85rem;
+  border-top: 1px solid #dbe2ea;
+  color: #64748b;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.admin-table th {
+  border-top: none;
+}
+
+.service-name {
+  color: #334155 !important;
+  font-weight: 800 !important;
+}
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #334155;
+}
+
+.rating svg {
+  width: 0.82rem;
+  height: 0.82rem;
+  color: #3b82f6;
+}
+
+.status-chip {
+  border-radius: 9999px;
+  padding: 0.3rem 0.68rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1;
+  background: #d1fae5;
+  color: #16a34a;
+}
+
+.status-chip--draft {
+  background: #e2e8f0;
+  color: #64748b;
+}
+
+.actions-cell {
+  color: #334155 !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em;
+}

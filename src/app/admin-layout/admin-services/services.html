@@ -1,0 +1,64 @@
+<section class="services-page">
+  <header class="services-head">
+    <div>
+      <h1>Services</h1>
+      <p>6 total services</p>
+    </div>
+    <button type="button" class="add-btn">
+      <span>+</span>
+      Add Service
+    </button>
+  </header>
+
+  <section class="services-card">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.8" />
+        <path d="m16 16 4.3 4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+      </svg>
+      <input type="text" placeholder="Search services..." />
+    </div>
+
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Service</th>
+          <th>Category</th>
+          <th>Location</th>
+          <th>Rating</th>
+          <th>Price</th>
+          <th>Bookings</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (service of services; track service.name) {
+          <tr>
+            <td class="service-name">{{ service.name }}</td>
+            <td>{{ service.category }}</td>
+            <td>{{ service.location }}</td>
+            <td>
+              <span class="rating">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="m12 3.2 2.7 5.5 6 .9-4.4 4.3 1 6-5.3-2.8-5.3 2.8 1-6L3.3 9.6l6-.9L12 3.2Z"
+                  />
+                </svg>
+                {{ service.rating }}
+              </span>
+            </td>
+            <td>{{ service.price }}</td>
+            <td>{{ service.bookings }}</td>
+            <td>
+              <span class="status-chip" [class.status-chip--draft]="service.status === 'Draft'">
+                {{ service.status }}
+              </span>
+            </td>
+            <td class="actions-cell">...</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </section>
+</section>

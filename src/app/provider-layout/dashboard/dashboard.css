@@ -2,33 +2,12 @@
   overflow-x: auto;
 }
 
-.chart-grid line {
-  stroke: #cbd5e1;
-  stroke-dasharray: 4 6;
+#provider-sales-chart .apexcharts-tooltip {
+  border: 1px solid #dbe2ea !important;
+  border-radius: 0.5rem !important;
+  box-shadow: none !important;
 }
 
-.chart-grid-base {
-  stroke: #64748b;
-  stroke-width: 1.2;
-}
-
-.chart-line {
-  fill: none;
-  stroke: #3b82f6;
-  stroke-width: 2;
-  stroke-linecap: round;
-}
-
-.chart-labels {
-  fill: #64748b;
-  font-size: 12px;
-  font-weight: 600;
-  text-anchor: middle;
-}
-
-.chart-y-labels {
-  fill: #64748b;
-  font-size: 12px;
-  font-weight: 500;
-  text-anchor: end;
+#provider-sales-chart .apexcharts-xaxistooltip {
+  display: none !important;
 }

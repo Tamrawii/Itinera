@@ -1,0 +1,66 @@
+<section class="admin-page">
+  <header class="page-head">
+    <h1>Providers</h1>
+    <p>6 registered providers</p>
+  </header>
+
+  <section class="metric-grid">
+    <article class="metric-card">
+      <p class="metric-value">6</p>
+      <p class="metric-label">Total Providers</p>
+    </article>
+    <article class="metric-card">
+      <p class="metric-value">4</p>
+      <p class="metric-label">Verified</p>
+    </article>
+    <article class="metric-card">
+      <p class="metric-value">17</p>
+      <p class="metric-label">Total Listings</p>
+    </article>
+    <article class="metric-card">
+      <p class="metric-value">$56,600</p>
+      <p class="metric-label">Total Revenue</p>
+    </article>
+  </section>
+
+  <section class="admin-panel">
+    <h2 class="panel-title">Provider Directory</h2>
+
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Business</th>
+          <th>Owner</th>
+          <th>Location</th>
+          <th>Listings</th>
+          <th>Rating</th>
+          <th>Revenue</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (provider of providers; track provider.id) {
+          <tr>
+            <td class="mono">{{ provider.id }}</td>
+            <td>{{ provider.business }}</td>
+            <td>{{ provider.owner }}</td>
+            <td>{{ provider.location }}</td>
+            <td>{{ provider.services }}</td>
+            <td>{{ provider.rating }}</td>
+            <td>{{ provider.earnings }}</td>
+            <td>
+              <span
+                class="status-chip"
+                [class.status-chip--pending]="provider.status === 'Pending'"
+                [class.status-chip--danger]="provider.status === 'Suspended'"
+              >
+                {{ provider.status }}
+              </span>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </section>
+</section>

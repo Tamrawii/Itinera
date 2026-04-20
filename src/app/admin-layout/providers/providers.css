@@ -1,0 +1,118 @@
+:host {
+  display: block;
+}
+
+.admin-page {
+  color: #1e293b;
+}
+
+.page-head h1 {
+  margin: 0;
+  font-size: 2.15rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.page-head p {
+  margin: 0.25rem 0 0;
+  color: #64748b;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.metric-grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.metric-card {
+  border: 1px solid #dbe2ea;
+  border-radius: 0.95rem;
+  background: #f8fafc;
+  padding: 1.05rem;
+}
+
+.metric-value {
+  margin: 0;
+  font-size: 1.55rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.metric-label {
+  margin: 0.3rem 0 0;
+  color: #64748b;
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+.admin-panel {
+  margin-top: 1rem;
+  border: 1px solid #dbe2ea;
+  border-radius: 0.95rem;
+  background: #f8fafc;
+  padding: 1rem;
+}
+
+.panel-title {
+  margin: 0 0 0.8rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+  border-top: 1px solid #dbe2ea;
+  padding: 0.68rem 0.8rem;
+  text-align: left;
+}
+
+.admin-table th {
+  border-top: none;
+  color: #64748b;
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.admin-table td {
+  color: #334155;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.mono {
+  font-family: 'Inter', monospace;
+}
+
+.status-chip {
+  border-radius: 9999px;
+  padding: 0.26rem 0.58rem;
+  background: #d1fae5;
+  color: #16a34a;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.status-chip--pending {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.status-chip--danger {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+@media (max-width: 1100px) {
+  .metric-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
