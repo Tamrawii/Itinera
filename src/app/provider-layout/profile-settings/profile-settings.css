@@ -1,0 +1,262 @@
+:host {
+  display: block;
+}
+
+.profile-settings-page {
+  max-width: 1024px;
+  margin: 0 auto;
+  color: #1e293b;
+}
+
+.page-head h1 {
+  margin: 0;
+  font-size: 1.65rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.page-head p {
+  margin: 0.35rem 0 0;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.settings-card {
+  margin-top: 1.7rem;
+  border: 1px solid #dbe2ea;
+  border-radius: 1.15rem;
+  background: #fff;
+  padding: 1.65rem;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.identity-row {
+  margin-top: 1.35rem;
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+}
+
+.profile-badge {
+  width: 5.65rem;
+  height: 5.65rem;
+  border-radius: 1rem;
+  background: #e2eef9;
+  color: #3182ce;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.ghost-btn {
+  border: 1px solid #cbd5e1;
+  border-radius: 0.85rem;
+  background: #f8fafc;
+  color: #1e293b;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.7rem 1rem;
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.ghost-btn svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.helper-copy {
+  margin: 0.6rem 0 0;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.field-grid {
+  margin-top: 1.15rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.05rem 1rem;
+}
+
+.field-control {
+  display: block;
+}
+
+.field-label {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.field-control--full {
+  grid-column: 1 / -1;
+}
+
+.field-control input,
+.field-control textarea,
+.input-shell {
+  min-height: 2.95rem;
+  border: 1px solid #d3dde8;
+  border-radius: 0.85rem;
+  background: #f8fafc;
+}
+
+.field-control input,
+.field-control textarea {
+  width: 100%;
+  display: block;
+  padding: 0.65rem 0.95rem;
+  color: #0f172a;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.3;
+  outline: none;
+}
+
+.field-control textarea {
+  min-height: 6.9rem;
+  resize: vertical;
+  line-height: 1.45;
+}
+
+.input-shell {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.65rem 0.95rem;
+}
+
+.input-shell svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex-shrink: 0;
+  color: #64748b;
+}
+
+.input-shell input {
+  min-height: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
+}
+
+.helper-copy--payout {
+  margin-top: 1rem;
+}
+
+.notification-list {
+  margin-top: 1rem;
+  display: grid;
+  gap: 1.2rem;
+}
+
+.notification-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /*gap: 1rem;*/
+}
+
+.notification-row h3 {
+  margin: 0 !important;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.notification-row p {
+  /*margin: 0.1rem 0 0*/
+  color: #64748b;
+  font-size: 0.8rem;
+}
+
+.switch {
+  position: relative;
+  display: inline-flex;
+  width: 2.65rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch-slider {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: #3b82f6;
+  transition: 0.2s ease;
+}
+
+.switch-slider::before {
+  content: '';
+  position: absolute;
+  left: 0.16rem;
+  top: 0.16rem;
+  width: 1.17rem;
+  height: 1.17rem;
+  border-radius: 9999px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.18);
+  transition: 0.2s ease;
+}
+
+.switch input:checked + .switch-slider::before {
+  transform: translateX(1.15rem);
+}
+
+.actions-row {
+  margin-top: 1.7rem;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 1.35rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+}
+
+.btn {
+  border: 1px solid #d3dde8;
+  border-radius: 0.85rem;
+  padding: 0.65rem 1.2rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn--secondary {
+  background: #fff;
+  color: #1e293b;
+}
+
+.btn--primary {
+  border-color: #3b82f6;
+  background: #3b82f6;
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .field-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .notification-row {
+    align-items: flex-start;
+  }
+}

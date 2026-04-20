@@ -77,7 +77,10 @@
       <p class="review-text">{{ review.content }}</p>
 
       @if (review.replied) {
-      <p class="replied-tag">You replied</p>
+      <p class="replied-tag flex gap-1 cursor-pointer">
+        <lineicons [icon]="comment10Outlined" [size]="21"></lineicons>
+        See replies
+      </p>
       } @else {
       <button type="button" class="reply-btn flex gap-2">
         <lineicons [icon]="comment10Outlined" [size]="20"></lineicons>

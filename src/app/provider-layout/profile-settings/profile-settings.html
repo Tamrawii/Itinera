@@ -1,1 +1,177 @@
-<p>profile-settings works!</p>
+<section class="profile-settings-page">
+  <header class="page-head">
+    <h1>Profile &amp; Settings</h1>
+    <p>Manage your business information and preferences</p>
+  </header>
+
+  <article class="settings-card">
+    <h2 class="card-title">Business Information</h2>
+
+    <div class="identity-row">
+      <span class="profile-badge" aria-hidden="true">BC</span>
+
+      <div>
+        <button type="button" class="ghost-btn">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path
+              d="M8 6.5 9.4 5h5.2L16 6.5H19A2.5 2.5 0 0 1 21.5 9v8A2.5 2.5 0 0 1 19 19.5H5A2.5 2.5 0 0 1 2.5 17V9A2.5 2.5 0 0 1 5 6.5h3Z"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linejoin="round"
+            />
+            <circle cx="12" cy="13" r="3.2" stroke="currentColor" stroke-width="1.7" />
+          </svg>
+          Change Photo
+        </button>
+        <p class="helper-copy">JPG or PNG, max 2MB</p>
+      </div>
+    </div>
+
+    <div class="field-grid">
+      <label class="field-control">
+        <span class="field-label">Business Name</span>
+        <input type="text" placeholder="Blue Coast Tours" />
+      </label>
+
+      <label class="field-control">
+        <span class="field-label">Contact Person</span>
+        <input type="text" placeholder="Yasmine Rejeb" />
+      </label>
+
+      <label class="field-control field-control--full">
+        <span class="field-label">About Your Business</span>
+        <textarea
+          rows="4"
+          placeholder="We offer authentic coastal experiences along Tunisia's northern shore. From sunset boat tours to cliff-side dining, we help travelers discover the Mediterranean charm of Sidi Bou Said and beyond."
+        ></textarea>
+      </label>
+
+      <label class="field-control">
+        <span class="field-label">Email</span>
+        <div class="input-shell">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3.25" y="5.5" width="17.5" height="13" rx="2.4" stroke="currentColor" stroke-width="1.7" />
+            <path d="m4.5 7 7.1 5.4a.7.7 0 0 0 .8 0L19.5 7" stroke="currentColor" stroke-width="1.7" />
+          </svg>
+          <input type="email" placeholder="yasmine@bluecoast.tn" />
+        </div>
+      </label>
+
+      <label class="field-control">
+        <span class="field-label">Phone</span>
+        <div class="input-shell">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path
+              d="M5.7 3.7h3.2l1.4 4-1.8 1.8a13.7 13.7 0 0 0 6 6l1.8-1.8 4 1.4v3.2a1.9 1.9 0 0 1-2.1 1.9 16.8 16.8 0 0 1-14.4-14.4 1.9 1.9 0 0 1 1.9-2.1Z"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <input type="text" placeholder="+216 71 456 789" />
+        </div>
+      </label>
+
+      <label class="field-control">
+        <span class="field-label">Location</span>
+        <div class="input-shell">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path
+              d="M12 21s-6.3-5.4-6.3-10a6.3 6.3 0 1 1 12.6 0c0 4.6-6.3 10-6.3 10Z"
+              stroke="currentColor"
+              stroke-width="1.7"
+            />
+            <circle cx="12" cy="10.8" r="2.2" stroke="currentColor" stroke-width="1.7" />
+          </svg>
+          <input type="text" placeholder="Sidi Bou Said, Tunisia" />
+        </div>
+      </label>
+
+      <label class="field-control">
+        <span class="field-label">Website</span>
+        <div class="input-shell">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.7" />
+            <path d="M4 12h16M12 4a15 15 0 0 1 0 16M12 4a15 15 0 0 0 0 16" stroke="currentColor" stroke-width="1.7" />
+          </svg>
+          <input type="url" placeholder="https://bluecoast.tn" />
+        </div>
+      </label>
+    </div>
+  </article>
+
+  <article class="settings-card">
+    <h2 class="card-title">Payout Settings</h2>
+
+    <div class="field-grid">
+      <label class="field-control">
+        <span class="field-label">Bank Name</span>
+        <input type="text" placeholder="BIAT" />
+      </label>
+
+      <label class="field-control">
+        <span class="field-label">IBAN</span>
+        <input type="text" placeholder="TN59 •••• •••• •••• 4521" />
+      </label>
+    </div>
+
+    <p class="helper-copy helper-copy--payout">
+      Payouts are processed weekly on Mondays. Minimum payout: $50.
+    </p>
+  </article>
+
+  <article class="settings-card">
+    <h2 class="card-title">Notifications</h2>
+
+    <div class="notification-list">
+      <div class="notification-row">
+        <div>
+          <h3>New booking received</h3>
+          <p>Get notified when a guest books one of your services</p>
+        </div>
+        <label class="switch">
+          <input type="checkbox" checked />
+          <span class="switch-slider"></span>
+        </label>
+      </div>
+
+      <div class="notification-row">
+        <div>
+          <h3>Booking cancelled</h3>
+          <p>Know immediately when a guest cancels</p>
+        </div>
+        <label class="switch">
+          <input type="checkbox" checked />
+          <span class="switch-slider"></span>
+        </label>
+      </div>
+
+      <div class="notification-row">
+        <div>
+          <h3>New review posted</h3>
+          <p>Stay on top of guest feedback</p>
+        </div>
+        <label class="switch">
+          <input type="checkbox" checked />
+          <span class="switch-slider"></span>
+        </label>
+      </div>
+
+      <div class="notification-row">
+        <div>
+          <h3>Payout processed</h3>
+          <p>Confirmation when funds are sent to your bank</p>
+        </div>
+        <label class="switch">
+          <input type="checkbox" checked />
+          <span class="switch-slider"></span>
+        </label>
+      </div>
+    </div>
+  </article>
+
+  <footer class="actions-row">
+    <button type="button" class="btn btn--secondary">Cancel</button>
+    <button type="button" class="btn btn--primary">Save Changes</button>
+  </footer>
+</section>
