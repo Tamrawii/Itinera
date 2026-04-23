@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Navbar } from './navbar/navbar';
 import { LineiconsComponent } from '@lineiconshq/angular-lineicons';
@@ -12,16 +12,50 @@ import {
   Bolt3Solid,
 } from '@lineiconshq/free-icons';
 import { Footer } from '../footer/footer';
-import { FeaturedCard, FeaturedItem } from './featured-card/featured-card';
+import { FeaturedCard } from './featured-card/featured-card';
 import { DestinationCard, DestinationItem } from './destination-card/destination-card';
+import { OfferService } from '../services/offer.service';
+import { Offers } from '../models/offers';
+import { SlicePipe } from '@angular/common';
 
 @Component({
   selector: 'app-public-layout',
-  imports: [RouterLink, Navbar, LineiconsComponent, Footer, FeaturedCard, DestinationCard],
+  imports: [
+    RouterLink,
+    Navbar,
+    LineiconsComponent,
+    Footer,
+    FeaturedCard,
+    DestinationCard,
+    SlicePipe,
+  ],
   templateUrl: './public-layout.html',
   styleUrl: './public-layout.css',
 })
 export class PublicLayout {
+  offersList = signal<Offers[]>([
+    {
+      id: 0,
+      owner_id: 0,
+      title: '',
+      description: '',
+      price: 0,
+      discount_percentage: 0,
+      date_from: new Date(),
+      date_to: new Date(),
+      image_url: [],
+      location: '',
+      rating: 0,
+      number_of_reviews: 0,
+      tag: '',
+      offer_type: 'restaurant',
+    },
+  ]);
+
+  constructor(private offerService: OfferService) {
+    this.offersList.set(this.offerService.getOffers());
+  }
+
   Buildings1Outlined = Buildings1Outlined;
   KnifeFork1Outlined = KnifeFork1Outlined;
   Car2Solid = Car2Solid;
@@ -29,46 +63,6 @@ export class PublicLayout {
   MapMarker5Outlined = MapMarker5Outlined;
   Bolt3Solid = Bolt3Solid;
   Home2Outlined = Home2Outlined;
-
-  featuredList: FeaturedItem[] = [
-    {
-      title: 'Dar El Medina',
-      location: 'Tunis Medina',
-      image: 'images/hotel-tunisia.jpg',
-      imageAlt: 'Dar El Medina in Tunis Medina',
-      rating: 4.5,
-      ratingCount: 35,
-      price: 85,
-      priceSuffix: '/night',
-    },
-    {
-      title: 'Le Pirate',
-      location: 'Sidi Bou Said',
-      image: 'images/restaurant-tunisia.jpg',
-      imageAlt: 'Le Pirate restaurant in Sidi Bou Said',
-      rating: 4.5,
-      ratingCount: 35,
-      price: 85,
-    },
-    {
-      title: 'Sahara Desert Trek',
-      location: 'Douz, Tozeur',
-      image: 'images/sahara-tunisia.jpg',
-      imageAlt: 'Sahara Desert Trek',
-      rating: 4.5,
-      ratingCount: 35,
-      price: 120,
-    },
-    {
-      title: 'Medina Walking Tour',
-      location: 'Tunis',
-      image: 'images/medina-tunisia.jpg',
-      imageAlt: 'Medina Walking Tour in Tunis',
-      rating: 4.5,
-      ratingCount: 35,
-      price: 20,
-    },
-  ];
 
   destinationList: DestinationItem[] = [
     {

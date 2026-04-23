@@ -94,12 +94,12 @@
         <h2 class="font-bold text-2xl">Featured Experiences</h2>
         <p class="text-gray-500">Hand-picked by our team for an authentic Tunisia</p>
       </div>
-      <a routerLink="/view-all">View All &LongRightArrow;</a>
+      <a routerLink="/view-all" [state]="{ offersList: offersList() }">View All &LongRightArrow;</a>
     </div>
 
     <div class="cards grid grid-cols-4 gap-6 pl-48 pr-48 pb-12">
-      @for (item of featuredList; track item.title) {
-        <app-featured-card [item]="item"></app-featured-card>
+      @for (offer of offersList() | slice: 0 : 4; track offer.title) {
+        <app-featured-card [item]="offer"></app-featured-card>
       }
     </div>
   </section>

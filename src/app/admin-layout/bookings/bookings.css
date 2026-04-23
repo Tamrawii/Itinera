@@ -15,7 +15,7 @@
 
 .page-head h1 {
   margin: 0;
-  font-size: 2.2rem;
+  font-size: 1.85rem;
   font-weight: 800;
   line-height: 1.1;
 }
@@ -23,7 +23,6 @@
 .page-head p {
   margin: 0.3rem 0 0;
   color: #64748b;
-  font-size: 1.15rem;
   font-weight: 500;
 }
 
@@ -36,7 +35,6 @@
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
 }
@@ -62,8 +60,8 @@
 
 .metric-value {
   margin: 0;
-  font-size: 1.95rem;
-  font-weight: 800;
+  font-size: 1.85rem;
+  font-weight: 700;
   line-height: 1.1;
 }
 
@@ -78,8 +76,7 @@
 .metric-label {
   margin: 0.3rem 0 0;
   color: #64748b;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 0.8rem;
 }
 
 .admin-panel {
@@ -139,8 +136,7 @@
   background: #e2e8f0;
   color: #475569;
   padding: 0.48rem 0.88rem;
-  font-size: 0.95rem;
-  font-weight: 700;
+  font-size: 0.8rem;
   line-height: 1;
 }
 

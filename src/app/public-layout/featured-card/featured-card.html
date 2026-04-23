@@ -2,13 +2,13 @@
   <div class="card">
     <div class="card-image-wrapper">
       <img
-        [src]="item().image"
-        [alt]="item().imageAlt"
+        [src]="item().image_url[0]"
+        [alt]="item().title"
         class="w-full h-48 object-cover rounded-t-base"
       />
-      @if (showCategory() && item().category) {
+      <!-- @if (showCategory() && item().category) {
         <span class="category-pill">{{ item().category }}</span>
-      }
+      } -->
       @if (showFavorite()) {
         <button type="button" class="favorite-btn">
           <lineicons [icon]="HeartOutlined" [size]="20"></lineicons>
@@ -26,12 +26,12 @@
           <div class="rating text-blue-5 flex items-center gap-1">
             <lineicons [icon]="StarFatSolid" [size]="22"></lineicons>
             <span class="rating-text text-gray-900 font-semibold">{{ item().rating }}</span>
-            <span class="rating-count text-gray-400">({{ item().ratingCount }})</span>
+            <span class="rating-count text-gray-400">({{ item().number_of_reviews }})</span>
           </div>
           <p class="price text-gray-900 font-semibold mt-2">
             ${{ item().price }}
-            @if (item().priceSuffix) {
-              <span class="price-per-night text-gray-500">{{ item().priceSuffix }}</span>
+            @if (item().suffixPrice) {
+              <span class="price-per-night text-gray-500">{{ item().suffixPrice }}</span>
             }
           </p>
         </div>
@@ -55,12 +55,13 @@
           <div class="rating text-blue-5 flex items-center gap-1">
             <lineicons [icon]="StarFatSolid" [size]="20"></lineicons>
             <span class="rating-text text-gray-900 font-semibold">{{ item().rating }}</span>
-            <span class="rating-count text-gray-400">({{ item().ratingCount }})</span>
+            <span class="rating-count text-gray-400">({{ item().number_of_reviews }})</span>
           </div>
           <p class="price text-gray-900 font-semibold">
-            @if (item().pricePrefix) {
+            <!-- @if (item().pricePrefix) {
               {{ item().pricePrefix }}
-            }${{ item().price }}
+            } -->
+            ${{ item().price }}
           </p>
         </div>
       }

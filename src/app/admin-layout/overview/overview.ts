@@ -1,6 +1,13 @@
-import { AfterViewInit, Component, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, signal } from '@angular/core';
 import type ApexCharts from 'apexcharts';
 import { initFlowbite } from 'flowbite';
+import { LineiconsComponent } from '@lineiconshq/angular-lineicons';
+import {
+  BoxClosedOutlined,
+  UserMultiple4Outlined,
+  CalendarDaysOutlined,
+  DollarOutlined,
+} from '@lineiconshq/free-icons';
 
 interface BookingRow {
   id: string;
@@ -12,13 +19,20 @@ interface BookingRow {
 
 @Component({
   selector: 'app-overview',
-  imports: [],
+  imports: [LineiconsComponent],
   templateUrl: './overview.html',
   styleUrl: './overview.css',
 })
 export class Overview implements AfterViewInit, OnDestroy {
   private revenueChart: ApexCharts | null = null;
   private weeklyBookingsChart: ApexCharts | null = null;
+
+  nbServices = signal(0);
+
+  ngOnInit() {
+    const state = history.state;
+    this.nbServices.set(state.nbServices || 0);
+  }
 
   bookings: BookingRow[] = [
     {
@@ -221,4 +235,8 @@ export class Overview implements AfterViewInit, OnDestroy {
 
     this.weeklyBookingsChart.render();
   }
+  dollarOutlined = DollarOutlined;
+  userMultiple4Outlined = UserMultiple4Outlined;
+  calendarDaysOutlined = CalendarDaysOutlined;
+  boxClosedOutlined = BoxClosedOutlined;
 }

@@ -1,104 +1,110 @@
 <main class="admin-shell">
-  <aside class="admin-sidebar">
-    <div class="admin-brand">
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path
-          d="M12 20c-3.5-3.2-5.5-6-5.5-8.7A5.5 5.5 0 0 1 12 5.8a5.5 5.5 0 0 1 5.5 5.5C17.5 14 15.5 16.8 12 20Z"
-          stroke="currentColor"
-          stroke-width="1.7"
-        />
-        <circle cx="12" cy="11.4" r="1.8" stroke="currentColor" stroke-width="1.7" />
-      </svg>
-      <span>Itinera</span>
+  <aside
+    class="flex min-h-screen w-full flex-col border-r border-slate-200 bg-slate-100 px-4 py-5 text-slate-700"
+    aria-label="Admin sidebar"
+  >
+    <div class="mb-5 flex items-center gap-3 px-2">
+      <img src="/images/logo.png" alt="Itinera logo" class="h-10 w-10 rounded-xl object-contain" />
+      <div>
+        <p class="text-lg font-bold text-slate-800">Itinera</p>
+        <p class="text-xs text-slate-500">Admin Portal</p>
+      </div>
     </div>
 
-    <nav class="admin-nav">
-      <p class="nav-label">Main</p>
-
+    <p class="mb-3 px-2 text-xs font-semibold uppercase tracking-wide text-slate-400">Menu</p>
+    <nav class="space-y-1">
       <a
         routerLink="/admin/overview"
-        routerLinkActive="admin-nav__link--active"
+        routerLinkActive="sidebar-active"
         [routerLinkActiveOptions]="{ exact: true }"
-        class="admin-nav__link"
+        [state]="{ nbServices: offersList().length }"
+        class="sidebar-link"
       >
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <rect x="4" y="4" width="6.5" height="6.5" rx="1.2" stroke="currentColor" stroke-width="1.7" />
-          <rect x="13.5" y="4" width="6.5" height="6.5" rx="1.2" stroke="currentColor" stroke-width="1.7" />
-          <rect x="4" y="13.5" width="6.5" height="6.5" rx="1.2" stroke="currentColor" stroke-width="1.7" />
-          <rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.2" stroke="currentColor" stroke-width="1.7" />
-        </svg>
+        <span class="sidebar-icon">
+          <lineicons [icon]="barChart4Outlined" [size]="22" [strokeWidth]="1.5"></lineicons>
+        </span>
         Overview
       </a>
 
-      <a routerLink="/admin/services" routerLinkActive="admin-nav__link--active" class="admin-nav__link">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M5 9.5 12 5l7 4.5-7 4.5-7-4.5Z" stroke="currentColor" stroke-width="1.7" />
-          <path d="M5 9.5V16l7 4 7-4V9.5" stroke="currentColor" stroke-width="1.7" />
-        </svg>
+      <a routerLink="/admin/services" routerLinkActive="sidebar-active" class="sidebar-link">
+        <span class="sidebar-icon">
+          <lineicons [icon]="boxClosedOutlined" [size]="22" [strokeWidth]="1.5"></lineicons>
+        </span>
         Services
       </a>
 
-      <a routerLink="/admin/providers" routerLinkActive="admin-nav__link--active" class="admin-nav__link">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M12 7.2a2.7 2.7 0 1 0 0-5.4 2.7 2.7 0 0 0 0 5.4Z" stroke="currentColor" stroke-width="1.7" />
-          <path d="M6 14.3a3 3 0 0 1 2.9-2.9h6.2a3 3 0 0 1 2.9 2.9v2.5H6v-2.5Z" stroke="currentColor" stroke-width="1.7" />
-        </svg>
+      <a routerLink="/admin/providers" routerLinkActive="sidebar-active" class="sidebar-link">
+        <span class="sidebar-icon">
+          <lineicons [icon]="user4Outlined" [size]="22" [strokeWidth]="1.5"></lineicons>
+        </span>
         Providers
       </a>
 
-      <a routerLink="/admin/users" routerLinkActive="admin-nav__link--active" class="admin-nav__link">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.7" />
-          <path d="M3.5 18a4.5 4.5 0 0 1 9 0" stroke="currentColor" stroke-width="1.7" />
-          <circle cx="17" cy="9" r="2.5" stroke="currentColor" stroke-width="1.7" />
-          <path d="M14.5 18a3.5 3.5 0 0 1 7 0" stroke="currentColor" stroke-width="1.7" />
-        </svg>
+      <a routerLink="/admin/users" routerLinkActive="sidebar-active" class="sidebar-link">
+        <span class="sidebar-icon">
+          <lineicons [icon]="userMultiple4Outlined" [size]="22" [strokeWidth]="1.5"></lineicons>
+        </span>
         Users
       </a>
 
-      <a routerLink="/admin/bookings" routerLinkActive="admin-nav__link--active" class="admin-nav__link">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <rect x="4" y="5.5" width="16" height="14" rx="2" stroke="currentColor" stroke-width="1.7" />
-          <path d="M8 3.5v4M16 3.5v4M4 10h16" stroke="currentColor" stroke-width="1.7" />
-        </svg>
+      <a routerLink="/admin/bookings" routerLinkActive="sidebar-active" class="sidebar-link">
+        <span class="sidebar-icon">
+          <lineicons [icon]="calendarDaysOutlined" [size]="22" [strokeWidth]="1.5"></lineicons>
+        </span>
         Bookings
-      </a>
-
-      <p class="nav-label nav-label--system">System</p>
-
-      <a routerLink="/admin/settings" routerLinkActive="admin-nav__link--active" class="admin-nav__link">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path
-            d="m12 3 1.5.6.7 1.7 1.8.3 1 1.6-1 1.6.4 1.8 1.3 1.2-.6 1.8-1.7.7-.8 1.6-1.8.1-1.2 1.4-1.7-.6-1.7.6-1.2-1.4-1.8-.1-.8-1.6-1.7-.7-.6-1.8 1.3-1.2.4-1.8-1-1.6 1-1.6 1.8-.3.7-1.7L12 3Z"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linejoin="round"
-          />
-          <circle cx="12" cy="12" r="2.6" stroke="currentColor" stroke-width="1.7" />
-        </svg>
-        Settings
       </a>
     </nav>
 
-    <a routerLink="/" class="back-link">
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M10 6 4 12l6 6M4 12h12a4 4 0 0 0 0-8" stroke="currentColor" stroke-width="1.7" />
+    <p class="mb-3 mt-6 px-2 text-xs font-semibold uppercase tracking-wide text-slate-400">
+      Account
+    </p>
+    <a routerLink="/admin/settings" routerLinkActive="sidebar-active" class="sidebar-link">
+      <span class="sidebar-icon">
+        <lineicons [icon]="gear1Outlined" [size]="22" [strokeWidth]="1.5"></lineicons>
+      </span>
+      Settings
+    </a>
+
+    <a
+      routerLink="/"
+      class="mt-auto inline-flex items-center gap-2 px-2 py-3 text-sm font-medium text-slate-500 transition hover:text-blue-600"
+    >
+      <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M8.5 5 4 9.5 8.5 14M4.5 9.5h11" stroke="currentColor" stroke-width="1.7" />
       </svg>
       Back to site
     </a>
   </aside>
 
-  <section class="admin-main">
-    <header class="admin-topbar">
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <rect x="5" y="4" width="14" height="16" rx="2" stroke="currentColor" stroke-width="1.7" />
-        <path d="M9 8h6M9 12h6M9 16h4" stroke="currentColor" stroke-width="1.7" />
-      </svg>
-      <span>Admin Dashboard</span>
-    </header>
+  <div class="admin-main">
+    <header
+      class="sticky top-0 z-20 flex items-center justify-between border-b border-slate-200 bg-white px-6 py-4"
+    >
+      <p class="font-semibold text-gray-500">Admin Dashboard</p>
 
-    <div class="admin-content">
+      <div class="flex items-center gap-4">
+        <button
+          type="button"
+          class="rounded-full border border-slate-200 p-2.5 text-slate-500 transition hover:text-blue-600"
+          aria-label="Notifications"
+        >
+          <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path
+              d="M10 3a4 4 0 0 0-4 4v1.7c0 .59-.19 1.17-.54 1.65L4.4 11.8a1 1 0 0 0 .8 1.6h9.6a1 1 0 0 0 .8-1.6l-1.05-1.46A2.8 2.8 0 0 1 14 8.7V7a4 4 0 0 0-4-4Z"
+              stroke="currentColor"
+              stroke-width="1.5"
+            />
+            <path d="M8.5 15a1.5 1.5 0 0 0 3 0" stroke="currentColor" stroke-width="1.5" />
+          </svg>
+        </button>
+        <span
+          class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-700"
+          >BC</span
+        >
+      </div>
+    </header>
+    <div class="p-6">
       <router-outlet></router-outlet>
     </div>
-  </section>
+  </div>
 </main>
