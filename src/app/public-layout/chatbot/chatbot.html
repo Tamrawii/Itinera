@@ -1,0 +1,202 @@
+<!-- <section class="discussion relative h-screen w-full">
+  <div
+    class="bg absolute inset-0 -z-10 bg-[radial-gradient(circle_at_30%_30%,#fbc2eb,transparent_40%),radial-gradient(circle_at_70%_70%,#a6c1ee,transparent_40%)] opacity-40 blur-3xl"
+  ></div>
+  <div class="container py-12 h-screen w-[70%] flex flex-col justify-between mx-auto">
+    <div class="top-message flex flex-col items-center gap-4">
+      <img src="/images/stars.png" class="w-12" />
+      <h2 class="text-heading">Chat with our AI Travel Assistant</h2>
+    </div>
+
+    <div class="discussion-list mb-8 h-full flex flex-col-reverse gap-4">
+      <app-message
+        text="Hi! I'm looking to plan a trip to Italy. Can you help me with that?"
+        [isUserMessage]="true"
+      ></app-message>
+      <app-message
+        text="Hello! How can I assist you with your travel plans today?"
+        [isUserMessage]="false"
+      ></app-message>
+    </div>
+
+    <div class="input">
+      <form>
+        <div class="relative">
+          <input
+            type="text"
+            id="msg-input"
+            class="bg-neutral-secondary-medium text-heading text-base rounded-base focus:ring-0 outline-none border-none block w-full px-3.5 py-4 shadow-xs placeholder:text-body"
+            placeholder="Plan your trip..."
+            required
+          />
+          <button
+            type="button"
+            class="absolute end-1.5 bottom-1.5 text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded text-xs px-3 py-3 focus:outline-none"
+          >
+            <lineicons [icon]="sendIcon" [size]="20"></lineicons>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section> -->
+
+<app-navbar></app-navbar>
+
+<section
+  class="relative min-h-screen w-full mt-10 flex items-center justify-center overflow-hidden isolate"
+>
+  <!-- Gradient atmosphere layer (fixed visibility) -->
+  <div
+    class="absolute inset-0 z-0 bg-[radial-gradient(circle_at_30%_30%,rgba(251,194,235,0.4),transparent_60%),radial-gradient(circle_at_70%_70%,rgba(166,193,238,0.4),transparent_60%)] blur-2xl pointer-events-none"
+  ></div>
+
+  <!-- Root container -->
+  <div class="relative z-10 w-[70%] max-w-3xl mx-auto h-screen flex flex-col py-10 gap-5">
+    <!-- ── Header ─────────────────────────────────────────────────── -->
+    <div class="flex flex-col items-center gap-2 shrink-0">
+      <img src="/images/stars.png" class="w-12" />
+      <h2 class="text-heading">Chat with our AI Travel Assistant</h2>
+      <span
+        class="text-xs font-medium px-2.5 py-0.5 rounded-full transition-colors duration-300"
+        [class.text-emerald-600]="!gemini.isLoading()"
+        [class.bg-emerald-50]="!gemini.isLoading()"
+        [class.text-violet-500]="gemini.isLoading()"
+        [class.bg-violet-50]="gemini.isLoading()"
+      >
+        {{ gemini.isLoading() ? 'Generating your itinerary…' : 'Online' }}
+      </span>
+    </div>
+
+    <!-- ── Messages area ──────────────────────────────────────────── -->
+    <div
+      #messagesContainer
+      class="overflow-y-auto flex-1 flex flex-col py-1 gap-3 px-1 scrollbar-thin scrollbar-thumb-neutral-200 scrollbar-track-transparent"
+    >
+      @for (msg of gemini.messages(); track trackById($index, msg)) {
+        <div class="flex gap-2.5 items-end" [class.flex-row-reverse]="msg.role === 'user'">
+          <div
+            class="max-w-[78%] px-4 py-3 rounded-2xl text-sm leading-relaxed relative transition-all duration-200"
+            [class.rounded-br-sm]="msg.role === 'user'"
+            [class.rounded-bl-sm]="msg.role === 'model'"
+            [class.bg-indigo-500]="msg.role === 'user' && !msg.error"
+            [class.text-white]="msg.role === 'user' && !msg.error"
+            [class.bg-white]="msg.role === 'model' && !msg.error"
+            [class.text-neutral-800]="msg.role === 'model' && !msg.error"
+            [class.border]="msg.role === 'model'"
+            [class.border-neutral-100]="msg.role === 'model'"
+            [class.bg-red-50]="msg.error"
+            [class.text-red-600]="msg.error"
+            [class.border-red-100]="msg.error"
+          >
+            <p [innerHTML]="formatMessage(msg.content)" class="m-0"></p>
+
+            @if (msg.isStreaming) {
+              <span
+                class="inline-block w-0.5 h-3.5 bg-current opacity-70 animate-[blink_0.9s_step-end_infinite] ml-0.5 align-middle"
+              ></span>
+            }
+
+            <time
+              class="block mt-1.5 text-[10px] opacity-50 select-none"
+              [class.text-right]="msg.role === 'user'"
+            >
+              {{ msg.timestamp | date: 'HH:mm' }}
+            </time>
+          </div>
+        </div>
+      }
+
+      @if (hasSuggestions()) {
+        <div class="flex flex-col items-start gap-3 pt-2 pl-9">
+          <p class="text-xs text-neutral-400 font-medium tracking-wide uppercase">
+            Try one of these
+          </p>
+          <div class="flex flex-wrap gap-2">
+            @for (s of suggestions; track s) {
+              <button
+                (click)="handleSuggestion(s)"
+                class="text-xs px-3.5 py-2 rounded-full bg-white border border-neutral-200 text-neutral-600 shadow-sm hover:border-indigo-300 hover:text-indigo-600 hover:shadow-md transition-all duration-150 cursor-pointer"
+              >
+                {{ s }}
+              </button>
+            }
+          </div>
+        </div>
+      }
+
+      @if (gemini.isLoading() && !gemini.isStreaming()) {
+        <div class="flex gap-2.5 items-end">
+          <div
+            class="shrink-0 w-7 h-7 rounded-full bg-white shadow-sm border border-neutral-100 flex items-center justify-center text-sm select-none mb-0.5"
+          >
+            🤖
+          </div>
+          <div
+            class="px-4 py-3.5 rounded-2xl rounded-bl-sm bg-white border border-neutral-100 shadow-sm flex gap-1 items-center"
+          >
+            <span
+              class="w-1.5 h-1.5 rounded-full bg-neutral-300 animate-bounce [animation-delay:-0.3s]"
+            ></span>
+            <span
+              class="w-1.5 h-1.5 rounded-full bg-neutral-300 animate-bounce [animation-delay:-0.15s]"
+            ></span>
+            <span class="w-1.5 h-1.5 rounded-full bg-neutral-300 animate-bounce"></span>
+          </div>
+        </div>
+      }
+    </div>
+
+    @if (gemini.error()) {
+      <div
+        class="shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-xl bg-red-50 border border-red-100 text-red-500 text-xs"
+      >
+        <span class="text-base">⚠️</span>
+        {{ gemini.error() }}
+      </div>
+    }
+
+    <div class="shrink-0 flex justify-end -mt-2">
+      <button
+        (click)="resetChat()"
+        class="text-xs text-neutral-400 hover:text-neutral-600 flex items-center gap-1.5 transition-colors duration-150 cursor-pointer"
+      >
+        <span class="text-base leading-none">↺</span> New Chat
+      </button>
+    </div>
+
+    <div class="shrink-0">
+      <div class="relative">
+        <textarea
+          #messageInput
+          [value]="userInput()"
+          (input)="userInput.set($any($event.target).value)"
+          (keydown)="handleKeyDown($event)"
+          [disabled]="gemini.isLoading()"
+          rows="1"
+          autofocus
+          placeholder="Tell me your travel interests, duration, and budget…"
+          class="w-full bg-white text-neutral-800 text-sm rounded-2xl border border-neutral-200 px-4 py-3.5 pr-14 resize-none shadow-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-300 disabled:opacity-50 disabled:cursor-not-allowed transition-shadow duration-150"
+        ></textarea>
+
+        <button
+          (click)="handleSend()"
+          [disabled]="!userInput().trim() || gemini.isLoading()"
+          class="absolute end-2 bottom-2 w-9 h-9 flex items-center justify-center rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white text-base font-medium shadow-sm border border-transparent focus:outline-none focus:ring-4 focus:ring-indigo-200 disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-150"
+        >
+          @if (gemini.isLoading()) {
+            <span
+              class="w-4 h-4 rounded-full border-2 border-white/30 border-t-white animate-spin"
+            ></span>
+          } @else {
+            ↑
+          }
+        </button>
+      </div>
+
+      <p class="mt-2 text-center text-[11px] text-neutral-400">
+        Enter to send · Shift+Enter for new line
+      </p>
+    </div>
+  </div>
+</section>

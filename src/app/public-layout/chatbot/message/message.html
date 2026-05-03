@@ -1,0 +1,14 @@
+<div
+  [ngClass]="{
+    message: true,
+    'user-message': isUserMessage,
+    'p-3': true,
+    'rounded-base': true,
+    'bg-neutral-secondary-soft': isUserMessage,
+    'text-black': isUserMessage,
+    'ml-auto': isUserMessage,
+  }"
+  class="w-fit max-w-[75%]"
+>
+  {{ text }}
+</div>

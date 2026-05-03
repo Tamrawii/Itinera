@@ -18,6 +18,7 @@ import { Providers } from './admin-layout/providers/providers';
 import { Services } from './admin-layout/admin-services/services';
 import { Users } from './admin-layout/users/users';
 import { Bookings as AdminBookings } from './admin-layout/bookings/bookings';
+import { Chatbot } from './public-layout/chatbot/chatbot';
 
 export const routes: Routes = [
   {
@@ -54,6 +55,11 @@ export const routes: Routes = [
     path: 'view-all',
     component: ViewAll,
     title: 'Explore Services - Itinera',
+  },
+  {
+    path: 'chatbot',
+    component: Chatbot,
+    title: 'Chatbot - Itinera',
   },
   {
     path: 'provider',
