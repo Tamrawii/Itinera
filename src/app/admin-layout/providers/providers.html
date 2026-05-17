@@ -1,34 +1,254 @@
 <section class="admin-page">
   <header class="page-head">
     <h1>Providers</h1>
-    <p>6 registered providers</p>
+    <p>{{ totalFiltered() }} registered providers</p>
   </header>
 
   <section class="metric-grid">
     <article class="metric-card">
-      <p class="metric-value">6</p>
+      <p class="metric-value">{{ totalFiltered() }}</p>
       <p class="metric-label">Total Providers</p>
     </article>
     <article class="metric-card">
-      <p class="metric-value">4</p>
+      <p class="metric-value">{{ totalVerified() }}</p>
       <p class="metric-label">Verified</p>
     </article>
     <article class="metric-card">
-      <p class="metric-value">17</p>
+      <p class="metric-value">{{ totalListings() }}</p>
       <p class="metric-label">Total Listings</p>
     </article>
     <article class="metric-card">
-      <p class="metric-value">$56,600</p>
+      <p class="metric-value">{{ totalRevenue() }}</p>
       <p class="metric-label">Total Revenue</p>
     </article>
   </section>
 
   <section class="admin-panel">
-    <h2 class="panel-title">Provider Directory</h2>
+    <div class="panel-head">
+      <h2 class="panel-title">Provider Directory</h2>
+
+      <!-- ── Toolbar ──────────────────────────────────────────── -->
+      <div class="toolbar">
+
+        <!-- Search -->
+        <div class="search-wrap">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.8" />
+            <path d="m16 16 4.3 4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+          </svg>
+          <input
+            type="text"
+            placeholder="Search providers..."
+            [ngModel]="searchQuery()"
+            (ngModelChange)="onSearch($event)"
+          />
+        </div>
+
+        <!-- Filter controls -->
+        <div class="filter-group">
+
+          <!-- Status dropdown -->
+          <div class="relative">
+            <button
+              id="providerStatusBtn"
+              data-dropdown-toggle="providerStatusDropdown"
+              data-dropdown-placement="bottom-start"
+              type="button"
+              class="filter-btn"
+              [class.filter-btn--active]="activeStatus() !== 'All'"
+            >
+              <svg class="filter-btn__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8" />
+                <path d="M12 2v2m0 16v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M2 12h2m16 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+              </svg>
+              {{ activeStatus() === 'All' ? 'Status' : activeStatus() }}
+              <svg class="filter-btn__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="m19 9-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+
+            <div
+              id="providerStatusDropdown"
+              class="z-20 hidden w-44 rounded-xl border border-slate-200 bg-white shadow-lg"
+            >
+              <ul class="p-2 text-sm font-medium text-slate-600">
+                @for (st of statuses; track st) {
+                  <li>
+                    <button
+                      type="button"
+                      class="dropdown-item"
+                      [class.dropdown-item--active]="activeStatus() === st"
+                      (click)="setStatus(st)"
+                    >
+                      {{ st }}
+                      @if (activeStatus() === st) {
+                        <svg class="ms-auto h-3.5 w-3.5 text-blue-500" viewBox="0 0 24 24" fill="none">
+                          <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      }
+                    </button>
+                  </li>
+                }
+              </ul>
+            </div>
+          </div>
+
+          <!-- Location dropdown -->
+          <div class="relative">
+            <button
+              id="providerLocationBtn"
+              data-dropdown-toggle="providerLocationDropdown"
+              data-dropdown-placement="bottom-start"
+              type="button"
+              class="filter-btn"
+              [class.filter-btn--active]="activeLocation() !== 'All'"
+            >
+              <svg class="filter-btn__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                <circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+              {{ activeLocation() === 'All' ? 'Location' : activeLocation() }}
+              <svg class="filter-btn__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="m19 9-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+
+            <div
+              id="providerLocationDropdown"
+              class="z-20 hidden w-48 rounded-xl border border-slate-200 bg-white shadow-lg"
+            >
+              <ul class="p-2 text-sm font-medium text-slate-600">
+                @for (loc of locations; track loc) {
+                  <li>
+                    <button
+                      type="button"
+                      class="dropdown-item"
+                      [class.dropdown-item--active]="activeLocation() === loc"
+                      (click)="setLocation(loc)"
+                    >
+                      {{ loc }}
+                      @if (activeLocation() === loc) {
+                        <svg class="ms-auto h-3.5 w-3.5 text-blue-500" viewBox="0 0 24 24" fill="none">
+                          <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      }
+                    </button>
+                  </li>
+                }
+              </ul>
+            </div>
+          </div>
+
+          <!-- Sort dropdown -->
+          <div class="relative">
+            <button
+              id="providerSortBtn"
+              data-dropdown-toggle="providerSortDropdown"
+              data-dropdown-placement="bottom-start"
+              type="button"
+              class="filter-btn"
+            >
+              <svg class="filter-btn__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M3 4h13M3 8h9M3 12h5m13 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              {{ activeSort() }}
+              <svg class="filter-btn__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="m19 9-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+
+            <div
+              id="providerSortDropdown"
+              class="z-20 hidden w-56 rounded-xl border border-slate-200 bg-white shadow-lg"
+            >
+              <ul class="p-2 text-sm font-medium text-slate-600">
+                @for (opt of sortOptions; track opt) {
+                  <li>
+                    <button
+                      type="button"
+                      class="dropdown-item"
+                      [class.dropdown-item--active]="activeSort() === opt"
+                      (click)="setSort(opt)"
+                    >
+                      {{ opt }}
+                      @if (activeSort() === opt) {
+                        <svg class="ms-auto h-3.5 w-3.5 text-blue-500" viewBox="0 0 24 24" fill="none">
+                          <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      }
+                    </button>
+                  </li>
+                }
+              </ul>
+            </div>
+          </div>
+
+          <!-- Actions dropdown -->
+          <div class="relative">
+            <button
+              id="provActionsBtn"
+              [attr.data-dropdown-toggle]="selectedCount() > 0 ? 'provActionsDropdown' : null"
+              data-dropdown-placement="bottom-start"
+              type="button"
+              class="filter-btn actions-btn"
+              [class.actions-btn--active]="selectedCount() > 0"
+              [disabled]="selectedCount() === 0"
+            >
+              <svg class="filter-btn__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="5" r="1.2" fill="currentColor"/>
+                <circle cx="12" cy="12" r="1.2" fill="currentColor"/>
+                <circle cx="12" cy="19" r="1.2" fill="currentColor"/>
+              </svg>
+              Actions{{ selectedCount() > 0 ? ' (' + selectedCount() + ')' : '' }}
+              <svg class="filter-btn__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="m19 9-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div id="provActionsDropdown" class="z-30 hidden w-52 rounded-xl border border-slate-200 bg-white shadow-lg">
+              <div class="px-3 py-2 border-b border-slate-100">
+                <p class="text-xs font-semibold text-slate-400 uppercase tracking-wide">{{ selectedCount() }} selected</p>
+              </div>
+              <ul class="p-2 text-sm text-slate-600">
+                <li><button type="button" class="dropdown-item" (click)="bulkAction('approve')">Approve</button></li>
+                <li><button type="button" class="dropdown-item" (click)="bulkAction('suspend')">Suspend</button></li>
+                <li><hr class="my-1 border-slate-100"></li>
+                <li><button type="button" class="dropdown-item dropdown-item--danger" (click)="bulkAction('delete')">Remove</button></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Active-filter chips -->
+          @if (activeStatus() !== 'All' || activeLocation() !== 'All') {
+            <div class="active-chips">
+              @if (activeStatus() !== 'All') {
+                <span class="active-chip">
+                  {{ activeStatus() }}
+                  <button type="button" (click)="setStatus('All')" aria-label="Remove status filter">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  </button>
+                </span>
+              }
+              @if (activeLocation() !== 'All') {
+                <span class="active-chip">
+                  {{ activeLocation() }}
+                  <button type="button" (click)="setLocation('All')" aria-label="Remove location filter">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  </button>
+                </span>
+              }
+            </div>
+          }
+
+        </div><!-- /filter-group -->
+      </div><!-- /toolbar -->
+    </div><!-- /panel-head -->
 
     <table class="admin-table">
       <thead>
         <tr>
+          <th class="cb-col">
+            <input type="checkbox" class="row-cb" [checked]="allPageSelected()" (change)="toggleAll()" />
+          </th>
           <th>ID</th>
           <th>Business</th>
           <th>Owner</th>
@@ -40,8 +260,11 @@
         </tr>
       </thead>
       <tbody>
-        @for (provider of providers; track provider.id) {
-          <tr>
+        @for (provider of pagedProviders(); track provider.id) {
+          <tr [class.row--selected]="selectedRows().has(provider.id)">
+            <td class="cb-col">
+              <input type="checkbox" class="row-cb" [checked]="selectedRows().has(provider.id)" (change)="toggleRow(provider.id)" />
+            </td>
             <td class="mono">{{ provider.id }}</td>
             <td>{{ provider.business }}</td>
             <td>{{ provider.owner }}</td>
@@ -60,7 +283,36 @@
             </td>
           </tr>
         }
+        @empty {
+          <tr>
+            <td colspan="9" class="empty-row">No providers match the current filters.</td>
+          </tr>
+        }
       </tbody>
     </table>
+
+    <!-- Flowbite Paginator -->
+    <nav class="paginator" aria-label="Providers pagination">
+      <span class="paginator__info">
+        Showing {{ pageStart() }}&ndash;{{ pageEnd() }} of {{ totalFiltered() }}
+      </span>
+      <ul class="paginator__list">
+        <li>
+          <button type="button" class="paginator__btn" [disabled]="currentPage() === 1" (click)="goToPage(currentPage() - 1)" aria-label="Previous">
+            <svg viewBox="0 0 24 24" fill="none"><path d="m15 18-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </li>
+        @for (p of pageNumbers(); track p) {
+          <li>
+            <button type="button" class="paginator__page" [class.paginator__page--active]="currentPage() === p" (click)="goToPage(p)">{{ p }}</button>
+          </li>
+        }
+        <li>
+          <button type="button" class="paginator__btn" [disabled]="currentPage() === totalPages()" (click)="goToPage(currentPage() + 1)" aria-label="Next">
+            <svg viewBox="0 0 24 24" fill="none"><path d="m9 18 6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </li>
+      </ul>
+    </nav>
   </section>
 </section>
