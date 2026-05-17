@@ -5,20 +5,20 @@ import { SignIn } from './sign-in/sign-in';
 import { SignUp } from './sign-up/sign-up';
 import { About } from './about/about';
 import { ViewAll } from './public-layout/view-all/view-all';
-import { ProviderLayout } from './provider-layout/provider-layout';
 import { Dashboard } from './provider-layout/dashboard/dashboard';
 import { MyServices } from './provider-layout/my-services/my-services';
 import { Bookings as ProviderBookings } from './provider-layout/bookings/bookings';
 import { Messages } from './provider-layout/messages/messages';
 import { Reviews } from './provider-layout/reviews/reviews';
 import { ProfileSettings } from './provider-layout/profile-settings/profile-settings';
-import { AdminLayout } from './admin-layout/admin-layout';
 import { Overview } from './admin-layout/overview/overview';
 import { Providers } from './admin-layout/providers/providers';
 import { Services } from './admin-layout/admin-services/services';
 import { Users } from './admin-layout/users/users';
 import { Bookings as AdminBookings } from './admin-layout/bookings/bookings';
 import { Chatbot } from './public-layout/chatbot/chatbot';
+import { ProviderLayout } from './provider-layout/provider-layout';
+import { AdminLayout } from './admin-layout/admin-layout';
 
 export const routes: Routes = [
   {

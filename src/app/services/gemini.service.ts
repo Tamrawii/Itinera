@@ -1,7 +1,6 @@
 import { Injectable, signal, computed } from '@angular/core';
 import {
   GoogleGenerativeAI,
-  ChatSession,
   GenerativeModel,
   HarmCategory,
   HarmBlockThreshold,
@@ -16,7 +15,7 @@ import { ChatMessage, GeminiHistoryEntry } from '../models/chat.model';
 export class GeminiService {
   private readonly genAI: GoogleGenerativeAI;
   private readonly model: GenerativeModel;
-  private chatSession: ChatSession | null = null;
+  private conversationHistory: GeminiHistoryEntry[] = [];
 
   readonly messages = signal<ChatMessage[]>([]);
   readonly isLoading = signal<boolean>(false);
@@ -84,7 +83,12 @@ export class GeminiService {
     this.messages.update((msgs) => [...msgs, botPlaceholder]);
 
     try {
-      const result = await this.chatSession!.sendMessageStream(userText);
+      const userHistoryEntry = this.toHistoryEntry('user', userText);
+      const requestHistory = [...this.conversationHistory, userHistoryEntry];
+
+      const result = await this.model.generateContentStream({
+        contents: requestHistory,
+      });
 
       let fullResponse = '';
 
@@ -100,6 +104,12 @@ export class GeminiService {
           ),
         );
       }
+
+      await result.response;
+      this.conversationHistory = [
+        ...requestHistory,
+        this.toHistoryEntry('model', fullResponse),
+      ];
 
       // Mark streaming as complete
       this.messages.update((msgs) =>
@@ -143,16 +153,21 @@ export class GeminiService {
    * Rebuild the chat session with existing history (for conversation restore).
    */
   loadHistory(history: GeminiHistoryEntry[]): void {
-    this.chatSession = this.model.startChat({ history });
+    this.conversationHistory = [...history];
   }
 
   // ── Private Helpers ────────────────────────────────────────────────────────
 
   private initChatSession(history: GeminiHistoryEntry[] = []): void {
-    this.chatSession = this.model.startChat({
-      history,
+    this.conversationHistory = [...history];
       // The system instruction is already on the model — no need to repeat it here
-    });
+  }
+
+  private toHistoryEntry(role: 'user' | 'model', text: string): GeminiHistoryEntry {
+    return {
+      role,
+      parts: [{ text }],
+    };
   }
 
   private createMessage(
