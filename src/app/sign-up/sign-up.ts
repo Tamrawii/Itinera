@@ -100,7 +100,8 @@ export class SignUp implements OnInit {
       },
       error: (error) => {
         this.isLoading = false;
-        const message = error.error?.message || 'Failed to create account. Please try again.';
+        console.error('Registration error:', error);
+        const message = error.error?.message || error.message || 'Failed to create account. Please try again.';
         this.toastService.showError(message);
       },
     });
