@@ -7,11 +7,11 @@
         <p class="text-base text-gray-600">Sign in to access your itineraries and bookings</p>
       </header>
 
-      <div class="social-actions grid grid-cols-2 gap-3 mt-8">
+      <div class="social-actions grid grid-cols-3 gap-3 mt-8">
         <button
           type="button"
           (click)="signInWithOAuth('google')"
-          class="inline-flex items-center justify-center gap-2 text-gray-700 bg-white hover:bg-gray-50 border border-gray-300 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-3 focus:outline-none transition-all cursor-pointer"
+          class="inline-flex items-center justify-center gap-2 text-gray-700 bg-white hover:bg-gray-50 border border-gray-300 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-3 focus:outline-none transition-all cursor-pointer"
         >
           <lineicons [icon]="GoogleOutlined" [size]="20" [strokeWidth]="1.8"></lineicons>
           <span>Google</span>
@@ -19,10 +19,20 @@
         <button
           type="button"
           (click)="signInWithOAuth('facebook')"
-          class="inline-flex items-center justify-center gap-2 text-gray-700 bg-white hover:bg-gray-50 border border-gray-300 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-3 focus:outline-none transition-all cursor-pointer"
+          class="inline-flex items-center justify-center gap-2 text-gray-700 bg-white hover:bg-gray-50 border border-gray-300 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-3 focus:outline-none transition-all cursor-pointer"
         >
           <lineicons [icon]="AppleBrandOutlined" [size]="20" [strokeWidth]="1.8"></lineicons>
           <span>Facebook</span>
+        </button>
+        <button
+          type="button"
+          (click)="signInWithOAuth('twitter')"
+          class="inline-flex items-center justify-center gap-2 text-gray-700 bg-white hover:bg-gray-50 border border-gray-300 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-3 focus:outline-none transition-all cursor-pointer"
+        >
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+          <span>X</span>
         </button>
       </div>
 
