@@ -1,102 +1,40 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable, from, throwError, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 
+import { environment } from '../../../environments/environment';
 import { AuthResponse, LoginRequest, RegisterRequest } from '../models';
 import { User } from '../models';
-import { SupabaseService } from './supabase.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+  private readonly baseUrl = `${environment.apiUrl}/auth`;
+
   constructor(
+    private http: HttpClient,
     private router: Router,
-    private supabaseService: SupabaseService,
   ) {}
 
   /**
-   * Authenticates a user with email and password using Supabase Auth.
+   * Authenticates a user with email and password.
    * Automatically persists the token and user on success.
    */
   login(credentials: LoginRequest): Observable<AuthResponse> {
-    return from(
-      this.supabaseService.client.auth.signInWithPassword({
-        email: credentials.email,
-        password: credentials.password,
-      })
-    ).pipe(
-      map(({ data, error }) => {
-        if (error) throw error;
-        if (!data.session || !data.user) {
-          throw new Error('No session returned');
-        }
-        // Map Supabase user to our User model
-        const user: User = {
-          id: parseInt(data.user.id) || 0,
-          email: data.user.email || '',
-          full_name: data.user.user_metadata?.['full_name'] || '',
-          role: data.user.user_metadata?.['role'] || 'tourist',
-          created_at: new Date(data.user.created_at),
-          updated_at: new Date(),
-        };
-        this.saveToken(data.session.access_token, user);
-        return { 
-          access_token: data.session.access_token, 
-          token_type: 'Bearer' as const, 
-          user 
-        };
-      }),
+    return this.http.post<AuthResponse>(`${this.baseUrl}/login`, credentials).pipe(
+      tap((res) => this.saveToken(res.access_token, res.user)),
       catchError(this.handleError),
     );
   }
 
   /**
-   * Registers a new tourist or provider account using Supabase Auth.
+   * Registers a new tourist or provider account.
    * Automatically persists the token and user on success.
-   * If email confirmation is required, returns user without session.
    */
-  register(data: RegisterRequest): Observable<AuthResponse | { user: User; emailConfirmationRequired: true }> {
-    return from(
-      this.supabaseService.client.auth.signUp({
-        email: data.email,
-        password: data.password,
-        options: {
-          data: {
-            full_name: data.full_name,
-            role: data.role,
-          },
-        },
-      })
-    ).pipe(
-      map(({ data, error }) => {
-        if (error) throw error;
-        if (!data.user) {
-          throw new Error('Registration failed');
-        }
-
-        // Map Supabase user to our User model
-        const user: User = {
-          id: parseInt(data.user.id) || 0,
-          email: data.user.email || '',
-          full_name: data.user.user_metadata?.['full_name'] || '',
-          role: data.user.user_metadata?.['role'] || 'tourist',
-          created_at: new Date(data.user.created_at),
-          updated_at: new Date(),
-        };
-
-        // If email confirmation is required (no session), return special response
-        if (!data.session) {
-          return { user, emailConfirmationRequired: true as const };
-        }
-
-        // Auto-login if session is available
-        this.saveToken(data.session.access_token, user);
-        return { 
-          access_token: data.session.access_token, 
-          token_type: 'Bearer' as const, 
-          user 
-        };
-      }),
+  register(data: RegisterRequest): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>(`${this.baseUrl}/register`, data).pipe(
+      tap((res) => this.saveToken(res.access_token, res.user)),
       catchError(this.handleError),
     );
   }
@@ -111,33 +49,12 @@ export class AuthService {
   }
 
   /**
-   * Refreshes the current session using Supabase Auth.
+   * Requests a new access token using the existing session.
    * Automatically persists the refreshed token and user on success.
    */
   refreshToken(): Observable<AuthResponse> {
-    return from(
-      this.supabaseService.client.auth.refreshSession()
-    ).pipe(
-      map(({ data, error }) => {
-        if (error) throw error;
-        if (!data.session || !data.user) {
-          throw new Error('No session returned');
-        }
-        const user: User = {
-          id: parseInt(data.user.id) || 0,
-          email: data.user.email || '',
-          full_name: data.user.user_metadata?.['full_name'] || '',
-          role: data.user.user_metadata?.['role'] || 'tourist',
-          created_at: new Date(data.user.created_at),
-          updated_at: new Date(),
-        };
-        this.saveToken(data.session.access_token, user);
-        return { 
-          access_token: data.session.access_token, 
-          token_type: 'Bearer' as const, 
-          user 
-        };
-      }),
+    return this.http.post<AuthResponse>(`${this.baseUrl}/refresh`, {}).pipe(
+      tap((res) => this.saveToken(res.access_token, res.user)),
       catchError(this.handleError),
     );
   }
@@ -157,18 +74,10 @@ export class AuthService {
   }
 
   /**
-   * Returns true if a valid, non-expired access token is present in localStorage.
-   * Checks the JWT expiry timestamp to ensure the token is still valid.
+   * Returns true if a valid access token is present in localStorage.
    */
   isAuthenticated(): boolean {
-    const token = this.getToken();
-    if (!token) return false;
-    try {
-      const payload = JSON.parse(atob(token.split('.')[1]));
-      return payload.exp * 1000 > Date.now();
-    } catch {
-      return false;
-    }
+    return !!this.getToken();
   }
 
   /**
@@ -193,36 +102,7 @@ export class AuthService {
     return localStorage.getItem('auth_token');
   }
 
-  /**
-   * Initiates OAuth sign-in with a social provider (Google, Facebook, or Twitter/X).
-   * Redirects the user to the provider's auth page, then to Supabase, then back to the app.
-   * @param provider - The OAuth provider to use
-   */
-  signInWithOAuth(provider: 'google' | 'facebook' | 'twitter'): Promise<void> {
-    return this.supabaseService.client.auth.signInWithOAuth({
-      provider,
-      options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
-      },
-    }).then(() => {});
-  }
-
-  private handleError(error: any): Observable<never> {
-    let message = error?.message || error?.error?.message || 'An error occurred';
-    
-    // Handle specific Supabase error cases
-    if (error?.status === 429 || message?.toLowerCase().includes('rate limit')) {
-      message = 'Too many attempts. Please wait a few minutes and try again.';
-    } else if (message?.toLowerCase().includes('email rate limit')) {
-      message = 'Email rate limit exceeded. Please wait a few minutes before trying again.';
-    } else if (message?.toLowerCase().includes('user already registered')) {
-      message = 'An account with this email already exists. Please sign in instead.';
-    } else if (message?.toLowerCase().includes('invalid login credentials')) {
-      message = 'Invalid email or password. Please try again.';
-    } else if (message?.toLowerCase().includes('email not confirmed')) {
-      message = 'Please confirm your email address before signing in.';
-    }
-    
-    return throwError(() => new Error(message));
+  private handleError(error: unknown): Observable<never> {
+    return throwError(() => error);
   }
 }

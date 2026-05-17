@@ -16,6 +16,3 @@ export * from './offers.model';
 export * from './user-tourist.model';
 export * from './user-provider.model';
 export * from './admin.model';
-
-// Re-export types from services for convenience
-export type { StorageBucket } from '../services/storage.service';

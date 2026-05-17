@@ -1,6 +1,4 @@
 import { Routes } from '@angular/router';
-import { authGuard } from './core/guards/auth.guard';
-import { roleGuard } from './core/guards/role.guard';
 import { PublicLayout } from './public-layout/public-layout';
 import { ServiceDetails } from './service-details/service-details';
 import { SignIn } from './sign-in/sign-in';
@@ -48,16 +46,6 @@ export const routes: Routes = [
     title: 'Sign Up - Itinera',
   },
   {
-    path: 'auth/callback',
-    loadComponent: () => import('./auth-callback/auth-callback').then(m => m.AuthCallbackComponent),
-    title: 'Signing In - Itinera',
-  },
-  {
-    path: 'unauthorized',
-    loadComponent: () => import('./unauthorized/unauthorized').then(m => m.UnauthorizedComponent),
-    title: 'Access Denied - Itinera',
-  },
-  {
     path: 'home',
     component: PublicLayout,
     title: 'Home - Itinera',
@@ -85,8 +73,6 @@ export const routes: Routes = [
   {
     path: 'provider',
     component: ProviderLayout,
-    canActivate: [authGuard, roleGuard],
-    data: { roles: ['provider'] },
     children: [
       {
         path: '',
@@ -128,8 +114,6 @@ export const routes: Routes = [
   {
     path: 'tourist',
     component: TouristLayout,
-    canActivate: [authGuard, roleGuard],
-    data: { roles: ['tourist'] },
     children: [
       {
         path: '',
@@ -181,8 +165,6 @@ export const routes: Routes = [
   {
     path: 'admin',
     component: AdminLayout,
-    canActivate: [authGuard, roleGuard],
-    data: { roles: ['admin'] },
     children: [
       {
         path: '',
