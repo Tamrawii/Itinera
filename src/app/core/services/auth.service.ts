@@ -7,6 +7,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { AuthResponse, LoginRequest, RegisterRequest } from '../models';
 import { User } from '../models';
+import { SupabaseService } from './supabase.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -15,6 +16,7 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private router: Router,
+    private supabaseService: SupabaseService,
   ) {}
 
   /**
@@ -74,10 +76,18 @@ export class AuthService {
   }
 
   /**
-   * Returns true if a valid access token is present in localStorage.
+   * Returns true if a valid, non-expired access token is present in localStorage.
+   * Checks the JWT expiry timestamp to ensure the token is still valid.
    */
   isAuthenticated(): boolean {
-    return !!this.getToken();
+    const token = this.getToken();
+    if (!token) return false;
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      return payload.exp * 1000 > Date.now();
+    } catch {
+      return false;
+    }
   }
 
   /**
@@ -100,6 +110,20 @@ export class AuthService {
    */
   getToken(): string | null {
     return localStorage.getItem('auth_token');
+  }
+
+  /**
+   * Initiates OAuth sign-in with a social provider (Google, Facebook, or Twitter/X).
+   * Redirects the user to the provider's auth page, then to Supabase, then back to the app.
+   * @param provider - The OAuth provider to use
+   */
+  signInWithOAuth(provider: 'google' | 'facebook' | 'twitter'): Promise<void> {
+    return this.supabaseService.client.auth.signInWithOAuth({
+      provider,
+      options: {
+        redirectTo: `${window.location.origin}/auth/callback`,
+      },
+    }).then(() => {});
   }
 
   private handleError(error: unknown): Observable<never> {
