@@ -1,0 +1,345 @@
+<div class="tourist-profile">
+  <!-- Header -->
+  <header class="profile-header">
+    <div class="header-content">
+      <h1 class="page-title">My Profile</h1>
+      <p class="page-subtitle">Manage your personal information and preferences</p>
+    </div>
+    
+    @if (user) {
+      <div class="user-summary">
+        <div class="user-avatar">
+          {{ user.full_name.charAt(0) }}
+        </div>
+        <div class="user-info">
+          <h3>{{ user.full_name }}</h3>
+          <p>Member for {{ getAccountAge() }}</p>
+        </div>
+      </div>
+    }
+  </header>
+
+  <!-- Main Content -->
+  <main class="profile-main">
+    @if (loading) {
+      <div class="loading-state">
+        <div class="loading-spinner"></div>
+        <p>Loading profile...</p>
+      </div>
+    } @else {
+      <!-- Tab Navigation -->
+      <div class="tab-navigation">
+        <button 
+          class="tab-button" 
+          [class.active]="activeTab === 'profile'"
+          (click)="switchTab('profile')"
+        >
+          <lineicons [icon]="User4Outlined" [size]="16" [strokeWidth]="1.5"></lineicons>
+          Personal Information
+        </button>
+        <button 
+          class="tab-button" 
+          [class.active]="activeTab === 'password'"
+          (click)="switchTab('password')"
+        >
+          <lineicons [icon]="HeartOutlined" [size]="16" [strokeWidth]="1.5"></lineicons>
+          Password & Security
+        </button>
+        <button 
+          class="tab-button" 
+          [class.active]="activeTab === 'preferences'"
+          (click)="switchTab('preferences')"
+        >
+          <lineicons [icon]="HeartOutlined" [size]="16" [strokeWidth]="1.5"></lineicons>
+          Preferences
+        </button>
+      </div>
+
+      <!-- Tab Content -->
+      <div class="tab-content">
+        <!-- Profile Tab -->
+        @if (activeTab === 'profile') {
+          <div class="profile-section">
+            <form [formGroup]="profileForm" class="profile-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="full_name">Full Name *</label>
+                  <input 
+                    id="full_name"
+                    type="text" 
+                    formControlName="full_name"
+                    [class.error]="isFieldInvalid(profileForm, 'full_name')"
+                    placeholder="Enter your full name"
+                  />
+                  @if (isFieldInvalid(profileForm, 'full_name')) {
+                    <span class="error-message">{{ getErrorMessage(profileForm, 'full_name') }}</span>
+                  }
+                </div>
+                
+                <div class="form-group">
+                  <label for="email">Email Address *</label>
+                  <input 
+                    id="email"
+                    type="email" 
+                    formControlName="email"
+                    [class.error]="isFieldInvalid(profileForm, 'email')"
+                    placeholder="Enter your email"
+                  />
+                  @if (isFieldInvalid(profileForm, 'email')) {
+                    <span class="error-message">{{ getErrorMessage(profileForm, 'email') }}</span>
+                  }
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input 
+                    id="phone"
+                    type="tel" 
+                    formControlName="phone"
+                    [class.error]="isFieldInvalid(profileForm, 'phone')"
+                    placeholder="+1234567890"
+                  />
+                  @if (isFieldInvalid(profileForm, 'phone')) {
+                    <span class="error-message">{{ getErrorMessage(profileForm, 'phone') }}</span>
+                  }
+                </div>
+                
+                <div class="form-group">
+                  <label for="location">Location</label>
+                  <input 
+                    id="location"
+                    type="text" 
+                    formControlName="location"
+                    [class.error]="isFieldInvalid(profileForm, 'location')"
+                    placeholder="City, Country"
+                  />
+                  @if (isFieldInvalid(profileForm, 'location')) {
+                    <span class="error-message">{{ getErrorMessage(profileForm, 'location') }}</span>
+                  }
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="bio">Bio</label>
+                <textarea 
+                  id="bio"
+                  formControlName="bio"
+                  [class.error]="isFieldInvalid(profileForm, 'bio')"
+                  rows="4"
+                  placeholder="Tell us about yourself..."
+                ></textarea>
+                @if (isFieldInvalid(profileForm, 'bio')) {
+                  <span class="error-message">{{ getErrorMessage(profileForm, 'bio') }}</span>
+                }
+              </div>
+
+              <div class="form-actions">
+                <button 
+                  type="button" 
+                  class="btn-secondary"
+                  (click)="loadUserProfile()"
+                >
+                  Cancel
+                </button>
+                <button 
+                  type="button" 
+                  class="btn-primary"
+                  (click)="saveProfile()"
+                  [disabled]="saving || profileForm.invalid"
+                >
+                  @if (saving) {
+                    <div class="btn-spinner"></div>
+                  }
+                  Save Changes
+                </button>
+              </div>
+            </form>
+          </div>
+        }
+
+        <!-- Password Tab -->
+        @if (activeTab === 'password') {
+          <div class="password-section">
+            <form [formGroup]="passwordForm" class="password-form">
+              <div class="form-group">
+                <label for="current_password">Current Password *</label>
+                <div class="password-input">
+                  <input 
+                    id="current_password"
+                    [type]="showCurrentPassword ? 'text' : 'password'"
+                    formControlName="current_password"
+                    [class.error]="isFieldInvalid(passwordForm, 'current_password')"
+                    placeholder="Enter current password"
+                  />
+                  <button 
+                    type="button" 
+                    class="password-toggle"
+                    (click)="togglePasswordVisibility('current')"
+                  >
+                    <lineicons [icon]="showCurrentPassword ? EyeOutlined : EyeSolid" [size]="16" [strokeWidth]="1.5"></lineicons>
+                  </button>
+                </div>
+                @if (isFieldInvalid(passwordForm, 'current_password')) {
+                  <span class="error-message">{{ getErrorMessage(passwordForm, 'current_password') }}</span>
+                }
+              </div>
+
+              <div class="form-group">
+                <label for="new_password">New Password *</label>
+                <div class="password-input">
+                  <input 
+                    id="new_password"
+                    [type]="showNewPassword ? 'text' : 'password'"
+                    formControlName="new_password"
+                    [class.error]="isFieldInvalid(passwordForm, 'new_password')"
+                    placeholder="Enter new password"
+                  />
+                  <button 
+                    type="button" 
+                    class="password-toggle"
+                    (click)="togglePasswordVisibility('new')"
+                  >
+                    <lineicons [icon]="showNewPassword ? EyeOutlined : EyeSolid" [size]="16" [strokeWidth]="1.5"></lineicons>
+                  </button>
+                </div>
+                @if (isFieldInvalid(passwordForm, 'new_password')) {
+                  <span class="error-message">{{ getErrorMessage(passwordForm, 'new_password') }}</span>
+                }
+              </div>
+
+              <div class="form-group">
+                <label for="confirm_password">Confirm New Password *</label>
+                <div class="password-input">
+                  <input 
+                    id="confirm_password"
+                    [type]="showConfirmPassword ? 'text' : 'password'"
+                    formControlName="confirm_password"
+                    [class.error]="isFieldInvalid(passwordForm, 'confirm_password')"
+                    placeholder="Confirm new password"
+                  />
+                  <button 
+                    type="button" 
+                    class="password-toggle"
+                    (click)="togglePasswordVisibility('confirm')"
+                  >
+                    <lineicons [icon]="showConfirmPassword ? EyeOutlined : EyeSolid" [size]="16" [strokeWidth]="1.5"></lineicons>
+                  </button>
+                </div>
+                @if (isFieldInvalid(passwordForm, 'confirm_password')) {
+                  <span class="error-message">{{ getErrorMessage(passwordForm, 'confirm_password') }}</span>
+                }
+              </div>
+
+              <div class="form-actions">
+                <button 
+                  type="button" 
+                  class="btn-secondary"
+                  (click)="passwordForm.reset()"
+                >
+                  Cancel
+                </button>
+                <button 
+                  type="button" 
+                  class="btn-primary"
+                  (click)="changePassword()"
+                  [disabled]="changingPassword || passwordForm.invalid"
+                >
+                  @if (changingPassword) {
+                    <div class="btn-spinner"></div>
+                  }
+                  Change Password
+                </button>
+              </div>
+            </form>
+          </div>
+        }
+
+        <!-- Preferences Tab -->
+        @if (activeTab === 'preferences') {
+          <div class="preferences-section">
+            <div class="preference-group">
+              <h3>Notifications</h3>
+              <div class="preference-item">
+                <label class="switch">
+                  <input type="checkbox" [(ngModel)]="preferences.emailNotifications">
+                  <span class="slider"></span>
+                </label>
+                <div class="preference-info">
+                  <h4>Email Notifications</h4>
+                  <p>Receive booking confirmations, updates, and promotional offers via email</p>
+                </div>
+              </div>
+              
+              <div class="preference-item">
+                <label class="switch">
+                  <input type="checkbox" [(ngModel)]="preferences.smsNotifications">
+                  <span class="slider"></span>
+                </label>
+                <div class="preference-info">
+                  <h4>SMS Notifications</h4>
+                  <p>Get important booking updates via text message</p>
+                </div>
+              </div>
+              
+              <div class="preference-item">
+                <label class="switch">
+                  <input type="checkbox" [(ngModel)]="preferences.marketingEmails">
+                  <span class="slider"></span>
+                </label>
+                <div class="preference-info">
+                  <h4>Marketing Emails</h4>
+                  <p>Receive travel tips, destination guides, and special offers</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="preference-group">
+              <h3>Regional Settings</h3>
+              <div class="preference-item">
+                <label for="language">Language</label>
+                <select id="language" [(ngModel)]="preferences.language">
+                  <option value="en">English</option>
+                  <option value="es">Español</option>
+                  <option value="fr">Français</option>
+                  <option value="de">Deutsch</option>
+                </select>
+              </div>
+              
+              <div class="preference-item">
+                <label for="currency">Currency</label>
+                <select id="currency" [(ngModel)]="preferences.currency">
+                  <option value="USD">USD ($)</option>
+                  <option value="EUR">EUR (€)</option>
+                  <option value="GBP">GBP (£)</option>
+                  <option value="JPY">JPY (¥)</option>
+                </select>
+              </div>
+              
+              <div class="preference-item">
+                <label for="timezone">Timezone</label>
+                <select id="timezone" [(ngModel)]="preferences.timezone">
+                  <option value="UTC">UTC</option>
+                  <option value="EST">Eastern Time</option>
+                  <option value="PST">Pacific Time</option>
+                  <option value="CET">Central European Time</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button 
+                type="button" 
+                class="btn-primary"
+                (click)="savePreferences()"
+              >
+                Save Preferences
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </main>
+</div>

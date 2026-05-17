@@ -1,0 +1,126 @@
+<div class="reviews-list">
+  <!-- Header with Stats -->
+  <div class="reviews-header">
+    <div class="reviews-stats">
+      @if (reviews.length > 0) {
+        <div class="stats-item">
+          <span class="stats-number">{{ getReviewStats().average }}</span>
+          <div class="stars-display">
+            @for (star of getRatingStars(getReviewStats().average); track star) {
+              <lineicons 
+                [icon]="StarFatOutlined" 
+                [size]="16" 
+                [strokeWidth]="0"
+                [class.filled]="isStarFilled(star, getReviewStats().average)"
+              ></lineicons>
+            }
+          </div>
+        </div>
+        <div class="stats-info">
+          <span class="stats-count">{{ getReviewStats().count }} Review{{ getReviewStats().count !== 1 ? 's' : '' }}</span>
+          <span class="stats-label">Average Rating</span>
+        </div>
+      }
+    </div>
+
+    @if (reviews.length > 3) {
+      <div class="search-container">
+        <lineicons [icon]="Search1Outlined" [size]="16" [strokeWidth]="1.5"></lineicons>
+        <input 
+          type="text" 
+          placeholder="Search reviews..." 
+          [(ngModel)]="searchTerm"
+          (input)="onSearchChange()"
+          class="search-input"
+        />
+      </div>
+    }
+  </div>
+
+  <!-- Reviews Content -->
+  <div class="reviews-content">
+    @if (loading) {
+      <div class="loading-state">
+        <div class="loading-spinner"></div>
+        <p>Loading reviews...</p>
+      </div>
+    } @else if (filteredReviews.length === 0) {
+      <div class="empty-state">
+        <lineicons [icon]="StarFatOutlined" [size]="48" [strokeWidth]="1.5"></lineicons>
+        <h3>{{ reviews.length === 0 ? emptyMessage : 'No reviews found' }}</h3>
+        <p>@if (searchTerm) { Try adjusting your search terms } @else { Be the first to share your experience! }</p>
+      </div>
+    } @else {
+      <div class="reviews-grid">
+        @for (review of filteredReviews; track review.id) {
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-info">
+                @if (review.tourist) {
+                  <div class="reviewer-avatar">
+                    {{ review.tourist.full_name.charAt(0) }}{{ review.tourist.full_name.split(' ')[1]?.charAt(0) || '' }}
+                  </div>
+                  <div class="reviewer-details">
+                    <h4>{{ review.tourist.full_name }}</h4>
+                    <div class="review-date">
+                      <lineicons [icon]="CalendarDaysOutlined" [size]="12" [strokeWidth]="1.5"></lineicons>
+                      {{ formatDate(review.created_at) }}
+                    </div>
+                  </div>
+                } @else {
+                  <div class="reviewer-details">
+                    <h4>Anonymous</h4>
+                    <div class="review-date">
+                      <lineicons [icon]="CalendarDaysOutlined" [size]="12" [strokeWidth]="1.5"></lineicons>
+                      {{ formatDate(review.created_at) }}
+                    </div>
+                  </div>
+                }
+              </div>
+              
+              <div class="review-rating">
+                <app-star-rating
+                  [rating]="review.rating"
+                  [maxRating]="5"
+                  [size]="'small'"
+                  [readonly]="true"
+                ></app-star-rating>
+              </div>
+            </div>
+
+            <div class="review-content">
+              <p class="review-comment">{{ review.comment }}</p>
+            </div>
+
+            @if (showServiceInfo && review.service) {
+              <div class="service-info">
+                <div class="service-details">
+                  <span class="service-name">{{ review.service.name }}</span>
+                </div>
+              </div>
+            }
+
+            @if (showActions) {
+              <div class="review-actions">
+                <button 
+                  class="btn-edit"
+                  (click)="onEditReview(review)"
+                  title="Edit review"
+                >
+                  <lineicons [icon]="ExitOutlined" [size]="14" [strokeWidth]="1.5"></lineicons>
+                </button>
+                <button 
+                  class="btn-delete"
+                  (click)="onDeleteReview(review)"
+                  title="Delete review"
+                >
+                  <lineicons [icon]="Trash3Outlined" [size]="14" [strokeWidth]="1.5"></lineicons>
+                </button>
+              </div>
+            }
+          </div>
+        }
+      </div>
+    }
+  </div>
+</div>

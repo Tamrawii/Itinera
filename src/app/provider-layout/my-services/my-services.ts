@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { LineiconsComponent } from '@lineiconshq/angular-lineicons';
 import { StarFatSolid } from '@lineiconshq/free-icons';
+import type { ServiceAvailability } from '../../core/models/service.model';
 
 interface ProviderService {
   title: string;
@@ -17,11 +19,89 @@ interface ProviderService {
 
 @Component({
   selector: 'app-my-services',
-  imports: [LineiconsComponent],
+  imports: [LineiconsComponent, FormsModule],
   templateUrl: './my-services.html',
   styleUrl: './my-services.css',
 })
 export class MyServices {
+  modalOpen = signal(false);
+
+  form = {
+    name: '',
+    description: '',
+    price: null as number | null,
+    category: '' as 'Tour' | 'Activity' | 'Hotel' | '',
+    status: 'Active' as 'Active' | 'Draft',
+    imageUrl: '',
+    images: [] as string[],
+    availability: [] as ServiceAvailability[],
+    availDate: '',
+    availSlots: null as number | null,
+  };
+
+  openModal(): void {
+    this.form = {
+      name: '',
+      description: '',
+      price: null,
+      category: '',
+      status: 'Active',
+      imageUrl: '',
+      images: [],
+      availability: [],
+      availDate: '',
+      availSlots: null,
+    };
+    this.modalOpen.set(true);
+  }
+
+  closeModal(): void {
+    this.modalOpen.set(false);
+  }
+
+  addImage(): void {
+    const url = this.form.imageUrl.trim();
+    if (url && !this.form.images.includes(url)) {
+      this.form.images = [...this.form.images, url];
+      this.form.imageUrl = '';
+    }
+  }
+
+  removeImage(index: number): void {
+    this.form.images = this.form.images.filter((_, i) => i !== index);
+  }
+
+  addAvailability(): void {
+    if (this.form.availDate && this.form.availSlots && this.form.availSlots > 0) {
+      this.form.availability = [
+        ...this.form.availability,
+        { date: this.form.availDate, slots: this.form.availSlots },
+      ];
+      this.form.availDate = '';
+      this.form.availSlots = null;
+    }
+  }
+
+  removeAvailability(index: number): void {
+    this.form.availability = this.form.availability.filter((_, i) => i !== index);
+  }
+
+  submitService(): void {
+    if (!this.form.name || !this.form.category || !this.form.price) return;
+    const newService: ProviderService = {
+      title: this.form.name,
+      category: this.form.category as 'Tour' | 'Activity' | 'Hotel',
+      location: '',
+      image: this.form.images[0] ?? '',
+      imageAlt: this.form.name,
+      price: this.form.price,
+      bookings: 0,
+      status: this.form.status,
+    };
+    this.services = [newService, ...this.services];
+    this.closeModal();
+  }
+
   services: ProviderService[] = [
     {
       title: 'Coastal Sunset Tour',

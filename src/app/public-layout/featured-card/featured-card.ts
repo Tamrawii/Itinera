@@ -2,7 +2,7 @@ import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LineiconsComponent } from '@lineiconshq/angular-lineicons';
 import { HeartOutlined, MapMarker5Outlined, StarFatSolid } from '@lineiconshq/free-icons';
-import { Offers } from '../../models/offers';
+import { Offers } from '../../core/models/offers.model';
 
 @Component({
   selector: 'app-featured-card',

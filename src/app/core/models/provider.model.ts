@@ -19,6 +19,8 @@ export interface Provider {
   description: string;
   documents: ProviderDocument[];
   status: ProviderStatus;
+  phone?: string;
+  image?: string;
   created_at: Date;
   updated_at: Date;
 }
@@ -29,6 +31,8 @@ export interface CreateProvider {
   business_name: string;
   description: string;
   documents: ProviderDocument[];
+  phone?: string;
+  image?: string;
 }
 
 export type UpdateProvider = Partial<CreateProvider> & {

@@ -24,7 +24,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { GeminiService } from '../../services/gemini.service';
+import { GeminiService } from '../../core/services/gemini.service';
 import { Navbar } from '../navbar/navbar';
 
 @Component({

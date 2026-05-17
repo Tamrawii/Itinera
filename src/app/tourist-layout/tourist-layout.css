@@ -1,0 +1,72 @@
+.tourist-shell {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8fafc;
+}
+
+.tourist-sidebar {
+  flex: 0 0 280px;
+  width: 280px;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.5rem 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #475569;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.sidebar-link:hover {
+  background-color: #e2e8f0;
+  color: #1e293b;
+  text-decoration: none;
+}
+
+.sidebar-active {
+  background-color: #eff6ff;
+  color: #1d4ed8;
+}
+
+.sidebar-active:hover {
+  background-color: #dbeafe;
+}
+
+.sidebar-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.tourist-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #f8fafc;
+  min-height: 100vh;
+}
+
+.tourist-content > div {
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .tourist-shell {
+    flex-direction: column;
+  }
+
+  .tourist-sidebar {
+    flex: none;
+    width: 100%;
+    min-height: auto;
+  }
+}

@@ -4,6 +4,9 @@ export interface Tour {
   id: number;
   provider_id: number;
   name: string;
+  description?: string;
+  images?: string[];
+  price?: number;
   duration: number;
   itinerary: Itinerary[];
   max_participants: number;
@@ -14,6 +17,9 @@ export interface Tour {
 export interface CreateTour {
   provider_id: number;
   name: string;
+  description?: string;
+  images?: string[];
+  price?: number;
   duration: number;
   itinerary: Omit<CreateItinerary, 'tour_id'>[];
   max_participants: number;

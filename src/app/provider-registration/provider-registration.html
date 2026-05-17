@@ -1,0 +1,286 @@
+<div class="provider-registration">
+  <!-- Header -->
+  <header class="registration-header">
+    <div class="header-content">
+      <h1>Become a Service Provider</h1>
+      <p>Join our platform and start offering your services to travelers</p>
+    </div>
+    
+    <!-- Progress Steps -->
+    <div class="progress-steps">
+      @for (step of [1, 2, 3]; track step) {
+        <div 
+          class="step"
+          [class.active]="currentStep === step"
+          [class.completed]="currentStep > step"
+        >
+          <div class="step-number">
+            @if (currentStep > step) {
+              <lineicons [icon]="CheckOutlined" [size]="16" [strokeWidth]="1.5"></lineicons>
+            } @else {
+              {{ step }}
+            }
+          </div>
+          <div class="step-label">
+            @if (step === 1) { Personal Info }
+            @if (step === 2) { Business Info }
+            @if (step === 3) { Documents }
+          </div>
+        </div>
+      }
+    </div>
+  </header>
+
+  <!-- Step Content -->
+  <main class="registration-content">
+    <div class="step-header">
+      <h2>{{ getStepTitle() }}</h2>
+      <p>{{ getStepDescription() }}</p>
+    </div>
+
+    <form [formGroup]="registrationForm" class="registration-form">
+      <!-- Step 1: Personal Information -->
+      @if (currentStep === 1) {
+        <div class="form-section">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="firstName">First Name *</label>
+              <input 
+                id="firstName"
+                type="text" 
+                formControlName="firstName"
+                placeholder="Enter your first name"
+                [class.error]="isFieldInvalid('firstName')"
+              />
+              @if (isFieldInvalid('firstName')) {
+                <span class="error-message">{{ getErrorMessage('firstName') }}</span>
+              }
+            </div>
+
+            <div class="form-group">
+              <label for="lastName">Last Name *</label>
+              <input 
+                id="lastName"
+                type="text" 
+                formControlName="lastName"
+                placeholder="Enter your last name"
+                [class.error]="isFieldInvalid('lastName')"
+              />
+              @if (isFieldInvalid('lastName')) {
+                <span class="error-message">{{ getErrorMessage('lastName') }}</span>
+              }
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input 
+                id="email"
+                type="email" 
+                formControlName="email"
+                placeholder="your.email@example.com"
+                [class.error]="isFieldInvalid('email')"
+              />
+              @if (isFieldInvalid('email')) {
+                <span class="error-message">{{ getErrorMessage('email') }}</span>
+              }
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input 
+                id="phone"
+                type="tel" 
+                formControlName="phone"
+                placeholder="+216 12 345 678"
+                [class.error]="isFieldInvalid('phone')"
+              />
+              @if (isFieldInvalid('phone')) {
+                <span class="error-message">{{ getErrorMessage('phone') }}</span>
+              }
+            </div>
+
+            <div class="form-group">
+              <label for="dateOfBirth">Date of Birth *</label>
+              <input 
+                id="dateOfBirth"
+                type="date" 
+                formControlName="dateOfBirth"
+                [class.error]="isFieldInvalid('dateOfBirth')"
+              />
+              @if (isFieldInvalid('dateOfBirth')) {
+                <span class="error-message">{{ getErrorMessage('dateOfBirth') }}</span>
+              }
+            </div>
+          </div>
+        </div>
+      }
+
+      <!-- Step 2: Business Information -->
+      @if (currentStep === 2) {
+        <div class="form-section">
+          <div class="form-grid">
+            <div class="form-group full-width">
+              <label for="businessName">Business Name *</label>
+              <input 
+                id="businessName"
+                type="text" 
+                formControlName="businessName"
+                placeholder="Enter your business name"
+                [class.error]="isFieldInvalid('businessName')"
+              />
+              @if (isFieldInvalid('businessName')) {
+                <span class="error-message">{{ getErrorMessage('businessName') }}</span>
+              }
+            </div>
+
+            <div class="form-group">
+              <label for="businessType">Business Type *</label>
+              <select 
+                id="businessType"
+                formControlName="businessType"
+                [class.error]="isFieldInvalid('businessType')"
+              >
+                <option value="">Select business type</option>
+                @for (type of businessTypes; track type.value) {
+                  <option [value]="type.value">{{ type.label }}</option>
+                }
+              </select>
+              @if (isFieldInvalid('businessType')) {
+                <span class="error-message">{{ getErrorMessage('businessType') }}</span>
+              }
+            </div>
+
+            <div class="form-group full-width">
+              <label for="description">Business Description *</label>
+              <textarea 
+                id="description"
+                formControlName="description"
+                rows="4"
+                placeholder="Describe your business, services offered, and what makes you unique..."
+                [class.error]="isFieldInvalid('description')"
+              ></textarea>
+              <div class="character-count">
+                {{ registrationForm.value.description?.length || 0 }}/500 characters
+              </div>
+              @if (isFieldInvalid('description')) {
+                <span class="error-message">{{ getErrorMessage('description') }}</span>
+              }
+            </div>
+
+            <div class="form-group full-width">
+              <label for="address">Business Address *</label>
+              <input 
+                id="address"
+                type="text" 
+                formControlName="address"
+                placeholder="Street address"
+                [class.error]="isFieldInvalid('address')"
+              />
+              @if (isFieldInvalid('address')) {
+                <span class="error-message">{{ getErrorMessage('address') }}</span>
+              }
+            </div>
+
+            <div class="form-group">
+              <label for="city">City *</label>
+              <input 
+                id="city"
+                type="text" 
+                formControlName="city"
+                placeholder="Tunis"
+                [class.error]="isFieldInvalid('city')"
+              />
+              @if (isFieldInvalid('city')) {
+                <span class="error-message">{{ getErrorMessage('city') }}</span>
+              }
+            </div>
+
+            <div class="form-group">
+              <label for="postalCode">Postal Code *</label>
+              <input 
+                id="postalCode"
+                type="text" 
+                formControlName="postalCode"
+                placeholder="1000"
+                [class.error]="isFieldInvalid('postalCode')"
+              />
+              @if (isFieldInvalid('postalCode')) {
+                <span class="error-message">{{ getErrorMessage('postalCode') }}</span>
+              }
+            </div>
+
+            <div class="form-group full-width">
+              <label for="website">Website (Optional)</label>
+              <input 
+                id="website"
+                type="url" 
+                formControlName="website"
+                placeholder="https://yourwebsite.com"
+                [class.error]="isFieldInvalid('website')"
+              />
+              @if (isFieldInvalid('website')) {
+                <span class="error-message">{{ getErrorMessage('website') }}</span>
+              }
+            </div>
+          </div>
+        </div>
+      }
+
+      <!-- Step 3: Document Upload -->
+      @if (currentStep === 3) {
+        <div class="form-section">
+          <app-document-upload
+            [documentTypes]="documentTypes"
+            [multiple]="true"
+            [maxFiles]="10"
+            (filesUploaded)="onDocumentsUploaded($event)"
+            (fileRemoved)="onDocumentRemoved($event)"
+          ></app-document-upload>
+        </div>
+      }
+    </form>
+  </main>
+
+  <!-- Navigation -->
+  <footer class="registration-footer">
+    <div class="footer-actions">
+      @if (currentStep > 1) {
+        <button 
+          type="button" 
+          class="btn-secondary"
+          (click)="previousStep()"
+          [disabled]="isSubmitting"
+        >
+          Previous
+        </button>
+      }
+
+      @if (currentStep < totalSteps) {
+        <button 
+          type="button" 
+          class="btn-primary"
+          (click)="nextStep()"
+          [disabled]="isSubmitting"
+        >
+          Next Step
+        </button>
+      }
+
+      @if (currentStep === totalSteps) {
+        <button 
+          type="button" 
+          class="btn-primary"
+          (click)="submitRegistration()"
+          [disabled]="isSubmitting || registrationForm.invalid"
+        >
+          @if (isSubmitting) {
+            <div class="btn-spinner"></div>
+            Submitting...
+          } @else {
+            Submit Registration
+          }
+        </button>
+      }
+    </div>
+  </footer>
+</div>

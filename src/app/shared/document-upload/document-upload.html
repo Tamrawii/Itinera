@@ -1,0 +1,120 @@
+<div class="document-upload" [class.disabled]="disabled">
+  <!-- Upload Area -->
+  <div 
+    class="upload-area"
+    [class.dragging]="isDragging"
+    (dragover)="onDragOver($event)"
+    (dragleave)="onDragLeave($event)"
+    (drop)="onDrop($event)"
+    [class.uploading]="isUploading()"
+  >
+    @if (!isUploading()) {
+      <div class="upload-content">
+        <lineicons [icon]="CloudUploadOutlined" [size]="48" [strokeWidth]="1.5"></lineicons>
+        <h3>Upload Documents</h3>
+        <p>Drag and drop files here, or click to browse</p>
+        
+        <input 
+          type="file" 
+          class="file-input"
+          [multiple]="multiple"
+          [disabled]="disabled"
+          (change)="onFileSelect($event)"
+          accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"
+        />
+        
+        <button class="browse-btn" [disabled]="disabled">
+          Choose Files
+        </button>
+      </div>
+    } @else {
+      <div class="uploading-content">
+        <div class="upload-spinner"></div>
+        <p>Uploading documents...</p>
+      </div>
+    }
+  </div>
+
+  <!-- Document Types Info -->
+  @if (documentTypes.length > 0) {
+    <div class="document-types">
+      <h4>Required Documents:</h4>
+      <ul>
+        @for (docType of documentTypes; track docType.id) {
+          <li [class.required]="docType.required">
+            <span class="doc-name">{{ docType.name }}</span>
+            <span class="doc-description">{{ docType.description }}</span>
+            @if (docType.required) {
+              <span class="required-badge">Required</span>
+            }
+          </li>
+        }
+      </ul>
+    </div>
+  }
+
+  <!-- Uploaded Files -->
+  @if (uploadedFiles.length > 0) {
+    <div class="uploaded-files">
+      <h4>Uploaded Documents ({{ uploadedFiles.length }}/{{ maxFiles }})</h4>
+      
+      @for (file of uploadedFiles; track file.id) {
+        <div class="file-item">
+          <div class="file-info">
+            <span class="file-icon">{{ getFileIcon(file.type) }}</span>
+            <div class="file-details">
+              <div class="file-name">{{ file.name }}</div>
+              <div class="file-meta">
+                {{ formatFileSize(file.size) }} • 
+                Uploaded {{ file.uploadedAt | date:'short' }}
+              </div>
+            </div>
+          </div>
+          
+          <div class="file-actions">
+            <button 
+              class="btn-view"
+              (click)="viewDocument(file.url)"
+              title="View document"
+            >
+              <lineicons [icon]="Search1Outlined" [size]="16" [strokeWidth]="1.5"></lineicons>
+            </button>
+            <button 
+              class="btn-remove"
+              (click)="removeFile(file)"
+              title="Remove document"
+            >
+              <lineicons [icon]="XOutlined" [size]="16" [strokeWidth]="1.5"></lineicons>
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+  }
+
+  <!-- Upload Progress -->
+  @if (isUploading()) {
+    <div class="upload-progress">
+      @for (progress of uploadProgress | keyvalue; track progress.key) {
+        <div class="progress-item">
+          <div class="progress-bar">
+            <div 
+              class="progress-fill" 
+              [style.width.%]="progress.value"
+            ></div>
+          </div>
+          <span class="progress-text">{{ progress.value }}%</span>
+        </div>
+      }
+    </div>
+  }
+
+  <!-- File Limit Info -->
+  <div class="upload-info">
+    <p>
+      Maximum file size: 10MB • 
+      Accepted formats: PDF, JPG, PNG, DOC, DOCX • 
+      Maximum files: {{ maxFiles }}
+    </p>
+  </div>
+</div>

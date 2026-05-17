@@ -10,12 +10,12 @@ import {
   Gear1Outlined,
   BarChart4Outlined,
 } from '@lineiconshq/free-icons';
-import { OfferService } from '../services/offer.service';
-import { Offers } from '../models/offers';
-import { UserProvider } from '../models/user-provider';
-import { UserProviderService } from '../services/user-provider.service';
-import { UserTourist } from '../models/user-tourist';
-import { UserTouristService } from '../services/user-tourist.service';
+import { OfferService } from '../core/services/offer.service';
+import { Offers } from '../core/models/offers.model';
+import { UserProvider } from '../core/models/user-provider.model';
+import { UserProviderService } from '../core/services/user-provider.service';
+import { UserTourist } from '../core/models/user-tourist.model';
+import { UserTouristService } from '../core/services/user-tourist.service';
 
 @Component({
   selector: 'app-admin-layout',

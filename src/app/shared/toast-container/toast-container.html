@@ -1,5 +1,5 @@
 <div class="fixed bottom-4 right-4 z-50 flex flex-col gap-2">
-  @for (toast of toastService.toasts(); track toast.id) {
+  @for (toast of (toasts$ | async) ?? []; track toast.id) {
     <div [class]="getToastClasses(toast.type)"
          class="flex items-center w-full max-w-xs p-4 rounded-lg shadow-lg transition-all duration-300" role="alert">
       <div class="inline-flex items-center justify-center shrink-0 w-8 h-8 rounded-lg" [class]="getIconBg(toast.type)">

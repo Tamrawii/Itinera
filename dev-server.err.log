@@ -1,0 +1,4044 @@
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: RouterLink is not used within the template of TouristWishlist[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.ts:24:4:
+[37m      24 │     [32mRouterLink[37m,
+         ╵     [32m~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: LineiconsComponent is not used within the template of TouristWishlist[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.ts:25:4:
+[37m      25 │     [32mLineiconsComponent[37m
+         ╵     [32m~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'Trash1Outlined'. Did you mean 'Trash3Outlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.ts:8:2:
+[37m      8 │   [32mTrash1Outlined[37m,
+        ╵   [32m~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'showError' does not exist on type 'ToastService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.ts:60:26:
+[37m      60 │         this.toastService.[32mshowError[37m('Failed to load wishlist');
+         ╵                           [32m~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'showSuccess' does not exist on type 'ToastService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.ts:76:26:
+[37m      76 │         this.toastService.[32mshowSuccess[37m('Item removed from wishlist');
+         ╵                           [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'showError' does not exist on type 'ToastService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.ts:80:26:
+[37m      80 │         this.toastService.[32mshowError[37m('Failed to remove item from wi...
+         ╵                           [32m~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG8002: Can't bind to 'ngModel' since it isn't a known property of 'input'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.html:17:10:
+[37m      17 │           [32m[(ngModel)]="searchTerm"[37m
+         ╵           [32m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component TouristWishlist.
+
+    src/app/tourist-layout/wishlist/wishlist.ts:27:15:
+[37m      27 │   templateUrl: [32m'./wishlist.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'Trash1Outlined'. Did you mean 'Trash3Outlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.ts:8:2:
+[37m      8 │   [32mTrash1Outlined[37m,
+        ╵   [32m~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'showError' does not exist on type 'ToastService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.ts:60:26:
+[37m      60 │         this.toastService.[32mshowError[37m('Failed to load wishlist');
+         ╵                           [32m~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'showSuccess' does not exist on type 'ToastService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.ts:76:26:
+[37m      76 │         this.toastService.[32mshowSuccess[37m('Item removed from wishlist');
+         ╵                           [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'showError' does not exist on type 'ToastService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.ts:80:26:
+[37m      80 │         this.toastService.[32mshowError[37m('Failed to remove item from wi...
+         ╵                           [32m~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG8002: Can't bind to 'ngModel' since it isn't a known property of 'input'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.html:17:10:
+[37m      17 │           [32m[(ngModel)]="searchTerm"[37m
+         ╵           [32m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component TouristWishlist.
+
+    src/app/tourist-layout/wishlist/wishlist.ts:28:15:
+[37m      28 │   templateUrl: [32m'./wishlist.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'Trash1Outlined'. Did you mean 'Trash3Outlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.ts:9:2:
+[37m      9 │   [32mTrash1Outlined[37m,
+        ╵   [32m~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'showError' does not exist on type 'ToastService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.ts:61:26:
+[37m      61 │         this.toastService.[32mshowError[37m('Failed to load wishlist');
+         ╵                           [32m~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'showSuccess' does not exist on type 'ToastService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.ts:77:26:
+[37m      77 │         this.toastService.[32mshowSuccess[37m('Item removed from wishlist');
+         ╵                           [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'showError' does not exist on type 'ToastService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.ts:81:26:
+[37m      81 │         this.toastService.[32mshowError[37m('Failed to remove item from wi...
+         ╵                           [32m~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'Trash1Outlined'. Did you mean 'Trash3Outlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.ts:9:2:
+[37m      9 │   [32mTrash1Outlined[37m,
+        ╵   [32m~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'showError' does not exist on type 'ToastService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.ts:62:26:
+[37m      62 │         this.toastService.[32mshowError[37m('Failed to load wishlist');
+         ╵                           [32m~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'showSuccess' does not exist on type 'ToastService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.ts:78:26:
+[37m      78 │         this.toastService.[32mshowSuccess[37m('Item removed from wishlist');
+         ╵                           [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'showError' does not exist on type 'ToastService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.ts:82:26:
+[37m      82 │         this.toastService.[32mshowError[37m('Failed to remove item from wi...
+         ╵                           [32m~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'Trash1Outlined'. Did you mean 'Trash3Outlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.ts:9:2:
+[37m      9 │   [32mTrash1Outlined[37m,
+        ╵   [32m~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'showError' does not exist on type 'ToastService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.ts:62:26:
+[37m      62 │         this.toastService.[32mshowError[37m('Failed to load wishlist');
+         ╵                           [32m~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'showSuccess' does not exist on type 'ToastService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.ts:78:26:
+[37m      78 │         this.toastService.[32mshowSuccess[37m('Item removed from wishlist');
+         ╵                           [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'showError' does not exist on type 'ToastService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.ts:82:26:
+[37m      82 │         this.toastService.[32mshowError[37m('Failed to remove item from wi...
+         ╵                           [32m~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: LineiconsComponent is not used within the template of FavoriteBtn[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/favorite-btn/favorite-btn.ts:13:4:
+[37m      13 │     [32mLineiconsComponent[37m
+         ╵     [32m~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Unexpected closing tag "button". It may happen when the tag has already been closed by another tag. For more info see https://www.w3.org/TR/html5/syntax.html#closing-elements-that-have-implied-end-tags[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/favorite-btn/favorite-btn.html:27:0:
+[37m      27 │ [32m</button>[37m
+         ╵ [32m~~~~~~~~~[0m
+
+  Error occurs in the template of component FavoriteBtn.
+
+    src/app/shared/favorite-btn/favorite-btn.ts:15:15:
+[37m      15 │   templateUrl: [32m'./favorite-btn.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'Trash1Outlined'. Did you mean 'Trash3Outlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.ts:9:2:
+[37m      9 │   [32mTrash1Outlined[37m,
+        ╵   [32m~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: LineiconsComponent is not used within the template of FavoriteBtn[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/favorite-btn/favorite-btn.ts:13:4:
+[37m      13 │     [32mLineiconsComponent[37m
+         ╵     [32m~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Unexpected closing tag "button". It may happen when the tag has already been closed by another tag. For more info see https://www.w3.org/TR/html5/syntax.html#closing-elements-that-have-implied-end-tags[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/favorite-btn/favorite-btn.html:27:0:
+[37m      27 │ [32m</button>[37m
+         ╵ [32m~~~~~~~~~[0m
+
+  Error occurs in the template of component FavoriteBtn.
+
+    src/app/shared/favorite-btn/favorite-btn.ts:15:15:
+[37m      15 │   templateUrl: [32m'./favorite-btn.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'Trash1Outlined'. Did you mean 'Trash3Outlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.ts:9:2:
+[37m      9 │   [32mTrash1Outlined[37m,
+        ╵   [32m~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: LineiconsComponent is not used within the template of FavoriteBtn[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/favorite-btn/favorite-btn.ts:13:4:
+[37m      13 │     [32mLineiconsComponent[37m
+         ╵     [32m~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Unexpected closing tag "button". It may happen when the tag has already been closed by another tag. For more info see https://www.w3.org/TR/html5/syntax.html#closing-elements-that-have-implied-end-tags[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/favorite-btn/favorite-btn.html:27:0:
+[37m      27 │ [32m</button>[37m
+         ╵ [32m~~~~~~~~~[0m
+
+  Error occurs in the template of component FavoriteBtn.
+
+    src/app/shared/favorite-btn/favorite-btn.ts:15:15:
+[37m      15 │   templateUrl: [32m'./favorite-btn.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'Trash1Outlined'. Did you mean 'Trash3Outlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.ts:9:2:
+[37m      9 │   [32mTrash1Outlined[37m,
+        ╵   [32m~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: LineiconsComponent is not used within the template of FavoriteBtn[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/favorite-btn/favorite-btn.ts:13:4:
+[37m      13 │     [32mLineiconsComponent[37m
+         ╵     [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: FavoriteBtn is not used within the template of TouristDashboard[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/dashboard/dashboard.ts:53:4:
+[37m      53 │     [32mFavoriteBtn[37m
+         ╵     [32m~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Unexpected closing tag "button". It may happen when the tag has already been closed by another tag. For more info see https://www.w3.org/TR/html5/syntax.html#closing-elements-that-have-implied-end-tags[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/favorite-btn/favorite-btn.html:27:0:
+[37m      27 │ [32m</button>[37m
+         ╵ [32m~~~~~~~~~[0m
+
+  Error occurs in the template of component FavoriteBtn.
+
+    src/app/shared/favorite-btn/favorite-btn.ts:15:15:
+[37m      15 │   templateUrl: [32m'./favorite-btn.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'Trash1Outlined'. Did you mean 'Trash3Outlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.ts:9:2:
+[37m      9 │   [32mTrash1Outlined[37m,
+        ╵   [32m~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: LineiconsComponent is not used within the template of FavoriteBtn[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/favorite-btn/favorite-btn.ts:13:4:
+[37m      13 │     [32mLineiconsComponent[37m
+         ╵     [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: FavoriteBtn is not used within the template of TouristDashboard[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/dashboard/dashboard.ts:53:4:
+[37m      53 │     [32mFavoriteBtn[37m
+         ╵     [32m~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Unexpected closing tag "button". It may happen when the tag has already been closed by another tag. For more info see https://www.w3.org/TR/html5/syntax.html#closing-elements-that-have-implied-end-tags[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/favorite-btn/favorite-btn.html:27:0:
+[37m      27 │ [32m</button>[37m
+         ╵ [32m~~~~~~~~~[0m
+
+  Error occurs in the template of component FavoriteBtn.
+
+    src/app/shared/favorite-btn/favorite-btn.ts:15:15:
+[37m      15 │   templateUrl: [32m'./favorite-btn.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'Trash1Outlined'. Did you mean 'Trash3Outlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.ts:9:2:
+[37m      9 │   [32mTrash1Outlined[37m,
+        ╵   [32m~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: LineiconsComponent is not used within the template of FavoriteBtn[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/favorite-btn/favorite-btn.ts:13:4:
+[37m      13 │     [32mLineiconsComponent[37m
+         ╵     [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: FavoriteBtn is not used within the template of TouristDashboard[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/dashboard/dashboard.ts:53:4:
+[37m      53 │     [32mFavoriteBtn[37m
+         ╵     [32m~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Unexpected closing tag "button". It may happen when the tag has already been closed by another tag. For more info see https://www.w3.org/TR/html5/syntax.html#closing-elements-that-have-implied-end-tags[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/favorite-btn/favorite-btn.html:27:0:
+[37m      27 │ [32m</button>[37m
+         ╵ [32m~~~~~~~~~[0m
+
+  Error occurs in the template of component FavoriteBtn.
+
+    src/app/shared/favorite-btn/favorite-btn.ts:15:15:
+[37m      15 │   templateUrl: [32m'./favorite-btn.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'Trash1Outlined'. Did you mean 'Trash3Outlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.ts:9:2:
+[37m      9 │   [32mTrash1Outlined[37m,
+        ╵   [32m~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: LineiconsComponent is not used within the template of FavoriteBtn[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/favorite-btn/favorite-btn.ts:13:4:
+[37m      13 │     [32mLineiconsComponent[37m
+         ╵     [32m~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Unexpected closing tag "button". It may happen when the tag has already been closed by another tag. For more info see https://www.w3.org/TR/html5/syntax.html#closing-elements-that-have-implied-end-tags[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/favorite-btn/favorite-btn.html:27:0:
+[37m      27 │ [32m</button>[37m
+         ╵ [32m~~~~~~~~~[0m
+
+  Error occurs in the template of component FavoriteBtn.
+
+    src/app/shared/favorite-btn/favorite-btn.ts:15:15:
+[37m      15 │   templateUrl: [32m'./favorite-btn.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'serviceId' does not exist on type 'WishlistItem'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/dashboard/dashboard.html:103:34:
+[37m      103 │                 [serviceId]="item.[32mserviceId[37m"
+          ╵                                   [32m~~~~~~~~~[0m
+
+  Error occurs in the template of component TouristDashboard.
+
+    src/app/tourist-layout/dashboard/dashboard.ts:55:15:
+[37m      55 │   templateUrl: [32m'./dashboard.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'serviceId' does not exist on type 'WishlistItem'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/dashboard/dashboard.html:106:59:
+[37m      106 │ ...  (favoriteChanged)="removeFromWishlist(item.[32mserviceId[37m, item.id)"
+          ╵                                                 [32m~~~~~~~~~[0m
+
+  Error occurs in the template of component TouristDashboard.
+
+    src/app/tourist-layout/dashboard/dashboard.ts:55:15:
+[37m      55 │   templateUrl: [32m'./dashboard.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'Trash1Outlined'. Did you mean 'Trash3Outlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.ts:9:2:
+[37m      9 │   [32mTrash1Outlined[37m,
+        ╵   [32m~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: LineiconsComponent is not used within the template of FavoriteBtn[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/favorite-btn/favorite-btn.ts:13:4:
+[37m      13 │     [32mLineiconsComponent[37m
+         ╵     [32m~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Unexpected closing tag "button". It may happen when the tag has already been closed by another tag. For more info see https://www.w3.org/TR/html5/syntax.html#closing-elements-that-have-implied-end-tags[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/favorite-btn/favorite-btn.html:27:0:
+[37m      27 │ [32m</button>[37m
+         ╵ [32m~~~~~~~~~[0m
+
+  Error occurs in the template of component FavoriteBtn.
+
+    src/app/shared/favorite-btn/favorite-btn.ts:15:15:
+[37m      15 │   templateUrl: [32m'./favorite-btn.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'serviceId' does not exist on type 'WishlistItem'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/dashboard/dashboard.html:103:34:
+[37m      103 │                 [serviceId]="item.[32mserviceId[37m"
+          ╵                                   [32m~~~~~~~~~[0m
+
+  Error occurs in the template of component TouristDashboard.
+
+    src/app/tourist-layout/dashboard/dashboard.ts:55:15:
+[37m      55 │   templateUrl: [32m'./dashboard.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'serviceId' does not exist on type 'WishlistItem'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/dashboard/dashboard.html:106:59:
+[37m      106 │ ...  (favoriteChanged)="removeFromWishlist(item.[32mserviceId[37m, item.id)"
+          ╵                                                 [32m~~~~~~~~~[0m
+
+  Error occurs in the template of component TouristDashboard.
+
+    src/app/tourist-layout/dashboard/dashboard.ts:55:15:
+[37m      55 │   templateUrl: [32m'./dashboard.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'Trash1Outlined'. Did you mean 'Trash3Outlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.ts:9:2:
+[37m      9 │   [32mTrash1Outlined[37m,
+        ╵   [32m~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: LineiconsComponent is not used within the template of FavoriteBtn[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/favorite-btn/favorite-btn.ts:13:4:
+[37m      13 │     [32mLineiconsComponent[37m
+         ╵     [32m~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Unexpected closing tag "button". It may happen when the tag has already been closed by another tag. For more info see https://www.w3.org/TR/html5/syntax.html#closing-elements-that-have-implied-end-tags[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/favorite-btn/favorite-btn.html:27:0:
+[37m      27 │ [32m</button>[37m
+         ╵ [32m~~~~~~~~~[0m
+
+  Error occurs in the template of component FavoriteBtn.
+
+    src/app/shared/favorite-btn/favorite-btn.ts:15:15:
+[37m      15 │   templateUrl: [32m'./favorite-btn.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'serviceId' does not exist on type 'WishlistItem'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/dashboard/dashboard.html:103:34:
+[37m      103 │                 [serviceId]="item.[32mserviceId[37m"
+          ╵                                   [32m~~~~~~~~~[0m
+
+  Error occurs in the template of component TouristDashboard.
+
+    src/app/tourist-layout/dashboard/dashboard.ts:55:15:
+[37m      55 │   templateUrl: [32m'./dashboard.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'serviceId' does not exist on type 'WishlistItem'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/dashboard/dashboard.html:106:59:
+[37m      106 │ ...  (favoriteChanged)="removeFromWishlist(item.[32mserviceId[37m, item.id)"
+          ╵                                                 [32m~~~~~~~~~[0m
+
+  Error occurs in the template of component TouristDashboard.
+
+    src/app/tourist-layout/dashboard/dashboard.ts:55:15:
+[37m      55 │   templateUrl: [32m'./dashboard.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2663: Cannot find name 'Trash1Outlined'. Did you mean the instance member 'this.Trash1Outlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.ts:35:28:
+[37m      35 │   readonly Trash1Outlined = [32mTrash1Outlined[37m;
+         ╵                             [32m~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: LineiconsComponent is not used within the template of FavoriteBtn[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/favorite-btn/favorite-btn.ts:13:4:
+[37m      13 │     [32mLineiconsComponent[37m
+         ╵     [32m~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Unexpected closing tag "button". It may happen when the tag has already been closed by another tag. For more info see https://www.w3.org/TR/html5/syntax.html#closing-elements-that-have-implied-end-tags[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/favorite-btn/favorite-btn.html:27:0:
+[37m      27 │ [32m</button>[37m
+         ╵ [32m~~~~~~~~~[0m
+
+  Error occurs in the template of component FavoriteBtn.
+
+    src/app/shared/favorite-btn/favorite-btn.ts:15:15:
+[37m      15 │   templateUrl: [32m'./favorite-btn.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'serviceId' does not exist on type 'WishlistItem'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/dashboard/dashboard.html:103:34:
+[37m      103 │                 [serviceId]="item.[32mserviceId[37m"
+          ╵                                   [32m~~~~~~~~~[0m
+
+  Error occurs in the template of component TouristDashboard.
+
+    src/app/tourist-layout/dashboard/dashboard.ts:55:15:
+[37m      55 │   templateUrl: [32m'./dashboard.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'serviceId' does not exist on type 'WishlistItem'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/dashboard/dashboard.html:106:59:
+[37m      106 │ ...  (favoriteChanged)="removeFromWishlist(item.[32mserviceId[37m, item.id)"
+          ╵                                                 [32m~~~~~~~~~[0m
+
+  Error occurs in the template of component TouristDashboard.
+
+    src/app/tourist-layout/dashboard/dashboard.ts:55:15:
+[37m      55 │   templateUrl: [32m'./dashboard.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'Trash1Outlined' does not exist on type 'TouristWishlist'. Did you mean 'Trash3Outlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/wishlist/wishlist.html:84:39:
+[37m      84 │ ...      <lineicons [icon]="[32mTrash1Outlined[37m" [size]="16" [strokeWid...
+         ╵                             [32m~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component TouristWishlist.
+
+    src/app/tourist-layout/wishlist/wishlist.ts:29:15:
+[37m      29 │   templateUrl: [32m'./wishlist.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: LineiconsComponent is not used within the template of FavoriteBtn[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/favorite-btn/favorite-btn.ts:13:4:
+[37m      13 │     [32mLineiconsComponent[37m
+         ╵     [32m~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Unexpected closing tag "button". It may happen when the tag has already been closed by another tag. For more info see https://www.w3.org/TR/html5/syntax.html#closing-elements-that-have-implied-end-tags[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/favorite-btn/favorite-btn.html:27:0:
+[37m      27 │ [32m</button>[37m
+         ╵ [32m~~~~~~~~~[0m
+
+  Error occurs in the template of component FavoriteBtn.
+
+    src/app/shared/favorite-btn/favorite-btn.ts:15:15:
+[37m      15 │   templateUrl: [32m'./favorite-btn.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'serviceId' does not exist on type 'WishlistItem'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/dashboard/dashboard.html:103:34:
+[37m      103 │                 [serviceId]="item.[32mserviceId[37m"
+          ╵                                   [32m~~~~~~~~~[0m
+
+  Error occurs in the template of component TouristDashboard.
+
+    src/app/tourist-layout/dashboard/dashboard.ts:55:15:
+[37m      55 │   templateUrl: [32m'./dashboard.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'serviceId' does not exist on type 'WishlistItem'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/dashboard/dashboard.html:106:59:
+[37m      106 │ ...  (favoriteChanged)="removeFromWishlist(item.[32mserviceId[37m, item.id)"
+          ╵                                                 [32m~~~~~~~~~[0m
+
+  Error occurs in the template of component TouristDashboard.
+
+    src/app/tourist-layout/dashboard/dashboard.ts:55:15:
+[37m      55 │   templateUrl: [32m'./dashboard.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: LineiconsComponent is not used within the template of FavoriteBtn[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/favorite-btn/favorite-btn.ts:13:4:
+[37m      13 │     [32mLineiconsComponent[37m
+         ╵     [32m~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Unexpected closing tag "button". It may happen when the tag has already been closed by another tag. For more info see https://www.w3.org/TR/html5/syntax.html#closing-elements-that-have-implied-end-tags[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/favorite-btn/favorite-btn.html:27:0:
+[37m      27 │ [32m</button>[37m
+         ╵ [32m~~~~~~~~~[0m
+
+  Error occurs in the template of component FavoriteBtn.
+
+    src/app/shared/favorite-btn/favorite-btn.ts:15:15:
+[37m      15 │   templateUrl: [32m'./favorite-btn.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2741: Property 'serviceId' is missing in type '{ id: string; name: string; category: string; price: number; image: string; location: string; }' but required in type 'WishlistItem'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/dashboard/dashboard.ts:111:4:
+[37m      111 │     [32m{[37m
+          ╵     [32m^[0m
+
+  'serviceId' is declared here.
+
+    src/app/tourist-layout/dashboard/dashboard.ts:38:2:
+[37m      38 │   [32mserviceId[37m: number;
+         ╵   [32m~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2741: Property 'serviceId' is missing in type '{ id: string; name: string; category: string; price: number; image: string; location: string; }' but required in type 'WishlistItem'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/dashboard/dashboard.ts:119:4:
+[37m      119 │     [32m{[37m
+          ╵     [32m^[0m
+
+  'serviceId' is declared here.
+
+    src/app/tourist-layout/dashboard/dashboard.ts:38:2:
+[37m      38 │   [32mserviceId[37m: number;
+         ╵   [32m~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: LineiconsComponent is not used within the template of FavoriteBtn[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/favorite-btn/favorite-btn.ts:13:4:
+[37m      13 │     [32mLineiconsComponent[37m
+         ╵     [32m~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Unexpected closing tag "button". It may happen when the tag has already been closed by another tag. For more info see https://www.w3.org/TR/html5/syntax.html#closing-elements-that-have-implied-end-tags[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/favorite-btn/favorite-btn.html:27:0:
+[37m      27 │ [32m</button>[37m
+         ╵ [32m~~~~~~~~~[0m
+
+  Error occurs in the template of component FavoriteBtn.
+
+    src/app/shared/favorite-btn/favorite-btn.ts:15:15:
+[37m      15 │   templateUrl: [32m'./favorite-btn.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: LineiconsComponent is not used within the template of FavoriteBtn[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/favorite-btn/favorite-btn.ts:13:4:
+[37m      13 │     [32mLineiconsComponent[37m
+         ╵     [32m~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Unexpected closing tag "button". It may happen when the tag has already been closed by another tag. For more info see https://www.w3.org/TR/html5/syntax.html#closing-elements-that-have-implied-end-tags[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/favorite-btn/favorite-btn.html:27:0:
+[37m      27 │ [32m</button>[37m
+         ╵ [32m~~~~~~~~~[0m
+
+  Error occurs in the template of component FavoriteBtn.
+
+    src/app/shared/favorite-btn/favorite-btn.ts:15:15:
+[37m      15 │   templateUrl: [32m'./favorite-btn.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: LineiconsComponent is not used within the template of ReviewsList[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mLineiconsComponent[37m,
+         ╵     [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: StarRating is not used within the template of ReviewsList[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:26:4:
+[37m      26 │     [32mStarRating[37m
+         ╵     [32m~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: LineiconsComponent is not used within the template of TouristReviews[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:16:4:
+[37m      16 │     [32mLineiconsComponent[37m,
+         ╵     [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: ReviewsList is not used within the template of TouristReviews[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:17:4:
+[37m      17 │     [32mReviewsList[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: ReviewForm is not used within the template of TouristReviews[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:18:4:
+[37m      18 │     [32mReviewForm[37m
+         ╵     [32m~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Incomplete block "if". If you meant to write the @ character, you should use the "&#64;" HTML entity instead.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:51:11:
+[37m      51 │         <p>[32m@if (searchTerm) [37mTry adjusting your search terms @else ...
+         ╵            [32m~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:28:15:
+[37m      28 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Incomplete block "else Be the first to share your experience". If you meant to write the @ character, you should use the "&#64;" HTML entity instead.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:51:60:
+[37m      51 │ ...arch terms [32m@else Be the first to share your experience[37m! @endif</p>
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:28:15:
+[37m      28 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'Edit1Outlined'. Did you mean 'ExitOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:8:2:
+[37m      8 │   [32mEdit1Outlined[37m,
+        ╵   [32m~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'firstName' does not exist on type 'User'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:72:26:
+[37m      72 │           review.tourist?.[32mfirstName[37m || '',
+         ╵                           [32m~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'lastName' does not exist on type 'User'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:73:26:
+[37m      73 │           review.tourist?.[32mlastName[37m || ''
+         ╵                           [32m~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'Plus1Outlined'. Did you mean 'PlusOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:4:9:
+[37m      4 │ import { [32mPlus1Outlined[37m, StarFatOutlined } from '@lineiconshq/free-i...
+        ╵          [32m~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2739: Type '{ id: number; name: string; description: string; price: number; category: string; }' is missing the following properties from type 'Service': provider_id, images, availability, created_at, updated_at[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:93:8:
+[37m      93 │         [32mservice[37m: {
+         ╵         [32m~~~~~~~[0m
+
+  The expected type comes from property 'service' which is declared here on type 'Review'
+
+    src/app/core/models/review.model.ts:9:2:
+[37m      9 │   [32mservice[37m?: Service;
+        ╵   [32m~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2353: Object literal may only specify known properties, and 'firstName' does not exist in type 'User'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:102:10:
+[37m      102 │           [32mfirstName[37m: 'John',
+          ╵           [32m~~~~~~~~~[0m
+
+  The expected type comes from property 'tourist' which is declared here on type 'Review'
+
+    src/app/core/models/review.model.ts:7:2:
+[37m      7 │   [32mtourist[37m?: User;
+        ╵   [32m~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: LineiconsComponent is not used within the template of ReviewsList[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mLineiconsComponent[37m,
+         ╵     [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: StarRating is not used within the template of ReviewsList[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:26:4:
+[37m      26 │     [32mStarRating[37m
+         ╵     [32m~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Incomplete block "if". If you meant to write the @ character, you should use the "&#64;" HTML entity instead.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:51:11:
+[37m      51 │         <p>[32m@if (searchTerm) [37mTry adjusting your search terms @else ...
+         ╵            [32m~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:28:15:
+[37m      28 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Incomplete block "else Be the first to share your experience". If you meant to write the @ character, you should use the "&#64;" HTML entity instead.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:51:60:
+[37m      51 │ ...arch terms [32m@else Be the first to share your experience[37m! @endif</p>
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:28:15:
+[37m      28 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'Edit1Outlined'. Did you mean 'ExitOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:8:2:
+[37m      8 │   [32mEdit1Outlined[37m,
+        ╵   [32m~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'firstName' does not exist on type 'User'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:72:26:
+[37m      72 │           review.tourist?.[32mfirstName[37m || '',
+         ╵                           [32m~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'lastName' does not exist on type 'User'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:73:26:
+[37m      73 │           review.tourist?.[32mlastName[37m || ''
+         ╵                           [32m~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'Plus1Outlined'. Did you mean 'PlusOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:4:9:
+[37m      4 │ import { [32mPlus1Outlined[37m, StarFatOutlined } from '@lineiconshq/free-i...
+        ╵          [32m~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2739: Type '{ id: number; name: string; description: string; price: number; category: string; }' is missing the following properties from type 'Service': provider_id, images, availability, created_at, updated_at[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:93:8:
+[37m      93 │         [32mservice[37m: {
+         ╵         [32m~~~~~~~[0m
+
+  The expected type comes from property 'service' which is declared here on type 'Review'
+
+    src/app/core/models/review.model.ts:9:2:
+[37m      9 │   [32mservice[37m?: Service;
+        ╵   [32m~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2353: Object literal may only specify known properties, and 'firstName' does not exist in type 'User'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:102:10:
+[37m      102 │           [32mfirstName[37m: 'John',
+          ╵           [32m~~~~~~~~~[0m
+
+  The expected type comes from property 'tourist' which is declared here on type 'Review'
+
+    src/app/core/models/review.model.ts:7:2:
+[37m      7 │   [32mtourist[37m?: User;
+        ╵   [32m~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: LineiconsComponent is not used within the template of ReviewsList[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mLineiconsComponent[37m,
+         ╵     [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: StarRating is not used within the template of ReviewsList[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:26:4:
+[37m      26 │     [32mStarRating[37m
+         ╵     [32m~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Incomplete block "if". If you meant to write the @ character, you should use the "&#64;" HTML entity instead.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:51:11:
+[37m      51 │         <p>[32m@if (searchTerm) [37mTry adjusting your search terms @else ...
+         ╵            [32m~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:28:15:
+[37m      28 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Incomplete block "else Be the first to share your experience". If you meant to write the @ character, you should use the "&#64;" HTML entity instead.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:51:60:
+[37m      51 │ ...arch terms [32m@else Be the first to share your experience[37m! @endif</p>
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:28:15:
+[37m      28 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'Edit1Outlined'. Did you mean 'ExitOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:8:2:
+[37m      8 │   [32mEdit1Outlined[37m,
+        ╵   [32m~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'firstName' does not exist on type 'User'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:72:26:
+[37m      72 │           review.tourist?.[32mfirstName[37m || '',
+         ╵                           [32m~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'lastName' does not exist on type 'User'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:73:26:
+[37m      73 │           review.tourist?.[32mlastName[37m || ''
+         ╵                           [32m~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'Plus1Outlined'. Did you mean 'PlusOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:4:9:
+[37m      4 │ import { [32mPlus1Outlined[37m, StarFatOutlined } from '@lineiconshq/free-i...
+        ╵          [32m~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2739: Type '{ id: number; name: string; description: string; price: number; category: string; }' is missing the following properties from type 'Service': provider_id, images, availability, created_at, updated_at[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:93:8:
+[37m      93 │         [32mservice[37m: {
+         ╵         [32m~~~~~~~[0m
+
+  The expected type comes from property 'service' which is declared here on type 'Review'
+
+    src/app/core/models/review.model.ts:9:2:
+[37m      9 │   [32mservice[37m?: Service;
+        ╵   [32m~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2353: Object literal may only specify known properties, and 'firstName' does not exist in type 'User'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:102:10:
+[37m      102 │           [32mfirstName[37m: 'John',
+          ╵           [32m~~~~~~~~~[0m
+
+  The expected type comes from property 'tourist' which is declared here on type 'Review'
+
+    src/app/core/models/review.model.ts:7:2:
+[37m      7 │   [32mtourist[37m?: User;
+        ╵   [32m~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: LineiconsComponent is not used within the template of ReviewsList[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mLineiconsComponent[37m,
+         ╵     [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: StarRating is not used within the template of ReviewsList[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:26:4:
+[37m      26 │     [32mStarRating[37m
+         ╵     [32m~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Incomplete block "if". If you meant to write the @ character, you should use the "&#64;" HTML entity instead.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:51:11:
+[37m      51 │         <p>[32m@if (searchTerm) [37mTry adjusting your search terms @else ...
+         ╵            [32m~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:28:15:
+[37m      28 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Incomplete block "else Be the first to share your experience". If you meant to write the @ character, you should use the "&#64;" HTML entity instead.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:51:60:
+[37m      51 │ ...arch terms [32m@else Be the first to share your experience[37m! @endif</p>
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:28:15:
+[37m      28 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'EditOutlined'. Did you mean 'ExitOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:8:2:
+[37m      8 │   [32mEditOutlined[37m,
+        ╵   [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2663: Cannot find name 'Edit1Outlined'. Did you mean the instance member 'this.Edit1Outlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:35:27:
+[37m      35 │   readonly Edit1Outlined = [32mEdit1Outlined[37m;
+         ╵                            [32m~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'firstName' does not exist on type 'User'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:72:26:
+[37m      72 │           review.tourist?.[32mfirstName[37m || '',
+         ╵                           [32m~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'lastName' does not exist on type 'User'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:73:26:
+[37m      73 │           review.tourist?.[32mlastName[37m || ''
+         ╵                           [32m~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'Plus1Outlined'. Did you mean 'PlusOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:4:9:
+[37m      4 │ import { [32mPlus1Outlined[37m, StarFatOutlined } from '@lineiconshq/free-i...
+        ╵          [32m~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2739: Type '{ id: number; name: string; description: string; price: number; category: string; }' is missing the following properties from type 'Service': provider_id, images, availability, created_at, updated_at[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:93:8:
+[37m      93 │         [32mservice[37m: {
+         ╵         [32m~~~~~~~[0m
+
+  The expected type comes from property 'service' which is declared here on type 'Review'
+
+    src/app/core/models/review.model.ts:9:2:
+[37m      9 │   [32mservice[37m?: Service;
+        ╵   [32m~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2353: Object literal may only specify known properties, and 'firstName' does not exist in type 'User'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:102:10:
+[37m      102 │           [32mfirstName[37m: 'John',
+          ╵           [32m~~~~~~~~~[0m
+
+  The expected type comes from property 'tourist' which is declared here on type 'Review'
+
+    src/app/core/models/review.model.ts:7:2:
+[37m      7 │   [32mtourist[37m?: User;
+        ╵   [32m~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: LineiconsComponent is not used within the template of ReviewsList[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mLineiconsComponent[37m,
+         ╵     [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: StarRating is not used within the template of ReviewsList[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:26:4:
+[37m      26 │     [32mStarRating[37m
+         ╵     [32m~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Incomplete block "if". If you meant to write the @ character, you should use the "&#64;" HTML entity instead.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:51:11:
+[37m      51 │         <p>[32m@if (searchTerm) [37mTry adjusting your search terms @else ...
+         ╵            [32m~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:28:15:
+[37m      28 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Incomplete block "else Be the first to share your experience". If you meant to write the @ character, you should use the "&#64;" HTML entity instead.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:51:60:
+[37m      51 │ ...arch terms [32m@else Be the first to share your experience[37m! @endif</p>
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:28:15:
+[37m      28 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'EditOutlined'. Did you mean 'ExitOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:8:2:
+[37m      8 │   [32mEditOutlined[37m,
+        ╵   [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'firstName' does not exist on type 'User'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:72:26:
+[37m      72 │           review.tourist?.[32mfirstName[37m || '',
+         ╵                           [32m~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'lastName' does not exist on type 'User'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:73:26:
+[37m      73 │           review.tourist?.[32mlastName[37m || ''
+         ╵                           [32m~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'Plus1Outlined'. Did you mean 'PlusOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:4:9:
+[37m      4 │ import { [32mPlus1Outlined[37m, StarFatOutlined } from '@lineiconshq/free-i...
+        ╵          [32m~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2739: Type '{ id: number; name: string; description: string; price: number; category: string; }' is missing the following properties from type 'Service': provider_id, images, availability, created_at, updated_at[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:93:8:
+[37m      93 │         [32mservice[37m: {
+         ╵         [32m~~~~~~~[0m
+
+  The expected type comes from property 'service' which is declared here on type 'Review'
+
+    src/app/core/models/review.model.ts:9:2:
+[37m      9 │   [32mservice[37m?: Service;
+        ╵   [32m~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2353: Object literal may only specify known properties, and 'firstName' does not exist in type 'User'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:102:10:
+[37m      102 │           [32mfirstName[37m: 'John',
+          ╵           [32m~~~~~~~~~[0m
+
+  The expected type comes from property 'tourist' which is declared here on type 'Review'
+
+    src/app/core/models/review.model.ts:7:2:
+[37m      7 │   [32mtourist[37m?: User;
+        ╵   [32m~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: LineiconsComponent is not used within the template of ReviewsList[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mLineiconsComponent[37m,
+         ╵     [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: StarRating is not used within the template of ReviewsList[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:26:4:
+[37m      26 │     [32mStarRating[37m
+         ╵     [32m~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Incomplete block "if". If you meant to write the @ character, you should use the "&#64;" HTML entity instead.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:51:11:
+[37m      51 │         <p>[32m@if (searchTerm) [37mTry adjusting your search terms @else ...
+         ╵            [32m~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:28:15:
+[37m      28 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Incomplete block "else Be the first to share your experience". If you meant to write the @ character, you should use the "&#64;" HTML entity instead.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:51:60:
+[37m      51 │ ...arch terms [32m@else Be the first to share your experience[37m! @endif</p>
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:28:15:
+[37m      28 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'EditOutlined'. Did you mean 'ExitOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:8:2:
+[37m      8 │   [32mEditOutlined[37m,
+        ╵   [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'firstName' does not exist on type 'User'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:72:26:
+[37m      72 │           review.tourist?.[32mfirstName[37m || '',
+         ╵                           [32m~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'lastName' does not exist on type 'User'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:73:26:
+[37m      73 │           review.tourist?.[32mlastName[37m || ''
+         ╵                           [32m~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2663: Cannot find name 'Plus1Outlined'. Did you mean the instance member 'this.Plus1Outlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:24:27:
+[37m      24 │   readonly Plus1Outlined = [32mPlus1Outlined[37m;
+         ╵                            [32m~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2739: Type '{ id: number; name: string; description: string; price: number; category: string; }' is missing the following properties from type 'Service': provider_id, images, availability, created_at, updated_at[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:93:8:
+[37m      93 │         [32mservice[37m: {
+         ╵         [32m~~~~~~~[0m
+
+  The expected type comes from property 'service' which is declared here on type 'Review'
+
+    src/app/core/models/review.model.ts:9:2:
+[37m      9 │   [32mservice[37m?: Service;
+        ╵   [32m~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2353: Object literal may only specify known properties, and 'firstName' does not exist in type 'User'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:102:10:
+[37m      102 │           [32mfirstName[37m: 'John',
+          ╵           [32m~~~~~~~~~[0m
+
+  The expected type comes from property 'tourist' which is declared here on type 'Review'
+
+    src/app/core/models/review.model.ts:7:2:
+[37m      7 │   [32mtourist[37m?: User;
+        ╵   [32m~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: LineiconsComponent is not used within the template of ReviewsList[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mLineiconsComponent[37m,
+         ╵     [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: StarRating is not used within the template of ReviewsList[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:26:4:
+[37m      26 │     [32mStarRating[37m
+         ╵     [32m~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Incomplete block "if". If you meant to write the @ character, you should use the "&#64;" HTML entity instead.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:51:11:
+[37m      51 │         <p>[32m@if (searchTerm) [37mTry adjusting your search terms @else ...
+         ╵            [32m~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:28:15:
+[37m      28 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Incomplete block "else Be the first to share your experience". If you meant to write the @ character, you should use the "&#64;" HTML entity instead.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:51:60:
+[37m      51 │ ...arch terms [32m@else Be the first to share your experience[37m! @endif</p>
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:28:15:
+[37m      28 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'EditOutlined'. Did you mean 'ExitOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:8:2:
+[37m      8 │   [32mEditOutlined[37m,
+        ╵   [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'firstName' does not exist on type 'User'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:72:26:
+[37m      72 │           review.tourist?.[32mfirstName[37m || '',
+         ╵                           [32m~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'lastName' does not exist on type 'User'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:73:26:
+[37m      73 │           review.tourist?.[32mlastName[37m || ''
+         ╵                           [32m~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'Plus1Outlined' does not exist on type 'TouristReviews'. Did you mean 'PlusOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.html:11:27:
+[37m      11 │         <lineicons [icon]="[32mPlus1Outlined[37m" [size]="16" [strokeWidth...
+         ╵                            [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component TouristReviews.
+
+    src/app/tourist-layout/reviews/reviews.ts:20:15:
+[37m      20 │   templateUrl: [32m'./reviews.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2739: Type '{ id: number; name: string; description: string; price: number; category: string; }' is missing the following properties from type 'Service': provider_id, images, availability, created_at, updated_at[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:93:8:
+[37m      93 │         [32mservice[37m: {
+         ╵         [32m~~~~~~~[0m
+
+  The expected type comes from property 'service' which is declared here on type 'Review'
+
+    src/app/core/models/review.model.ts:9:2:
+[37m      9 │   [32mservice[37m?: Service;
+        ╵   [32m~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2353: Object literal may only specify known properties, and 'firstName' does not exist in type 'User'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:102:10:
+[37m      102 │           [32mfirstName[37m: 'John',
+          ╵           [32m~~~~~~~~~[0m
+
+  The expected type comes from property 'tourist' which is declared here on type 'Review'
+
+    src/app/core/models/review.model.ts:7:2:
+[37m      7 │   [32mtourist[37m?: User;
+        ╵   [32m~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: LineiconsComponent is not used within the template of ReviewsList[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mLineiconsComponent[37m,
+         ╵     [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: StarRating is not used within the template of ReviewsList[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:26:4:
+[37m      26 │     [32mStarRating[37m
+         ╵     [32m~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Incomplete block "if". If you meant to write the @ character, you should use the "&#64;" HTML entity instead.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:51:11:
+[37m      51 │         <p>[32m@if (searchTerm) [37mTry adjusting your search terms @else ...
+         ╵            [32m~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:28:15:
+[37m      28 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Incomplete block "else Be the first to share your experience". If you meant to write the @ character, you should use the "&#64;" HTML entity instead.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:51:60:
+[37m      51 │ ...arch terms [32m@else Be the first to share your experience[37m! @endif</p>
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:28:15:
+[37m      28 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'EditOutlined'. Did you mean 'ExitOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:8:2:
+[37m      8 │   [32mEditOutlined[37m,
+        ╵   [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'Plus1Outlined' does not exist on type 'TouristReviews'. Did you mean 'PlusOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.html:11:27:
+[37m      11 │         <lineicons [icon]="[32mPlus1Outlined[37m" [size]="16" [strokeWidth...
+         ╵                            [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component TouristReviews.
+
+    src/app/tourist-layout/reviews/reviews.ts:20:15:
+[37m      20 │   templateUrl: [32m'./reviews.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2739: Type '{ id: number; name: string; description: string; price: number; category: string; }' is missing the following properties from type 'Service': provider_id, images, availability, created_at, updated_at[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:93:8:
+[37m      93 │         [32mservice[37m: {
+         ╵         [32m~~~~~~~[0m
+
+  The expected type comes from property 'service' which is declared here on type 'Review'
+
+    src/app/core/models/review.model.ts:9:2:
+[37m      9 │   [32mservice[37m?: Service;
+        ╵   [32m~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2353: Object literal may only specify known properties, and 'firstName' does not exist in type 'User'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:102:10:
+[37m      102 │           [32mfirstName[37m: 'John',
+          ╵           [32m~~~~~~~~~[0m
+
+  The expected type comes from property 'tourist' which is declared here on type 'Review'
+
+    src/app/core/models/review.model.ts:7:2:
+[37m      7 │   [32mtourist[37m?: User;
+        ╵   [32m~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: LineiconsComponent is not used within the template of ReviewsList[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mLineiconsComponent[37m,
+         ╵     [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: StarRating is not used within the template of ReviewsList[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:26:4:
+[37m      26 │     [32mStarRating[37m
+         ╵     [32m~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Incomplete block "if". If you meant to write the @ character, you should use the "&#64;" HTML entity instead.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:51:11:
+[37m      51 │         <p>[32m@if (searchTerm) [37mTry adjusting your search terms @else ...
+         ╵            [32m~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:28:15:
+[37m      28 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Incomplete block "else Be the first to share your experience". If you meant to write the @ character, you should use the "&#64;" HTML entity instead.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:51:60:
+[37m      51 │ ...arch terms [32m@else Be the first to share your experience[37m! @endif</p>
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:28:15:
+[37m      28 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'EditOutlined'. Did you mean 'ExitOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:8:2:
+[37m      8 │   [32mEditOutlined[37m,
+        ╵   [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'Plus1Outlined' does not exist on type 'TouristReviews'. Did you mean 'PlusOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.html:11:27:
+[37m      11 │         <lineicons [icon]="[32mPlus1Outlined[37m" [size]="16" [strokeWidth...
+         ╵                            [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component TouristReviews.
+
+    src/app/tourist-layout/reviews/reviews.ts:20:15:
+[37m      20 │   templateUrl: [32m'./reviews.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2739: Type '{ id: number; name: string; description: string; price: number; category: string; }' is missing the following properties from type 'Service': provider_id, images, availability, created_at, updated_at[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:93:8:
+[37m      93 │         [32mservice[37m: {
+         ╵         [32m~~~~~~~[0m
+
+  The expected type comes from property 'service' which is declared here on type 'Review'
+
+    src/app/core/models/review.model.ts:9:2:
+[37m      9 │   [32mservice[37m?: Service;
+        ╵   [32m~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2353: Object literal may only specify known properties, and 'firstName' does not exist in type 'User'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:102:10:
+[37m      102 │           [32mfirstName[37m: 'John',
+          ╵           [32m~~~~~~~~~[0m
+
+  The expected type comes from property 'tourist' which is declared here on type 'Review'
+
+    src/app/core/models/review.model.ts:7:2:
+[37m      7 │   [32mtourist[37m?: User;
+        ╵   [32m~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: LineiconsComponent is not used within the template of ReviewsList[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mLineiconsComponent[37m,
+         ╵     [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: StarRating is not used within the template of ReviewsList[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:26:4:
+[37m      26 │     [32mStarRating[37m
+         ╵     [32m~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Incomplete block "if". If you meant to write the @ character, you should use the "&#64;" HTML entity instead.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:51:11:
+[37m      51 │         <p>[32m@if (searchTerm) [37mTry adjusting your search terms @else ...
+         ╵            [32m~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:28:15:
+[37m      28 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Incomplete block "else Be the first to share your experience". If you meant to write the @ character, you should use the "&#64;" HTML entity instead.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:51:60:
+[37m      51 │ ...arch terms [32m@else Be the first to share your experience[37m! @endif</p>
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:28:15:
+[37m      28 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'EditOutlined'. Did you mean 'ExitOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:8:2:
+[37m      8 │   [32mEditOutlined[37m,
+        ╵   [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'Plus1Outlined' does not exist on type 'TouristReviews'. Did you mean 'PlusOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.html:11:27:
+[37m      11 │         <lineicons [icon]="[32mPlus1Outlined[37m" [size]="16" [strokeWidth...
+         ╵                            [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component TouristReviews.
+
+    src/app/tourist-layout/reviews/reviews.ts:20:15:
+[37m      20 │   templateUrl: [32m'./reviews.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2739: Type '{ id: number; name: string; description: string; price: number; category: string; }' is missing the following properties from type 'Service': provider_id, images, availability, created_at, updated_at[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:93:8:
+[37m      93 │         [32mservice[37m: {
+         ╵         [32m~~~~~~~[0m
+
+  The expected type comes from property 'service' which is declared here on type 'Review'
+
+    src/app/core/models/review.model.ts:9:2:
+[37m      9 │   [32mservice[37m?: Service;
+        ╵   [32m~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2353: Object literal may only specify known properties, and 'firstName' does not exist in type 'User'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:102:10:
+[37m      102 │           [32mfirstName[37m: 'John',
+          ╵           [32m~~~~~~~~~[0m
+
+  The expected type comes from property 'tourist' which is declared here on type 'Review'
+
+    src/app/core/models/review.model.ts:7:2:
+[37m      7 │   [32mtourist[37m?: User;
+        ╵   [32m~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'EditOutlined'. Did you mean 'ExitOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:8:2:
+[37m      8 │   [32mEditOutlined[37m,
+        ╵   [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+  Unknown reference.
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'FormsModule'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'Plus1Outlined' does not exist on type 'TouristReviews'. Did you mean 'PlusOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.html:11:27:
+[37m      11 │         <lineicons [icon]="[32mPlus1Outlined[37m" [size]="16" [strokeWidth...
+         ╵                            [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component TouristReviews.
+
+    src/app/tourist-layout/reviews/reviews.ts:20:15:
+[37m      20 │   templateUrl: [32m'./reviews.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2739: Type '{ id: number; name: string; description: string; price: number; category: string; }' is missing the following properties from type 'Service': provider_id, images, availability, created_at, updated_at[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:93:8:
+[37m      93 │         [32mservice[37m: {
+         ╵         [32m~~~~~~~[0m
+
+  The expected type comes from property 'service' which is declared here on type 'Review'
+
+    src/app/core/models/review.model.ts:9:2:
+[37m      9 │   [32mservice[37m?: Service;
+        ╵   [32m~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2353: Object literal may only specify known properties, and 'firstName' does not exist in type 'User'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:102:10:
+[37m      102 │           [32mfirstName[37m: 'John',
+          ╵           [32m~~~~~~~~~[0m
+
+  The expected type comes from property 'tourist' which is declared here on type 'Review'
+
+    src/app/core/models/review.model.ts:7:2:
+[37m      7 │   [32mtourist[37m?: User;
+        ╵   [32m~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'EditOutlined'. Did you mean 'ExitOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:8:2:
+[37m      8 │   [32mEditOutlined[37m,
+        ╵   [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+  Unknown reference.
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'FormsModule'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'Plus1Outlined' does not exist on type 'TouristReviews'. Did you mean 'PlusOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.html:11:27:
+[37m      11 │         <lineicons [icon]="[32mPlus1Outlined[37m" [size]="16" [strokeWidth...
+         ╵                            [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component TouristReviews.
+
+    src/app/tourist-layout/reviews/reviews.ts:20:15:
+[37m      20 │   templateUrl: [32m'./reviews.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2739: Type '{ id: number; name: string; description: string; price: number; category: string; }' is missing the following properties from type 'Service': provider_id, images, availability, created_at, updated_at[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:93:8:
+[37m      93 │         [32mservice[37m: {
+         ╵         [32m~~~~~~~[0m
+
+  The expected type comes from property 'service' which is declared here on type 'Review'
+
+    src/app/core/models/review.model.ts:9:2:
+[37m      9 │   [32mservice[37m?: Service;
+        ╵   [32m~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2353: Object literal may only specify known properties, and 'firstName' does not exist in type 'User'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:102:10:
+[37m      102 │           [32mfirstName[37m: 'John',
+          ╵           [32m~~~~~~~~~[0m
+
+  The expected type comes from property 'tourist' which is declared here on type 'Review'
+
+    src/app/core/models/review.model.ts:7:2:
+[37m      7 │   [32mtourist[37m?: User;
+        ╵   [32m~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'EditOutlined'. Did you mean 'ExitOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:8:2:
+[37m      8 │   [32mEditOutlined[37m,
+        ╵   [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+  Unknown reference.
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'FormsModule'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2739: Type '{ id: number; name: string; description: string; price: number; category: string; }' is missing the following properties from type 'Service': provider_id, images, availability, created_at, updated_at[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/reviews/reviews.ts:93:8:
+[37m      93 │         [32mservice[37m: {
+         ╵         [32m~~~~~~~[0m
+
+  The expected type comes from property 'service' which is declared here on type 'Review'
+
+    src/app/core/models/review.model.ts:9:2:
+[37m      9 │   [32mservice[37m?: Service;
+        ╵   [32m~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'EditOutlined'. Did you mean 'ExitOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:8:2:
+[37m      8 │   [32mEditOutlined[37m,
+        ╵   [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+  Unknown reference.
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'FormsModule'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'EditOutlined'. Did you mean 'ExitOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:8:2:
+[37m      8 │   [32mEditOutlined[37m,
+        ╵   [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+  Unknown reference.
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'FormsModule'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'EditOutlined'. Did you mean 'ExitOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:8:2:
+[37m      8 │   [32mEditOutlined[37m,
+        ╵   [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+  Unknown reference.
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'FormsModule'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: LineiconsComponent is not used within the template of TouristProfile[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.ts:40:4:
+[37m      40 │     [32mLineiconsComponent[37m
+         ╵     [32m~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'EditOutlined'. Did you mean 'ExitOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:8:2:
+[37m      8 │   [32mEditOutlined[37m,
+        ╵   [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+  Unknown reference.
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'FormsModule'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@lineiconshq/free-icons"' has no exported member 'Settings2Outlined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.ts:11:2:
+[37m      11 │   [32mSettings2Outlined[37m,
+         ╵   [32m~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.html:12:29:
+[37m      12 │           {{ user.full_name?.[32mcharAt[37m(0) }}
+         ╵                              [32m~~~~~~[0m
+
+  Warning occurs in the template of component TouristProfile.
+
+    src/app/tourist-layout/profile/profile.ts:42:15:
+[37m      42 │   templateUrl: [32m'./profile.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'EditOutlined'. Did you mean 'ExitOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:8:2:
+[37m      8 │   [32mEditOutlined[37m,
+        ╵   [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+  Unknown reference.
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'FormsModule'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@lineiconshq/free-icons"' has no exported member 'Settings2Outlined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.ts:11:2:
+[37m      11 │   [32mSettings2Outlined[37m,
+         ╵   [32m~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.html:12:29:
+[37m      12 │           {{ user.full_name?.[32mcharAt[37m(0) }}
+         ╵                              [32m~~~~~~[0m
+
+  Warning occurs in the template of component TouristProfile.
+
+    src/app/tourist-layout/profile/profile.ts:42:15:
+[37m      42 │   templateUrl: [32m'./profile.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'EditOutlined'. Did you mean 'ExitOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:8:2:
+[37m      8 │   [32mEditOutlined[37m,
+        ╵   [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+  Unknown reference.
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'FormsModule'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@lineiconshq/free-icons"' has no exported member 'Settings2Outlined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.ts:11:2:
+[37m      11 │   [32mSettings2Outlined[37m,
+         ╵   [32m~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.html:12:29:
+[37m      12 │           {{ user.full_name?.[32mcharAt[37m(0) }}
+         ╵                              [32m~~~~~~[0m
+
+  Warning occurs in the template of component TouristProfile.
+
+    src/app/tourist-layout/profile/profile.ts:42:15:
+[37m      42 │   templateUrl: [32m'./profile.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'Edit1Outlined'. Did you mean 'ExitOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:8:2:
+[37m      8 │   [32mEdit1Outlined[37m,
+        ╵   [32m~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+  Unknown reference.
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'FormsModule'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2663: Cannot find name 'EditOutlined'. Did you mean the instance member 'this.EditOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:36:26:
+[37m      36 │   readonly EditOutlined = [32mEditOutlined[37m;
+         ╵                           [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@lineiconshq/free-icons"' has no exported member 'Settings2Outlined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.ts:11:2:
+[37m      11 │   [32mSettings2Outlined[37m,
+         ╵   [32m~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.html:12:29:
+[37m      12 │           {{ user.full_name?.[32mcharAt[37m(0) }}
+         ╵                              [32m~~~~~~[0m
+
+  Warning occurs in the template of component TouristProfile.
+
+    src/app/tourist-layout/profile/profile.ts:42:15:
+[37m      42 │   templateUrl: [32m'./profile.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'Edit1Outlined'. Did you mean 'ExitOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:8:2:
+[37m      8 │   [32mEdit1Outlined[37m,
+        ╵   [32m~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+  Unknown reference.
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'FormsModule'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:25:4:
+[37m      25 │     [32mFormsModule[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@lineiconshq/free-icons"' has no exported member 'Settings2Outlined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.ts:11:2:
+[37m      11 │   [32mSettings2Outlined[37m,
+         ╵   [32m~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:49:
+[37m      61 │ ...{{ review.tourist.full_name?.[32mcharAt[37m(0) }}{{ review.tourist.full...
+         ╵                                 [32m~~~~~~[0m
+
+  Warning occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:90:
+[37m      61 │ ...) }}{{ review.tourist.full_name?.[32msplit[37m(' ')[1]?.charAt(0) || '' }}
+         ╵                                     [32m~~~~~[0m
+
+  Warning occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.html:12:29:
+[37m      12 │           {{ user.full_name?.[32mcharAt[37m(0) }}
+         ╵                              [32m~~~~~~[0m
+
+  Warning occurs in the template of component TouristProfile.
+
+    src/app/tourist-layout/profile/profile.ts:42:15:
+[37m      42 │   templateUrl: [32m'./profile.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:64:
+[37m      61 │ ...rAt(0) }}{{ [32mreview.tourist.full_name?.split(' ')[1][37m?.charAt(0) ...
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'EditOutlined' does not exist on type 'ReviewsList'. Did you mean 'Edit1Outlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:110:37:
+[37m      110 │ ...      <lineicons [icon]="[32mEditOutlined[37m" [size]="14" [strokeWidt...
+          ╵                             [32m~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'Edit1Outlined'. Did you mean 'ExitOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:9:2:
+[37m      9 │   [32mEdit1Outlined[37m,
+        ╵   [32m~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@lineiconshq/free-icons"' has no exported member 'Settings2Outlined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.ts:11:2:
+[37m      11 │   [32mSettings2Outlined[37m,
+         ╵   [32m~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:49:
+[37m      61 │ ...{{ review.tourist.full_name?.[32mcharAt[37m(0) }}{{ review.tourist.full...
+         ╵                                 [32m~~~~~~[0m
+
+  Warning occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:90:
+[37m      61 │ ...) }}{{ review.tourist.full_name?.[32msplit[37m(' ')[1]?.charAt(0) || '' }}
+         ╵                                     [32m~~~~~[0m
+
+  Warning occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.html:12:29:
+[37m      12 │           {{ user.full_name?.[32mcharAt[37m(0) }}
+         ╵                              [32m~~~~~~[0m
+
+  Warning occurs in the template of component TouristProfile.
+
+    src/app/tourist-layout/profile/profile.ts:42:15:
+[37m      42 │   templateUrl: [32m'./profile.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:64:
+[37m      61 │ ...rAt(0) }}{{ [32mreview.tourist.full_name?.split(' ')[1][37m?.charAt(0) ...
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'EditOutlined' does not exist on type 'ReviewsList'. Did you mean 'Edit1Outlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:110:37:
+[37m      110 │ ...      <lineicons [icon]="[32mEditOutlined[37m" [size]="14" [strokeWidt...
+          ╵                             [32m~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'Edit1Outlined'. Did you mean 'ExitOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:9:2:
+[37m      9 │   [32mEdit1Outlined[37m,
+        ╵   [32m~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@lineiconshq/free-icons"' has no exported member 'Settings1Outlined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.ts:11:2:
+[37m      11 │   [32mSettings1Outlined[37m,
+         ╵   [32m~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2663: Cannot find name 'Settings2Outlined'. Did you mean the instance member 'this.Settings2Outlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.ts:51:31:
+[37m      51 │   readonly Settings2Outlined = [32mSettings2Outlined[37m;
+         ╵                                [32m~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:49:
+[37m      61 │ ...{{ review.tourist.full_name?.[32mcharAt[37m(0) }}{{ review.tourist.full...
+         ╵                                 [32m~~~~~~[0m
+
+  Warning occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:90:
+[37m      61 │ ...) }}{{ review.tourist.full_name?.[32msplit[37m(' ')[1]?.charAt(0) || '' }}
+         ╵                                     [32m~~~~~[0m
+
+  Warning occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.html:12:29:
+[37m      12 │           {{ user.full_name?.[32mcharAt[37m(0) }}
+         ╵                              [32m~~~~~~[0m
+
+  Warning occurs in the template of component TouristProfile.
+
+    src/app/tourist-layout/profile/profile.ts:42:15:
+[37m      42 │   templateUrl: [32m'./profile.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:64:
+[37m      61 │ ...rAt(0) }}{{ [32mreview.tourist.full_name?.split(' ')[1][37m?.charAt(0) ...
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'EditOutlined' does not exist on type 'ReviewsList'. Did you mean 'Edit1Outlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:110:37:
+[37m      110 │ ...      <lineicons [icon]="[32mEditOutlined[37m" [size]="14" [strokeWidt...
+          ╵                             [32m~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'Edit1Outlined'. Did you mean 'ExitOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:9:2:
+[37m      9 │   [32mEdit1Outlined[37m,
+        ╵   [32m~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'Settings2Outlined' does not exist on type 'TouristProfile'. Did you mean 'Settings1Outlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.html:45:29:
+[37m      45 │ ...    <lineicons [icon]="[32mSettings2Outlined[37m" [size]="16" [strokeWi...
+         ╵                           [32m~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component TouristProfile.
+
+    src/app/tourist-layout/profile/profile.ts:42:15:
+[37m      42 │   templateUrl: [32m'./profile.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'Settings2Outlined' does not exist on type 'TouristProfile'. Did you mean 'Settings1Outlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.html:53:29:
+[37m      53 │ ...    <lineicons [icon]="[32mSettings2Outlined[37m" [size]="16" [strokeWi...
+         ╵                           [32m~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component TouristProfile.
+
+    src/app/tourist-layout/profile/profile.ts:42:15:
+[37m      42 │   templateUrl: [32m'./profile.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@lineiconshq/free-icons"' has no exported member 'Settings1Outlined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.ts:11:2:
+[37m      11 │   [32mSettings1Outlined[37m,
+         ╵   [32m~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:49:
+[37m      61 │ ...{{ review.tourist.full_name?.[32mcharAt[37m(0) }}{{ review.tourist.full...
+         ╵                                 [32m~~~~~~[0m
+
+  Warning occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:90:
+[37m      61 │ ...) }}{{ review.tourist.full_name?.[32msplit[37m(' ')[1]?.charAt(0) || '' }}
+         ╵                                     [32m~~~~~[0m
+
+  Warning occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.html:12:29:
+[37m      12 │           {{ user.full_name?.[32mcharAt[37m(0) }}
+         ╵                              [32m~~~~~~[0m
+
+  Warning occurs in the template of component TouristProfile.
+
+    src/app/tourist-layout/profile/profile.ts:42:15:
+[37m      42 │   templateUrl: [32m'./profile.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:64:
+[37m      61 │ ...rAt(0) }}{{ [32mreview.tourist.full_name?.split(' ')[1][37m?.charAt(0) ...
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'EditOutlined' does not exist on type 'ReviewsList'. Did you mean 'Edit1Outlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:110:37:
+[37m      110 │ ...      <lineicons [icon]="[32mEditOutlined[37m" [size]="14" [strokeWidt...
+          ╵                             [32m~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'Edit1Outlined'. Did you mean 'ExitOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:9:2:
+[37m      9 │   [32mEdit1Outlined[37m,
+        ╵   [32m~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@lineiconshq/free-icons"' has no exported member 'Settings1Outlined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.ts:11:2:
+[37m      11 │   [32mSettings1Outlined[37m,
+         ╵   [32m~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:49:
+[37m      61 │ ...{{ review.tourist.full_name?.[32mcharAt[37m(0) }}{{ review.tourist.full...
+         ╵                                 [32m~~~~~~[0m
+
+  Warning occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:90:
+[37m      61 │ ...) }}{{ review.tourist.full_name?.[32msplit[37m(' ')[1]?.charAt(0) || '' }}
+         ╵                                     [32m~~~~~[0m
+
+  Warning occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.html:12:29:
+[37m      12 │           {{ user.full_name?.[32mcharAt[37m(0) }}
+         ╵                              [32m~~~~~~[0m
+
+  Warning occurs in the template of component TouristProfile.
+
+    src/app/tourist-layout/profile/profile.ts:42:15:
+[37m      42 │   templateUrl: [32m'./profile.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:64:
+[37m      61 │ ...rAt(0) }}{{ [32mreview.tourist.full_name?.split(' ')[1][37m?.charAt(0) ...
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'Edit1Outlined'. Did you mean 'ExitOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:9:2:
+[37m      9 │   [32mEdit1Outlined[37m,
+        ╵   [32m~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@lineiconshq/free-icons"' has no exported member 'Settings1Outlined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.ts:11:2:
+[37m      11 │   [32mSettings1Outlined[37m,
+         ╵   [32m~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:39:
+[37m      61 │ ...        {{ review.tourist?.[32mfull_name[37m?.charAt(0) }}{{ review.tou...
+         ╵                               [32m~~~~~~~~~[0m
+
+  Warning occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:81:
+[37m      61 │ ...At(0) }}{{ review.tourist?.[32mfull_name[37m?.split(' ')[1]?.charAt(0) ...
+         ╵                               [32m~~~~~~~~~[0m
+
+  Warning occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.html:12:29:
+[37m      12 │           {{ user.full_name?.[32mcharAt[37m(0) }}
+         ╵                              [32m~~~~~~[0m
+
+  Warning occurs in the template of component TouristProfile.
+
+    src/app/tourist-layout/profile/profile.ts:42:15:
+[37m      42 │   templateUrl: [32m'./profile.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:65:
+[37m      61 │ ...rAt(0) }}{{ [32mreview.tourist?.full_name?.split(' ')[1][37m?.charAt(0)...
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'Edit1Outlined'. Did you mean 'ExitOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:9:2:
+[37m      9 │   [32mEdit1Outlined[37m,
+        ╵   [32m~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@lineiconshq/free-icons"' has no exported member 'Settings1Outlined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.ts:11:2:
+[37m      11 │   [32mSettings1Outlined[37m,
+         ╵   [32m~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:39:
+[37m      61 │ ...        {{ review.tourist?.[32mfull_name[37m?.charAt(0) }}{{ review.tou...
+         ╵                               [32m~~~~~~~~~[0m
+
+  Warning occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:81:
+[37m      61 │ ...At(0) }}{{ review.tourist?.[32mfull_name[37m?.split(' ')[1]?.charAt(0) ...
+         ╵                               [32m~~~~~~~~~[0m
+
+  Warning occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:65:
+[37m      61 │ ...rAt(0) }}{{ [32mreview.tourist?.full_name?.split(' ')[1][37m?.charAt(0)...
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2724: '"@lineiconshq/free-icons"' has no exported member named 'Edit1Outlined'. Did you mean 'ExitOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:9:2:
+[37m      9 │   [32mEdit1Outlined[37m,
+        ╵   [32m~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@lineiconshq/free-icons"' has no exported member 'Settings1Outlined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.ts:11:2:
+[37m      11 │   [32mSettings1Outlined[37m,
+         ╵   [32m~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:39:
+[37m      61 │ ...        {{ review.tourist?.[32mfull_name[37m?.charAt(0) }}{{ review.tou...
+         ╵                               [32m~~~~~~~~~[0m
+
+  Warning occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:81:
+[37m      61 │ ...At(0) }}{{ review.tourist?.[32mfull_name[37m?.split(' ')[1]?.charAt(0) ...
+         ╵                               [32m~~~~~~~~~[0m
+
+  Warning occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:65:
+[37m      61 │ ...rAt(0) }}{{ [32mreview.tourist?.full_name?.split(' ')[1][37m?.charAt(0)...
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2663: Cannot find name 'Edit1Outlined'. Did you mean the instance member 'this.Edit1Outlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.ts:37:27:
+[37m      37 │   readonly Edit1Outlined = [32mEdit1Outlined[37m;
+         ╵                            [32m~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@lineiconshq/free-icons"' has no exported member 'Settings1Outlined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.ts:11:2:
+[37m      11 │   [32mSettings1Outlined[37m,
+         ╵   [32m~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:39:
+[37m      61 │ ...        {{ review.tourist?.[32mfull_name[37m?.charAt(0) }}{{ review.tou...
+         ╵                               [32m~~~~~~~~~[0m
+
+  Warning occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:81:
+[37m      61 │ ...At(0) }}{{ review.tourist?.[32mfull_name[37m?.split(' ')[1]?.charAt(0) ...
+         ╵                               [32m~~~~~~~~~[0m
+
+  Warning occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:65:
+[37m      61 │ ...rAt(0) }}{{ [32mreview.tourist?.full_name?.split(' ')[1][37m?.charAt(0)...
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'Edit1Outlined' does not exist on type 'ReviewsList'. Did you mean 'ExitOutlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:110:37:
+[37m      110 │ ...      <lineicons [icon]="[32mEdit1Outlined[37m" [size]="14" [strokeWid...
+          ╵                             [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@lineiconshq/free-icons"' has no exported member 'Settings1Outlined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.ts:11:2:
+[37m      11 │   [32mSettings1Outlined[37m,
+         ╵   [32m~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:39:
+[37m      61 │ ...        {{ review.tourist?.[32mfull_name[37m?.charAt(0) }}{{ review.tou...
+         ╵                               [32m~~~~~~~~~[0m
+
+  Warning occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:81:
+[37m      61 │ ...At(0) }}{{ review.tourist?.[32mfull_name[37m?.split(' ')[1]?.charAt(0) ...
+         ╵                               [32m~~~~~~~~~[0m
+
+  Warning occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:65:
+[37m      61 │ ...rAt(0) }}{{ [32mreview.tourist?.full_name?.split(' ')[1][37m?.charAt(0)...
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@lineiconshq/free-icons"' has no exported member 'Settings1Outlined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.ts:11:2:
+[37m      11 │   [32mSettings1Outlined[37m,
+         ╵   [32m~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:39:
+[37m      61 │ ...        {{ review.tourist?.[32mfull_name[37m?.charAt(0) }}{{ review.tou...
+         ╵                               [32m~~~~~~~~~[0m
+
+  Warning occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:81:
+[37m      61 │ ...At(0) }}{{ review.tourist?.[32mfull_name[37m?.split(' ')[1]?.charAt(0) ...
+         ╵                               [32m~~~~~~~~~[0m
+
+  Warning occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:65:
+[37m      61 │ ...rAt(0) }}{{ [32mreview.tourist?.full_name?.split(' ')[1][37m?.charAt(0)...
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2300: Duplicate identifier 'User4Outlined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.ts:6:2:
+[37m      6 │   [32mUser4Outlined[37m,
+        ╵   [32m~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2300: Duplicate identifier 'User4Outlined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.ts:11:2:
+[37m      11 │   [32mUser4Outlined[37m,
+         ╵   [32m~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2663: Cannot find name 'Settings1Outlined'. Did you mean the instance member 'this.Settings1Outlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.ts:51:31:
+[37m      51 │   readonly Settings1Outlined = [32mSettings1Outlined[37m;
+         ╵                                [32m~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:39:
+[37m      61 │ ...        {{ review.tourist?.[32mfull_name[37m?.charAt(0) }}{{ review.tou...
+         ╵                               [32m~~~~~~~~~[0m
+
+  Warning occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:81:
+[37m      61 │ ...At(0) }}{{ review.tourist?.[32mfull_name[37m?.split(' ')[1]?.charAt(0) ...
+         ╵                               [32m~~~~~~~~~[0m
+
+  Warning occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:65:
+[37m      61 │ ...rAt(0) }}{{ [32mreview.tourist?.full_name?.split(' ')[1][37m?.charAt(0)...
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2663: Cannot find name 'Settings1Outlined'. Did you mean the instance member 'this.Settings1Outlined'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.ts:51:31:
+[37m      51 │   readonly Settings1Outlined = [32mSettings1Outlined[37m;
+         ╵                                [32m~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:39:
+[37m      61 │ ...        {{ review.tourist?.[32mfull_name[37m?.charAt(0) }}{{ review.tou...
+         ╵                               [32m~~~~~~~~~[0m
+
+  Warning occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:81:
+[37m      61 │ ...At(0) }}{{ review.tourist?.[32mfull_name[37m?.split(' ')[1]?.charAt(0) ...
+         ╵                               [32m~~~~~~~~~[0m
+
+  Warning occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:65:
+[37m      61 │ ...rAt(0) }}{{ [32mreview.tourist?.full_name?.split(' ')[1][37m?.charAt(0)...
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'Settings1Outlined' does not exist on type 'TouristProfile'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.html:45:29:
+[37m      45 │ ...    <lineicons [icon]="[32mSettings1Outlined[37m" [size]="16" [strokeWi...
+         ╵                           [32m~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component TouristProfile.
+
+    src/app/tourist-layout/profile/profile.ts:42:15:
+[37m      42 │   templateUrl: [32m'./profile.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'Settings1Outlined' does not exist on type 'TouristProfile'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/profile/profile.html:53:29:
+[37m      53 │ ...    <lineicons [icon]="[32mSettings1Outlined[37m" [size]="16" [strokeWi...
+         ╵                           [32m~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component TouristProfile.
+
+    src/app/tourist-layout/profile/profile.ts:42:15:
+[37m      42 │   templateUrl: [32m'./profile.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:39:
+[37m      61 │ ...        {{ review.tourist?.[32mfull_name[37m?.charAt(0) }}{{ review.tou...
+         ╵                               [32m~~~~~~~~~[0m
+
+  Warning occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:81:
+[37m      61 │ ...At(0) }}{{ review.tourist?.[32mfull_name[37m?.split(' ')[1]?.charAt(0) ...
+         ╵                               [32m~~~~~~~~~[0m
+
+  Warning occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/reviews-list/reviews-list.html:61:65:
+[37m      61 │ ...rAt(0) }}{{ [32mreview.tourist?.full_name?.split(' ')[1][37m?.charAt(0)...
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component ReviewsList.
+
+    src/app/shared/reviews-list/reviews-list.ts:30:15:
+[37m      30 │   templateUrl: [32m'./reviews-list.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2345: Argument of type 'FilterStatus' is not assignable to parameter of type 'PaymentStatus'.
+  Type '"All"' is not assignable to type 'PaymentStatus'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/payments/payments.html:66:65:
+[37m      66 │ ...tiveStatus() === 'All' ? 'Status' : statusLabel([32mactiveStatus[37m()) }}
+         ╵                                                    [32m~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component TouristPayments.
+
+    src/app/tourist-layout/payments/payments.ts:15:15:
+[37m      15 │   templateUrl: [32m'./payments.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2345: Argument of type 'FilterStatus' is not assignable to parameter of type 'PaymentStatus'.
+  Type '"All"' is not assignable to type 'PaymentStatus'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/payments/payments.html:128:29:
+[37m      128 │               {{ statusLabel([32mactiveStatus[37m()) }}
+          ╵                              [32m~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component TouristPayments.
+
+    src/app/tourist-layout/payments/payments.ts:15:15:
+[37m      15 │   templateUrl: [32m'./payments.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2345: Argument of type 'FilterStatus' is not assignable to parameter of type 'PaymentStatus'.
+  Type '"All"' is not assignable to type 'PaymentStatus'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/payments/payments.html:66:65:
+[37m      66 │ ...tiveStatus() === 'All' ? 'Status' : statusLabel([32mactiveStatus[37m()) }}
+         ╵                                                    [32m~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component TouristPayments.
+
+    src/app/tourist-layout/payments/payments.ts:15:15:
+[37m      15 │   templateUrl: [32m'./payments.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2345: Argument of type 'FilterStatus' is not assignable to parameter of type 'PaymentStatus'.
+  Type '"All"' is not assignable to type 'PaymentStatus'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/tourist-layout/payments/payments.html:128:29:
+[37m      128 │               {{ statusLabel([32mactiveStatus[37m()) }}
+          ╵                              [32m~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component TouristPayments.
+
+    src/app/tourist-layout/payments/payments.ts:15:15:
+[37m      15 │   templateUrl: [32m'./payments.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAll "@import" rules must come first[0m [invalid-@import]
+
+    src/styles.css:212:0:
+[37m      212 │ [32m@import[37m url('https://fonts.googleapis.com/css2?family=Inter:wght@...
+          ╵ [32m~~~~~~~[0m
+
+  This rule cannot come before an "@import" rule
+
+    src/styles.css:3:0:
+[37m      3 │ [32m[37m@layer properties;
+        ╵ [32m^[0m
+
+[39m[22m

@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import { Offers } from '../models/offers';
+import { Offers } from '../models/offers.model';
 
 @Injectable({
   providedIn: 'root',
@@ -358,7 +358,7 @@ export class OfferService {
     },
   ]);
 
-  getOffers() {
+  getOffers(): Offers[] {
     return this.offersList();
   }
 

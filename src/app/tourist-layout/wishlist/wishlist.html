@@ -1,0 +1,107 @@
+<div class="tourist-wishlist">
+  <!-- Header Section -->
+  <section class="wishlist-header">
+    <div class="header-content">
+      <h1 class="page-title">My Wishlist</h1>
+      <p class="page-subtitle">Services and experiences you've saved for later</p>
+    </div>
+    
+    <!-- Search Bar -->
+    <div class="search-section">
+      <div class="search-container">
+        <lineicons [icon]="Search1Outlined" [size]="20" [strokeWidth]="1.5"></lineicons>
+        <input 
+          type="text" 
+          placeholder="Search your wishlist..." 
+          class="search-input"
+          [(ngModel)]="searchTerm"
+          (input)="onSearchChange()"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Loading State -->
+  @if (isLoading) {
+    <div class="loading-state">
+      <div class="loading-spinner"></div>
+      <p>Loading your wishlist...</p>
+    </div>
+  }
+
+  <!-- Empty State -->
+  @if (!isLoading && filteredItems.length === 0) {
+    <div class="empty-state">
+      <lineicons [icon]="HeartOutlined" [size]="48" [strokeWidth]="1.5"></lineicons>
+      <h2>Your wishlist is empty</h2>
+      <p>Start exploring and save services you're interested in!</p>
+      <a routerLink="/home" class="btn-primary">Explore Services</a>
+    </div>
+  }
+
+  <!-- Wishlist Grid -->
+  @if (!isLoading && filteredItems.length > 0) {
+    <section class="wishlist-content">
+      <div class="wishlist-grid">
+        @for (item of filteredItems; track item.id) {
+          <div class="wishlist-card" [class.removing]="item.isRemoving">
+            <!-- Card Image -->
+            <div class="card-image-container">
+              <img 
+                [src]="getServiceImage(item.service)" 
+                [alt]="item.service?.name || 'Service image'" 
+                class="card-image"
+                (click)="navigateToService(item.service_id)"
+              />
+              <div class="card-category">{{ getServiceCategory(item.service) }}</div>
+            </div>
+
+            <!-- Card Content -->
+            <div class="card-content">
+              <h3 
+                class="card-title" 
+                (click)="navigateToService(item.service_id)"
+              >
+                {{ item.service?.name || 'Untitled Service' }}
+              </h3>
+              
+              <div class="card-location">
+                <lineicons [icon]="MapMarker5Outlined" [size]="14" [strokeWidth]="1.5"></lineicons>
+                {{ getServiceLocation(item.service) }}
+              </div>
+
+              <div class="card-footer">
+                <div class="card-price">${{ getServicePrice(item.service) }}</div>
+                <button 
+                  class="btn-remove"
+                  (click)="removeFromWishlist(item.service_id, item.id)"
+                  [disabled]="item.isRemoving"
+                  title="Remove from wishlist"
+                >
+                  @if (item.isRemoving) {
+                    <div class="btn-spinner"></div>
+                  } @else {
+                    <lineicons [icon]="Trash3Outlined" [size]="16" [strokeWidth]="1.5"></lineicons>
+                  }
+                </button>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </section>
+  }
+
+  <!-- Results Summary -->
+  @if (!isLoading && wishlistItems.length > 0) {
+    <div class="results-summary">
+      <p>
+        @if (filteredItems.length === wishlistItems.length) {
+          Showing {{ wishlistItems.length }} items
+        } @else {
+          Showing {{ filteredItems.length }} of {{ wishlistItems.length }} items
+        }
+      </p>
+    </div>
+  }
+</div>

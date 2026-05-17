@@ -5,8 +5,8 @@ import {
   HarmCategory,
   HarmBlockThreshold,
 } from '@google/generative-ai';
-import { environment } from '../../environments/environment';
-import { TOURIST_SYSTEM_PROMPT } from '../config/system-prompt.config';
+import { environment } from '../../../environments/environment';
+import { TOURIST_SYSTEM_PROMPT } from '../../config/system-prompt.config';
 import { ChatMessage, GeminiHistoryEntry } from '../models/chat.model';
 
 @Injectable({
@@ -29,15 +29,11 @@ export class GeminiService {
     this.model = this.genAI.getGenerativeModel({
       model: environment.geminiModel,
 
-      // ── System Instruction ───────────────────────────────────────────────
-      // This injects prompt into every conversation
       systemInstruction: {
         role: 'system',
         parts: [{ text: TOURIST_SYSTEM_PROMPT }],
       },
 
-      // ── Safety Settings ──────────────────────────────────────────────────
-      // Tourist content is safe — keep defaults but be explicit
       safetySettings: [
         {
           category: HarmCategory.HARM_CATEGORY_HARASSMENT,
@@ -49,35 +45,26 @@ export class GeminiService {
         },
       ],
 
-      // ── Generation Config ─────────────────────────────────────────────────
       generationConfig: {
-        temperature: 0.7, // Balanced creativity vs. consistency
+        temperature: 0.7,
         topK: 40,
         topP: 0.95,
-        maxOutputTokens: 2048, // Enough for a full itinerary
+        maxOutputTokens: 2048,
       },
     });
 
     this.initChatSession();
   }
 
-  // ── Public API ─────────────────────────────────────────────────────────────
-
-  /**
-   * Send a user message and stream the model's response.
-   * Uses streaming for a better UX (response appears word-by-word).
-   */
   async sendMessage(userText: string): Promise<void> {
     if (!userText.trim() || this.isLoading()) return;
 
     this.error.set(null);
     this.isLoading.set(true);
 
-    // Add user message immediately for instant feedback
     const userMessage = this.createMessage('user', userText);
     this.messages.update((msgs) => [...msgs, userMessage]);
 
-    // Placeholder for the streaming bot response
     const botMessageId = this.generateId();
     const botPlaceholder = this.createMessage('model', '', botMessageId, true);
     this.messages.update((msgs) => [...msgs, botPlaceholder]);
@@ -92,12 +79,10 @@ export class GeminiService {
 
       let fullResponse = '';
 
-      // Stream chunks as they arrive
       for await (const chunk of result.stream) {
         const chunkText = chunk.text();
         fullResponse += chunkText;
 
-        // Update the streaming message in place
         this.messages.update((msgs) =>
           msgs.map((m) =>
             m.id === botMessageId ? { ...m, content: fullResponse, isStreaming: true } : m,
@@ -111,7 +96,6 @@ export class GeminiService {
         this.toHistoryEntry('model', fullResponse),
       ];
 
-      // Mark streaming as complete
       this.messages.update((msgs) =>
         msgs.map((m) =>
           m.id === botMessageId ? { ...m, content: fullResponse, isStreaming: false } : m,
@@ -121,7 +105,6 @@ export class GeminiService {
       const errorMessage = this.parseError(err);
       this.error.set(errorMessage);
 
-      // Replace placeholder with error state
       this.messages.update((msgs) =>
         msgs.map((m) =>
           m.id === botMessageId
@@ -139,9 +122,6 @@ export class GeminiService {
     }
   }
 
-  /**
-   * Reset the conversation — clears messages and starts a fresh chat session.
-   */
   resetConversation(): void {
     this.messages.set([]);
     this.error.set(null);
@@ -149,25 +129,16 @@ export class GeminiService {
     this.initChatSession();
   }
 
-  /**
-   * Rebuild the chat session with existing history (for conversation restore).
-   */
   loadHistory(history: GeminiHistoryEntry[]): void {
     this.conversationHistory = [...history];
   }
 
-  // ── Private Helpers ────────────────────────────────────────────────────────
-
   private initChatSession(history: GeminiHistoryEntry[] = []): void {
     this.conversationHistory = [...history];
-      // The system instruction is already on the model — no need to repeat it here
   }
 
   private toHistoryEntry(role: 'user' | 'model', text: string): GeminiHistoryEntry {
-    return {
-      role,
-      parts: [{ text }],
-    };
+    return { role, parts: [{ text }] };
   }
 
   private createMessage(
@@ -191,7 +162,6 @@ export class GeminiService {
 
   private parseError(err: unknown): string {
     if (err instanceof Error) {
-      // Gemini-specific error codes
       if (err.message.includes('429')) {
         return 'Rate limit reached. Please wait a moment before sending another message.';
       }

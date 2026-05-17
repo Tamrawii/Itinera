@@ -1,0 +1,329 @@
+<div class="provider-approval">
+  <!-- Header -->
+  <header class="approval-header">
+    <div class="header-content">
+      <h1>Provider Applications</h1>
+      <p>Review and manage service provider registration applications</p>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="stats-grid">
+      @for (stat of getApplicationStats() | keyvalue; track stat.key) {
+        <div class="stat-card">
+          <div class="stat-number">{{ stat.value }}</div>
+          <div class="stat-label">
+            @if (stat.key === 'total') { Total }
+            @if (stat.key === 'pending') { Pending }
+            @if (stat.key === 'under_review') { Under Review }
+            @if (stat.key === 'approved') { Approved }
+            @if (stat.key === 'rejected') { Rejected }
+          </div>
+        </div>
+      }
+    </div>
+  </header>
+
+  <!-- Filters and Search -->
+  <section class="filters-section">
+    <div class="filters-header">
+      <div class="search-container">
+        <lineicons [icon]="Search1Outlined" [size]="20" [strokeWidth]="1.5"></lineicons>
+        <input 
+          type="text" 
+          placeholder="Search by name, email, business..." 
+          [(ngModel)]="filter.searchTerm"
+          (input)="onFilterChange()"
+          class="search-input"
+        />
+      </div>
+      
+      <button 
+        class="filter-toggle"
+        (click)="showFilters = !showFilters"
+        [class.active]="showFilters"
+      >
+        <lineicons [icon]="Search1Outlined" [size]="16" [strokeWidth]="1.5"></lineicons>
+        Filters
+      </button>
+    </div>
+
+    @if (showFilters) {
+      <div class="filters-panel">
+        <div class="filter-row">
+          <div class="filter-group">
+            <label>Status</label>
+            <select [(ngModel)]="filter.status" (change)="onFilterChange()">
+              @for (option of statusOptions; track option.value) {
+                <option [value]="option.value">{{ option.label }}</option>
+              }
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label>Business Type</label>
+            <select [(ngModel)]="filter.businessType" (change)="onFilterChange()">
+              <option value="all">All Types</option>
+              @for (type of businessTypes; track type.value) {
+                <option [value]="type.value">{{ type.label }}</option>
+              }
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label>Start Date</label>
+            <input 
+              type="date" 
+              [(ngModel)]="filter.dateRange.start"
+              (change)="onFilterChange()"
+            />
+          </div>
+
+          <div class="filter-group">
+            <label>End Date</label>
+            <input 
+              type="date" 
+              [(ngModel)]="filter.dateRange.end"
+              (change)="onFilterChange()"
+            />
+          </div>
+        </div>
+
+        <div class="filter-actions">
+          <button class="btn-secondary" (click)="clearFilters()">Clear Filters</button>
+        </div>
+      </div>
+    }
+  </section>
+
+  <!-- Applications List -->
+  <main class="applications-main">
+    @if (isLoading) {
+      <div class="loading-state">
+        <div class="loading-spinner"></div>
+        <p>Loading applications...</p>
+      </div>
+    } @else if (filteredApplications.length === 0) {
+      <div class="empty-state">
+        <lineicons [icon]="Search1Outlined" [size]="48" [strokeWidth]="1.5"></lineicons>
+        <h2>No applications found</h2>
+        <p>Try adjusting your filters or search criteria</p>
+      </div>
+    } @else {
+      <div class="applications-grid">
+        @for (application of filteredApplications; track application.id) {
+          <div class="application-card" (click)="selectApplication(application)">
+            <div class="card-header">
+              <div class="applicant-info">
+                <h3>{{ application.personalInfo.firstName }} {{ application.personalInfo.lastName }}</h3>
+                <p>{{ application.businessInfo.businessName }}</p>
+              </div>
+              <span class="status-badge" [class]="getStatusBadgeClass(application.status)">
+                {{ getStatusText(application.status) }}
+              </span>
+            </div>
+
+            <div class="card-content">
+              <div class="info-row">
+                <lineicons [icon]="Envelope1Outlined" [size]="14" [strokeWidth]="1.5"></lineicons>
+                {{ application.personalInfo.email }}
+              </div>
+              
+              <div class="info-row">
+                <lineicons [icon]="Buildings1Outlined" [size]="14" [strokeWidth]="1.5"></lineicons>
+                {{ getBusinessTypeLabel(application.businessInfo.businessType) }}
+              </div>
+              
+              <div class="info-row">
+                <lineicons [icon]="MapMarker5Outlined" [size]="14" [strokeWidth]="1.5"></lineicons>
+                {{ application.businessInfo.city }}
+              </div>
+              
+              <div class="info-row">
+                <lineicons [icon]="CalendarDaysOutlined" [size]="14" [strokeWidth]="1.5"></lineicons>
+                Submitted {{ formatDate(application.submittedAt) }}
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <button class="btn-view" (click)="selectApplication(application); $event.stopPropagation()">
+                <lineicons [icon]="EyeOutlined" [size]="16" [strokeWidth]="1.5"></lineicons>
+                View Details
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </main>
+
+  <!-- Application Details Modal -->
+  @if (selectedApplication) {
+    <div class="modal-overlay" (click)="closeApplicationDetails()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+          <h2>Application Details</h2>
+          <button class="btn-close" (click)="closeApplicationDetails()">
+            <lineicons [icon]="XOutlined" [size]="20" [strokeWidth]="1.5"></lineicons>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <!-- Status and Actions -->
+          <div class="status-section">
+            <div class="status-info">
+              <span class="status-badge large" [class]="getStatusBadgeClass(selectedApplication.status)">
+                {{ getStatusText(selectedApplication.status) }}
+              </span>
+              <p>Submitted {{ formatDate(selectedApplication.submittedAt) }}</p>
+            </div>
+            
+            @if (selectedApplication.status === 'pending' || selectedApplication.status === 'under_review') {
+              <div class="action-buttons">
+                <button 
+                  class="btn-approve"
+                  (click)="approveApplication(selectedApplication.id)"
+                >
+                  <lineicons [icon]="CheckOutlined" [size]="16" [strokeWidth]="1.5"></lineicons>
+                  Approve
+                </button>
+                <button 
+                  class="btn-reject"
+                  (click)="openRejectionModal(selectedApplication.id)"
+                >
+                  <lineicons [icon]="XOutlined" [size]="16" [strokeWidth]="1.5"></lineicons>
+                  Reject
+                </button>
+              </div>
+            }
+          </div>
+
+          <!-- Personal Information -->
+          <div class="info-section">
+            <h3>Personal Information</h3>
+            <div class="info-grid">
+              <div class="info-item">
+                <label>Name</label>
+                <p>{{ selectedApplication.personalInfo.firstName }} {{ selectedApplication.personalInfo.lastName }}</p>
+              </div>
+              <div class="info-item">
+                <label>Email</label>
+                <p>{{ selectedApplication.personalInfo.email }}</p>
+              </div>
+              <div class="info-item">
+                <label>Phone</label>
+                <p>{{ selectedApplication.personalInfo.phone }}</p>
+              </div>
+              <div class="info-item">
+                <label>Date of Birth</label>
+                <p>{{ selectedApplication.personalInfo.dateOfBirth }}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Business Information -->
+          <div class="info-section">
+            <h3>Business Information</h3>
+            <div class="info-grid">
+              <div class="info-item">
+                <label>Business Name</label>
+                <p>{{ selectedApplication.businessInfo.businessName }}</p>
+              </div>
+              <div class="info-item">
+                <label>Business Type</label>
+                <p>{{ getBusinessTypeLabel(selectedApplication.businessInfo.businessType) }}</p>
+              </div>
+              <div class="info-item full-width">
+                <label>Description</label>
+                <p>{{ selectedApplication.businessInfo.description }}</p>
+              </div>
+              <div class="info-item full-width">
+                <label>Address</label>
+                <p>{{ selectedApplication.businessInfo.address }}, {{ selectedApplication.businessInfo.city }}, {{ selectedApplication.businessInfo.postalCode }}</p>
+              </div>
+              @if (selectedApplication.businessInfo.website) {
+                <div class="info-item full-width">
+                  <label>Website</label>
+                  <p><a href="{{ selectedApplication.businessInfo.website }}" target="_blank">{{ selectedApplication.businessInfo.website }}</a></p>
+                </div>
+              }
+            </div>
+          </div>
+
+          <!-- Documents -->
+          <div class="info-section">
+            <h3>Documents</h3>
+            <div class="documents-list">
+              @for (document of selectedApplication.documents; track document.id) {
+                <div class="document-item">
+                  <lineicons [icon]="Search1Outlined" [size]="20" [strokeWidth]="1.5"></lineicons>
+                  <div class="document-info">
+                    <p class="document-name">{{ document.name }}</p>
+                    <p class="document-type">{{ document.type }} • {{ formatDate(document.uploadedAt) }}</p>
+                  </div>
+                  <button 
+                    class="btn-view-document"
+                    (click)="viewDocument(document.url)"
+                  >
+                    <lineicons [icon]="EyeOutlined" [size]="16" [strokeWidth]="1.5"></lineicons>
+                  </button>
+                </div>
+              }
+            </div>
+          </div>
+
+          <!-- Review Information -->
+          @if (selectedApplication.reviewedBy) {
+            <div class="info-section">
+              <h3>Review Information</h3>
+              <div class="info-grid">
+                <div class="info-item">
+                  <label>Reviewed By</label>
+                  <p>{{ selectedApplication.reviewedBy }}</p>
+                </div>
+                <div class="info-item">
+                  <label>Reviewed At</label>
+                  <p>{{ formatDate(selectedApplication.reviewedAt!) }}</p>
+                </div>
+                @if (selectedApplication.rejectionReason) {
+                  <div class="info-item full-width">
+                    <label>Rejection Reason</label>
+                    <p class="rejection-reason">{{ selectedApplication.rejectionReason }}</p>
+                  </div>
+                }
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  }
+
+  <!-- Rejection Modal -->
+  @if (showRejectionModal) {
+    <div class="modal-overlay" (click)="closeRejectionModal()">
+      <div class="modal-content small" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+          <h2>Reject Application</h2>
+          <button class="btn-close" (click)="closeRejectionModal()">
+            <lineicons [icon]="XOutlined" [size]="20" [strokeWidth]="1.5"></lineicons>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <p>Please provide a reason for rejecting this application:</p>
+          <textarea 
+            [(ngModel)]="rejectionReason"
+            placeholder="Enter rejection reason..."
+            rows="4"
+            class="rejection-textarea"
+          ></textarea>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn-secondary" (click)="closeRejectionModal()">Cancel</button>
+          <button class="btn-reject" (click)="rejectApplication()">Reject Application</button>
+        </div>
+      </div>
+    </div>
+  }
+</div>

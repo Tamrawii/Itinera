@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ToastService } from '../../services/toast.service';
+import { ToastService } from '../../core/services/toast.service';
 
 @Component({
   selector: 'app-toast-container',
@@ -10,6 +10,7 @@ import { ToastService } from '../../services/toast.service';
 })
 export class ToastContainerComponent {
   readonly toastService = inject(ToastService);
+  readonly toasts$ = this.toastService.toasts$;
 
   getToastClasses(type: string): string {
     const map: Record<string, string> = {

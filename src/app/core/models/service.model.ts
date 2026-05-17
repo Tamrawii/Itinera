@@ -15,6 +15,8 @@ export interface Service {
   category: string;
   images: string[];
   availability: ServiceAvailability[];
+  location?: string;
+  address?: string;
   created_at: Date;
   updated_at: Date;
 }
@@ -27,6 +29,8 @@ export interface CreateService {
   category: string;
   images: string[];
   availability: ServiceAvailability[];
+  location?: string;
+  address?: string;
 }
 
 export type UpdateService = Partial<CreateService>;

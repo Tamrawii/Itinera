@@ -1,0 +1,77 @@
+<div class="tourist-reviews">
+  <!-- Header -->
+  <header class="reviews-header">
+    <div class="header-content">
+      <h1 class="page-title">My Reviews</h1>
+      <p class="page-subtitle">Manage your reviews and ratings for booked services</p>
+    </div>
+    
+    @if (hasPendingReviews()) {
+      <button class="btn-add-review" (click)="openReviewForm()">
+        <lineicons [icon]="PlusOutlined" [size]="16" [strokeWidth]="1.5"></lineicons>
+        Write Review
+      </button>
+    }
+  </header>
+
+  <!-- Main Content -->
+  <main class="reviews-main">
+    @if (showReviewForm) {
+      <!-- Review Form Modal/Section -->
+      <div class="review-form-container">
+        <app-review-form
+          [booking]="selectedBooking"
+          [isSubmitting]="isSubmitting"
+          [existingReview]="editingReview ? { rating: editingReview.rating, comment: editingReview.comment } : null"
+          (reviewSubmit)="onReviewSubmit($event)"
+          (cancel)="closeReviewForm()"
+        ></app-review-form>
+      </div>
+    }
+
+    <!-- Reviews List -->
+    <div class="reviews-list-container">
+      <app-reviews-list
+        [reviews]="reviews"
+        [loading]="loading"
+        [showActions]="true"
+        [showServiceInfo]="true"
+        [emptyMessage]="'You haven\'t written any reviews yet'"
+        (reviewEdit)="onReviewEdit($event)"
+        (reviewDelete)="onReviewDelete($event)"
+      ></app-reviews-list>
+    </div>
+
+    <!-- Pending Reviews Section -->
+    @if (hasPendingReviews() && !showReviewForm) {
+      <div class="pending-reviews">
+        <div class="pending-header">
+          <h3>
+            <lineicons [icon]="StarFatOutlined" [size]="20" [strokeWidth]="1.5"></lineicons>
+            Pending Reviews
+          </h3>
+          <p>Share your experience for completed bookings</p>
+        </div>
+        
+        <div class="pending-bookings">
+          @for (booking of getPendingBookings(); track booking.id) {
+            <div class="pending-booking-card">
+              <img [src]="booking.serviceImage" [alt]="booking.serviceName" class="booking-image" />
+              <div class="booking-details">
+                <h4>{{ booking.serviceName }}</h4>
+                <p>{{ booking.providerName }}</p>
+                <span class="booking-date">{{ booking.bookingDate }}</span>
+              </div>
+              <button 
+                class="btn-review"
+                (click)="openReviewForm()"
+              >
+                Write Review
+              </button>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </main>
+</div>

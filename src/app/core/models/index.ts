@@ -11,3 +11,8 @@ export * from './wishlist.model';
 export * from './payment.model';
 export * from './auth.model';
 export * from './api.model';
+export * from './chat.model';
+export * from './offers.model';
+export * from './user-tourist.model';
+export * from './user-provider.model';
+export * from './admin.model';
