@@ -5,6 +5,7 @@ export interface User {
   email: string;
   full_name: string;
   role: UserRole;
+  phone?: string;
   created_at: Date;
   updated_at: Date;
 }
@@ -14,6 +15,7 @@ export interface CreateUser {
   full_name: string;
   role: UserRole;
   password: string;
+  phone?: string;
 }
 
 export type UpdateUser = Partial<Omit<CreateUser, 'password'>> & {

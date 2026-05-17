@@ -1,0 +1,240 @@
+<section class="payments-page">
+
+  <header class="page-head">
+    <div>
+      <h1>Payment Tracking</h1>
+      <p>Track and manage all your booking payments</p>
+    </div>
+  </header>
+
+  <!-- Stat cards -->
+  <section class="metric-grid">
+    <article class="metric-card">
+      <p class="metric-value">{{ totalFiltered() }}</p>
+      <p class="metric-label">Total Payments</p>
+    </article>
+    <article class="metric-card">
+      <p class="metric-value">{{ totalSpent() }}</p>
+      <p class="metric-label">Total Spent</p>
+    </article>
+    <article class="metric-card">
+      <p class="metric-value metric-value--paid">{{ totalPaid() }}</p>
+      <p class="metric-label">Paid</p>
+    </article>
+    <article class="metric-card">
+      <p class="metric-value metric-value--pending">{{ totalPending() }}</p>
+      <p class="metric-label">Pending</p>
+    </article>
+  </section>
+
+  <section class="payments-panel">
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+
+      <!-- Search -->
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.8" />
+          <path d="m16 16 4.3 4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+        </svg>
+        <input
+          type="text"
+          placeholder="Search by ID, booking, method..."
+          [ngModel]="searchQuery()"
+          (ngModelChange)="onSearch($event)"
+        />
+      </div>
+
+      <!-- Filters -->
+      <div class="filter-group">
+
+        <!-- Status -->
+        <div class="relative">
+          <button
+            id="tpStatusBtn"
+            data-dropdown-toggle="tpStatusDropdown"
+            data-dropdown-placement="bottom-start"
+            type="button"
+            class="filter-btn"
+            [class.filter-btn--active]="activeStatus() !== 'All'"
+          >
+            <svg class="filter-btn__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M12 2v2m0 16v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M2 12h2m16 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            {{ activeStatus() === 'All' ? 'Status' : statusLabel(activeStatus()) }}
+            <svg class="filter-btn__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="m19 9-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div id="tpStatusDropdown" class="z-20 hidden w-48 rounded-xl border border-slate-200 bg-white shadow-lg">
+            <ul class="p-2 text-sm font-medium text-slate-600">
+              @for (st of statuses; track st) {
+                <li>
+                  <button type="button" class="dropdown-item" [class.dropdown-item--active]="activeStatus() === st" (click)="setStatus(st)">
+                    {{ st === 'All' ? 'All' : statusLabel(st) }}
+                    @if (activeStatus() === st) {
+                      <svg class="ms-auto h-3.5 w-3.5 text-blue-500" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    }
+                  </button>
+                </li>
+              }
+            </ul>
+          </div>
+        </div>
+
+        <!-- Sort -->
+        <div class="relative">
+          <button
+            id="tpSortBtn"
+            data-dropdown-toggle="tpSortDropdown"
+            data-dropdown-placement="bottom-start"
+            type="button"
+            class="filter-btn"
+          >
+            <svg class="filter-btn__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M3 4h13M3 8h9M3 12h5m13 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            {{ activeSort() }}
+            <svg class="filter-btn__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="m19 9-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div id="tpSortDropdown" class="z-20 hidden w-52 rounded-xl border border-slate-200 bg-white shadow-lg">
+            <ul class="p-2 text-sm font-medium text-slate-600">
+              @for (opt of sortOptions; track opt) {
+                <li>
+                  <button type="button" class="dropdown-item" [class.dropdown-item--active]="activeSort() === opt" (click)="setSort(opt)">
+                    {{ opt }}
+                    @if (activeSort() === opt) {
+                      <svg class="ms-auto h-3.5 w-3.5 text-blue-500" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    }
+                  </button>
+                </li>
+              }
+            </ul>
+          </div>
+        </div>
+
+        <!-- Active chip -->
+        @if (activeStatus() !== 'All') {
+          <div class="active-chips">
+            <span class="active-chip">
+              {{ statusLabel(activeStatus()) }}
+              <button type="button" (click)="setStatus('All')" aria-label="Remove status filter">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </button>
+            </span>
+          </div>
+        }
+
+      </div>
+    </div>
+
+    <!-- Loading state -->
+    @if (loading()) {
+      <div class="loading-state">
+        <div class="loading-spinner"></div>
+        <p>Loading payments...</p>
+      </div>
+    } @else {
+
+      <!-- Table -->
+      <div class="table-scroll">
+        <table class="payments-table">
+          <thead>
+            <tr>
+              <th>Payment ID</th>
+              <th>Booking</th>
+              <th>Amount</th>
+              <th>Method</th>
+              <th>Transaction ID</th>
+              <th>Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (payment of pagedPayments(); track payment.id) {
+              <tr>
+                <td class="id-cell">#{{ payment.id }}</td>
+                <td class="booking-cell">BK-{{ payment.booking_id }}</td>
+                <td class="amount-cell">${{ payment.amount.toLocaleString() }}</td>
+                <td>
+                  <span class="method-badge">
+                    @if (payment.payment_method === 'card') {
+                      <svg class="method-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <rect x="2" y="5" width="20" height="14" rx="2.5" stroke="currentColor" stroke-width="1.7"/>
+                        <path d="M2 10h20" stroke="currentColor" stroke-width="1.7"/>
+                      </svg>
+                    } @else if (payment.payment_method === 'cash') {
+                      <svg class="method-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.7"/>
+                        <path d="M12 7v10M9 9.5h4.5a1.5 1.5 0 0 1 0 3H9m0 0h4.5a1.5 1.5 0 0 1 0 3H9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    } @else {
+                      <svg class="method-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <rect x="3" y="6" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.7"/>
+                        <path d="M3 10h18M7 14h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                      </svg>
+                    }
+                    {{ formatMethod(payment.payment_method) }}
+                  </span>
+                </td>
+                <td class="txn-cell">{{ payment.transaction_id ?? '—' }}</td>
+                <td>{{ formatDate(payment.created_at) }}</td>
+                <td>
+                  <span
+                    class="status-chip"
+                    [class.status-chip--paid]="payment.status === 'paid'"
+                    [class.status-chip--pending]="payment.status === 'pending'"
+                    [class.status-chip--refunded]="payment.status === 'refunded'"
+                    [class.status-chip--failed]="payment.status === 'failed'"
+                  >
+                    {{ statusLabel(payment.status) }}
+                  </span>
+                </td>
+              </tr>
+            }
+            @empty {
+              <tr>
+                <td colspan="7" class="empty-row">No payments match the current filters.</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Paginator -->
+      @if (totalFiltered() > 0) {
+        <nav class="paginator" aria-label="Payments pagination">
+          <span class="paginator__info">
+            Showing {{ pageStart() }}&ndash;{{ pageEnd() }} of {{ totalFiltered() }}
+          </span>
+          <ul class="paginator__list">
+            <li>
+              <button type="button" class="paginator__btn" [disabled]="currentPage() === 1" (click)="goToPage(currentPage() - 1)" aria-label="Previous">
+                <svg viewBox="0 0 24 24" fill="none"><path d="m15 18-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </li>
+            @for (p of pageNumbers(); track p) {
+              <li>
+                <button type="button" class="paginator__page" [class.paginator__page--active]="currentPage() === p" (click)="goToPage(p)">{{ p }}</button>
+              </li>
+            }
+            <li>
+              <button type="button" class="paginator__btn" [disabled]="currentPage() === totalPages()" (click)="goToPage(currentPage() + 1)" aria-label="Next">
+                <svg viewBox="0 0 24 24" fill="none"><path d="m9 18 6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </li>
+          </ul>
+        </nav>
+      }
+    }
+
+  </section>
+</section>

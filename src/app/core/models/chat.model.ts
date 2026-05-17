@@ -9,7 +9,6 @@ export interface ChatMessage {
   error?: boolean;
 }
 
-// Maps our model to Gemini's expected history format
 export interface GeminiHistoryEntry {
   role: 'user' | 'model';
   parts: Array<{ text: string }>;

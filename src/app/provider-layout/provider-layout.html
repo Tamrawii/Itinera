@@ -1,5 +1,77 @@
 <main class="provider-shell">
-  <app-sidebar></app-sidebar>
+  <aside
+    class="flex min-h-screen w-full flex-col border-r border-slate-200 bg-slate-100 px-4 py-5 text-slate-700"
+    aria-label="Provider sidebar"
+  >
+    <div class="mb-5 flex items-center gap-3 px-2">
+      <img src="/images/logo.png" alt="Itinera logo" class="h-10 w-10 rounded-xl object-contain" />
+      <div>
+        <p class="text-lg font-bold text-slate-800">Itinera</p>
+        <p class="text-xs text-slate-500">Provider Portal</p>
+      </div>
+    </div>
+
+    <p class="mb-3 px-2 text-xs font-semibold uppercase tracking-wide text-slate-400">Menu</p>
+    <nav class="space-y-1">
+      <a
+        routerLink="/provider/dashboard"
+        routerLinkActive="sidebar-active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="sidebar-link"
+      >
+        <span class="sidebar-icon">
+          <lineicons [icon]="dashboardSquare1Outlined" [size]="22" [strokeWidth]="1.5"></lineicons>
+        </span>
+        Dashboard
+      </a>
+
+      <a routerLink="/provider/my-services" routerLinkActive="sidebar-active" class="sidebar-link">
+        <span class="sidebar-icon">
+          <lineicons [icon]="boxClosedOutlined" [size]="22" [strokeWidth]="1.5"></lineicons>
+        </span>
+        My Services
+      </a>
+
+      <a routerLink="/provider/bookings" routerLinkActive="sidebar-active" class="sidebar-link">
+        <span class="sidebar-icon">
+          <lineicons [icon]="calendarDaysOutlined" [size]="22" [strokeWidth]="1.5"></lineicons>
+        </span>
+        Bookings
+      </a>
+
+      <a routerLink="/provider/messages" routerLinkActive="sidebar-active" class="sidebar-link">
+        <span class="sidebar-icon">
+          <lineicons [icon]="comment1Outlined" [size]="22" [strokeWidth]="1.5"></lineicons>
+        </span>
+        Messages
+      </a>
+
+      <a routerLink="/provider/reviews" routerLinkActive="sidebar-active" class="sidebar-link">
+        <span class="sidebar-icon">
+          <lineicons [icon]="starFatOutlined" [size]="22" [strokeWidth]="1.5"></lineicons>
+        </span>
+        Reviews
+      </a>
+    </nav>
+
+    <p class="mb-3 mt-6 px-2 text-xs font-semibold uppercase tracking-wide text-slate-400">Account</p>
+    <a routerLink="/provider/profile-settings" routerLinkActive="sidebar-active" class="sidebar-link">
+      <span class="sidebar-icon">
+        <lineicons [icon]="user4Outlined" [size]="22" [strokeWidth]="1.5"></lineicons>
+      </span>
+      Profile &amp; Settings
+    </a>
+
+    <a
+      routerLink="/home"
+      class="mt-auto inline-flex items-center gap-2 px-2 py-3 text-sm font-medium text-slate-500 transition hover:text-blue-600"
+    >
+      <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M8.5 5 4 9.5 8.5 14M4.5 9.5h11" stroke="currentColor" stroke-width="1.7" />
+      </svg>
+      Back to site
+    </a>
+  </aside>
 
   <section class="provider-content">
     <header

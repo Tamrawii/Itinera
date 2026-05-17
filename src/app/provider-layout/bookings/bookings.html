@@ -1,122 +1,277 @@
-<section class="space-y-6">
-  <header>
-    <h1 class="text-3xl font-bold text-slate-800">Bookings</h1>
-    <p class="mt-1 text-slate-500">Manage incoming and past bookings for your services</p>
+<section class="provider-page">
+
+  <header class="page-head">
+    <div>
+      <h1>Bookings</h1>
+      <p>Manage incoming and past bookings for your services</p>
+    </div>
   </header>
 
-  <div class="stats-grid">
-    <article class="stat-card">
-      <p class="stat-value">{{ totalBookings }}</p>
-      <p class="stat-label">Total Bookings</p>
+  <!-- Stat cards -->
+  <section class="metric-grid">
+    <article class="metric-card">
+      <p class="metric-value">{{ totalFiltered() }}</p>
+      <p class="metric-label">Total Bookings</p>
     </article>
-    <article class="stat-card stat-card--warning">
-      <p class="stat-value">{{ awaitingResponse }}</p>
-      <p class="stat-label">Awaiting Response</p>
+    <article class="metric-card">
+      <p class="metric-value">{{ totalRevenue() }}</p>
+      <p class="metric-label">Total Earnings</p>
     </article>
-    <article class="stat-card">
-      <p class="stat-value">${{ totalEarnings }}</p>
-      <p class="stat-label">Total Earnings</p>
+    <article class="metric-card">
+      <p class="metric-value metric-value--confirmed">{{ totalConfirmed() }}</p>
+      <p class="metric-label">Confirmed</p>
     </article>
-  </div>
+    <article class="metric-card">
+      <p class="metric-value metric-value--pending">{{ totalPending() }}</p>
+      <p class="metric-label">Pending</p>
+    </article>
+  </section>
 
-  <div class="relative overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-xs">
-    <div
-      class="flex flex-col flex-wrap items-center justify-between space-y-4 p-4 md:flex-row md:space-y-0"
-    >
-      <label for="input-group-1" class="sr-only">Search</label>
-      <div class="relative w-full max-w-lg">
-        <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
-          <svg
-            class="h-4 w-4 text-slate-500"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-width="2"
-              d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
-            />
-          </svg>
-        </div>
+  <section class="admin-panel">
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+
+      <!-- Search -->
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.8" />
+          <path d="m16 16 4.3 4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+        </svg>
         <input
           type="text"
-          id="input-group-1"
-          class="block w-full rounded-lg border border-slate-200 bg-slate-100 ps-9 pe-3 py-2.5 text-sm text-slate-700 placeholder:text-slate-500 focus:border-blue-500 focus:ring-blue-500"
-          placeholder="Search by guest, service, or booking ID..."
+          placeholder="Search by guest, service, or ID..."
+          [ngModel]="searchQuery()"
+          (ngModelChange)="onSearch($event)"
         />
       </div>
 
-      <div class="flex items-center gap-2">
-        <button type="button" class="filter-chip filter-chip--active">All</button>
-        <button type="button" class="filter-chip">Pending</button>
-        <button type="button" class="filter-chip">Confirmed</button>
-        <button type="button" class="filter-chip">Completed</button>
-        <button type="button" class="filter-chip">Cancelled</button>
+      <!-- Filters -->
+      <div class="filter-group">
+
+        <!-- Status -->
+        <div class="relative">
+          <button
+            id="pvBkgStatusBtn"
+            data-dropdown-toggle="pvBkgStatusDropdown"
+            data-dropdown-placement="bottom-start"
+            type="button"
+            class="filter-btn"
+            [class.filter-btn--active]="activeStatus() !== 'All'"
+          >
+            <svg class="filter-btn__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M12 2v2m0 16v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M2 12h2m16 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            {{ activeStatus() === 'All' ? 'Status' : activeStatus() }}
+            <svg class="filter-btn__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="m19 9-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div id="pvBkgStatusDropdown" class="z-20 hidden w-48 rounded-xl border border-slate-200 bg-white shadow-lg">
+            <ul class="p-2 text-sm font-medium text-slate-600">
+              @for (st of statuses; track st) {
+                <li>
+                  <button type="button" class="dropdown-item" [class.dropdown-item--active]="activeStatus() === st" (click)="setStatus(st)">
+                    {{ st }}
+                    @if (activeStatus() === st) {
+                      <svg class="ms-auto h-3.5 w-3.5 text-blue-500" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    }
+                  </button>
+                </li>
+              }
+            </ul>
+          </div>
+        </div>
+
+        <!-- Sort -->
+        <div class="relative">
+          <button
+            id="pvBkgSortBtn"
+            data-dropdown-toggle="pvBkgSortDropdown"
+            data-dropdown-placement="bottom-start"
+            type="button"
+            class="filter-btn"
+          >
+            <svg class="filter-btn__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M3 4h13M3 8h9M3 12h5m13 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            {{ activeSort() }}
+            <svg class="filter-btn__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="m19 9-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div id="pvBkgSortDropdown" class="z-20 hidden w-52 rounded-xl border border-slate-200 bg-white shadow-lg">
+            <ul class="p-2 text-sm font-medium text-slate-600">
+              @for (opt of sortOptions; track opt) {
+                <li>
+                  <button type="button" class="dropdown-item" [class.dropdown-item--active]="activeSort() === opt" (click)="setSort(opt)">
+                    {{ opt }}
+                    @if (activeSort() === opt) {
+                      <svg class="ms-auto h-3.5 w-3.5 text-blue-500" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    }
+                  </button>
+                </li>
+              }
+            </ul>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="relative">
+          <button
+            id="pvBkgActionsBtn"
+            [attr.data-dropdown-toggle]="selectedCount() > 0 ? 'pvBkgActionsDropdown' : null"
+            data-dropdown-placement="bottom-start"
+            type="button"
+            class="filter-btn actions-btn"
+            [class.actions-btn--active]="selectedCount() > 0"
+            [disabled]="selectedCount() === 0"
+          >
+            <svg class="filter-btn__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="5" r="1.2" fill="currentColor"/>
+              <circle cx="12" cy="12" r="1.2" fill="currentColor"/>
+              <circle cx="12" cy="19" r="1.2" fill="currentColor"/>
+            </svg>
+            Actions{{ selectedCount() > 0 ? ' (' + selectedCount() + ')' : '' }}
+            <svg class="filter-btn__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="m19 9-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div id="pvBkgActionsDropdown" class="z-30 hidden w-52 rounded-xl border border-slate-200 bg-white shadow-lg">
+            <div class="px-3 py-2 border-b border-slate-100">
+              <p class="text-xs font-semibold text-slate-400 uppercase tracking-wide">{{ selectedCount() }} selected</p>
+            </div>
+            <ul class="p-2 text-sm text-slate-600">
+              <li><button type="button" class="dropdown-item" (click)="bulkAction('confirm')">Mark Confirmed</button></li>
+              <li><button type="button" class="dropdown-item" (click)="bulkAction('complete')">Mark Completed</button></li>
+              <li><button type="button" class="dropdown-item" (click)="bulkAction('cancel')">Mark Cancelled</button></li>
+              <li><hr class="my-1 border-slate-100"></li>
+              <li><button type="button" class="dropdown-item dropdown-item--danger" (click)="bulkAction('delete')">Remove</button></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Active chip -->
+        @if (activeStatus() !== 'All') {
+          <div class="active-chips">
+            <span class="active-chip">
+              {{ activeStatus() }}
+              <button type="button" (click)="setStatus('All')" aria-label="Remove status filter">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </button>
+            </span>
+          </div>
+        }
+
       </div>
     </div>
 
-    <table class="w-full text-left text-sm text-slate-600">
-      <thead class="border-y border-slate-200 bg-slate-100 text-sm text-slate-500">
+    <!-- Table -->
+    <table class="admin-table">
+      <thead>
         <tr>
-          <th scope="col" class="px-6 py-3 font-medium">Guest</th>
-          <th scope="col" class="px-6 py-3 font-medium">Service</th>
-          <th scope="col" class="px-6 py-3 font-medium">Schedule</th>
-          <th scope="col" class="px-6 py-3 font-medium">Status</th>
-          <th scope="col" class="px-6 py-3 font-medium">Amount</th>
-          <th scope="col" class="px-6 py-3 font-medium">Action</th>
+          <th class="cb-col">
+            <input type="checkbox" class="row-cb" [checked]="allPageSelected()" (change)="toggleAll()" />
+          </th>
+          <th>Booking ID</th>
+          <th>Guest</th>
+          <th>Service</th>
+          <th>Schedule</th>
+          <th>Guests</th>
+          <th>Amount</th>
+          <th>Status</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
-        @for (booking of bookings; track booking.bookingId) {
-        <tr class="border-b border-slate-200 bg-white hover:bg-slate-50">
-          <th scope="row" class="whitespace-nowrap px-6 py-4 text-slate-800">
-            <div class="font-semibold">{{ booking.guestName }}</div>
-            <div class="text-sm font-normal text-slate-500">#{{ booking.bookingId }}</div>
-          </th>
-
-          <td class="px-6 py-4">
-            <div class="font-medium text-slate-700">{{ booking.serviceName }}</div>
-            @if (booking.note) {
-            <div class="text-sm italic text-slate-500">{{ booking.note }}</div>
-            }
-          </td>
-
-          <td class="px-6 py-4">
-            <div>{{ booking.schedule }}</div>
-            <div class="text-sm text-slate-500">{{ booking.guests }}</div>
-          </td>
-
-          <td class="px-6 py-4">
-            <span
-              class="status-pill"
-              [class.status-pill--pending]="booking.status === 'Pending'"
-              [class.status-pill--confirmed]="booking.status === 'Confirmed'"
-              [class.status-pill--completed]="booking.status === 'Completed'"
-              [class.status-pill--cancelled]="booking.status === 'Cancelled'"
-            >
-              {{ booking.status }}
-            </span>
-          </td>
-
-          <td class="px-6 py-4 font-semibold text-slate-800">${{ booking.amount }}</td>
-
-          <td class="px-6 py-4 flex gap-2">
-            <a href="#" class="font-medium color-gray hover:underline">
-              <lineicons [icon]="comment10Outlined" [size]="22"></lineicons>
-            </a>
-            <a href="#" class="font-medium color-green hover:underline">
-              <lineicons [icon]="checkSolid" [size]="22"></lineicons>
-            </a>
-            <a href="#" class="font-medium color-red hover:underline">
-              <lineicons [icon]="xmarkSolid" [size]="22"></lineicons>
-            </a>
-          </td>
-        </tr>
+        @for (booking of pagedBookings(); track booking.bookingId) {
+          <tr [class.row--selected]="selectedRows().has(booking.bookingId)">
+            <td class="cb-col">
+              <input type="checkbox" class="row-cb" [checked]="selectedRows().has(booking.bookingId)" (change)="toggleRow(booking.bookingId)" />
+            </td>
+            <td class="id-cell">{{ booking.bookingId }}</td>
+            <td>
+              <div class="guest-name">{{ booking.guestName }}</div>
+              <div class="guest-email">{{ booking.guestEmail }}</div>
+            </td>
+            <td>
+              <div>{{ booking.serviceName }}</div>
+              @if (booking.note) {
+                <div class="row-note">{{ booking.note }}</div>
+              }
+            </td>
+            <td>
+              <div>{{ booking.schedule }}</div>
+              <div class="row-sub">{{ booking.guests }}</div>
+            </td>
+            <td>{{ booking.guests }}</td>
+            <td class="amount-cell">${{ booking.amount }}</td>
+            <td>
+              <span
+                class="status-chip"
+                [class.status-chip--pending]="booking.status === 'Pending'"
+                [class.status-chip--danger]="booking.status === 'Cancelled'"
+                [class.status-chip--completed]="booking.status === 'Completed'"
+              >
+                {{ booking.status }}
+              </span>
+            </td>
+            <td>
+              <div class="actions-wrap">
+                <svg class="action-eye" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z" stroke="currentColor" stroke-width="1.7" />
+                  <circle cx="12" cy="12" r="2.4" stroke="currentColor" stroke-width="1.7" />
+                </svg>
+                @if (booking.status === 'Pending') {
+                  <svg class="action-accept" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.7" />
+                    <path d="m8.5 12.3 2.3 2.3 4.7-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                  <svg class="action-reject" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.7" />
+                    <path d="m9.4 9.4 5.2 5.2m0-5.2-5.2 5.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                  </svg>
+                }
+              </div>
+            </td>
+          </tr>
+        }
+        @empty {
+          <tr>
+            <td colspan="9" class="empty-row">No bookings match the current filters.</td>
+          </tr>
         }
       </tbody>
     </table>
-  </div>
+
+    <!-- Paginator -->
+    <nav class="paginator" aria-label="Bookings pagination">
+      <span class="paginator__info">
+        Showing {{ pageStart() }}&ndash;{{ pageEnd() }} of {{ totalFiltered() }}
+      </span>
+      <ul class="paginator__list">
+        <li>
+          <button type="button" class="paginator__btn" [disabled]="currentPage() === 1" (click)="goToPage(currentPage() - 1)" aria-label="Previous">
+            <svg viewBox="0 0 24 24" fill="none"><path d="m15 18-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </li>
+        @for (p of pageNumbers(); track p) {
+          <li>
+            <button type="button" class="paginator__page" [class.paginator__page--active]="currentPage() === p" (click)="goToPage(p)">{{ p }}</button>
+          </li>
+        }
+        <li>
+          <button type="button" class="paginator__btn" [disabled]="currentPage() === totalPages()" (click)="goToPage(currentPage() + 1)" aria-label="Next">
+            <svg viewBox="0 0 24 24" fill="none"><path d="m9 18 6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+  </section>
 </section>

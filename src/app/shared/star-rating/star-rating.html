@@ -1,0 +1,35 @@
+<div 
+  class="star-rating" 
+  [class]="sizeClass"
+  [class.readonly]="readonly"
+  [class.disabled]="disabled"
+>
+  <div class="star-rating__stars">
+    @for (star of stars; track star) {
+      <button
+        class="star-rating__star"
+        [class.filled]="isStarFilled(star)"
+        [class.hovered]="star <= hoverRating"
+        [disabled]="readonly || disabled"
+        (click)="onStarClick(star)"
+        (mouseenter)="onStarHover(star)"
+        (mouseleave)="onStarLeave()"
+        type="button"
+        [attr.aria-label]="`Rate ${star} out of ${maxRating} stars`"
+      >
+        @if (isStarFilled(star)) {
+          <lineicons [icon]="StarFatSolid" [size]="getIconSize()" [strokeWidth]="0"></lineicons>
+        } @else {
+          <lineicons [icon]="StarFatOutlined" [size]="getIconSize()" [strokeWidth]="1.5"></lineicons>
+        }
+      </button>
+    }
+  </div>
+
+  @if (showValue) {
+    <div class="star-rating__value">
+      <span class="rating-number">{{ getDisplayRating() }}</span>
+      <span class="rating-max">/ {{ maxRating }}</span>
+    </div>
+  }
+</div>

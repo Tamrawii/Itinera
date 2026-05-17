@@ -1,0 +1,128 @@
+<main class="tourist-shell">
+  <aside
+    class="tourist-sidebar flex min-h-screen flex-col border-r border-slate-200 bg-slate-100 px-4 py-5 text-slate-700"
+    aria-label="Tourist sidebar"
+  >
+    <div class="mb-5 flex items-center gap-3 px-2">
+      <img src="/images/logo.png" alt="Itinera logo" class="h-10 w-10 rounded-xl object-contain" />
+      <div>
+        <p class="text-lg font-bold text-slate-800">Itinera</p>
+        <p class="text-xs text-slate-500">Tourist Portal</p>
+      </div>
+    </div>
+
+    <p class="mb-3 px-2 text-xs font-semibold uppercase tracking-wide text-slate-400">Menu</p>
+    <nav class="space-y-1">
+      <a
+        routerLink="/tourist/dashboard"
+        routerLinkActive="sidebar-active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="sidebar-link"
+      >
+        <span class="sidebar-icon">
+          <lineicons [icon]="Home2Outlined" [size]="22" [strokeWidth]="1.5"></lineicons>
+        </span>
+        Dashboard
+      </a>
+
+      <a routerLink="/tourist/bookings" routerLinkActive="sidebar-active" class="sidebar-link">
+        <span class="sidebar-icon">
+          <lineicons [icon]="CalendarDaysOutlined" [size]="22" [strokeWidth]="1.5"></lineicons>
+        </span>
+        My Bookings
+      </a>
+
+      <a routerLink="/tourist/payments" routerLinkActive="sidebar-active" class="sidebar-link">
+        <span class="sidebar-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="5" width="20" height="14" rx="2.5"/>
+            <path d="M2 10h20"/>
+            <path d="M6 15h4"/>
+          </svg>
+        </span>
+        Payments
+      </a>
+
+      <a routerLink="/tourist/wishlist" routerLinkActive="sidebar-active" class="sidebar-link">
+        <span class="sidebar-icon">
+          <lineicons [icon]="HeartOutlined" [size]="22" [strokeWidth]="1.5"></lineicons>
+        </span>
+        Wishlist
+      </a>
+
+      <a routerLink="/tourist/reviews" routerLinkActive="sidebar-active" class="sidebar-link">
+        <span class="sidebar-icon">
+          <lineicons [icon]="StarFatOutlined" [size]="22" [strokeWidth]="1.5"></lineicons>
+        </span>
+        My Reviews
+      </a>
+
+      <a routerLink="/tourist/messages" routerLinkActive="sidebar-active" class="sidebar-link">
+        <span class="sidebar-icon">
+          <lineicons [icon]="Comment1Outlined" [size]="22" [strokeWidth]="1.5"></lineicons>
+        </span>
+        Messages
+      </a>
+    </nav>
+
+    <p class="mb-3 mt-6 px-2 text-xs font-semibold uppercase tracking-wide text-slate-400">Account</p>
+    <nav class="space-y-1">
+      <a routerLink="/tourist/profile" routerLinkActive="sidebar-active" class="sidebar-link">
+        <span class="sidebar-icon">
+          <lineicons [icon]="User4Outlined" [size]="22" [strokeWidth]="1.5"></lineicons>
+        </span>
+        Profile
+      </a>
+
+      <a routerLink="/tourist/settings" routerLinkActive="sidebar-active" class="sidebar-link">
+        <span class="sidebar-icon">
+          <lineicons [icon]="SlidersHorizontalSquare2Outlined" [size]="22" [strokeWidth]="1.5"></lineicons>
+        </span>
+        Settings
+      </a>
+    </nav>
+
+    <a
+      routerLink="/home"
+      class="mt-auto inline-flex items-center gap-2 px-2 py-3 text-sm font-medium text-slate-500 transition hover:text-blue-600"
+    >
+      <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M8.5 5 4 9.5 8.5 14M4.5 9.5h11" stroke="currentColor" stroke-width="1.7" />
+      </svg>
+      Back to site
+    </a>
+  </aside>
+
+  <section class="tourist-content">
+    <header
+      class="sticky top-0 z-20 flex items-center justify-between border-b border-slate-200 bg-white px-6 py-4"
+    >
+      <p class="font-semibold text-gray-500">Tourist Dashboard</p>
+
+      <div class="flex items-center gap-4">
+        <button
+          type="button"
+          class="rounded-full border border-slate-200 p-2.5 text-slate-500 transition hover:text-blue-600"
+          aria-label="Notifications"
+        >
+          <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path
+              d="M10 3a4 4 0 0 0-4 4v1.7c0 .59-.19 1.17-.54 1.65L4.4 11.8a1 1 0 0 0 .8 1.6h9.6a1 1 0 0 0 .8-1.6l-1.05-1.46A2.8 2.8 0 0 1 14 8.7V7a4 4 0 0 0-4-4Z"
+              stroke="currentColor"
+              stroke-width="1.5"
+            />
+            <path d="M8.5 15a1.5 1.5 0 0 0 3 0" stroke="currentColor" stroke-width="1.5" />
+          </svg>
+        </button>
+        <span
+          class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-700"
+          >TU</span
+        >
+      </div>
+    </header>
+
+    <div class="p-6">
+      <router-outlet></router-outlet>
+    </div>
+  </section>
+</main>

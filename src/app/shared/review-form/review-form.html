@@ -1,0 +1,101 @@
+<div class="review-form">
+  @if (booking) {
+    <!-- Booking Summary -->
+    <div class="booking-summary">
+      <div class="booking-header">
+        <h3>{{ getFormTitle() }}</h3>
+        <p>{{ getFormDescription() }}</p>
+      </div>
+
+      <div class="booking-details">
+        <div class="service-info">
+          <img [src]="booking.serviceImage" [alt]="booking.serviceName" class="service-image" />
+          <div class="service-details">
+            <h4>{{ booking.serviceName }}</h4>
+            <div class="provider-info">
+              <lineicons [icon]="User4Outlined" [size]="14" [strokeWidth]="1.5"></lineicons>
+              {{ booking.providerName }}
+            </div>
+            <div class="location-info">
+              <lineicons [icon]="MapMarker5Outlined" [size]="14" [strokeWidth]="1.5"></lineicons>
+              {{ booking.location }}
+            </div>
+            <div class="date-info">
+              <lineicons [icon]="CalendarDaysOutlined" [size]="14" [strokeWidth]="1.5"></lineicons>
+              {{ booking.bookingDate }}
+            </div>
+          </div>
+        </div>
+        <div class="booking-price">
+          <span class="price">${{ booking.totalPrice }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Review Form -->
+    <form [formGroup]="reviewForm" class="review-content">
+      <!-- Rating -->
+      <div class="form-group">
+        <label>Your Rating *</label>
+        <div class="rating-container">
+          <app-star-rating
+            [(rating)]="currentRating"
+            [maxRating]="5"
+            [size]="'large'"
+            [showValue]="true"
+            (ratingChange)="onRatingChange($event)"
+          ></app-star-rating>
+          @if (isFieldInvalid('rating')) {
+            <span class="error-message">{{ getErrorMessage('rating') }}</span>
+          }
+        </div>
+      </div>
+
+      <!-- Comment -->
+      <div class="form-group">
+        <label for="comment">Your Review *</label>
+        <textarea
+          id="comment"
+          formControlName="comment"
+          rows="5"
+          placeholder="Share your experience with this service..."
+          [class.error]="isFieldInvalid('comment')"
+        ></textarea>
+        <div class="character-count">
+          <span class="count">{{ getCharacterCount() }}</span>
+          <span class="max">/ 500 characters</span>
+        </div>
+        @if (isFieldInvalid('comment')) {
+          <span class="error-message">{{ getErrorMessage('comment') }}</span>
+        }
+      </div>
+
+      <!-- Form Actions -->
+      <div class="form-actions">
+        <button
+          type="button"
+          class="btn-secondary"
+          (click)="onCancel()"
+          [disabled]="isSubmitting"
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          class="btn-primary"
+          (click)="onSubmit()"
+          [disabled]="isSubmitting || reviewForm.invalid"
+        >
+          @if (isSubmitting) {
+            <div class="btn-spinner"></div>
+          }
+          {{ getSubmitButtonText() }}
+        </button>
+      </div>
+    </form>
+  } @else {
+    <div class="no-booking">
+      <p>No booking data available for review.</p>
+    </div>
+  }
+</div>

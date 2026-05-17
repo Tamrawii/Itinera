@@ -1,6 +1,8 @@
 <app-navbar></app-navbar>
 
 <main class="view-all-page margin-top">
+
+  <!-- ── Hero / Search ──────────────────────────────────────────── -->
   <section class="hero-panel px-24 py-12">
     <div class="max-w-[1360px] mx-auto">
       <h1 class="text-5xl font-bold text-slate-800 mb-2">Explore Services</h1>
@@ -15,36 +17,296 @@
             type="text"
             class="w-full text-lg placeholder:text-slate-400 focus:outline-none"
             placeholder="Search by name or location..."
+            [ngModel]="searchQuery()"
+            (ngModelChange)="onSearch($event)"
           />
         </div>
-
-        <button
-          type="button"
-          class="filter-btn inline-flex items-center gap-2 rounded-2xl px-5 py-3"
-        >
-          <svg viewBox="0 0 24 24" fill="none" class="w-5 h-5">
-            <path d="M4 7h16M7 12h10M10 17h4" stroke="currentColor" stroke-width="2" />
-          </svg>
-          Filters
-        </button>
       </div>
     </div>
   </section>
 
+  <!-- ── Results ────────────────────────────────────────────────── -->
   <section class="results-panel px-24 py-10">
     <div class="max-w-[1360px] mx-auto">
-      <div class="flex items-center gap-3 flex-wrap mb-8">
-        <button type="button" class="chip chip-active">All</button>
-        <button type="button" class="chip">Hotels</button>
-        <button type="button" class="chip"  >Restaurants</button>
-        <button type="button" class="chip">Tours</button>
-        <button type="button" class="chip">Transport</button>
-      </div>
 
-      <p class="text-slate-500 mb-4">{{ offersList().length }} results found</p>
+      <!-- Filter bar -->
+      <div class="filter-bar">
 
+        <!-- Type -->
+        <div class="relative">
+          <button id="vaTypeBtn" data-dropdown-toggle="vaTypeDropdown" data-dropdown-placement="bottom-start"
+            type="button" class="va-filter-btn" [class.va-filter-btn--active]="activeType() !== 'all'">
+            <svg class="va-filter-btn__icon" viewBox="0 0 24 24" fill="none">
+              <path d="M4 6h16M4 12h10M4 18h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            {{ typeLabel(activeType()) }}
+            <svg class="va-filter-btn__chevron" viewBox="0 0 24 24" fill="none">
+              <path d="m19 9-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div id="vaTypeDropdown" class="va-dropdown">
+            <ul class="p-2">
+              @for (opt of offerTypes; track opt.value) {
+                <li>
+                  <button type="button" class="va-dropdown-item" [class.va-dropdown-item--active]="activeType() === opt.value" (click)="setType(opt.value)">
+                    {{ opt.label }}
+                    @if (activeType() === opt.value) {
+                      <svg class="ms-auto h-3.5 w-3.5 text-blue-500" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    }
+                  </button>
+                </li>
+              }
+            </ul>
+          </div>
+        </div>
+
+        <!-- Price -->
+        <div class="relative">
+          <button id="vaPriceBtn" data-dropdown-toggle="vaPriceDropdown" data-dropdown-placement="bottom-start"
+            type="button" class="va-filter-btn" [class.va-filter-btn--active]="activePrice() !== 'all'">
+            <svg class="va-filter-btn__icon" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M12 7v1m0 8v1M9.5 9.5A2.5 2.5 0 0 1 12 8h.5a2 2 0 0 1 0 4h-1a2 2 0 0 0 0 4H12a2.5 2.5 0 0 0 2.5-2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            {{ priceLabel(activePrice()) }}
+            <svg class="va-filter-btn__chevron" viewBox="0 0 24 24" fill="none">
+              <path d="m19 9-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div id="vaPriceDropdown" class="va-dropdown">
+            <ul class="p-2">
+              @for (opt of priceRanges; track opt.value) {
+                <li>
+                  <button type="button" class="va-dropdown-item" [class.va-dropdown-item--active]="activePrice() === opt.value" (click)="setPrice(opt.value)">
+                    {{ opt.label }}
+                    @if (activePrice() === opt.value) {
+                      <svg class="ms-auto h-3.5 w-3.5 text-blue-500" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    }
+                  </button>
+                </li>
+              }
+            </ul>
+          </div>
+        </div>
+
+        <!-- Rating -->
+        <div class="relative">
+          <button id="vaRatingBtn" data-dropdown-toggle="vaRatingDropdown" data-dropdown-placement="bottom-start"
+            type="button" class="va-filter-btn" [class.va-filter-btn--active]="activeRating() > 0">
+            <svg class="va-filter-btn__icon" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            {{ ratingLabel(activeRating()) }}
+            <svg class="va-filter-btn__chevron" viewBox="0 0 24 24" fill="none">
+              <path d="m19 9-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div id="vaRatingDropdown" class="va-dropdown">
+            <ul class="p-2">
+              @for (r of ratingOptions; track r) {
+                <li>
+                  <button type="button" class="va-dropdown-item" [class.va-dropdown-item--active]="activeRating() === r" (click)="setRating(r)">
+                    {{ ratingLabel(r) }}
+                    @if (activeRating() === r) {
+                      <svg class="ms-auto h-3.5 w-3.5 text-blue-500" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    }
+                  </button>
+                </li>
+              }
+            </ul>
+          </div>
+        </div>
+
+        <!-- Location -->
+        <div class="relative">
+          <button id="vaLocationBtn" data-dropdown-toggle="vaLocationDropdown" data-dropdown-placement="bottom-start"
+            type="button" class="va-filter-btn" [class.va-filter-btn--active]="activeLocation() !== 'all'">
+            <svg class="va-filter-btn__icon" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Z" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.8"/>
+            </svg>
+            {{ locationLabel(activeLocation()) }}
+            <svg class="va-filter-btn__chevron" viewBox="0 0 24 24" fill="none">
+              <path d="m19 9-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div id="vaLocationDropdown" class="va-dropdown va-dropdown--scroll">
+            <ul class="p-2">
+              @for (loc of locations(); track loc.value) {
+                <li>
+                  <button type="button" class="va-dropdown-item" [class.va-dropdown-item--active]="activeLocation() === loc.value" (click)="setLocation(loc.value)">
+                    {{ loc.label }}
+                    @if (activeLocation() === loc.value) {
+                      <svg class="ms-auto h-3.5 w-3.5 text-blue-500" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    }
+                  </button>
+                </li>
+              }
+            </ul>
+          </div>
+        </div>
+
+        <!-- Availability / Date picker -->
+        <div class="relative">
+          <button
+            type="button"
+            class="va-filter-btn"
+            [class.va-filter-btn--active]="hasDateFilter()"
+            (click)="toggleDatePicker()"
+          >
+            <svg class="va-filter-btn__icon" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            {{ dateLabel() }}
+            <svg class="va-filter-btn__chevron" viewBox="0 0 24 24" fill="none">
+              <path d="m19 9-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+          @if (showDatePicker()) {
+            <div class="date-picker-panel">
+              <div class="date-picker-header">
+                <p class="date-picker-title">Select Dates</p>
+                <button type="button" class="date-picker-close" (click)="closeDatePicker()" aria-label="Close">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </button>
+              </div>
+              <div class="date-picker-body">
+                <div class="date-field">
+                  <label class="date-label">Check-in</label>
+                  <input
+                    type="date"
+                    class="date-input"
+                    [min]="todayStr"
+                    [ngModel]="checkInDate()"
+                    (ngModelChange)="onCheckIn($event)"
+                  />
+                </div>
+                <div class="date-field">
+                  <label class="date-label">Check-out</label>
+                  <input
+                    type="date"
+                    class="date-input"
+                    [min]="checkInDate() || todayStr"
+                    [ngModel]="checkOutDate()"
+                    (ngModelChange)="onCheckOut($event)"
+                  />
+                </div>
+              </div>
+              <div class="date-picker-footer">
+                @if (hasDateFilter()) {
+                  <button type="button" class="date-clear-btn" (click)="clearDates()">Clear dates</button>
+                }
+                <button type="button" class="date-apply-btn" (click)="closeDatePicker()">Apply</button>
+              </div>
+            </div>
+          }
+        </div>
+
+        <!-- Sort -->
+        <div class="relative">
+          <button id="vaSortBtn" data-dropdown-toggle="vaSortDropdown" data-dropdown-placement="bottom-start"
+            type="button" class="va-filter-btn" [class.va-filter-btn--active]="activeSort() !== 'recommended'">
+            <svg class="va-filter-btn__icon" viewBox="0 0 24 24" fill="none">
+              <path d="M3 4h13M3 8h9M3 12h5m13 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            {{ sortLabel(activeSort()) }}
+            <svg class="va-filter-btn__chevron" viewBox="0 0 24 24" fill="none">
+              <path d="m19 9-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div id="vaSortDropdown" class="va-dropdown">
+            <ul class="p-2">
+              @for (opt of sortOptions; track opt.value) {
+                <li>
+                  <button type="button" class="va-dropdown-item" [class.va-dropdown-item--active]="activeSort() === opt.value" (click)="setSort(opt.value)">
+                    {{ opt.label }}
+                    @if (activeSort() === opt.value) {
+                      <svg class="ms-auto h-3.5 w-3.5 text-blue-500" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    }
+                  </button>
+                </li>
+              }
+            </ul>
+          </div>
+        </div>
+
+        <!-- Clear -->
+        @if (activeFilterCount() > 0) {
+          <button type="button" class="va-clear-btn" (click)="clearFilters()">
+            <svg viewBox="0 0 24 24" fill="none" class="w-4 h-4">
+              <path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            Clear ({{ activeFilterCount() }})
+          </button>
+        }
+
+      </div><!-- /filter-bar -->
+
+      <!-- Active filter chips -->
+      @if (activeFilterCount() > 0) {
+        <div class="active-chips-row">
+          @if (activeType() !== 'all') {
+            <span class="va-chip">{{ typeLabel(activeType()) }}
+              <button (click)="setType('all')" aria-label="Remove">
+                <svg viewBox="0 0 24 24" fill="none" class="w-3 h-3"><path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </button>
+            </span>
+          }
+          @if (activePrice() !== 'all') {
+            <span class="va-chip">{{ priceLabel(activePrice()) }}
+              <button (click)="setPrice('all')" aria-label="Remove">
+                <svg viewBox="0 0 24 24" fill="none" class="w-3 h-3"><path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </button>
+            </span>
+          }
+          @if (activeRating() > 0) {
+            <span class="va-chip">{{ ratingLabel(activeRating()) }}
+              <button (click)="setRating(0)" aria-label="Remove">
+                <svg viewBox="0 0 24 24" fill="none" class="w-3 h-3"><path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </button>
+            </span>
+          }
+          @if (activeLocation() !== 'all') {
+            <span class="va-chip">{{ locationLabel(activeLocation()) }}
+              <button (click)="setLocation('all')" aria-label="Remove">
+                <svg viewBox="0 0 24 24" fill="none" class="w-3 h-3"><path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </button>
+            </span>
+          }
+          @if (hasDateFilter()) {
+            <span class="va-chip">{{ dateLabel() }}
+              <button (click)="clearDates()" aria-label="Remove">
+                <svg viewBox="0 0 24 24" fill="none" class="w-3 h-3"><path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </button>
+            </span>
+          }
+          @if (activeSort() !== 'recommended') {
+            <span class="va-chip">{{ sortLabel(activeSort()) }}
+              <button (click)="setSort('recommended')" aria-label="Remove">
+                <svg viewBox="0 0 24 24" fill="none" class="w-3 h-3"><path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </button>
+            </span>
+          }
+        </div>
+      }
+
+      <p class="results-count">{{ offersList().length }} result{{ offersList().length !== 1 ? 's' : '' }} found</p>
+
+      <!-- Grid -->
       <div class="grid grid-cols-3 gap-6 pb-6">
-        @for (item of offersList(); track item.title) {
+        @for (item of offersList(); track item.id) {
           <app-featured-card
             [item]="item"
             [showActions]="false"
@@ -52,7 +314,19 @@
             [showCategory]="true"
           ></app-featured-card>
         }
+        @empty {
+          <div class="col-span-3 empty-state">
+            <svg viewBox="0 0 24 24" fill="none" class="w-12 h-12 mx-auto text-slate-300 mb-3">
+              <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5"/>
+              <path d="m16 16 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M8 11h6M11 8v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <p class="text-slate-400 font-medium">No results match your filters.</p>
+            <button type="button" class="mt-3 text-blue-500 font-semibold text-sm hover:underline" (click)="clearFilters()">Clear all filters</button>
+          </div>
+        }
       </div>
+
     </div>
   </section>
 </main>

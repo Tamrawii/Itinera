@@ -19,6 +19,15 @@ import { Bookings as AdminBookings } from './admin-layout/bookings/bookings';
 import { Chatbot } from './public-layout/chatbot/chatbot';
 import { ProviderLayout } from './provider-layout/provider-layout';
 import { AdminLayout } from './admin-layout/admin-layout';
+import { TouristLayout } from './tourist-layout/tourist-layout';
+import { TouristDashboard } from './tourist-layout/dashboard/dashboard';
+import { TouristBookings } from './tourist-layout/bookings/bookings';
+import { TouristWishlist } from './tourist-layout/wishlist/wishlist';
+import { TouristReviews } from './tourist-layout/reviews/reviews';
+import { TouristMessages } from './tourist-layout/messages/messages';
+import { TouristProfile } from './tourist-layout/profile/profile';
+import { TouristSettings } from './tourist-layout/settings/settings';
+import { TouristPayments } from './tourist-layout/payments/payments';
 
 export const routes: Routes = [
   {
@@ -99,6 +108,57 @@ export const routes: Routes = [
         path: 'profile-settings',
         component: ProfileSettings,
         title: 'Profile & Settings - Itinera',
+      },
+    ],
+  },
+  {
+    path: 'tourist',
+    component: TouristLayout,
+    children: [
+      {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full',
+      },
+      {
+        path: 'dashboard',
+        component: TouristDashboard,
+        title: 'Tourist Dashboard - Itinera',
+      },
+      {
+        path: 'bookings',
+        component: TouristBookings,
+        title: 'My Bookings - Itinera',
+      },
+      {
+        path: 'payments',
+        component: TouristPayments,
+        title: 'Payment Tracking - Itinera',
+      },
+      {
+        path: 'wishlist',
+        component: TouristWishlist,
+        title: 'My Wishlist - Itinera',
+      },
+      {
+        path: 'reviews',
+        component: TouristReviews,
+        title: 'My Reviews - Itinera',
+      },
+      {
+        path: 'messages',
+        component: TouristMessages,
+        title: 'Messages - Itinera',
+      },
+      {
+        path: 'profile',
+        component: TouristProfile,
+        title: 'My Profile - Itinera',
+      },
+      {
+        path: 'settings',
+        component: TouristSettings,
+        title: 'Settings - Itinera',
       },
     ],
   },

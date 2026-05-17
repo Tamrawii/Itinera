@@ -1,0 +1,114 @@
+<div class="tourist-dashboard">
+  <!-- Welcome Section -->
+  <section class="welcome-section mb-8">
+    <h1 class="text-3xl font-bold text-gray-900 mb-2">Welcome back, Tourist!</h1>
+    <p class="text-gray-600">Here's an overview of your travel activities and bookings.</p>
+  </section>
+
+  <!-- Stats Grid -->
+  <section class="stats-grid mb-8">
+    <div class="stat-card">
+      <div class="stat-icon">
+        <lineicons [icon]="CalendarDaysOutlined" [size]="28" [strokeWidth]="1.5"></lineicons>
+      </div>
+      <div class="stat-content">
+        <p class="stat-number">{{ stats.totalBookings }}</p>
+        <p class="stat-label">Total Bookings</p>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">
+        <lineicons [icon]="StopwatchOutlined" [size]="28" [strokeWidth]="1.5"></lineicons>
+      </div>
+      <div class="stat-content">
+        <p class="stat-number">{{ stats.upcomingBookings }}</p>
+        <p class="stat-label">Upcoming</p>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">
+        <lineicons [icon]="HeartOutlined" [size]="28" [strokeWidth]="1.5"></lineicons>
+      </div>
+      <div class="stat-content">
+        <p class="stat-number">{{ stats.wishlistItems }}</p>
+        <p class="stat-label">Wishlist Items</p>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">
+        <lineicons [icon]="StarFatOutlined" [size]="28" [strokeWidth]="1.5"></lineicons>
+      </div>
+      <div class="stat-content">
+        <p class="stat-number">{{ stats.reviewsCount }}</p>
+        <p class="stat-label">Reviews</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Grid -->
+  <div class="content-grid">
+    <!-- Recent Bookings -->
+    <section class="recent-bookings">
+      <div class="section-header">
+        <h2 class="section-title">Recent Bookings</h2>
+        <a routerLink="/tourist/bookings" class="view-all-link">View All</a>
+      </div>
+
+      <div class="bookings-list">
+        @for (booking of recentBookings; track booking.id) {
+          <div class="booking-item">
+            <img [src]="booking.image" [alt]="booking.serviceName" class="booking-image">
+            <div class="booking-details">
+              <h3 class="booking-name">{{ booking.serviceName }}</h3>
+              <p class="booking-provider">{{ booking.provider }}</p>
+              <p class="booking-date">{{ booking.date }}</p>
+            </div>
+            <div class="booking-meta">
+              <span class="booking-price">${{ booking.price }}</span>
+              <span class="booking-status" [class]="getStatusClass(booking.status)">
+                {{ getStatusText(booking.status) }}
+              </span>
+            </div>
+          </div>
+        }
+      </div>
+    </section>
+
+    <!-- Wishlist Preview -->
+    <section class="wishlist-preview">
+      <div class="section-header">
+        <h2 class="section-title">Wishlist</h2>
+        <a routerLink="/tourist/wishlist" class="view-all-link">View All</a>
+      </div>
+
+      <div class="wishlist-grid">
+        @for (item of wishlistItems; track item.id) {
+          <div class="wishlist-item">
+            <div class="wishlist-item-content">
+              <img [src]="item.image" [alt]="item.name" class="wishlist-image">
+              <div class="wishlist-info">
+                <h3 class="wishlist-name">{{ item.name }}</h3>
+                <p class="wishlist-location">
+                  <lineicons [icon]="MapMarker5Outlined" [size]="14" [strokeWidth]="1.5"></lineicons>
+                  {{ item.location }}
+                </p>
+                <p class="wishlist-price">${{ item.price }}</p>
+              </div>
+            </div>
+            <div class="wishlist-actions">
+              <app-favorite-btn
+                [serviceId]="item.serviceId"
+                [isFavorited]="true"
+                [size]="'small'"
+                (favoriteChanged)="removeFromWishlist(item.serviceId, item.id)"
+              ></app-favorite-btn>
+            </div>
+          </div>
+        }
+      </div>
+    </section>
+  </div>
+</div>

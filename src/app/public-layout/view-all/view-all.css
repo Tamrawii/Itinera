@@ -14,26 +14,263 @@
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
 }
 
-.filter-btn {
-  background-color: #ffffff;
+/* ── Filter bar ───────────────────────────────────────────────── */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.va-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   border: 1px solid #e2e8f0;
-  color: #334155;
+  border-radius: 0.75rem;
+  background: #fff;
+  color: #475569;
+  font-size: 0.875rem;
   font-weight: 600;
+  padding: 0.6rem 1rem;
   cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.15s, background 0.15s;
 }
 
-.chip {
+.va-filter-btn:hover { border-color: #94a3b8; background: #f8fafc; }
+
+.va-filter-btn--active {
+  border-color: #3b82f6;
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.va-filter-btn__icon    { width: 1rem; height: 1rem; flex-shrink: 0; }
+.va-filter-btn__chevron { width: 0.8rem; height: 0.8rem; flex-shrink: 0; color: #94a3b8; }
+
+/* ── Dropdown ─────────────────────────────────────────────────── */
+.va-dropdown {
+  z-index: 30;
+  display: none;
+  min-width: 13rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.85rem;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+.va-dropdown-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
   border: none;
-  border-radius: 9999px;
-  background-color: #e2e8f0;
-  color: #334155;
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 10px 22px;
+  background: transparent;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.65rem;
+  text-align: left;
   cursor: pointer;
+  color: #475569;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background 0.12s;
 }
 
-.chip-active {
-  background-color: #3b82f6;
-  color: #ffffff;
+.va-dropdown-item:hover         { background: #f1f5f9; color: #1e293b; }
+.va-dropdown-item--active       { color: #2563eb; background: #eff6ff; font-weight: 600; }
+
+/* ── Active chips ─────────────────────────────────────────────── */
+.active-chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 0.85rem;
+}
+
+.va-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #dbeafe;
+  color: #1d4ed8;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.28rem 0.65rem 0.28rem 0.75rem;
+}
+
+.va-chip button {
+  display: inline-flex;
+  align-items: center;
+  border: none;
+  background: transparent;
+  color: #3b82f6;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+/* ── Clear button ─────────────────────────────────────────────── */
+.va-clear-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid #fca5a5;
+  border-radius: 0.75rem;
+  background: #fff;
+  color: #ef4444;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s;
+}
+
+.va-clear-btn:hover { background: #fee2e2; border-color: #ef4444; }
+
+/* ── Results count ────────────────────────────────────────────── */
+.results-count {
+  color: #64748b;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 1.25rem;
+}
+
+/* ── Scrollable dropdown variant ──────────────────────────────── */
+.va-dropdown--scroll {
+  max-height: 16rem;
+  overflow-y: auto;
+}
+
+/* ── Date picker panel ───────────────────────────────────────── */
+.date-picker-panel {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  z-index: 40;
+  min-width: 20rem;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.1);
+  padding: 0;
+  overflow: hidden;
+}
+
+.date-picker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.date-picker-title {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.date-picker-close {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  background: transparent;
+  color: #94a3b8;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.date-picker-close svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.date-picker-close:hover {
+  color: #475569;
+}
+
+.date-picker-body {
+  padding: 1rem;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.date-field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.date-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.date-input {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.6rem;
+  padding: 0.5rem 0.65rem;
+  font-size: 0.85rem;
+  color: #334155;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.date-input:focus {
+  border-color: #3b82f6;
+}
+
+.date-picker-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid #f1f5f9;
+}
+
+.date-clear-btn {
+  border: none;
+  background: transparent;
+  color: #ef4444;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.35rem 0.6rem;
+  border-radius: 0.4rem;
+}
+
+.date-clear-btn:hover {
+  background: #fee2e2;
+}
+
+.date-apply-btn {
+  border: none;
+  background: #3b82f6;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.4rem 1rem;
+  border-radius: 0.5rem;
+  transition: background 0.12s;
+}
+
+.date-apply-btn:hover {
+  background: #2563eb;
+}
+
+/* ── Empty state ──────────────────────────────────────────────── */
+.empty-state {
+  padding: 4rem 1rem;
+  text-align: center;
 }

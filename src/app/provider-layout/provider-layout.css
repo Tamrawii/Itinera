@@ -6,11 +6,43 @@
   display: grid;
   min-height: 100vh;
   grid-template-columns: 260px minmax(0, 1fr);
-  background: #f8fafc;
+  background: #f1f5f9;
   overflow-x: hidden;
 }
 
 .provider-content {
   min-width: 0;
   overflow-x: hidden;
+}
+
+.sidebar-link {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  gap: 0.65rem;
+  border-radius: 0.75rem;
+  padding: 0.58rem 0.65rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #475569;
+  transition: 0.2s ease;
+}
+
+.sidebar-link:hover {
+  background-color: #e2e8f0;
+  color: #1e293b;
+  text-decoration: none;
+}
+
+.sidebar-icon {
+  color: #64748b;
+}
+
+.sidebar-active {
+  background: #e0ecff;
+  color: #2563eb;
+}
+
+.sidebar-active .sidebar-icon {
+  color: #2563eb;
 }

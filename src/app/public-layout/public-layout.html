@@ -76,9 +76,12 @@
           type="text"
           class="text-heading rounded-base block w-125 px-3 py-2.5 placeholder:text-gray-400 focus:outline-none"
           placeholder="Where do you want to go?"
+          [(ngModel)]="searchQuery"
+          (keydown.enter)="navigateToSearch()"
         />
         <button
           class="text-white bg-brand box-border border border-transparent flex items-center gap-3 hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium font-medium leading-5 rounded-full text-md px-4 py-3 focus:outline-none"
+          (click)="navigateToSearch()"
         >
           <lineicons [icon]="Search1Outlined" [size]="20"></lineicons>
           Search

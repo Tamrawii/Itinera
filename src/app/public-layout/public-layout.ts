@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { Navbar } from './navbar/navbar';
 import { LineiconsComponent } from '@lineiconshq/angular-lineicons';
 import {
@@ -14,14 +15,15 @@ import {
 import { Footer } from '../footer/footer';
 import { FeaturedCard } from './featured-card/featured-card';
 import { DestinationCard, DestinationItem } from './destination-card/destination-card';
-import { OfferService } from '../services/offer.service';
-import { Offers } from '../models/offers';
+import { OfferService } from '../core/services/offer.service';
+import { Offers } from '../core/models/offers.model';
 import { SlicePipe } from '@angular/common';
 
 @Component({
   selector: 'app-public-layout',
   imports: [
     RouterLink,
+    FormsModule,
     Navbar,
     LineiconsComponent,
     Footer,
@@ -52,8 +54,16 @@ export class PublicLayout {
     },
   ]);
 
-  constructor(private offerService: OfferService) {
+  searchQuery = '';
+
+  constructor(private offerService: OfferService, private router: Router) {
     this.offersList.set(this.offerService.getOffers());
+  }
+
+  navigateToSearch(): void {
+    this.router.navigate(['/view-all'], {
+      queryParams: this.searchQuery ? { q: this.searchQuery } : {},
+    });
   }
 
   Buildings1Outlined = Buildings1Outlined;
