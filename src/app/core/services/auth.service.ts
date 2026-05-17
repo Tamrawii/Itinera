@@ -1,42 +1,93 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { Observable, from, throwError, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 
-import { environment } from '../../../environments/environment';
 import { AuthResponse, LoginRequest, RegisterRequest } from '../models';
 import { User } from '../models';
 import { SupabaseService } from './supabase.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private readonly baseUrl = `${environment.apiUrl}/auth`;
-
   constructor(
-    private http: HttpClient,
     private router: Router,
     private supabaseService: SupabaseService,
   ) {}
 
   /**
-   * Authenticates a user with email and password.
+   * Authenticates a user with email and password using Supabase Auth.
    * Automatically persists the token and user on success.
    */
   login(credentials: LoginRequest): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.baseUrl}/login`, credentials).pipe(
-      tap((res) => this.saveToken(res.access_token, res.user)),
+    return from(
+      this.supabaseService.client.auth.signInWithPassword({
+        email: credentials.email,
+        password: credentials.password,
+      })
+    ).pipe(
+      map(({ data, error }) => {
+        if (error) throw error;
+        if (!data.session || !data.user) {
+          throw new Error('No session returned');
+        }
+        // Map Supabase user to our User model
+        const user: User = {
+          id: parseInt(data.user.id) || 0,
+          email: data.user.email || '',
+          full_name: data.user.user_metadata?.['full_name'] || '',
+          role: data.user.user_metadata?.['role'] || 'tourist',
+          created_at: new Date(data.user.created_at),
+          updated_at: new Date(),
+        };
+        this.saveToken(data.session.access_token, user);
+        return { 
+          access_token: data.session.access_token, 
+          token_type: 'Bearer' as const, 
+          user 
+        };
+      }),
       catchError(this.handleError),
     );
   }
 
   /**
-   * Registers a new tourist or provider account.
+   * Registers a new tourist or provider account using Supabase Auth.
    * Automatically persists the token and user on success.
    */
   register(data: RegisterRequest): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.baseUrl}/register`, data).pipe(
-      tap((res) => this.saveToken(res.access_token, res.user)),
+    return from(
+      this.supabaseService.client.auth.signUp({
+        email: data.email,
+        password: data.password,
+        options: {
+          data: {
+            full_name: data.full_name,
+            role: data.role,
+          },
+        },
+      })
+    ).pipe(
+      map(({ data, error }) => {
+        if (error) throw error;
+        if (!data.session || !data.user) {
+          throw new Error('Email confirmation required. Please check your email.');
+        }
+        // Map Supabase user to our User model
+        const user: User = {
+          id: parseInt(data.user.id) || 0,
+          email: data.user.email || '',
+          full_name: data.user.user_metadata?.['full_name'] || '',
+          role: data.user.user_metadata?.['role'] || 'tourist',
+          created_at: new Date(data.user.created_at),
+          updated_at: new Date(),
+        };
+        this.saveToken(data.session.access_token, user);
+        return { 
+          access_token: data.session.access_token, 
+          token_type: 'Bearer' as const, 
+          user 
+        };
+      }),
       catchError(this.handleError),
     );
   }
@@ -51,12 +102,33 @@ export class AuthService {
   }
 
   /**
-   * Requests a new access token using the existing session.
+   * Refreshes the current session using Supabase Auth.
    * Automatically persists the refreshed token and user on success.
    */
   refreshToken(): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.baseUrl}/refresh`, {}).pipe(
-      tap((res) => this.saveToken(res.access_token, res.user)),
+    return from(
+      this.supabaseService.client.auth.refreshSession()
+    ).pipe(
+      map(({ data, error }) => {
+        if (error) throw error;
+        if (!data.session || !data.user) {
+          throw new Error('No session returned');
+        }
+        const user: User = {
+          id: parseInt(data.user.id) || 0,
+          email: data.user.email || '',
+          full_name: data.user.user_metadata?.['full_name'] || '',
+          role: data.user.user_metadata?.['role'] || 'tourist',
+          created_at: new Date(data.user.created_at),
+          updated_at: new Date(),
+        };
+        this.saveToken(data.session.access_token, user);
+        return { 
+          access_token: data.session.access_token, 
+          token_type: 'Bearer' as const, 
+          user 
+        };
+      }),
       catchError(this.handleError),
     );
   }
@@ -126,7 +198,8 @@ export class AuthService {
     }).then(() => {});
   }
 
-  private handleError(error: unknown): Observable<never> {
-    return throwError(() => error);
+  private handleError(error: any): Observable<never> {
+    const message = error?.message || 'An error occurred';
+    return throwError(() => new Error(message));
   }
 }
