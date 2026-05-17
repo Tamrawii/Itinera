@@ -5,7 +5,7 @@ import { AuthService } from '../services/auth.service';
 /**
  * Functional route guard that checks the current user's role against
  * an allowed list declared in route data: `{ roles: string[] }`.
- * Redirects to /sign-in if the role is not permitted.
+ * Redirects to /sign-in if not authenticated, or /unauthorized if wrong role.
  */
 export const roleGuard: CanActivateFn = (route: ActivatedRouteSnapshot) => {
   const authService = inject(AuthService);
@@ -15,8 +15,13 @@ export const roleGuard: CanActivateFn = (route: ActivatedRouteSnapshot) => {
   if (!allowedRoles?.length) return true;
 
   const user = authService.getCurrentUser();
-  if (user && allowedRoles.includes(user.role)) return true;
+  if (!user) {
+    router.navigate(['/sign-in']);
+    return false;
+  }
 
-  router.navigate(['/sign-in']);
+  if (allowedRoles.includes(user.role)) return true;
+
+  router.navigate(['/unauthorized']);
   return false;
 };

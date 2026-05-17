@@ -1,6 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { LineiconsComponent } from '@lineiconshq/angular-lineicons';
+import { AuthService } from '../core/services/auth.service';
 import {
   EyeOutlined,
   BoxClosedOutlined,
@@ -19,7 +21,7 @@ import { UserTouristService } from '../core/services/user-tourist.service';
 
 @Component({
   selector: 'app-admin-layout',
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, LineiconsComponent],
+  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive, LineiconsComponent],
   templateUrl: './admin-layout.html',
   styleUrl: './admin-layout.css',
 })
@@ -69,6 +71,8 @@ export class AdminLayout {
     },
   ]);
 
+  private authService = inject(AuthService);
+
   constructor(
     private offerService: OfferService,
     private providersListService: UserProviderService,
@@ -78,6 +82,11 @@ export class AdminLayout {
     this.providersList.set(this.providersListService.getProviders());
     this.touristsList.set(this.touristsListService.getTourists());
   }
+
+  logout(): void {
+    this.authService.logout();
+  }
+
   eyeOutlined = EyeOutlined;
   boxClosedOutlined = BoxClosedOutlined;
   user4Outlined = User4Outlined;

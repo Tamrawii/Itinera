@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { LineiconsComponent } from '@lineiconshq/angular-lineicons';
+import { AuthService } from '../core/services/auth.service';
 import { 
   Home2Outlined, 
   CalendarDaysOutlined, 
@@ -34,4 +35,10 @@ export class TouristLayout {
   readonly Comment1Outlined = Comment1Outlined;
   readonly StarFatOutlined = StarFatOutlined;
   readonly SlidersHorizontalSquare2Outlined = SlidersHorizontalSquare2Outlined;
+
+  private authService = inject(AuthService);
+
+  logout(): void {
+    this.authService.logout();
   }
+}
