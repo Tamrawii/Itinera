@@ -1,19 +1,23 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { Observable, from, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
-import { environment } from '../../../environments/environment';
 import { User, UpdateUser, PaginatedResponse } from '../models';
+import { SupabaseService } from './supabase.service';
+import { AuthService } from './auth.service';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  private readonly baseUrl = `${environment.apiUrl}/users`;
+  private readonly table = 'users';
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private supabaseService: SupabaseService,
+    private authService: AuthService,
+  ) {}
 
   /**
    * Retrieves a paginated, optionally filtered list of all users (admin).
+   * Uses Supabase 'users' table with Row Level Security.
    */
   getAll(params?: {
     page?: number;
@@ -21,70 +25,128 @@ export class UserService {
     search?: string;
     role?: string;
   }): Observable<PaginatedResponse<User>> {
-    let httpParams = new HttpParams();
-    if (params) {
-      Object.entries(params).forEach(([key, val]) => {
-        if (val !== undefined && val !== null) {
-          httpParams = httpParams.set(key, String(val));
-        }
-      });
+    let query = this.supabaseService.client.from(this.table).select('*', { count: 'exact' });
+
+    if (params?.role) {
+      query = query.eq('role', params.role);
     }
-    return this.http
-      .get<PaginatedResponse<User>>(this.baseUrl, { params: httpParams })
-      .pipe(catchError(this.handleError));
+
+    if (params?.search) {
+      query = query.or(`full_name.ilike.%${params.search}%,email.ilike.%${params.search}%`);
+    }
+
+    const startIdx = ((params?.page || 1) - 1) * (params?.per_page || 10);
+    const endIdx = startIdx + (params?.per_page || 10) - 1;
+    query = query.range(startIdx, endIdx);
+
+    return from(query.then((res: any) => res)).pipe(
+      map((response: any) => {
+        if (response.error) throw response.error;
+        const total = response.count || 0;
+        const page = params?.page || 1;
+        const per_page = params?.per_page || 10;
+        return {
+          data: (response.data as User[]) || [],
+          total,
+          page,
+          per_page,
+          last_page: Math.ceil(total / per_page),
+        };
+      }),
+      catchError(this.handleError),
+    );
   }
 
   /**
-   * Retrieves a single user by their numeric ID.
+   * Retrieves a single user by their ID.
    */
   getById(id: number): Observable<User> {
-    return this.http.get<User>(`${this.baseUrl}/${id}`).pipe(catchError(this.handleError));
+    return from(
+      this.supabaseService.client.from(this.table).select('*').eq('id', id).single(),
+    ).pipe(
+      map(({ data, error }) => {
+        if (error) throw error;
+        if (!data) throw new Error('User not found');
+        return data as User;
+      }),
+      catchError(this.handleError),
+    );
   }
 
   /**
    * Updates an arbitrary user's profile by ID (admin).
    */
   updateProfile(id: number, data: UpdateUser): Observable<User> {
-    return this.http
-      .put<User>(`${this.baseUrl}/${id}`, data)
-      .pipe(catchError(this.handleError));
+    return from(
+      this.supabaseService.client
+        .from(this.table)
+        .update(data as any)
+        .eq('id', id)
+        .select()
+        .single(),
+    ).pipe(
+      map(({ data, error }) => {
+        if (error) throw error;
+        if (!data) throw new Error('User not found');
+        return data as User;
+      }),
+      catchError(this.handleError),
+    );
   }
 
   /**
    * Permanently deletes a user by their ID (admin).
    */
   deleteUser(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${id}`).pipe(catchError(this.handleError));
+    return from(
+      this.supabaseService.client.from(this.table).delete().eq('id', id),
+    ).pipe(
+      map(({ error }) => {
+        if (error) throw error;
+      }),
+      catchError(this.handleError),
+    );
   }
 
   /**
    * Retrieves the profile of the currently authenticated user.
+   * Uses Supabase Auth user metadata and users table.
    */
   getMyProfile(): Observable<User> {
-    return this.http
-      .get<User>(`${environment.apiUrl}/me`)
-      .pipe(catchError(this.handleError));
+    const currentUser = this.authService.getCurrentUser();
+    if (!currentUser) {
+      return throwError(() => new Error('Not authenticated'));
+    }
+    return this.getById(currentUser.id);
   }
 
   /**
    * Updates the currently authenticated user's own profile fields.
    */
   updateMyProfile(data: Partial<User>): Observable<User> {
-    return this.http
-      .patch<User>(`${environment.apiUrl}/me`, data)
-      .pipe(catchError(this.handleError));
+    const currentUser = this.authService.getCurrentUser();
+    if (!currentUser) {
+      return throwError(() => new Error('Not authenticated'));
+    }
+    return this.updateProfile(currentUser.id, data as UpdateUser);
   }
 
   /**
-   * Changes the current user's password.
+   * Changes the current user's password using Supabase Auth.
    */
   changePassword(data: { current_password: string; new_password: string }): Observable<void> {
-    return this.http
-      .post<void>(`${environment.apiUrl}/me/change-password`, data)
-      .pipe(catchError(this.handleError));
+    return from(
+      this.supabaseService.client.auth.updateUser({ password: data.new_password }),
+    ).pipe(
+      map(({ error }) => {
+        if (error) throw error;
+      }),
+      catchError(this.handleError),
+    );
   }
 
-  private handleError(error: unknown): Observable<never> {
-    return throwError(() => error);
+  private handleError(error: any): Observable<never> {
+    const message = error?.message || error?.error?.message || 'User service error';
+    return throwError(() => new Error(message));
   }
 }
