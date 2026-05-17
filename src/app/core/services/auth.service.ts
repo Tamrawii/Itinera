@@ -208,7 +208,21 @@ export class AuthService {
   }
 
   private handleError(error: any): Observable<never> {
-    const message = error?.message || 'An error occurred';
+    let message = error?.message || error?.error?.message || 'An error occurred';
+    
+    // Handle specific Supabase error cases
+    if (error?.status === 429 || message?.toLowerCase().includes('rate limit')) {
+      message = 'Too many attempts. Please wait a few minutes and try again.';
+    } else if (message?.toLowerCase().includes('email rate limit')) {
+      message = 'Email rate limit exceeded. Please wait a few minutes before trying again.';
+    } else if (message?.toLowerCase().includes('user already registered')) {
+      message = 'An account with this email already exists. Please sign in instead.';
+    } else if (message?.toLowerCase().includes('invalid login credentials')) {
+      message = 'Invalid email or password. Please try again.';
+    } else if (message?.toLowerCase().includes('email not confirmed')) {
+      message = 'Please confirm your email address before signing in.';
+    }
+    
     return throwError(() => new Error(message));
   }
 }
