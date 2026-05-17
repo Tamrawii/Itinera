@@ -1,6 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterLink, ActivatedRoute, Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { LineiconsComponent } from '@lineiconshq/angular-lineicons';
+import { LoginRequest } from '../core/models';
 import {
   AppleBrandOutlined,
   Envelope1Outlined,
@@ -17,7 +20,7 @@ import { ToastService } from '../core/services/toast.service';
 
 @Component({
   selector: 'app-sign-in',
-  imports: [LineiconsComponent, RouterLink],
+  imports: [CommonModule, LineiconsComponent, RouterLink, FormsModule],
   templateUrl: './sign-in.html',
   styleUrl: './sign-in.css',
 })
@@ -35,6 +38,12 @@ export class SignIn implements OnInit {
   showPassword = false;
   returnUrl: string | null = null;
   oauthError: string | null = null;
+  isLoading = false;
+
+  credentials: LoginRequest = {
+    email: '',
+    password: '',
+  };
 
   private authService = inject(AuthService);
   private toastService = inject(ToastService);
@@ -84,5 +93,30 @@ export class SignIn implements OnInit {
     } catch (error) {
       this.toastService.showError('Failed to initiate sign in. Please try again.');
     }
+  }
+
+  /**
+   * Handles email/password form submission.
+   */
+  onSubmit(): void {
+    if (!this.credentials.email || !this.credentials.password) {
+      this.toastService.showError('Please enter both email and password.');
+      return;
+    }
+
+    this.isLoading = true;
+    this.authService.login(this.credentials).subscribe({
+      next: (response) => {
+        this.isLoading = false;
+        this.authService.saveToken(response.access_token, response.user);
+        this.toastService.showSuccess('Signed in successfully!');
+        this.navigateAfterLogin();
+      },
+      error: (error) => {
+        this.isLoading = false;
+        const message = error.error?.message || 'Invalid email or password.';
+        this.toastService.showError(message);
+      },
+    });
   }
 }
