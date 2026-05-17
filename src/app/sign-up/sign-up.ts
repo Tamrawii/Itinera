@@ -88,6 +88,18 @@ export class SignUp implements OnInit {
     this.authService.register(this.credentials).subscribe({
       next: (response) => {
         this.isLoading = false;
+
+        // Check if email confirmation is required
+        if ('emailConfirmationRequired' in response) {
+          this.toastService.showSuccess(
+            'Registration successful! Please check your email to confirm your account before signing in.',
+          );
+          // Redirect to sign-in page
+          this.router.navigate(['/sign-in']);
+          return;
+        }
+
+        // Auto-login if session is available
         this.authService.saveToken(response.access_token, response.user);
         this.toastService.showSuccess('Account created successfully!');
         // Redirect based on role

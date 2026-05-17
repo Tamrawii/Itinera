@@ -53,8 +53,9 @@ export class AuthService {
   /**
    * Registers a new tourist or provider account using Supabase Auth.
    * Automatically persists the token and user on success.
+   * If email confirmation is required, returns user without session.
    */
-  register(data: RegisterRequest): Observable<AuthResponse> {
+  register(data: RegisterRequest): Observable<AuthResponse | { user: User; emailConfirmationRequired: true }> {
     return from(
       this.supabaseService.client.auth.signUp({
         email: data.email,
@@ -69,9 +70,10 @@ export class AuthService {
     ).pipe(
       map(({ data, error }) => {
         if (error) throw error;
-        if (!data.session || !data.user) {
-          throw new Error('Email confirmation required. Please check your email.');
+        if (!data.user) {
+          throw new Error('Registration failed');
         }
+
         // Map Supabase user to our User model
         const user: User = {
           id: parseInt(data.user.id) || 0,
@@ -81,6 +83,13 @@ export class AuthService {
           created_at: new Date(data.user.created_at),
           updated_at: new Date(),
         };
+
+        // If email confirmation is required (no session), return special response
+        if (!data.session) {
+          return { user, emailConfirmationRequired: true as const };
+        }
+
+        // Auto-login if session is available
         this.saveToken(data.session.access_token, user);
         return { 
           access_token: data.session.access_token, 
