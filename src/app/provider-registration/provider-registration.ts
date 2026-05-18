@@ -1,20 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+  FormsModule,
+  ReactiveFormsModule,
+  FormGroup,
+  FormBuilder,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { LineiconsComponent } from '@lineiconshq/angular-lineicons';
-import { 
-  User4Outlined, 
-  Buildings1Outlined, 
-  MapMarker5Outlined, 
-  PhoneOutlined, 
-  Envelope1Outlined, 
+import {
+  User4Outlined,
+  Buildings1Outlined,
+  MapMarker5Outlined,
+  PhoneOutlined,
+  Envelope1Outlined,
   Search1Outlined,
   CheckOutlined,
-  XOutlined
+  XOutlined,
 } from '@lineiconshq/free-icons';
-import { DocumentUpload, UploadedFile, DocumentType } from '../shared/document-upload/document-upload';
+import {
+  DocumentUpload,
+  UploadedFile,
+  DocumentType,
+} from '../shared/document-upload/document-upload';
 import { ToastService } from '../core/services/toast.service';
+import { AuthService } from '../core/services/auth.service';
+import { ProviderService } from '../core/services/provider.service';
+import { ProviderType } from '../core/models';
 
 interface ProviderRegistrationData {
   personalInfo: {
@@ -39,16 +52,9 @@ interface ProviderRegistrationData {
 @Component({
   selector: 'app-provider-registration',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    LineiconsComponent,
-    DocumentUpload
-  ],
-  providers: [ToastService],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, LineiconsComponent, DocumentUpload],
   templateUrl: './provider-registration.html',
-  styleUrl: './provider-registration.css'
+  styleUrl: './provider-registration.css',
 })
 export class ProviderRegistration implements OnInit {
   readonly User4Outlined = User4Outlined;
@@ -71,7 +77,7 @@ export class ProviderRegistration implements OnInit {
       description: 'Valid business registration document',
       required: true,
       acceptedTypes: ['.pdf', '.jpg', '.jpeg', '.png'],
-      maxSize: 10
+      maxSize: 10,
     },
     {
       id: 'id-document',
@@ -79,7 +85,7 @@ export class ProviderRegistration implements OnInit {
       description: 'National ID card or passport',
       required: true,
       acceptedTypes: ['.pdf', '.jpg', '.jpeg', '.png'],
-      maxSize: 5
+      maxSize: 5,
     },
     {
       id: 'tax-certificate',
@@ -87,7 +93,7 @@ export class ProviderRegistration implements OnInit {
       description: 'Tax registration certificate',
       required: false,
       acceptedTypes: ['.pdf', '.jpg', '.jpeg', '.png'],
-      maxSize: 5
+      maxSize: 5,
     },
     {
       id: 'insurance',
@@ -95,18 +101,15 @@ export class ProviderRegistration implements OnInit {
       description: 'Business liability insurance',
       required: false,
       acceptedTypes: ['.pdf', '.jpg', '.jpeg', '.png'],
-      maxSize: 5
-    }
+      maxSize: 5,
+    },
   ];
 
   businessTypes = [
-    { value: 'tour-guide', label: 'Tour Guide' },
-    { value: 'transportation', label: 'Transportation Service' },
-    { value: 'accommodation', label: 'Accommodation' },
-    { value: 'restaurant', label: 'Restaurant/Cafe' },
-    { value: 'activity', label: 'Activity/Experience' },
-    { value: 'shopping', label: 'Shopping/Retail' },
-    { value: 'other', label: 'Other' }
+    { value: 'hotel', label: 'Hotel / Accommodation' },
+    { value: 'restaurant', label: 'Restaurant / Café' },
+    { value: 'agency', label: 'Tour Agency / Activity' },
+    { value: 'transport', label: 'Transportation' },
   ];
 
   uploadedDocuments: UploadedFile[] = [];
@@ -114,7 +117,9 @@ export class ProviderRegistration implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private authService: AuthService,
+    private providerService: ProviderService,
   ) {
     this.registrationForm = this.createForm();
   }
@@ -131,7 +136,7 @@ export class ProviderRegistration implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.pattern(/^[+]?[\d\s\-\(\)]+$/)]],
       dateOfBirth: ['', [Validators.required]],
-      
+
       // Business Information
       businessName: ['', [Validators.required, Validators.minLength(2)]],
       businessType: ['', [Validators.required]],
@@ -139,7 +144,10 @@ export class ProviderRegistration implements OnInit {
       address: ['', [Validators.required]],
       city: ['', [Validators.required]],
       postalCode: ['', [Validators.required]],
-      website: ['', [Validators.pattern(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/)]]
+      website: [
+        '',
+        [Validators.pattern(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/)],
+      ],
     });
   }
 
@@ -149,7 +157,7 @@ export class ProviderRegistration implements OnInit {
       lastName: this.registrationForm.get('lastName'),
       email: this.registrationForm.get('email'),
       phone: this.registrationForm.get('phone'),
-      dateOfBirth: this.registrationForm.get('dateOfBirth')
+      dateOfBirth: this.registrationForm.get('dateOfBirth'),
     };
   }
 
@@ -161,7 +169,7 @@ export class ProviderRegistration implements OnInit {
       address: this.registrationForm.get('address'),
       city: this.registrationForm.get('city'),
       postalCode: this.registrationForm.get('postalCode'),
-      website: this.registrationForm.get('website')
+      website: this.registrationForm.get('website'),
     };
   }
 
@@ -185,28 +193,29 @@ export class ProviderRegistration implements OnInit {
         // Validate personal information
         const personalFields = ['firstName', 'lastName', 'email', 'phone', 'dateOfBirth'];
         return this.validateFields(personalFields);
-      
+
       case 2:
         // Validate business information
-        const businessFields = ['businessName', 'businessType', 'description', 'address', 'city', 'postalCode'];
+        const businessFields = [
+          'businessName',
+          'businessType',
+          'description',
+          'address',
+          'city',
+          'postalCode',
+        ];
         return this.validateFields(businessFields);
-      
+
       case 3:
-        // Validate documents
-        const requiredDocs = this.documentTypes.filter(doc => doc.required);
-        const hasRequiredDocs = requiredDocs.every(doc => 
-          this.uploadedDocuments.some(uploaded => 
-            uploaded.name.toLowerCase().includes(doc.name.toLowerCase().replace(' ', ''))
-          )
-        );
-        
-        if (!hasRequiredDocs) {
+        // Validate documents — at least the required count must be uploaded
+        const requiredCount = this.documentTypes.filter((doc) => doc.required).length;
+        if (this.uploadedDocuments.length < requiredCount) {
           this.toastService.showError('Please upload all required documents');
           return false;
         }
-        
+
         return true;
-      
+
       default:
         return false;
     }
@@ -214,8 +223,8 @@ export class ProviderRegistration implements OnInit {
 
   private validateFields(fields: string[]): boolean {
     let isValid = true;
-    
-    fields.forEach(field => {
+
+    fields.forEach((field) => {
       const control = this.registrationForm.get(field);
       if (control) {
         control.markAsTouched();
@@ -224,11 +233,11 @@ export class ProviderRegistration implements OnInit {
         }
       }
     });
-    
+
     if (!isValid) {
       this.toastService.showError('Please fill in all required fields correctly');
     }
-    
+
     return isValid;
   }
 
@@ -237,7 +246,7 @@ export class ProviderRegistration implements OnInit {
   }
 
   onDocumentRemoved(file: UploadedFile): void {
-    this.uploadedDocuments = this.uploadedDocuments.filter(f => f.id !== file.id);
+    this.uploadedDocuments = this.uploadedDocuments.filter((f) => f.id !== file.id);
   }
 
   getStepTitle(): string {
@@ -271,34 +280,49 @@ export class ProviderRegistration implements OnInit {
       return;
     }
 
+    const user = this.authService.getCurrentUser();
+    if (!user) {
+      this.toastService.showError('You must be signed in to register as a provider.');
+      this.router.navigate(['/sign-in']);
+      return;
+    }
+
     this.isSubmitting = true;
 
-    const registrationData: ProviderRegistrationData = {
-      personalInfo: {
-        firstName: this.registrationForm.value.firstName,
-        lastName: this.registrationForm.value.lastName,
-        email: this.registrationForm.value.email,
-        phone: this.registrationForm.value.phone,
-        dateOfBirth: this.registrationForm.value.dateOfBirth
-      },
-      businessInfo: {
-        businessName: this.registrationForm.value.businessName,
-        businessType: this.registrationForm.value.businessType,
+    const documents = this.uploadedDocuments.map((f) => ({
+      name: f.name,
+      url: f.url,
+      type: f.type,
+    }));
+
+    this.providerService
+      .create({
+        user_id: user.id,
+        provider_type: this.registrationForm.value.businessType as ProviderType,
+        business_name: this.registrationForm.value.businessName,
         description: this.registrationForm.value.description,
+        phone: this.registrationForm.value.phone,
         address: this.registrationForm.value.address,
         city: this.registrationForm.value.city,
-        postalCode: this.registrationForm.value.postalCode,
-        website: this.registrationForm.value.website
-      },
-      documents: this.uploadedDocuments
-    };
-
-    // Simulate API call
-    setTimeout(() => {
-      this.isSubmitting = false;
-      this.toastService.showSuccess('Registration submitted successfully! We will review your application within 3-5 business days.');
-      this.router.navigate(['/registration-success']);
-    }, 2000);
+        postal_code: this.registrationForm.value.postalCode,
+        website: this.registrationForm.value.website || undefined,
+        documents,
+      })
+      .subscribe({
+        next: () => {
+          this.isSubmitting = false;
+          this.toastService.showSuccess(
+            'Registration submitted! Our team will review your application within 3–5 business days.',
+          );
+          this.router.navigate(['/provider']);
+        },
+        error: (err) => {
+          this.isSubmitting = false;
+          this.toastService.showError(
+            err?.message || 'Failed to submit registration. Please try again.',
+          );
+        },
+      });
   }
 
   getErrorMessage(controlName: string): string {
@@ -308,23 +332,23 @@ export class ProviderRegistration implements OnInit {
     }
 
     const errors = control.errors;
-    
+
     if (errors['required']) {
       return 'This field is required';
     }
-    
+
     if (errors['email']) {
       return 'Please enter a valid email address';
     }
-    
+
     if (errors['minlength']) {
       return `Minimum length is ${errors['minlength'].requiredLength} characters`;
     }
-    
+
     if (errors['maxlength']) {
       return `Maximum length is ${errors['maxlength'].requiredLength} characters`;
     }
-    
+
     if (errors['pattern']) {
       if (controlName === 'phone') {
         return 'Please enter a valid phone number';
@@ -334,7 +358,7 @@ export class ProviderRegistration implements OnInit {
       }
       return 'Invalid format';
     }
-    
+
     return 'Invalid input';
   }
 

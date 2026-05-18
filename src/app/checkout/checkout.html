@@ -1,0 +1,596 @@
+<app-navbar></app-navbar>
+
+<div class="checkout-page">
+  <main class="max-w-2xl mx-auto px-4 pb-16">
+
+    <!-- ── Breadcrumb ───────────────────────────────────────────────── -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a routerLink="/" class="breadcrumb-link">Home</a>
+      <svg class="breadcrumb-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+      </svg>
+      <a routerLink="/view-all" class="breadcrumb-link">Explore</a>
+      <svg class="breadcrumb-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+      </svg>
+      <span class="breadcrumb-current">Checkout</span>
+    </nav>
+
+    <!-- ── Step Indicator (steps 1–3 only) ─────────────────────────── -->
+    @if (step() !== 4) {
+      <div class="step-indicator" aria-label="Checkout progress">
+
+        <!-- Step 1 -->
+        <div class="step-item"
+             [class.step-item--active]="step() === 1"
+             [class.step-item--completed]="step() > 1">
+          <div class="step-circle">
+            @if (step() > 1) {
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.8"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            } @else {
+              <span>1</span>
+            }
+          </div>
+          <span class="step-label">Booking Details</span>
+        </div>
+
+        <!-- Connector 1→2 -->
+        <div class="step-connector" [class.step-connector--filled]="step() > 1"></div>
+
+        <!-- Step 2 -->
+        <div class="step-item"
+             [class.step-item--active]="step() === 2"
+             [class.step-item--completed]="step() > 2">
+          <div class="step-circle">
+            @if (step() > 2) {
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.8"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            } @else {
+              <span>2</span>
+            }
+          </div>
+          <span class="step-label">Review</span>
+        </div>
+
+        <!-- Connector 2→3 -->
+        <div class="step-connector" [class.step-connector--filled]="step() > 2"></div>
+
+        <!-- Step 3 -->
+        <div class="step-item"
+             [class.step-item--active]="step() === 3"
+             [class.step-item--completed]="step() > 3">
+          <div class="step-circle">
+            <span>3</span>
+          </div>
+          <span class="step-label">Payment</span>
+        </div>
+
+      </div>
+    }
+
+    <!-- ════════════════════════════════════════════════════════════════
+         STEP 1 — BOOKING DETAILS
+    ════════════════════════════════════════════════════════════════════ -->
+    @if (step() === 1) {
+      <section class="checkout-step" aria-labelledby="step1-heading">
+
+        <h1 id="step1-heading" class="checkout-section-title">Booking Details</h1>
+
+        <!-- Service mini-card -->
+        @if (offer()) {
+          <div class="service-mini-card checkout-panel">
+            <img
+              [src]="offer()!.image_url[0]"
+              [alt]="offer()!.title"
+              class="service-mini-img"
+              loading="eager"
+            />
+            <div class="service-mini-info">
+              <span class="offer-type-badge offer-type-badge--{{ offer()!.offer_type }}">
+                {{ offerTypeLabel(offer()!.offer_type) }}
+              </span>
+              <h2 class="service-mini-title">{{ offer()!.title }}</h2>
+              <p class="service-mini-location">
+                <svg class="service-mini-pin" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+                {{ offer()!.location }}
+              </p>
+              <p class="service-mini-price">
+                ${{ offer()!.price }}
+                @if (offer()!.suffixPrice) {
+                  <span class="service-mini-price-suffix">{{ offer()!.suffixPrice }}</span>
+                }
+              </p>
+            </div>
+          </div>
+        }
+
+        <!-- Booking form -->
+        <div class="checkout-panel">
+          <form [formGroup]="bookingForm" (ngSubmit)="goToStep2()" novalidate>
+
+            <!-- Full Name -->
+            <div class="form-row">
+              <label for="fullName" class="form-label">
+                Full Name <span class="required-star">*</span>
+              </label>
+              <input
+                type="text"
+                id="fullName"
+                formControlName="fullName"
+                placeholder="e.g. Jane Smith"
+                autocomplete="name"
+                class="form-input"
+                [class.form-input--error]="hasError('fullName')"
+              />
+              @if (getFieldError('fullName')) {
+                <p class="form-error" role="alert">{{ getFieldError('fullName') }}</p>
+              }
+            </div>
+
+            <!-- Email -->
+            <div class="form-row">
+              <label for="email" class="form-label">
+                Email Address <span class="required-star">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                formControlName="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+                class="form-input"
+                [class.form-input--error]="hasError('email')"
+              />
+              @if (getFieldError('email')) {
+                <p class="form-error" role="alert">{{ getFieldError('email') }}</p>
+              }
+            </div>
+
+            <!-- Phone -->
+            <div class="form-row">
+              <label for="phone" class="form-label">
+                Phone Number <span class="required-star">*</span>
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                formControlName="phone"
+                placeholder="+1 (555) 000-0000"
+                autocomplete="tel"
+                class="form-input"
+                [class.form-input--error]="hasError('phone')"
+              />
+              @if (getFieldError('phone')) {
+                <p class="form-error" role="alert">{{ getFieldError('phone') }}</p>
+              }
+            </div>
+
+            <!-- Date(s) row -->
+            <div class="grid grid-cols-1 gap-4"
+                 [class.sm:grid-cols-2]="isHotel()">
+
+              <!-- Check-in / Date -->
+              <div class="form-row mb-0">
+                <label for="checkIn" class="form-label">
+                  {{ isHotel() ? 'Check-in Date' : 'Date' }}
+                  <span class="required-star">*</span>
+                </label>
+                <input
+                  type="date"
+                  id="checkIn"
+                  formControlName="checkIn"
+                  [min]="todayStr"
+                  class="form-input"
+                  [class.form-input--error]="hasError('checkIn')"
+                />
+                @if (getFieldError('checkIn')) {
+                  <p class="form-error" role="alert">{{ getFieldError('checkIn') }}</p>
+                }
+              </div>
+
+              <!-- Check-out (hotels only) -->
+              @if (isHotel()) {
+                <div class="form-row mb-0">
+                  <label for="checkOut" class="form-label">
+                    Check-out Date <span class="required-star">*</span>
+                  </label>
+                  <input
+                    type="date"
+                    id="checkOut"
+                    formControlName="checkOut"
+                    [min]="minCheckOut()"
+                    class="form-input"
+                    [class.form-input--error]="hasError('checkOut')"
+                  />
+                  @if (getFieldError('checkOut')) {
+                    <p class="form-error" role="alert">{{ getFieldError('checkOut') }}</p>
+                  }
+                </div>
+              }
+
+            </div>
+
+            <!-- Duration hint (hotels) -->
+            @if (isHotel() && nights() > 1) {
+              <p class="duration-hint">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                  <path d="M12 8v4m0 4h.01" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                </svg>
+                {{ nights() }} night{{ nights() > 1 ? 's' : '' }} stay
+              </p>
+            }
+
+            <!-- Guests -->
+            <div class="form-row mt-4">
+              <label for="guests" class="form-label">
+                Number of Guests <span class="required-star">*</span>
+              </label>
+              <input
+                type="number"
+                id="guests"
+                formControlName="guests"
+                min="1"
+                max="20"
+                class="form-input"
+                style="max-width: 10rem;"
+                [class.form-input--error]="hasError('guests')"
+              />
+              @if (getFieldError('guests')) {
+                <p class="form-error" role="alert">{{ getFieldError('guests') }}</p>
+              }
+            </div>
+
+            <!-- Special Requests -->
+            <div class="form-row">
+              <label for="specialRequests" class="form-label">
+                Special Requests
+                <span class="text-gray-400 text-xs font-normal">(optional)</span>
+              </label>
+              <textarea
+                id="specialRequests"
+                formControlName="specialRequests"
+                rows="3"
+                placeholder="Dietary needs, accessibility requirements, or any other requests…"
+                class="form-input resize-none"
+              ></textarea>
+            </div>
+
+            <!-- Submit -->
+            <div class="flex justify-end mt-2 pt-2 border-t border-gray-100">
+              <button type="submit" class="btn-primary-lg">
+                Continue to Review
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </button>
+            </div>
+
+          </form>
+        </div>
+
+      </section>
+    }
+
+    <!-- ════════════════════════════════════════════════════════════════
+         STEP 2 — REVIEW YOUR BOOKING
+    ════════════════════════════════════════════════════════════════════ -->
+    @if (step() === 2) {
+      <section class="checkout-step" aria-labelledby="step2-heading">
+
+        <h1 id="step2-heading" class="checkout-section-title">Review Your Booking</h1>
+
+        <!-- Service details card -->
+        @if (offer()) {
+          <div class="checkout-panel mb-4">
+            <p class="panel-section-label">Service</p>
+            <div class="flex items-start gap-4">
+              <img
+                [src]="offer()!.image_url[0]"
+                [alt]="offer()!.title"
+                class="w-24 h-20 object-cover rounded-xl shrink-0 shadow-sm"
+                loading="lazy"
+              />
+              <div class="min-w-0">
+                <span class="offer-type-badge offer-type-badge--{{ offer()!.offer_type }}">
+                  {{ offerTypeLabel(offer()!.offer_type) }}
+                </span>
+                <h2 class="text-base font-semibold text-gray-900 mt-1.5 leading-snug">
+                  {{ offer()!.title }}
+                </h2>
+                <p class="flex items-center gap-1 text-sm text-gray-500 mt-1">
+                  <svg class="w-3.5 h-3.5 shrink-0 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  </svg>
+                  {{ offer()!.location }}
+                </p>
+                <div class="flex items-center gap-1.5 mt-2">
+                  <svg class="w-3.5 h-3.5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0
+                             1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755
+                             1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197
+                             -1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81
+                             .588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                  </svg>
+                  <span class="text-sm font-bold text-gray-800">{{ offer()!.rating }}</span>
+                  <span class="text-sm text-gray-400">({{ offer()!.number_of_reviews }} reviews)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        }
+
+        <!-- Booking summary -->
+        <div class="checkout-panel mb-4">
+          <p class="panel-section-label">Booking Summary</p>
+          <dl class="review-grid">
+            <dt>Name</dt>
+            <dd>{{ bookingForm.value.fullName }}</dd>
+
+            <dt>Email</dt>
+            <dd>{{ bookingForm.value.email }}</dd>
+
+            <dt>Phone</dt>
+            <dd>{{ bookingForm.value.phone }}</dd>
+
+            <dt>{{ isHotel() ? 'Check-in' : 'Date' }}</dt>
+            <dd>{{ formatDate(bookingForm.value.checkIn) }}</dd>
+
+            @if (isHotel() && bookingForm.value.checkOut) {
+              <dt>Check-out</dt>
+              <dd>{{ formatDate(bookingForm.value.checkOut) }}</dd>
+
+              <dt>Duration</dt>
+              <dd>{{ nights() }} night{{ nights() > 1 ? 's' : '' }}</dd>
+            }
+
+            <dt>Guests</dt>
+            <dd>{{ bookingForm.value.guests }} person{{ bookingForm.value.guests > 1 ? 's' : '' }}</dd>
+
+            @if (bookingForm.value.specialRequests) {
+              <dt>Requests</dt>
+              <dd class="review-requests">{{ bookingForm.value.specialRequests }}</dd>
+            }
+          </dl>
+        </div>
+
+        <!-- Price breakdown -->
+        <div class="checkout-panel mb-6">
+          <p class="panel-section-label">Price Breakdown</p>
+          <div class="price-breakdown-list">
+            @for (item of priceBreakdown(); track item.label) {
+              <div class="price-breakdown-row">
+                <span class="text-sm text-gray-600">{{ item.label }}</span>
+                <span class="text-sm font-semibold text-gray-800">
+                  @if (item.amount > 0) {
+                    ${{ item.amount.toLocaleString() }}
+                  } @else {
+                    <span class="text-gray-400">Included</span>
+                  }
+                </span>
+              </div>
+            }
+            <div class="price-total-row">
+              <span class="text-base font-bold text-gray-900">Total Due</span>
+              <span class="price-total-amount">${{ totalPrice().toLocaleString() }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="step-nav">
+          <button type="button" (click)="goToStep1()" class="btn-secondary-lg">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+            Back
+          </button>
+          <button type="button" (click)="goToStep3()" class="btn-primary-lg">
+            Proceed to Payment
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+
+      </section>
+    }
+
+    <!-- ════════════════════════════════════════════════════════════════
+         STEP 3 — PAYMENT
+    ════════════════════════════════════════════════════════════════════ -->
+    @if (step() === 3) {
+      <section class="checkout-step" aria-labelledby="step3-heading">
+
+        <h1 id="step3-heading" class="checkout-section-title">Secure Payment</h1>
+        <p class="checkout-section-sub">
+          Your payment is processed by Stripe. We never store card details.
+        </p>
+
+        <!-- Amount summary box -->
+        <div class="checkout-info-box checkout-info-box--total mb-4">
+          <div class="flex items-center justify-between gap-4">
+            <div>
+              <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">
+                Total amount due
+              </p>
+              <p class="text-3xl font-extrabold text-gray-900 tabular-nums">
+                ${{ totalPrice().toLocaleString() }}
+              </p>
+            </div>
+            <div class="shrink-0 p-3 bg-blue-50 rounded-xl text-blue-500">
+              <lineicons [icon]="CreditcardOutlined" [size]="28" [strokeWidth]="1.6"
+                         aria-hidden="true"></lineicons>
+            </div>
+          </div>
+          @if (offer()) {
+            <p class="text-xs text-gray-400 mt-3 pt-3 border-t border-gray-100 truncate">
+              {{ offer()!.title }} &bull; {{ offer()!.location }}
+            </p>
+          }
+        </div>
+
+        <!-- Stripe card element -->
+        <div class="checkout-panel mb-4">
+          <label class="form-label block mb-3">
+            Card Details <span class="required-star">*</span>
+          </label>
+          <div id="stripe-card-element" role="group" aria-label="Card number input"></div>
+
+          @if (cardError()) {
+            <div class="card-error-msg" role="alert">
+              <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24"
+                   stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              {{ cardError() }}
+            </div>
+          }
+        </div>
+
+        <!-- Security note -->
+        <div class="security-note">
+          <lineicons [icon]="ShieldOutlined" [size]="14" [strokeWidth]="1.8"
+                     aria-hidden="true"></lineicons>
+          <span>256-bit SSL encrypted &bull; Secured by Stripe</span>
+        </div>
+
+        <!-- Navigation -->
+        <div class="step-nav">
+          <button
+            type="button"
+            (click)="backToStep2()"
+            [disabled]="isProcessing()"
+            class="btn-secondary-lg"
+          >
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+            Back
+          </button>
+
+          <button
+            type="button"
+            (click)="pay()"
+            [disabled]="!cardComplete() || isProcessing()"
+            class="pay-btn btn-primary-lg"
+            [attr.aria-busy]="isProcessing() ? 'true' : null"
+          >
+            @if (isProcessing()) {
+              <svg class="animate-spin h-4 w-4 text-white" fill="none"
+                   viewBox="0 0 24 24" aria-hidden="true">
+                <circle class="opacity-25" cx="12" cy="12" r="10"
+                        stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962
+                         7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                </path>
+              </svg>
+              Processing…
+            } @else {
+              <lineicons [icon]="CreditcardOutlined" [size]="16" [strokeWidth]="1.8"
+                         aria-hidden="true"></lineicons>
+              Pay ${{ totalPrice().toLocaleString() }}
+            }
+          </button>
+        </div>
+
+      </section>
+    }
+
+    <!-- ════════════════════════════════════════════════════════════════
+         STEP 4 — BOOKING CONFIRMED
+    ════════════════════════════════════════════════════════════════════ -->
+    @if (step() === 4) {
+      <section class="confirmation-card" aria-labelledby="confirm-heading">
+
+        <!-- Animated check icon -->
+        <div class="confirmation-icon" aria-hidden="true">
+          <lineicons [icon]="CheckCircleOutlined" [size]="56" [strokeWidth]="1.3"></lineicons>
+        </div>
+
+        <h1 id="confirm-heading" class="text-3xl font-extrabold text-gray-900 mb-3">
+          Booking Confirmed!
+        </h1>
+        <p class="text-sm text-gray-500 max-w-sm text-center mb-8 leading-relaxed">
+          Your booking has been confirmed and payment processed successfully.
+          You'll receive a confirmation email shortly.
+        </p>
+
+        <!-- Booking & payment info boxes -->
+        @if (completedBooking()) {
+          <div class="confirmation-info-grid">
+
+            <div class="checkout-info-box checkout-info-box--success">
+              <p class="info-box-label">Booking ID</p>
+              <p class="info-box-value">#{{ completedBooking()!.id }}</p>
+              <p class="info-box-sub">Status: Confirmed</p>
+            </div>
+
+            @if (completedPayment()) {
+              <div class="checkout-info-box checkout-info-box--success">
+                <p class="info-box-label">Payment Reference</p>
+                <p class="info-box-value font-mono text-sm break-all">
+                  {{ completedPayment()!.transaction_id }}
+                </p>
+                <p class="info-box-sub">
+                  ${{ completedPayment()!.amount.toLocaleString() }} &bull; Paid
+                </p>
+              </div>
+            }
+
+          </div>
+        }
+
+        <!-- Offer recap -->
+        @if (offer()) {
+          <div class="confirmation-offer-recap">
+            <img
+              [src]="offer()!.image_url[0]"
+              [alt]="offer()!.title"
+              class="w-12 h-12 rounded-lg object-cover shrink-0"
+            />
+            <div class="min-w-0">
+              <p class="text-sm font-semibold text-gray-700 truncate">{{ offer()!.title }}</p>
+              <p class="text-xs text-gray-400 mt-0.5">{{ offer()!.location }}</p>
+            </div>
+          </div>
+        }
+
+        <!-- CTA Buttons -->
+        <div class="confirmation-actions">
+          <a
+            routerLink="/tourist/bookings"
+            class="btn-primary-lg w-full sm:w-auto justify-center"
+          >
+            View My Bookings
+          </a>
+          <a
+            routerLink="/view-all"
+            class="btn-secondary-lg w-full sm:w-auto justify-center"
+          >
+            Continue Exploring
+          </a>
+        </div>
+
+      </section>
+    }
+
+  </main>
+</div>
+
+<app-footer></app-footer>

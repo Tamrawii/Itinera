@@ -271,7 +271,7 @@
           type="button" 
           class="btn-primary"
           (click)="submitRegistration()"
-          [disabled]="isSubmitting || registrationForm.invalid"
+          [disabled]="isSubmitting"
         >
           @if (isSubmitting) {
             <div class="btn-spinner"></div>

@@ -1,30 +1,26 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
-import { environment } from '../../../environments/environment';
+import { GeminiService } from './gemini.service';
 
 @Injectable({ providedIn: 'root' })
 export class ChatbotService {
-  private readonly baseUrl = `${environment.apiUrl}/chatbot`;
+  constructor(private geminiService: GeminiService) {}
 
-  constructor(private http: HttpClient) {}
-
-  /**
-   * Sends a user message along with conversation history to the backend,
-   * which forwards the request to Gemini and returns the AI reply.
-   */
   sendMessage(
     message: string,
     history: { role: string; content: string }[],
   ): Observable<{ reply: string }> {
-    return this.http
-      .post<{ reply: string }>(this.baseUrl, { message, history })
-      .pipe(catchError(this.handleError));
-  }
+    this.geminiService.loadHistory(
+      history.map((h) => ({
+        role: h.role === 'assistant' ? 'model' : 'user',
+        parts: [{ text: h.content }],
+      })),
+    );
 
-  private handleError(error: unknown): Observable<never> {
-    return throwError(() => error);
+    this.geminiService.sendMessage(message);
+
+    return of({ reply: 'Message sent. Check the chat for the response.' }).pipe(delay(100));
   }
 }

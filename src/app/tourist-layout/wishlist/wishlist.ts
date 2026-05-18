@@ -10,7 +10,9 @@ import {
   Search1Outlined
 } from '@lineiconshq/free-icons';
 import { WishlistService } from '../../core/services/wishlist.service';
+import { ServiceService } from '../../core/services/service.service';
 import { Wishlist } from '../../core/models/wishlist.model';
+import { Service } from '../../core/models/service.model';
 import { ToastService } from '../../core/services/toast.service';
 
 interface WishlistItem extends Wishlist {
@@ -42,6 +44,7 @@ export class TouristWishlist implements OnInit {
 
   constructor(
     private wishlistService: WishlistService,
+    private serviceService: ServiceService,
     private toastService: ToastService
   ) {}
 
@@ -53,9 +56,13 @@ export class TouristWishlist implements OnInit {
     this.isLoading = true;
     this.wishlistService.getMyWishlist().subscribe({
       next: (items) => {
-        this.wishlistItems = items;
-        this.filteredItems = items;
-        this.isLoading = false;
+        if (items.length === 0) {
+          this.wishlistItems = [];
+          this.filteredItems = [];
+          this.isLoading = false;
+          return;
+        }
+        this.enrichWithServices(items);
       },
       error: (error) => {
         console.error('Error loading wishlist:', error);
@@ -63,6 +70,35 @@ export class TouristWishlist implements OnInit {
         this.isLoading = false;
       }
     });
+  }
+
+  private enrichWithServices(items: Wishlist[]): void {
+    const serviceIds = [...new Set(items.map((w) => w.service_id))];
+    let loaded = 0;
+    const serviceMap = new Map<number, Service>();
+
+    serviceIds.forEach((sid) => {
+      this.serviceService.getById(sid).subscribe({
+        next: (svc) => {
+          serviceMap.set(sid, svc);
+          loaded++;
+          if (loaded === serviceIds.length) this.buildEnriched(items, serviceMap);
+        },
+        error: () => {
+          loaded++;
+          if (loaded === serviceIds.length) this.buildEnriched(items, serviceMap);
+        },
+      });
+    });
+  }
+
+  private buildEnriched(items: Wishlist[], map: Map<number, Service>): void {
+    this.wishlistItems = items.map((w) => ({
+      ...w,
+      service: map.get(w.service_id),
+    }));
+    this.filteredItems = this.wishlistItems;
+    this.isLoading = false;
   }
 
   removeFromWishlist(serviceId: number, itemId: number): void {
@@ -105,19 +141,19 @@ export class TouristWishlist implements OnInit {
   }
 
   getServiceImage(service: any): string {
-    return service.image_url?.[0] || '/images/placeholder-service.jpg';
+    return service?.images?.[0] || '/images/placeholder-service.jpg';
   }
 
   getServicePrice(service: any): number {
-    return service.price || 0;
+    return service?.price || 0;
   }
 
   getServiceLocation(service: any): string {
-    return service.location || 'Location not specified';
+    return service?.location || 'Location not specified';
   }
 
   getServiceCategory(service: any): string {
-    return service.category || 'Service';
+    return service?.category || 'Service';
   }
 
   navigateToService(serviceId: number): void {

@@ -40,6 +40,18 @@
         Providers
       </a>
 
+      <a routerLink="/admin/provider-approval" routerLinkActive="sidebar-active" class="sidebar-link">
+        <span class="sidebar-icon">
+          <lineicons [icon]="checkOutlined" [size]="22" [strokeWidth]="1.5"></lineicons>
+        </span>
+        Provider Approvals
+        @if (pendingProviderCount() > 0) {
+          <span class="ml-auto inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-bold bg-red-500 text-white">
+            {{ pendingProviderCount() }}
+          </span>
+        }
+      </a>
+
       <a routerLink="/admin/users" routerLinkActive="sidebar-active" class="sidebar-link">
         <span class="sidebar-icon">
           <lineicons [icon]="userMultiple4Outlined" [size]="22" [strokeWidth]="1.5"></lineicons>

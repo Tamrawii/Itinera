@@ -30,7 +30,7 @@ export class TouristMessages implements OnInit, AfterViewChecked {
   newMessage = signal('');
 
   private shouldScroll = false;
-  private currentUserId = 0; // will be set from auth context
+  private currentUserId = 0;
 
   readonly filteredConversations = computed(() => {
     const q = this.searchQuery().toLowerCase().trim();
@@ -49,7 +49,19 @@ export class TouristMessages implements OnInit, AfterViewChecked {
   constructor(private messageService: MessageService) {}
 
   ngOnInit(): void {
+    this.currentUserId = this.getCurrentUserId();
     this.loadConversations();
+  }
+
+  private getCurrentUserId(): number {
+    try {
+      const raw = localStorage.getItem('auth_user');
+      if (!raw) return 0;
+      const user = JSON.parse(raw);
+      return user.id ?? 0;
+    } catch {
+      return 0;
+    }
   }
 
   ngAfterViewChecked(): void {

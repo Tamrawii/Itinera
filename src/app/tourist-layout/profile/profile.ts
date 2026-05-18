@@ -13,22 +13,10 @@ import {
   EyeSolid
 } from '@lineiconshq/free-icons';
 import { UserService } from '../../core/services/user.service';
+import { UserTouristService, TouristPreferences } from '../../core/services/user-tourist.service';
 import { ToastService } from '../../core/services/toast.service';
 import { User } from '../../core/models/user.model';
-
-export interface ProfileFormData {
-  full_name: string;
-  email: string;
-  phone: string;
-  location: string;
-  bio: string;
-}
-
-export interface PasswordFormData {
-  current_password: string;
-  new_password: string;
-  confirm_password: string;
-}
+import { UserTourist } from '../../core/models/user-tourist.model';
 
 @Component({
   selector: 'app-tourist-profile',
@@ -56,8 +44,10 @@ export class TouristProfile implements OnInit {
   passwordForm: FormGroup;
   
   user: User | null = null;
+  touristProfile: UserTourist | null = null;
   loading: boolean = true;
   saving: boolean = false;
+  savingPreferences: boolean = false;
   changingPassword: boolean = false;
   
   activeTab: 'profile' | 'password' | 'preferences' = 'profile';
@@ -65,8 +55,7 @@ export class TouristProfile implements OnInit {
   showNewPassword: boolean = false;
   showConfirmPassword: boolean = false;
 
-  // Mock preferences
-  preferences = {
+  preferences: TouristPreferences = {
     emailNotifications: true,
     smsNotifications: false,
     marketingEmails: false,
@@ -78,6 +67,7 @@ export class TouristProfile implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
+    private touristService: UserTouristService,
     private toastService: ToastService
   ) {
     this.profileForm = this.createProfileForm();
@@ -90,10 +80,11 @@ export class TouristProfile implements OnInit {
 
   private createProfileForm(): FormGroup {
     return this.fb.group({
-      full_name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
+      first_name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+      last_name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.pattern('^[+]?[0-9]{10,15}$')]],
-      location: ['', [Validators.maxLength(200)]],
+      country: ['', [Validators.maxLength(100)]],
       bio: ['', [Validators.maxLength(500)]]
     });
   }
@@ -115,49 +106,52 @@ export class TouristProfile implements OnInit {
 
   loadUserProfile(): void {
     this.loading = true;
+
     this.userService.getMyProfile().subscribe({
       next: (user) => {
         this.user = user;
-        this.profileForm.patchValue({
-          full_name: user.full_name,
-          email: user.email,
-          phone: user.phone || '',
-          location: '',
-          bio: ''
+
+        this.touristService.getMyTouristProfile().subscribe({
+          next: (tourist) => {
+            this.touristProfile = tourist;
+            this.profileForm.patchValue({
+              first_name: tourist.first_name,
+              last_name: tourist.last_name,
+              email: user.email,
+              phone: user.phone || '',
+              country: tourist.country || '',
+              bio: tourist.bio || ''
+            });
+          },
+          error: () => {
+            this.profileForm.patchValue({
+              first_name: '',
+              last_name: '',
+              email: user.email,
+              phone: user.phone || '',
+              country: '',
+              bio: ''
+            });
+          }
         });
+
+        this.touristService.getMyPreferences().subscribe({
+          next: (prefs) => {
+            this.preferences = prefs;
+          }
+        });
+
         this.loading = false;
       },
       error: (error) => {
         console.error('Error loading profile:', error);
         this.toastService.showError('Failed to load profile');
         this.loading = false;
-        // Load mock data for demo
-        this.loadMockProfile();
       }
     });
   }
 
-  private loadMockProfile(): void {
-    this.user = {
-      id: 1,
-      full_name: 'John Doe',
-      email: 'john.doe@example.com',
-      role: 'tourist',
-      phone: '+1234567890',
-      created_at: new Date('2024-01-01'),
-      updated_at: new Date()
-    };
-    
-    this.profileForm.patchValue({
-      full_name: this.user.full_name,
-      email: this.user.email,
-      phone: this.user.phone || '',
-      location: 'New York, USA',
-      bio: 'Travel enthusiast who loves exploring new destinations and cultures.'
-    });
-  }
-
-  saveProfile(): void {
+    saveProfile(): void {
     if (this.profileForm.invalid) {
       this.markFormGroupTouched(this.profileForm);
       this.toastService.showError('Please fix the errors in the form');
@@ -166,17 +160,54 @@ export class TouristProfile implements OnInit {
 
     this.saving = true;
     const formData = this.profileForm.value;
+    const fullName = `${formData.first_name} ${formData.last_name}`.trim();
 
-    this.userService.updateMyProfile(formData).subscribe({
+    let completed = 0;
+    let hasError = false;
+
+    const maybeDone = () => {
+      completed++;
+      if (completed === 2) {
+        if (!hasError) {
+          this.toastService.showSuccess('Profile updated successfully!');
+        }
+        this.saving = false;
+      }
+    };
+
+    this.touristService.updateMyTouristProfile({
+      first_name: formData.first_name,
+      last_name: formData.last_name,
+      phone: formData.phone,
+      country: formData.country,
+      bio: formData.bio
+    }).subscribe({
+      next: (updatedTourist) => {
+        this.touristProfile = updatedTourist;
+        maybeDone();
+      },
+      error: (err) => {
+        console.error('Error updating tourist profile:', err);
+        hasError = true;
+        this.toastService.showError('Failed to save tourist details');
+        maybeDone();
+      }
+    });
+
+    this.userService.updateMyProfile({
+      full_name: fullName,
+      email: formData.email,
+      phone: formData.phone
+    } as any).subscribe({
       next: (updatedUser) => {
         this.user = updatedUser;
-        this.toastService.showSuccess('Profile updated successfully!');
-        this.saving = false;
+        maybeDone();
       },
       error: (error) => {
         console.error('Error updating profile:', error);
+        hasError = true;
         this.toastService.showError('Failed to update profile');
-        this.saving = false;
+        maybeDone();
       }
     });
   }
@@ -202,15 +233,27 @@ export class TouristProfile implements OnInit {
       },
       error: (error) => {
         console.error('Error changing password:', error);
-        this.toastService.showError('Failed to change password');
+        this.toastService.showError(error?.message || 'Failed to change password');
         this.changingPassword = false;
       }
     });
   }
 
   savePreferences(): void {
-    // Mock implementation - would connect to preferences service
-    this.toastService.showSuccess('Preferences saved successfully!');
+    this.savingPreferences = true;
+
+    this.touristService.updateMyPreferences(this.preferences).subscribe({
+      next: (updated) => {
+        this.preferences = updated;
+        this.toastService.showSuccess('Preferences saved successfully!');
+        this.savingPreferences = false;
+      },
+      error: (error) => {
+        console.error('Error saving preferences:', error);
+        this.toastService.showError('Failed to save preferences');
+        this.savingPreferences = false;
+      }
+    });
   }
 
   switchTab(tab: 'profile' | 'password' | 'preferences'): void {

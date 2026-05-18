@@ -6,13 +6,13 @@
       <p class="page-subtitle">Manage your personal information and preferences</p>
     </div>
     
-    @if (user) {
+    @if (touristProfile) {
       <div class="user-summary">
         <div class="user-avatar">
-          {{ user.full_name.charAt(0) }}
+          {{ touristProfile.first_name.charAt(0) }}
         </div>
         <div class="user-info">
-          <h3>{{ user.full_name }}</h3>
+          <h3>{{ touristProfile.first_name }} {{ touristProfile.last_name }}</h3>
           <p>Member for {{ getAccountAge() }}</p>
         </div>
       </div>
@@ -63,19 +63,35 @@
             <form [formGroup]="profileForm" class="profile-form">
               <div class="form-row">
                 <div class="form-group">
-                  <label for="full_name">Full Name *</label>
+                  <label for="first_name">First Name *</label>
                   <input 
-                    id="full_name"
+                    id="first_name"
                     type="text" 
-                    formControlName="full_name"
-                    [class.error]="isFieldInvalid(profileForm, 'full_name')"
-                    placeholder="Enter your full name"
+                    formControlName="first_name"
+                    [class.error]="isFieldInvalid(profileForm, 'first_name')"
+                    placeholder="Enter your first name"
                   />
-                  @if (isFieldInvalid(profileForm, 'full_name')) {
-                    <span class="error-message">{{ getErrorMessage(profileForm, 'full_name') }}</span>
+                  @if (isFieldInvalid(profileForm, 'first_name')) {
+                    <span class="error-message">{{ getErrorMessage(profileForm, 'first_name') }}</span>
                   }
                 </div>
                 
+                <div class="form-group">
+                  <label for="last_name">Last Name *</label>
+                  <input 
+                    id="last_name"
+                    type="text" 
+                    formControlName="last_name"
+                    [class.error]="isFieldInvalid(profileForm, 'last_name')"
+                    placeholder="Enter your last name"
+                  />
+                  @if (isFieldInvalid(profileForm, 'last_name')) {
+                    <span class="error-message">{{ getErrorMessage(profileForm, 'last_name') }}</span>
+                  }
+                </div>
+              </div>
+
+              <div class="form-row">
                 <div class="form-group">
                   <label for="email">Email Address *</label>
                   <input 
@@ -89,9 +105,7 @@
                     <span class="error-message">{{ getErrorMessage(profileForm, 'email') }}</span>
                   }
                 </div>
-              </div>
-
-              <div class="form-row">
+                
                 <div class="form-group">
                   <label for="phone">Phone Number</label>
                   <input 
@@ -105,20 +119,20 @@
                     <span class="error-message">{{ getErrorMessage(profileForm, 'phone') }}</span>
                   }
                 </div>
-                
-                <div class="form-group">
-                  <label for="location">Location</label>
-                  <input 
-                    id="location"
-                    type="text" 
-                    formControlName="location"
-                    [class.error]="isFieldInvalid(profileForm, 'location')"
-                    placeholder="City, Country"
-                  />
-                  @if (isFieldInvalid(profileForm, 'location')) {
-                    <span class="error-message">{{ getErrorMessage(profileForm, 'location') }}</span>
-                  }
-                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="country">Country</label>
+                <input 
+                  id="country"
+                  type="text" 
+                  formControlName="country"
+                  [class.error]="isFieldInvalid(profileForm, 'country')"
+                  placeholder="Your country"
+                />
+                @if (isFieldInvalid(profileForm, 'country')) {
+                  <span class="error-message">{{ getErrorMessage(profileForm, 'country') }}</span>
+                }
               </div>
 
               <div class="form-group">
@@ -333,7 +347,11 @@
                 type="button" 
                 class="btn-primary"
                 (click)="savePreferences()"
+                [disabled]="savingPreferences"
               >
+                @if (savingPreferences) {
+                  <div class="btn-spinner"></div>
+                }
                 Save Preferences
               </button>
             </div>

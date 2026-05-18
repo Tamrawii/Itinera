@@ -1,90 +1,219 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { Observable, of, throwError } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
-import { environment } from '../../../environments/environment';
 import { User, UpdateUser, PaginatedResponse } from '../models';
+
+interface StoredUser {
+  id: number;
+  email: string;
+  password: string;
+  full_name: string;
+  role: 'tourist' | 'provider' | 'admin';
+  phone?: string;
+  created_at: string;
+  updated_at: string;
+}
+
+const USERS_KEY = 'itinera_users';
+const USER_KEY = 'auth_user';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  private readonly baseUrl = `${environment.apiUrl}/users`;
-
-  constructor(private http: HttpClient) {}
-
-  /**
-   * Retrieves a paginated, optionally filtered list of all users (admin).
-   */
   getAll(params?: {
     page?: number;
     per_page?: number;
     search?: string;
     role?: string;
   }): Observable<PaginatedResponse<User>> {
-    let httpParams = new HttpParams();
-    if (params) {
-      Object.entries(params).forEach(([key, val]) => {
-        if (val !== undefined && val !== null) {
-          httpParams = httpParams.set(key, String(val));
-        }
-      });
+    let users = this.getUsers();
+
+    if (params?.search) {
+      const q = params.search.toLowerCase();
+      users = users.filter(
+        (u) =>
+          u.full_name.toLowerCase().includes(q) ||
+          u.email.toLowerCase().includes(q),
+      );
     }
-    return this.http
-      .get<PaginatedResponse<User>>(this.baseUrl, { params: httpParams })
-      .pipe(catchError(this.handleError));
+
+    if (params?.role) {
+      users = users.filter((u) => u.role === params.role);
+    }
+
+    const page = params?.page ?? 1;
+    const perPage = params?.per_page ?? 10;
+    const total = users.length;
+    const lastPage = Math.max(1, Math.ceil(total / perPage));
+    const start = (page - 1) * perPage;
+    const paged = users.slice(start, start + perPage);
+
+    return of({
+      data: paged.map((u) => this.toUser(u)),
+      total,
+      page,
+      per_page: perPage,
+      last_page: lastPage,
+    }).pipe(delay(200));
   }
 
-  /**
-   * Retrieves a single user by their numeric ID.
-   */
   getById(id: number): Observable<User> {
-    return this.http.get<User>(`${this.baseUrl}/${id}`).pipe(catchError(this.handleError));
+    const users = this.getUsers();
+    const stored = users.find((u) => u.id === id);
+
+    if (!stored) {
+      return throwError(() => new Error('User not found'));
+    }
+
+    return of(this.toUser(stored)).pipe(delay(150));
   }
 
-  /**
-   * Updates an arbitrary user's profile by ID (admin).
-   */
   updateProfile(id: number, data: UpdateUser): Observable<User> {
-    return this.http
-      .put<User>(`${this.baseUrl}/${id}`, data)
-      .pipe(catchError(this.handleError));
+    const users = this.getUsers();
+    const index = users.findIndex((u) => u.id === id);
+
+    if (index === -1) {
+      return throwError(() => new Error('User not found'));
+    }
+
+    const now = new Date().toISOString();
+    const updated: StoredUser = {
+      ...users[index],
+      ...data,
+      password: data.password ?? users[index].password,
+      updated_at: now,
+    };
+
+    users[index] = updated;
+    this.setUsers(users);
+
+    this.refreshCurrentSession(updated);
+
+    return of(this.toUser(updated)).pipe(delay(200));
   }
 
-  /**
-   * Permanently deletes a user by their ID (admin).
-   */
   deleteUser(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${id}`).pipe(catchError(this.handleError));
+    const users = this.getUsers();
+    const filtered = users.filter((u) => u.id !== id);
+
+    if (filtered.length === users.length) {
+      return throwError(() => new Error('User not found'));
+    }
+
+    this.setUsers(filtered);
+    return of(undefined).pipe(delay(150));
   }
 
-  /**
-   * Retrieves the profile of the currently authenticated user.
-   */
   getMyProfile(): Observable<User> {
-    return this.http
-      .get<User>(`${environment.apiUrl}/me`)
-      .pipe(catchError(this.handleError));
+    const raw = localStorage.getItem(USER_KEY);
+    if (!raw) {
+      return throwError(() => new Error('No authenticated user'));
+    }
+
+    try {
+      return of(JSON.parse(raw) as User).pipe(delay(150));
+    } catch {
+      return throwError(() => new Error('Invalid session data'));
+    }
   }
 
-  /**
-   * Updates the currently authenticated user's own profile fields.
-   */
   updateMyProfile(data: Partial<User>): Observable<User> {
-    return this.http
-      .patch<User>(`${environment.apiUrl}/me`, data)
-      .pipe(catchError(this.handleError));
+    const current = this.getCurrentUser();
+    if (!current) {
+      return throwError(() => new Error('No authenticated user'));
+    }
+
+    const users = this.getUsers();
+    const index = users.findIndex((u) => u.id === current.id);
+
+    if (index === -1) {
+      return throwError(() => new Error('User not found in registry'));
+    }
+
+    const now = new Date().toISOString();
+    const updated: StoredUser = {
+      ...users[index],
+      full_name: (data as any).full_name ?? users[index].full_name,
+      email: (data as any).email ?? users[index].email,
+      phone: (data as any).phone ?? users[index].phone,
+      updated_at: now,
+    };
+
+    users[index] = updated;
+    this.setUsers(users);
+
+    this.refreshCurrentSession(updated);
+
+    return of(this.toUser(updated)).pipe(delay(200));
   }
 
-  /**
-   * Changes the current user's password.
-   */
-  changePassword(data: { current_password: string; new_password: string }): Observable<void> {
-    return this.http
-      .post<void>(`${environment.apiUrl}/me/change-password`, data)
-      .pipe(catchError(this.handleError));
+  changePassword(data: {
+    current_password: string;
+    new_password: string;
+  }): Observable<void> {
+    const current = this.getCurrentUser();
+    if (!current) {
+      return throwError(() => new Error('No authenticated user'));
+    }
+
+    const users = this.getUsers();
+    const index = users.findIndex((u) => u.id === current.id);
+
+    if (index === -1) {
+      return throwError(() => new Error('User not found in registry'));
+    }
+
+    if (users[index].password !== data.current_password) {
+      return throwError(() => new Error('Current password is incorrect'));
+    }
+
+    users[index].password = data.new_password;
+    users[index].updated_at = new Date().toISOString();
+    this.setUsers(users);
+
+    return of(undefined).pipe(delay(200));
   }
 
-  private handleError(error: unknown): Observable<never> {
-    return throwError(() => error);
+  /* ---- localStorage helpers ---- */
+
+  private getUsers(): StoredUser[] {
+    try {
+      return JSON.parse(localStorage.getItem(USERS_KEY) || '[]') as StoredUser[];
+    } catch {
+      return [];
+    }
+  }
+
+  private setUsers(users: StoredUser[]): void {
+    localStorage.setItem(USERS_KEY, JSON.stringify(users));
+  }
+
+  private getCurrentUser(): User | null {
+    const raw = localStorage.getItem(USER_KEY);
+    if (!raw) return null;
+    try {
+      return JSON.parse(raw) as User;
+    } catch {
+      return null;
+    }
+  }
+
+  private refreshCurrentSession(stored: StoredUser): void {
+    const current = this.getCurrentUser();
+    if (current && current.id === stored.id) {
+      localStorage.setItem(USER_KEY, JSON.stringify(this.toUser(stored)));
+    }
+  }
+
+  private toUser(stored: StoredUser): User {
+    return {
+      id: stored.id,
+      email: stored.email,
+      full_name: stored.full_name,
+      role: stored.role,
+      phone: stored.phone,
+      created_at: new Date(stored.created_at),
+      updated_at: new Date(stored.updated_at),
+    };
   }
 }

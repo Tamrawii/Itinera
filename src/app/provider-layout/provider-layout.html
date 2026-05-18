@@ -1,108 +1,166 @@
-<main class="provider-shell">
-  <aside
-    class="flex min-h-screen w-full flex-col border-r border-slate-200 bg-slate-100 px-4 py-5 text-slate-700"
-    aria-label="Provider sidebar"
-  >
-    <div class="mb-5 flex items-center gap-3 px-2">
-      <img src="/images/logo.png" alt="Itinera logo" class="h-10 w-10 rounded-xl object-contain" />
-      <div>
-        <p class="text-lg font-bold text-slate-800">Itinera</p>
-        <p class="text-xs text-slate-500">Provider Portal</p>
+@if (providerStatus() === 'loading') {
+  <div class="flex min-h-screen items-center justify-center bg-slate-50">
+    <div class="flex flex-col items-center gap-4">
+      <div class="h-12 w-12 animate-spin rounded-full border-4 border-blue-600 border-t-transparent"></div>
+      <p class="text-slate-600">Loading...</p>
+    </div>
+  </div>
+}
+
+@if (providerStatus() === 'pending') {
+  <div class="flex min-h-screen items-center justify-center bg-slate-50 p-4">
+    <div class="max-w-lg rounded-2xl bg-white p-8 shadow-lg">
+      <div class="mb-6 flex justify-center">
+        <lineicons [icon]="CheckOutlined" [size]="64" class="text-blue-600"></lineicons>
+      </div>
+      <h2 class="mb-3 text-center text-2xl font-bold text-slate-800">Application Under Review</h2>
+      <p class="mb-6 text-center text-slate-600">
+        Your provider registration has been submitted and is currently being reviewed by our team. This usually takes 3–5 business days. You'll be notified once a decision has been made.
+      </p>
+      <div class="mb-6 rounded-lg bg-slate-50 p-4 text-center">
+        <p class="text-sm text-slate-500">Submitted as: <span class="font-semibold text-slate-700">{{ providerName() }}</span></p>
+      </div>
+      <a routerLink="/" class="block w-full rounded-lg bg-blue-600 px-6 py-3 text-center font-semibold text-white transition hover:bg-blue-700">
+        Back to Home
+      </a>
+    </div>
+  </div>
+}
+
+@if (providerStatus() === 'rejected') {
+  <div class="flex min-h-screen items-center justify-center bg-slate-50 p-4">
+    <div class="max-w-lg rounded-2xl bg-white p-8 shadow-lg">
+      <div class="mb-6 flex justify-center">
+        <lineicons [icon]="XOutlined" [size]="64" class="text-red-600"></lineicons>
+      </div>
+      <h2 class="mb-3 text-center text-2xl font-bold text-slate-800">Application Not Approved</h2>
+      <p class="mb-6 text-center text-slate-600">
+        Unfortunately, your provider application was not approved at this time.
+      </p>
+      @if (rejectionReason()) {
+        <div class="mb-6 rounded-lg bg-red-50 border border-red-200 p-4">
+          <p class="text-sm text-red-800"><span class="font-semibold">Reason:</span> {{ rejectionReason() }}</p>
+        </div>
+      }
+      <div class="flex flex-col gap-3">
+        <a routerLink="/provider-registration" class="block w-full rounded-lg bg-blue-600 px-6 py-3 text-center font-semibold text-white transition hover:bg-blue-700">
+          Reapply
+        </a>
+        <a routerLink="/" class="block w-full rounded-lg border border-slate-300 px-6 py-3 text-center font-semibold text-slate-700 transition hover:bg-slate-50">
+          Go to Home
+        </a>
       </div>
     </div>
+  </div>
+}
 
-    <p class="mb-3 px-2 text-xs font-semibold uppercase tracking-wide text-slate-400">Menu</p>
-    <nav class="space-y-1">
+@if (providerStatus() === 'approved') {
+  <main class="provider-shell">
+    <aside
+      class="flex min-h-screen w-full flex-col border-r border-slate-200 bg-slate-100 px-4 py-5 text-slate-700"
+      aria-label="Provider sidebar"
+    >
+      <div class="mb-5 flex items-center gap-3 px-2">
+        <img src="/images/logo.png" alt="Itinera logo" class="h-10 w-10 rounded-xl object-contain" />
+        <div>
+          <p class="text-lg font-bold text-slate-800">Itinera</p>
+          <p class="text-xs text-slate-500">Provider Portal</p>
+        </div>
+      </div>
+
+      <p class="mb-3 px-2 text-xs font-semibold uppercase tracking-wide text-slate-400">Menu</p>
+      <nav class="space-y-1">
+        <a
+          routerLink="/provider/dashboard"
+          routerLinkActive="sidebar-active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="sidebar-link"
+        >
+          <span class="sidebar-icon">
+            <lineicons [icon]="DashboardSquare1Outlined" [size]="22" [strokeWidth]="1.5"></lineicons>
+          </span>
+          Dashboard
+        </a>
+
+        <a routerLink="/provider/my-services" routerLinkActive="sidebar-active" class="sidebar-link">
+          <span class="sidebar-icon">
+            <lineicons [icon]="BoxClosedOutlined" [size]="22" [strokeWidth]="1.5"></lineicons>
+          </span>
+          My Services
+        </a>
+
+        <a routerLink="/provider/bookings" routerLinkActive="sidebar-active" class="sidebar-link">
+          <span class="sidebar-icon">
+            <lineicons [icon]="CalendarDaysOutlined" [size]="22" [strokeWidth]="1.5"></lineicons>
+          </span>
+          Bookings
+        </a>
+
+        <a routerLink="/provider/messages" routerLinkActive="sidebar-active" class="sidebar-link">
+          <span class="sidebar-icon">
+            <lineicons [icon]="Comment1Outlined" [size]="22" [strokeWidth]="1.5"></lineicons>
+          </span>
+          Messages
+        </a>
+
+        <a routerLink="/provider/reviews" routerLinkActive="sidebar-active" class="sidebar-link">
+          <span class="sidebar-icon">
+            <lineicons [icon]="StarFatOutlined" [size]="22" [strokeWidth]="1.5"></lineicons>
+          </span>
+          Reviews
+        </a>
+      </nav>
+
+      <p class="mb-3 mt-6 px-2 text-xs font-semibold uppercase tracking-wide text-slate-400">Account</p>
+      <a routerLink="/provider/profile-settings" routerLinkActive="sidebar-active" class="sidebar-link">
+        <span class="sidebar-icon">
+          <lineicons [icon]="User4Outlined" [size]="22" [strokeWidth]="1.5"></lineicons>
+        </span>
+        Profile &amp; Settings
+      </a>
+
       <a
-        routerLink="/provider/dashboard"
-        routerLinkActive="sidebar-active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        class="sidebar-link"
+        routerLink="/home"
+        class="mt-auto inline-flex items-center gap-2 px-2 py-3 text-sm font-medium text-slate-500 transition hover:text-blue-600"
       >
-        <span class="sidebar-icon">
-          <lineicons [icon]="dashboardSquare1Outlined" [size]="22" [strokeWidth]="1.5"></lineicons>
-        </span>
-        Dashboard
+        <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M8.5 5 4 9.5 8.5 14M4.5 9.5h11" stroke="currentColor" stroke-width="1.7" />
+        </svg>
+        Back to site
       </a>
+    </aside>
 
-      <a routerLink="/provider/my-services" routerLinkActive="sidebar-active" class="sidebar-link">
-        <span class="sidebar-icon">
-          <lineicons [icon]="boxClosedOutlined" [size]="22" [strokeWidth]="1.5"></lineicons>
-        </span>
-        My Services
-      </a>
+    <section class="provider-content">
+      <header
+        class="sticky top-0 z-20 flex items-center justify-between border-b border-slate-200 bg-white px-6 py-4"
+      >
+        <p class="font-semibold text-gray-500">Provider Dashboard</p>
 
-      <a routerLink="/provider/bookings" routerLinkActive="sidebar-active" class="sidebar-link">
-        <span class="sidebar-icon">
-          <lineicons [icon]="calendarDaysOutlined" [size]="22" [strokeWidth]="1.5"></lineicons>
-        </span>
-        Bookings
-      </a>
+        <div class="flex items-center gap-4">
+          <button
+            type="button"
+            class="rounded-full border border-slate-200 p-2.5 text-slate-500 transition hover:text-blue-600"
+            aria-label="Notifications"
+          >
+            <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path
+                d="M10 3a4 4 0 0 0-4 4v1.7c0 .59-.19 1.17-.54 1.65L4.4 11.8a1 1 0 0 0 .8 1.6h9.6a1 1 0 0 0 .8-1.6l-1.05-1.46A2.8 2.8 0 0 1 14 8.7V7a4 4 0 0 0-4-4Z"
+                stroke="currentColor"
+                stroke-width="1.5"
+              />
+              <path d="M8.5 15a1.5 1.5 0 0 0 3 0" stroke="currentColor" stroke-width="1.5" />
+            </svg>
+          </button>
+          <span
+            class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-700"
+            >BC</span
+          >
+        </div>
+      </header>
 
-      <a routerLink="/provider/messages" routerLinkActive="sidebar-active" class="sidebar-link">
-        <span class="sidebar-icon">
-          <lineicons [icon]="comment1Outlined" [size]="22" [strokeWidth]="1.5"></lineicons>
-        </span>
-        Messages
-      </a>
-
-      <a routerLink="/provider/reviews" routerLinkActive="sidebar-active" class="sidebar-link">
-        <span class="sidebar-icon">
-          <lineicons [icon]="starFatOutlined" [size]="22" [strokeWidth]="1.5"></lineicons>
-        </span>
-        Reviews
-      </a>
-    </nav>
-
-    <p class="mb-3 mt-6 px-2 text-xs font-semibold uppercase tracking-wide text-slate-400">Account</p>
-    <a routerLink="/provider/profile-settings" routerLinkActive="sidebar-active" class="sidebar-link">
-      <span class="sidebar-icon">
-        <lineicons [icon]="user4Outlined" [size]="22" [strokeWidth]="1.5"></lineicons>
-      </span>
-      Profile &amp; Settings
-    </a>
-
-    <a
-      routerLink="/home"
-      class="mt-auto inline-flex items-center gap-2 px-2 py-3 text-sm font-medium text-slate-500 transition hover:text-blue-600"
-    >
-      <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-        <path d="M8.5 5 4 9.5 8.5 14M4.5 9.5h11" stroke="currentColor" stroke-width="1.7" />
-      </svg>
-      Back to site
-    </a>
-  </aside>
-
-  <section class="provider-content">
-    <header
-      class="sticky top-0 z-20 flex items-center justify-between border-b border-slate-200 bg-white px-6 py-4"
-    >
-      <p class="font-semibold text-gray-500">Provider Dashboard</p>
-
-      <div class="flex items-center gap-4">
-        <button
-          type="button"
-          class="rounded-full border border-slate-200 p-2.5 text-slate-500 transition hover:text-blue-600"
-          aria-label="Notifications"
-        >
-          <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-            <path
-              d="M10 3a4 4 0 0 0-4 4v1.7c0 .59-.19 1.17-.54 1.65L4.4 11.8a1 1 0 0 0 .8 1.6h9.6a1 1 0 0 0 .8-1.6l-1.05-1.46A2.8 2.8 0 0 1 14 8.7V7a4 4 0 0 0-4-4Z"
-              stroke="currentColor"
-              stroke-width="1.5"
-            />
-            <path d="M8.5 15a1.5 1.5 0 0 0 3 0" stroke="currentColor" stroke-width="1.5" />
-          </svg>
-        </button>
-        <span
-          class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-700"
-          >BC</span
-        >
+      <div class="p-6">
+        <router-outlet></router-outlet>
       </div>
-    </header>
-
-    <div class="p-6">
-      <router-outlet></router-outlet>
-    </div>
-  </section>
-</main>
+    </section>
+  </main>
+}

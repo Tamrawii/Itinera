@@ -9,6 +9,7 @@ import {
   CalendarDaysOutlined,
   Gear1Outlined,
   BarChart4Outlined,
+  CheckOutlined,
 } from '@lineiconshq/free-icons';
 import { OfferService } from '../core/services/offer.service';
 import { Offers } from '../core/models/offers.model';
@@ -16,6 +17,7 @@ import { UserProvider } from '../core/models/user-provider.model';
 import { UserProviderService } from '../core/services/user-provider.service';
 import { UserTourist } from '../core/models/user-tourist.model';
 import { UserTouristService } from '../core/services/user-tourist.service';
+import { ProviderService } from '../core/services/provider.service';
 
 @Component({
   selector: 'app-admin-layout',
@@ -69,14 +71,22 @@ export class AdminLayout {
     },
   ]);
 
+  pendingProviderCount = signal(0);
+
   constructor(
     private offerService: OfferService,
     private providersListService: UserProviderService,
     private touristsListService: UserTouristService,
+    private providerService: ProviderService,
   ) {
     this.offersList.set(this.offerService.getOffers());
     this.providersList.set(this.providersListService.getProviders());
     this.touristsList.set(this.touristsListService.getTourists());
+
+    this.providerService.getAll({ status: 'pending' }).subscribe({
+      next: (result) => this.pendingProviderCount.set(result.total),
+      error: () => {},
+    });
   }
   eyeOutlined = EyeOutlined;
   boxClosedOutlined = BoxClosedOutlined;
@@ -85,4 +95,5 @@ export class AdminLayout {
   calendarDaysOutlined = CalendarDaysOutlined;
   gear1Outlined = Gear1Outlined;
   barChart4Outlined = BarChart4Outlined;
+  checkOutlined = CheckOutlined;
 }

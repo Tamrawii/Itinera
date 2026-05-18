@@ -2,19 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LineiconsComponent } from '@lineiconshq/angular-lineicons';
-import { 
-  User4Outlined, 
-  Buildings1Outlined, 
-  MapMarker5Outlined, 
-  Envelope1Outlined, 
+import {
+  User4Outlined,
+  Buildings1Outlined,
+  MapMarker5Outlined,
+  Envelope1Outlined,
   PhoneOutlined,
   CalendarDaysOutlined,
   Search1Outlined,
   CheckOutlined,
   XOutlined,
-  EyeOutlined
+  EyeOutlined,
 } from '@lineiconshq/free-icons';
 import { ToastService } from '../../core/services/toast.service';
+import { ProviderService } from '../../core/services/provider.service';
+import { EnrichedProvider, ProviderStatus } from '../../core/models';
 
 export interface ProviderApplication {
   id: string;
@@ -61,14 +63,9 @@ export interface ApplicationFilter {
 @Component({
   selector: 'app-provider-approval',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    LineiconsComponent
-  ],
-  providers: [ToastService],
+  imports: [CommonModule, FormsModule, LineiconsComponent],
   templateUrl: './provider-approval.html',
-  styleUrl: './provider-approval.css'
+  styleUrl: './provider-approval.css',
 })
 export class ProviderApproval implements OnInit {
   readonly User4Outlined = User4Outlined;
@@ -91,9 +88,9 @@ export class ProviderApproval implements OnInit {
     businessType: 'all',
     dateRange: {
       start: '',
-      end: ''
+      end: '',
     },
-    searchTerm: ''
+    searchTerm: '',
   };
 
   showFilters = false;
@@ -108,7 +105,7 @@ export class ProviderApproval implements OnInit {
     { value: 'restaurant', label: 'Restaurant/Cafe' },
     { value: 'activity', label: 'Activity/Experience' },
     { value: 'shopping', label: 'Shopping/Retail' },
-    { value: 'other', label: 'Other' }
+    { value: 'other', label: 'Other' },
   ];
 
   statusOptions = [
@@ -116,10 +113,13 @@ export class ProviderApproval implements OnInit {
     { value: 'pending', label: 'Pending' },
     { value: 'under_review', label: 'Under Review' },
     { value: 'approved', label: 'Approved' },
-    { value: 'rejected', label: 'Rejected' }
+    { value: 'rejected', label: 'Rejected' },
   ];
 
-  constructor(private toastService: ToastService) {}
+  constructor(
+    private toastService: ToastService,
+    private providerService: ProviderService,
+  ) {}
 
   ngOnInit(): void {
     this.loadApplications();
@@ -127,13 +127,54 @@ export class ProviderApproval implements OnInit {
 
   loadApplications(): void {
     this.isLoading = true;
-    
-    // Simulate API call with mock data
-    setTimeout(() => {
-      this.applications = this.generateMockApplications();
-      this.applyFilters();
-      this.isLoading = false;
-    }, 1000);
+    this.providerService.getAllEnriched().subscribe({
+      next: (providers) => {
+        this.applications = providers.map((p) => this.toApplication(p));
+        this.applyFilters();
+        this.isLoading = false;
+      },
+      error: () => {
+        this.applications = this.generateMockApplications(); // fallback
+        this.applyFilters();
+        this.isLoading = false;
+      },
+    });
+  }
+
+  private toApplication(p: EnrichedProvider): ProviderApplication {
+    const nameParts = (p.user_full_name ?? '').split(' ');
+    return {
+      id: String(p.id),
+      submittedAt: new Date(p.created_at),
+      status:
+        p.status === 'pending' ? 'pending' : p.status === 'approved' ? 'approved' : 'rejected',
+      personalInfo: {
+        firstName: nameParts[0] ?? '',
+        lastName: nameParts.slice(1).join(' '),
+        email: p.user_email ?? '',
+        phone: p.phone ?? '',
+        dateOfBirth: '',
+      },
+      businessInfo: {
+        businessName: p.business_name,
+        businessType: p.provider_type,
+        description: p.description,
+        address: p.address ?? '',
+        city: p.city ?? '',
+        postalCode: p.postal_code ?? '',
+        website: p.website,
+      },
+      documents: p.documents.map((d) => ({
+        id: d.name,
+        name: d.name,
+        type: d.type,
+        url: d.url,
+        uploadedAt: new Date(p.created_at),
+      })),
+      rejectionReason: p.rejection_reason,
+      reviewedAt: p.status !== 'pending' ? new Date(p.updated_at) : undefined,
+      reviewedBy: p.status !== 'pending' ? 'Admin' : undefined,
+    };
   }
 
   private generateMockApplications(): ProviderApplication[] {
@@ -147,7 +188,7 @@ export class ProviderApproval implements OnInit {
           lastName: 'Ben Ali',
           email: 'ahmed.benali@example.com',
           phone: '+216 12 345 678',
-          dateOfBirth: '1985-06-15'
+          dateOfBirth: '1985-06-15',
         },
         businessInfo: {
           businessName: 'Sahara Adventures',
@@ -156,7 +197,7 @@ export class ProviderApproval implements OnInit {
           address: '123 Avenue Habib Bourguiba',
           city: 'Douz',
           postalCode: '4250',
-          website: 'https://saharadventures.tn'
+          website: 'https://saharadventures.tn',
         },
         documents: [
           {
@@ -164,16 +205,16 @@ export class ProviderApproval implements OnInit {
             name: 'business-license.pdf',
             type: 'Business License',
             url: '#',
-            uploadedAt: new Date('2024-01-15')
+            uploadedAt: new Date('2024-01-15'),
           },
           {
             id: 'doc2',
             name: 'id-card.pdf',
             type: 'Government ID',
             url: '#',
-            uploadedAt: new Date('2024-01-15')
-          }
-        ]
+            uploadedAt: new Date('2024-01-15'),
+          },
+        ],
       },
       {
         id: '2',
@@ -184,7 +225,7 @@ export class ProviderApproval implements OnInit {
           lastName: 'Mansouri',
           email: 'fatima.mansouri@example.com',
           phone: '+216 98 765 432',
-          dateOfBirth: '1990-03-22'
+          dateOfBirth: '1990-03-22',
         },
         businessInfo: {
           businessName: 'Mediterranean Cuisine',
@@ -193,7 +234,7 @@ export class ProviderApproval implements OnInit {
           address: '45 Rue du Port',
           city: 'Sidi Bou Said',
           postalCode: '2026',
-          website: 'https://mediterranean-cuisine.tn'
+          website: 'https://mediterranean-cuisine.tn',
         },
         documents: [
           {
@@ -201,25 +242,25 @@ export class ProviderApproval implements OnInit {
             name: 'business-license.pdf',
             type: 'Business License',
             url: '#',
-            uploadedAt: new Date('2024-01-14')
+            uploadedAt: new Date('2024-01-14'),
           },
           {
             id: 'doc4',
             name: 'id-card.pdf',
             type: 'Government ID',
             url: '#',
-            uploadedAt: new Date('2024-01-14')
+            uploadedAt: new Date('2024-01-14'),
           },
           {
             id: 'doc5',
             name: 'tax-certificate.pdf',
             type: 'Tax Certificate',
             url: '#',
-            uploadedAt: new Date('2024-01-14')
-          }
+            uploadedAt: new Date('2024-01-14'),
+          },
         ],
         reviewedBy: 'Admin User',
-        reviewedAt: new Date('2024-01-16')
+        reviewedAt: new Date('2024-01-16'),
       },
       {
         id: '3',
@@ -230,7 +271,7 @@ export class ProviderApproval implements OnInit {
           lastName: 'Khaled',
           email: 'mohamed.khaled@example.com',
           phone: '+216 55 123 789',
-          dateOfBirth: '1988-11-10'
+          dateOfBirth: '1988-11-10',
         },
         businessInfo: {
           businessName: 'Tunis Transport',
@@ -238,7 +279,7 @@ export class ProviderApproval implements OnInit {
           description: 'Professional transportation services for tourists and locals.',
           address: '78 Avenue de la République',
           city: 'Tunis',
-          postalCode: '1000'
+          postalCode: '1000',
         },
         documents: [
           {
@@ -246,25 +287,25 @@ export class ProviderApproval implements OnInit {
             name: 'business-license.pdf',
             type: 'Business License',
             url: '#',
-            uploadedAt: new Date('2024-01-13')
+            uploadedAt: new Date('2024-01-13'),
           },
           {
             id: 'doc7',
             name: 'id-card.pdf',
             type: 'Government ID',
             url: '#',
-            uploadedAt: new Date('2024-01-13')
+            uploadedAt: new Date('2024-01-13'),
           },
           {
             id: 'doc8',
             name: 'insurance.pdf',
             type: 'Insurance Certificate',
             url: '#',
-            uploadedAt: new Date('2024-01-13')
-          }
+            uploadedAt: new Date('2024-01-13'),
+          },
         ],
         reviewedBy: 'Admin User',
-        reviewedAt: new Date('2024-01-15')
+        reviewedAt: new Date('2024-01-15'),
       },
       {
         id: '4',
@@ -275,15 +316,15 @@ export class ProviderApproval implements OnInit {
           lastName: 'Trabelsi',
           email: 'samira.trabelsi@example.com',
           phone: '+216 71 234 567',
-          dateOfBirth: '1992-07-18'
+          dateOfBirth: '1992-07-18',
         },
         businessInfo: {
           businessName: 'Artisan Crafts',
           businessType: 'shopping',
           description: 'Traditional Tunisian handicrafts and souvenirs.',
-          address: '12 Rue de l\'Artisanat',
+          address: "12 Rue de l'Artisanat",
           city: 'Kairouan',
-          postalCode: '3100'
+          postalCode: '3100',
         },
         documents: [
           {
@@ -291,25 +332,28 @@ export class ProviderApproval implements OnInit {
             name: 'business-license.pdf',
             type: 'Business License',
             url: '#',
-            uploadedAt: new Date('2024-01-12')
-          }
+            uploadedAt: new Date('2024-01-12'),
+          },
         ],
         reviewedBy: 'Admin User',
         reviewedAt: new Date('2024-01-14'),
-        rejectionReason: 'Incomplete documentation. Missing government ID and tax certificate.'
-      }
+        rejectionReason: 'Incomplete documentation. Missing government ID and tax certificate.',
+      },
     ];
   }
 
   applyFilters(): void {
-    this.filteredApplications = this.applications.filter(app => {
+    this.filteredApplications = this.applications.filter((app) => {
       // Status filter
       if (this.filter.status !== 'all' && app.status !== this.filter.status) {
         return false;
       }
 
       // Business type filter
-      if (this.filter.businessType !== 'all' && app.businessInfo.businessType !== this.filter.businessType) {
+      if (
+        this.filter.businessType !== 'all' &&
+        app.businessInfo.businessType !== this.filter.businessType
+      ) {
         return false;
       }
 
@@ -337,8 +381,10 @@ export class ProviderApproval implements OnInit {
           app.personalInfo.lastName,
           app.personalInfo.email,
           app.businessInfo.businessName,
-          app.businessInfo.city
-        ].join(' ').toLowerCase();
+          app.businessInfo.city,
+        ]
+          .join(' ')
+          .toLowerCase();
 
         if (!searchableText.includes(searchLower)) {
           return false;
@@ -359,9 +405,9 @@ export class ProviderApproval implements OnInit {
       businessType: 'all',
       dateRange: {
         start: '',
-        end: ''
+        end: '',
       },
-      searchTerm: ''
+      searchTerm: '',
     };
     this.applyFilters();
   }
@@ -375,20 +421,23 @@ export class ProviderApproval implements OnInit {
   }
 
   approveApplication(applicationId: string): void {
-    const application = this.applications.find(app => app.id === applicationId);
-    if (!application) return;
-
-    // Update application status
-    application.status = 'approved';
-    application.reviewedBy = 'Admin User';
-    application.reviewedAt = new Date();
-
-    this.applyFilters();
-    this.toastService.showSuccess('Application approved successfully');
-    
-    if (this.selectedApplication?.id === applicationId) {
-      this.selectedApplication = application;
-    }
+    const id = Number(applicationId);
+    this.providerService.approve(id).subscribe({
+      next: () => {
+        const app = this.applications.find((a) => a.id === applicationId);
+        if (app) {
+          app.status = 'approved';
+          app.reviewedBy = 'Admin';
+          app.reviewedAt = new Date();
+        }
+        if (this.selectedApplication?.id === applicationId) {
+          this.selectedApplication = app ?? null;
+        }
+        this.applyFilters();
+        this.toastService.showSuccess('Application approved successfully');
+      },
+      error: () => this.toastService.showError('Failed to approve application'),
+    });
   }
 
   openRejectionModal(applicationId: string): void {
@@ -408,23 +457,28 @@ export class ProviderApproval implements OnInit {
       this.toastService.showError('Please provide a rejection reason');
       return;
     }
-
-    const application = this.applications.find(app => app.id === this.rejectionApplicationId);
-    if (!application) return;
-
-    // Update application status
-    application.status = 'rejected';
-    application.reviewedBy = 'Admin User';
-    application.reviewedAt = new Date();
-    application.rejectionReason = this.rejectionReason;
-
-    this.applyFilters();
-    this.closeRejectionModal();
-    this.toastService.showSuccess('Application rejected');
-    
-    if (this.selectedApplication?.id === this.rejectionApplicationId) {
-      this.selectedApplication = application;
-    }
+    const id = Number(this.rejectionApplicationId);
+    this.providerService.reject(id, this.rejectionReason).subscribe({
+      next: () => {
+        const app = this.applications.find((a) => a.id === this.rejectionApplicationId);
+        if (app) {
+          app.status = 'rejected';
+          app.rejectionReason = this.rejectionReason;
+          app.reviewedBy = 'Admin';
+          app.reviewedAt = new Date();
+        }
+        if (this.selectedApplication?.id === this.rejectionApplicationId) {
+          this.selectedApplication = app ?? null;
+        }
+        this.applyFilters();
+        this.closeRejectionModal();
+        this.toastService.showSuccess('Application rejected');
+      },
+      error: () => {
+        this.toastService.showError('Failed to reject application');
+        this.closeRejectionModal();
+      },
+    });
   }
 
   getStatusBadgeClass(status: string): string {
@@ -458,7 +512,7 @@ export class ProviderApproval implements OnInit {
   }
 
   getBusinessTypeLabel(type: string): string {
-    const businessType = this.businessTypes.find(bt => bt.value === type);
+    const businessType = this.businessTypes.find((bt) => bt.value === type);
     return businessType ? businessType.label : type;
   }
 
@@ -466,7 +520,7 @@ export class ProviderApproval implements OnInit {
     return date.toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'short',
-      day: 'numeric'
+      day: 'numeric',
     });
   }
 
@@ -480,10 +534,10 @@ export class ProviderApproval implements OnInit {
       pending: 0,
       under_review: 0,
       approved: 0,
-      rejected: 0
+      rejected: 0,
     };
 
-    this.applications.forEach(app => {
+    this.applications.forEach((app) => {
       stats[app.status]++;
     });
 
