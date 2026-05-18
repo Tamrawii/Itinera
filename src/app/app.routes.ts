@@ -26,8 +26,12 @@ import { TouristWishlist } from './tourist-layout/wishlist/wishlist';
 import { TouristReviews } from './tourist-layout/reviews/reviews';
 import { TouristMessages } from './tourist-layout/messages/messages';
 import { TouristProfile } from './tourist-layout/profile/profile';
-import { TouristSettings } from './tourist-layout/settings/settings';
 import { TouristPayments } from './tourist-layout/payments/payments';
+import { Checkout } from './checkout/checkout';
+import { ProviderRegistration } from './provider-registration/provider-registration';
+import { ProviderApproval } from './admin-layout/provider-approval/provider-approval';
+import { authGuard } from './core/guards/auth.guard';
+import { roleGuard } from './core/guards/role.guard';
 
 export const routes: Routes = [
   {
@@ -51,6 +55,18 @@ export const routes: Routes = [
     title: 'Home - Itinera',
   },
   {
+    path: 'checkout',
+    component: Checkout,
+    title: 'Checkout - Itinera',
+  },
+  {
+    path: 'provider-registration',
+    component: ProviderRegistration,
+    title: 'Provider Registration - Itinera',
+    canActivate: [authGuard, roleGuard],
+    data: { roles: ['provider'] },
+  },
+  {
     path: 'service-details',
     component: ServiceDetails,
     title: 'Service Details - Itinera',
@@ -71,8 +87,15 @@ export const routes: Routes = [
     title: 'Chatbot - Itinera',
   },
   {
+    path: 'checkout',
+    component: Checkout,
+    title: 'Checkout - Itinera',
+  },
+  {
     path: 'provider',
     component: ProviderLayout,
+    canActivate: [authGuard, roleGuard],
+    data: { roles: ['provider'] },
     children: [
       {
         path: '',
@@ -114,6 +137,8 @@ export const routes: Routes = [
   {
     path: 'tourist',
     component: TouristLayout,
+    canActivate: [authGuard, roleGuard],
+    data: { roles: ['tourist'] },
     children: [
       {
         path: '',
@@ -155,16 +180,13 @@ export const routes: Routes = [
         component: TouristProfile,
         title: 'My Profile - Itinera',
       },
-      {
-        path: 'settings',
-        component: TouristSettings,
-        title: 'Settings - Itinera',
-      },
     ],
   },
   {
     path: 'admin',
     component: AdminLayout,
+    canActivate: [authGuard, roleGuard],
+    data: { roles: ['admin'] },
     children: [
       {
         path: '',
@@ -195,6 +217,11 @@ export const routes: Routes = [
         path: 'bookings',
         component: AdminBookings,
         title: 'Bookings - Admin - Itinera',
+      },
+      {
+        path: 'provider-approval',
+        component: ProviderApproval,
+        title: 'Provider Approval - Admin - Itinera',
       },
       {
         path: 'settings',

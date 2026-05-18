@@ -6,5 +6,6 @@ export interface UserTourist {
   phone: string;
   country: string;
   profile_picture: string;
+  bio?: string;
   saved_offers: number[];
 }

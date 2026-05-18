@@ -10,9 +10,7 @@
         <span class="category-pill">{{ item().category }}</span>
       } -->
       @if (showFavorite()) {
-        <button type="button" class="favorite-btn">
-          <lineicons [icon]="HeartOutlined" [size]="20"></lineicons>
-        </button>
+      <app-favorite-btn [serviceId]="item().id" [size]="'small'"></app-favorite-btn>
       }
     </div>
     <div class="p-4">
@@ -22,48 +20,43 @@
         {{ item().location }}
       </p>
       @if (showActions()) {
-        <div class="details flex justify-between items-end mb-4">
-          <div class="rating text-blue-5 flex items-center gap-1">
-            <lineicons [icon]="StarFatSolid" [size]="22"></lineicons>
-            <span class="rating-text text-gray-900 font-semibold">{{ item().rating }}</span>
-            <span class="rating-count text-gray-400">({{ item().number_of_reviews }})</span>
-          </div>
-          <p class="price text-gray-900 font-semibold mt-2">
-            ${{ item().price }}
-            @if (item().suffixPrice) {
-              <span class="price-per-night text-gray-500">{{ item().suffixPrice }}</span>
-            }
-          </p>
+      <div class="details flex justify-between items-end mb-4">
+        <div class="rating text-blue-5 flex items-center gap-1">
+          <lineicons [icon]="StarFatSolid" [size]="22"></lineicons>
+          <span class="rating-text text-gray-900 font-semibold">{{ item().rating }}</span>
+          <span class="rating-count text-gray-400">({{ item().number_of_reviews }})</span>
         </div>
-        <div class="flex justify-between items-center gap-4">
-          <button
-            type="button"
-            class="text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none w-full text-center cursor-pointer"
-          >
-            Book Now
-          </button>
+        <p class="price text-gray-900 font-semibold mt-2">
+          ${{ item().price }} @if (item().suffixPrice) {
+          <span class="price-per-night text-gray-500">{{ item().suffixPrice }}</span>
+          }
+        </p>
+      </div>
+      <div class="flex justify-between items-center gap-4">
+        <button
+          type="button"
+          (click)="bookNow($event)"
+          class="text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none w-full text-center cursor-pointer"
+        >
+          Book Now
+        </button>
 
-          <button
-            type="button"
-            class="inline-flex items-center justify-center text-fg-brand border border-brand hover:bg-brand hover:text-white focus:ring-4 focus:ring-brand-subtle rounded-base p-2 focus:outline-none"
-          >
-            <lineicons [icon]="HeartOutlined" [size]="22"></lineicons>
-          </button>
-        </div>
+        <app-favorite-btn [serviceId]="item().id" [size]="'medium'"></app-favorite-btn>
+      </div>
       } @else {
-        <div class="details flex justify-between items-end mt-3">
-          <div class="rating text-blue-5 flex items-center gap-1">
-            <lineicons [icon]="StarFatSolid" [size]="20"></lineicons>
-            <span class="rating-text text-gray-900 font-semibold">{{ item().rating }}</span>
-            <span class="rating-count text-gray-400">({{ item().number_of_reviews }})</span>
-          </div>
-          <p class="price text-gray-900 font-semibold">
-            <!-- @if (item().pricePrefix) {
+      <div class="details flex justify-between items-end mt-3">
+        <div class="rating text-blue-5 flex items-center gap-1">
+          <lineicons [icon]="StarFatSolid" [size]="20"></lineicons>
+          <span class="rating-text text-gray-900 font-semibold">{{ item().rating }}</span>
+          <span class="rating-count text-gray-400">({{ item().number_of_reviews }})</span>
+        </div>
+        <p class="price text-gray-900 font-semibold">
+          <!-- @if (item().pricePrefix) {
               {{ item().pricePrefix }}
             } -->
-            ${{ item().price }}
-          </p>
-        </div>
+          ${{ item().price }}
+        </p>
+      </div>
       }
     </div>
   </div>

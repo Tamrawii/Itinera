@@ -21,6 +21,11 @@ export interface Provider {
   status: ProviderStatus;
   phone?: string;
   image?: string;
+  address?: string;
+  city?: string;
+  postal_code?: string;
+  website?: string;
+  rejection_reason?: string;
   created_at: Date;
   updated_at: Date;
 }
@@ -33,8 +38,17 @@ export interface CreateProvider {
   documents: ProviderDocument[];
   phone?: string;
   image?: string;
+  address?: string;
+  city?: string;
+  postal_code?: string;
+  website?: string;
 }
 
 export type UpdateProvider = Partial<CreateProvider> & {
   status?: ProviderStatus;
 };
+
+export interface EnrichedProvider extends Provider {
+  user_full_name?: string;
+  user_email?: string;
+}

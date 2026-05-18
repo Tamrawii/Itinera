@@ -1,27 +1,19 @@
-<button 
+<button
   [class]="sizeClasses"
   (click)="toggleFavorite($event)"
-  [disabled]="isLoading"
+  [disabled]="isLoading || isChecking"
   [title]="isFavorited ? 'Remove from wishlist' : 'Add to wishlist'"
 >
-  @if (isLoading) {
-    <div class="favorite-spinner"></div>
+  @if (isLoading || isChecking) {
+  <div class="favorite-spinner"></div>
   } @else {
-    <lineicons 
-      [icon]="isFavorited ? HeartSolid : HeartOutlined" 
-      [size]="iconSize" 
-      [strokeWidth]="isFavorited ? 0 : 1.5"
-      [class]="isFavorited ? 'heart-filled' : 'heart-outline'"
-    ></lineicons>
-  }
-  
-  @if (showText && !isLoading) {
-    <span class="favorite-text">
-      @if (isFavorited) {
-        Saved
-      } @else {
-        Save
-      }
-    </span>
+  <lineicons
+    [icon]="isFavorited ? HeartSolid : HeartOutlined"
+    [size]="iconSize"
+    [strokeWidth]="isFavorited ? 0 : 1.5"
+    [class]="isFavorited ? 'heart-filled' : 'heart-outline'"
+  ></lineicons>
+  } @if (showText && !isLoading && !isChecking) {
+  <span class="favorite-text"> @if (isFavorited) { Saved } @else { Save } </span>
   }
 </button>

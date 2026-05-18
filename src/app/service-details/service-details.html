@@ -17,9 +17,7 @@
       <div class="content-main">
         <div class="title-row">
           <span class="service-type">Hotel</span>
-          <button class="favorite-btn" type="button" aria-label="Add to favorites">
-            <lineicons [icon]="HeartOutlined" [size]="22"></lineicons>
-          </button>
+          <app-favorite-btn [serviceId]="1" [size]="'large'"></app-favorite-btn>
         </div>
 
         <h1 class="service-title">Dar El Medina</h1>
@@ -118,6 +116,7 @@
 
         <button
           type="button"
+          (click)="bookNow()"
           class="text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none w-full text-center cursor-pointer"
         >
           Book Now

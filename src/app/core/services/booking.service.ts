@@ -1,20 +1,29 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { Observable, of, throwError } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
-import { environment } from '../../../environments/environment';
 import { Booking, BookingStatus, CreateBooking, PaginatedResponse } from '../models';
+import { User } from '../models';
+
+const BOOKINGS_KEY = 'itinera_bookings';
+const USER_KEY = 'auth_user';
+
+const DEFAULT_BOOKINGS: Booking[] = [
+  { id: 1, tourist_id: 201, service_id: 1, booking_date: new Date('2025-07-15'), status: 'confirmed', total_price: 280, created_at: new Date('2025-06-01'), updated_at: new Date('2025-06-01') },
+  { id: 2, tourist_id: 202, service_id: 2, booking_date: new Date('2025-08-01'), status: 'confirmed', total_price: 320, created_at: new Date('2025-06-15'), updated_at: new Date('2025-06-15') },
+  { id: 3, tourist_id: 203, service_id: 3, booking_date: new Date('2025-08-10'), status: 'pending', total_price: 480, created_at: new Date('2025-07-01'), updated_at: new Date('2025-07-01') },
+  { id: 4, tourist_id: 204, service_id: 4, booking_date: new Date('2025-09-01'), status: 'completed', total_price: 195, created_at: new Date('2025-07-15'), updated_at: new Date('2025-09-02') },
+  { id: 5, tourist_id: 205, service_id: 5, booking_date: new Date('2025-10-15'), status: 'confirmed', total_price: 350, created_at: new Date('2025-08-01'), updated_at: new Date('2025-08-01') },
+  { id: 6, tourist_id: 201, service_id: 6, booking_date: new Date('2025-11-01'), status: 'cancelled', total_price: 95, created_at: new Date('2025-09-01'), updated_at: new Date('2025-10-15') },
+  { id: 7, tourist_id: 202, service_id: 7, booking_date: new Date('2025-12-01'), status: 'pending', total_price: 75, created_at: new Date('2025-10-01'), updated_at: new Date('2025-10-01') },
+];
 
 @Injectable({ providedIn: 'root' })
 export class BookingService {
-  private readonly baseUrl = `${environment.apiUrl}/bookings`;
+  constructor() {
+    this.seedIfEmpty();
+  }
 
-  constructor(private http: HttpClient) {}
-
-  /**
-   * Retrieves all bookings with optional filters (admin).
-   */
   getAll(params?: {
     page?: number;
     per_page?: number;
@@ -22,96 +31,164 @@ export class BookingService {
     tourist_id?: number;
     service_id?: number;
   }): Observable<PaginatedResponse<Booking>> {
-    let httpParams = new HttpParams();
-    if (params) {
-      Object.entries(params).forEach(([key, val]) => {
-        if (val !== undefined && val !== null) {
-          httpParams = httpParams.set(key, String(val));
-        }
-      });
+    let all = this.getAllBookings();
+
+    if (params?.status) {
+      all = all.filter((b) => b.status === params.status);
     }
-    return this.http
-      .get<PaginatedResponse<Booking>>(this.baseUrl, { params: httpParams })
-      .pipe(catchError(this.handleError));
+    if (params?.tourist_id) {
+      all = all.filter((b) => b.tourist_id === params.tourist_id);
+    }
+    if (params?.service_id) {
+      all = all.filter((b) => b.service_id === params.service_id);
+    }
+
+    return of(this.paginate(all, params?.page, params?.per_page)).pipe(delay(200));
   }
 
-  /**
-   * Retrieves the paginated bookings for the currently authenticated tourist.
-   */
   getMyBookings(params?: {
     page?: number;
     per_page?: number;
     status?: BookingStatus;
   }): Observable<PaginatedResponse<Booking>> {
-    let httpParams = new HttpParams();
-    if (params) {
-      Object.entries(params).forEach(([key, val]) => {
-        if (val !== undefined && val !== null) {
-          httpParams = httpParams.set(key, String(val));
-        }
-      });
+    const current = this.getCurrentUser();
+    if (!current) {
+      return throwError(() => new Error('No authenticated user'));
     }
-    return this.http
-      .get<PaginatedResponse<Booking>>(`${environment.apiUrl}/my-bookings`, { params: httpParams })
-      .pipe(catchError(this.handleError));
+
+    let all = this.getAllBookings().filter((b) => b.tourist_id === current.id);
+
+    if (params?.status) {
+      all = all.filter((b) => b.status === params.status);
+    }
+
+    return of(this.paginate(all, params?.page, params?.per_page)).pipe(delay(200));
   }
 
-  /**
-   * Retrieves a single booking by its numeric ID.
-   */
   getById(id: number): Observable<Booking> {
-    return this.http.get<Booking>(`${this.baseUrl}/${id}`).pipe(catchError(this.handleError));
+    const all = this.getAllBookings();
+    const booking = all.find((b) => b.id === id);
+    if (!booking) {
+      return throwError(() => new Error('Booking not found'));
+    }
+    return of(booking).pipe(delay(150));
   }
 
-  /**
-   * Creates a new booking.
-   */
   create(data: CreateBooking): Observable<Booking> {
-    return this.http.post<Booking>(this.baseUrl, data).pipe(catchError(this.handleError));
+    const all = this.getAllBookings();
+    const now = new Date();
+    const booking: Booking = {
+      id: this.nextId(all),
+      tourist_id: data.tourist_id,
+      service_id: data.service_id,
+      booking_date: data.booking_date,
+      status: 'pending',
+      total_price: data.total_price,
+      created_at: now,
+      updated_at: now,
+    };
+    all.push(booking);
+    this.setAllBookings(all);
+    return of(booking).pipe(delay(200));
   }
 
-  /**
-   * Updates the status of a booking (e.g. confirm, complete).
-   */
   updateStatus(id: number, status: BookingStatus): Observable<Booking> {
-    return this.http
-      .patch<Booking>(`${this.baseUrl}/${id}/status`, { status })
-      .pipe(catchError(this.handleError));
+    const all = this.getAllBookings();
+    const index = all.findIndex((b) => b.id === id);
+    if (index === -1) {
+      return throwError(() => new Error('Booking not found'));
+    }
+    all[index] = { ...all[index], status, updated_at: new Date() };
+    this.setAllBookings(all);
+    return of(all[index]).pipe(delay(200));
   }
 
-  /**
-   * Cancels a booking by its ID.
-   */
   cancel(id: number): Observable<Booking> {
-    return this.http
-      .post<Booking>(`${this.baseUrl}/${id}/cancel`, {})
-      .pipe(catchError(this.handleError));
+    return this.updateStatus(id, 'cancelled');
   }
 
-  /**
-   * Retrieves the paginated bookings for the currently authenticated provider's services.
-   */
   getProviderBookings(params?: {
     page?: number;
     per_page?: number;
     status?: BookingStatus;
   }): Observable<PaginatedResponse<Booking>> {
-    let httpParams = new HttpParams();
-    if (params) {
-      Object.entries(params).forEach(([key, val]) => {
-        if (val !== undefined && val !== null) {
-          httpParams = httpParams.set(key, String(val));
-        }
-      });
+    const current = this.getCurrentUser();
+    if (!current) {
+      return throwError(() => new Error('No authenticated user'));
     }
-    return this.http
-      .get<PaginatedResponse<Booking>>(`${environment.apiUrl}/provider/bookings`, {
-        params: httpParams,
-      })
-      .pipe(catchError(this.handleError));
+
+    const services = this.getStoredServices();
+    const providerServiceIds = services
+      .filter((s) => s.provider_id === current.id)
+      .map((s) => s.id);
+
+    let all = this.getAllBookings().filter((b) =>
+      providerServiceIds.includes(b.service_id),
+    );
+
+    if (params?.status) {
+      all = all.filter((b) => b.status === params.status);
+    }
+
+    return of(this.paginate(all, params?.page, params?.per_page)).pipe(delay(200));
   }
 
-  private handleError(error: unknown): Observable<never> {
-    return throwError(() => error);
+  private getAllBookings(): Booking[] {
+    try {
+      return JSON.parse(localStorage.getItem(BOOKINGS_KEY) || '[]') as Booking[];
+    } catch {
+      return [];
+    }
+  }
+
+  private setAllBookings(items: Booking[]): void {
+    localStorage.setItem(BOOKINGS_KEY, JSON.stringify(items));
+  }
+
+  private getStoredServices(): { id: number; provider_id: number }[] {
+    try {
+      return JSON.parse(localStorage.getItem('itinera_services') || '[]') as { id: number; provider_id: number }[];
+    } catch {
+      return [];
+    }
+  }
+
+  private getCurrentUser(): User | null {
+    const raw = localStorage.getItem(USER_KEY);
+    if (!raw) return null;
+    try {
+      return JSON.parse(raw) as User;
+    } catch {
+      return null;
+    }
+  }
+
+  private paginate(
+    items: Booking[],
+    page?: number,
+    perPage?: number,
+  ): PaginatedResponse<Booking> {
+    const p = page ?? 1;
+    const pp = perPage ?? 10;
+    const total = items.length;
+    const lastPage = Math.max(1, Math.ceil(total / pp));
+    const start = (p - 1) * pp;
+    return {
+      data: items.slice(start, start + pp),
+      total,
+      page: p,
+      per_page: pp,
+      last_page: lastPage,
+    };
+  }
+
+  private nextId(items: Booking[]): number {
+    return items.reduce((max, b) => Math.max(max, b.id), 0) + 1;
+  }
+
+  private seedIfEmpty(): void {
+    if (!localStorage.getItem(BOOKINGS_KEY)) {
+      this.setAllBookings(DEFAULT_BOOKINGS);
+    }
   }
 }

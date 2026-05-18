@@ -7,29 +7,78 @@
     <div
       class="flex items-center justify-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse"
     >
-      <!--Sign in btn-->
-      <button
-        type="button"
-        class="text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-full text-sm px-5 py-2 focus:outline-none"
-        routerLink="/sign-in"
-      >
-        Sign In
-      </button>
-      <svg
-        class="w-6 h-6 text-gray-800 dark:text-white"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        fill="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          fill-rule="evenodd"
-          d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z"
-          clip-rule="evenodd"
-        />
-      </svg>
+      @if (isAuthenticated) {
+        <div class="relative" data-user-wrapper>
+          <button
+            type="button"
+            (click)="toggleDropdown()"
+            class="grid h-11 w-11 place-items-center rounded-full text-neutral-900 transition-colors hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-brand-medium focus:ring-offset-2 cursor-pointer"
+            [attr.aria-expanded]="dropdownOpen"
+            aria-controls="user-menu"
+            aria-label="Open user menu"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+
+          @if (dropdownOpen) {
+            <div
+              id="user-menu"
+              class="absolute right-0 top-full z-50 mt-3 w-60 rounded-2xl border border-neutral-200 bg-white shadow-2xl shadow-black/10 ring-1 ring-black/[0.02]"
+            >
+              <div class="border-b border-neutral-100 px-5 py-4">
+                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400">Signed in as</p>
+                <p class="mt-1 truncate text-sm font-semibold text-neutral-900">{{ user?.full_name ?? user?.email }}</p>
+              </div>
+              <div class="p-2">
+                <a
+                  [routerLink]="[getDashboardLink()]"
+                  (click)="closeDropdown()"
+                  class="block rounded-xl px-3 py-2.5 text-sm font-medium text-neutral-700 transition hover:bg-neutral-50 hover:text-brand"
+                >
+                  Dashboard
+                </a>
+                <a
+                  [routerLink]="[getProfileLink()]"
+                  (click)="closeDropdown()"
+                  class="block rounded-xl px-3 py-2.5 text-sm font-medium text-neutral-700 transition hover:bg-neutral-50 hover:text-brand"
+                >
+                  Profile
+                </a>
+              </div>
+              <div class="border-t border-neutral-100 p-2">
+                <button
+                  type="button"
+                  (click)="logout()"
+                  class="block w-full rounded-xl px-3 py-2.5 text-left text-sm font-semibold text-red-600 transition hover:bg-red-50 cursor-pointer"
+                >
+                  Logout
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+      } @else {
+        <button
+          type="button"
+          class="text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-full text-sm px-5 py-2 focus:outline-none cursor-pointer"
+          routerLink="/sign-in"
+        >
+          Sign In
+        </button>
+      }
+
       <button
         data-collapse-toggle="navbar-sticky"
         type="button"

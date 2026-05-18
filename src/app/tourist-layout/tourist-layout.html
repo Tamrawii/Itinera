@@ -73,13 +73,6 @@
         </span>
         Profile
       </a>
-
-      <a routerLink="/tourist/settings" routerLinkActive="sidebar-active" class="sidebar-link">
-        <span class="sidebar-icon">
-          <lineicons [icon]="SlidersHorizontalSquare2Outlined" [size]="22" [strokeWidth]="1.5"></lineicons>
-        </span>
-        Settings
-      </a>
     </nav>
 
     <a
@@ -97,7 +90,7 @@
     <header
       class="sticky top-0 z-20 flex items-center justify-between border-b border-slate-200 bg-white px-6 py-4"
     >
-      <p class="font-semibold text-gray-500">Tourist Dashboard</p>
+      <p class="font-semibold text-gray-500">{{ pageTitle() }}</p>
 
       <div class="flex items-center gap-4">
         <button

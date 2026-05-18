@@ -53,13 +53,27 @@ export class TouristReviews implements OnInit {
     }
   ];
 
+  private currentUserId = 0;
+
   constructor(
     private reviewService: ReviewService,
     private toastService: ToastService
   ) {}
 
   ngOnInit(): void {
+    this.currentUserId = this.getCurrentUserId();
     this.loadMyReviews();
+  }
+
+  private getCurrentUserId(): number {
+    try {
+      const raw = localStorage.getItem('auth_user');
+      if (!raw) return 0;
+      const user = JSON.parse(raw);
+      return user.id ?? 0;
+    } catch {
+      return 0;
+    }
   }
 
   loadMyReviews(): void {
@@ -140,8 +154,8 @@ export class TouristReviews implements OnInit {
     } else {
       // Create new review
       this.reviewService.create({
-        tourist_id: 1, // Mock user ID
-        service_id: 1, // Mock service ID
+        tourist_id: this.currentUserId,
+        service_id: 1,
         rating: data.rating,
         comment: data.comment
       }).subscribe({

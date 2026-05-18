@@ -28,7 +28,7 @@
         <span class="text-sm text-gray-500">or continue with email</span>
       </div>
 
-      <form class="sign-in-form">
+      <form class="sign-in-form" (ngSubmit)="onSubmit()" #signUpForm="ngForm">
         <div class="form-group">
           <label for="fullname" class="block text-sm font-semibold text-gray-700 mb-2"
             >Full Name</label
@@ -42,8 +42,11 @@
             <input
               type="text"
               id="fullname"
+              name="fullname"
+              [(ngModel)]="fullName"
               class="block w-full pl-11 pr-4 py-3 text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-4 focus:ring-blue-100 focus:border-blue-500 placeholder-gray-400 text-sm focus:outline-none transition-all"
               placeholder="Your full name"
+              required
             />
           </div>
         </div>
@@ -59,8 +62,11 @@
             <input
               type="email"
               id="email"
+              name="email"
+              [(ngModel)]="email"
               class="block w-full pl-11 pr-4 py-3 text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-4 focus:ring-blue-100 focus:border-blue-500 placeholder-gray-400 text-sm focus:outline-none transition-all"
               placeholder="you@example.com"
+              required
             />
           </div>
         </div>
@@ -78,8 +84,11 @@
             <input
               [type]="showPassword ? 'text' : 'password'"
               id="password"
+              name="password"
+              [(ngModel)]="password"
               class="block w-full pl-11 pr-12 py-3 text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-4 focus:ring-blue-100 focus:border-blue-500 placeholder-gray-400 text-sm focus:outline-none transition-all"
-              placeholder="••••••••"
+              placeholder="&​#8226;&​#8226;&​#8226;&​#8226;&​#8226;&​#8226;&​#8226;&​#8226;"
+              required
             />
             <button
               type="button"
@@ -96,12 +105,56 @@
           </div>
         </div>
 
+        <div class="form-group">
+          <label class="block text-sm font-semibold text-gray-700 mb-2">I am a</label>
+          <div class="grid grid-cols-2 gap-3">
+            <label
+              class="flex items-center justify-center gap-2 px-4 py-3 border rounded-lg cursor-pointer transition-all"
+              [class.border-blue-500]="role === 'tourist'"
+              [class.bg-blue-50]="role === 'tourist'"
+              [class.border-gray-300]="role !== 'tourist'"
+            >
+              <input
+                type="radio"
+                name="role"
+                [(ngModel)]="role"
+                value="tourist"
+                class="sr-only"
+              />
+              <lineicons [icon]="MapMarker5Outlined" [size]="18" [strokeWidth]="1.8"></lineicons>
+              <span class="text-sm font-medium">Tourist</span>
+            </label>
+            <label
+              class="flex items-center justify-center gap-2 px-4 py-3 border rounded-lg cursor-pointer transition-all"
+              [class.border-blue-500]="role === 'provider'"
+              [class.bg-blue-50]="role === 'provider'"
+              [class.border-gray-300]="role !== 'provider'"
+            >
+              <input
+                type="radio"
+                name="role"
+                [(ngModel)]="role"
+                value="provider"
+                class="sr-only"
+              />
+              <lineicons [icon]="Bolt3Solid" [size]="18" [strokeWidth]="1.8"></lineicons>
+              <span class="text-sm font-medium">Provider</span>
+            </label>
+          </div>
+        </div>
+
+        @if (errorMessage) {
+          <div class="mt-3 text-sm text-red-600 font-medium">
+            {{ errorMessage }}
+          </div>
+        }
+
         <button
           type="submit"
-          class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 font-semibold rounded-lg text-base px-5 py-3.5 focus:outline-none transition-all mt-2"
-          routerLink="/home"
+          [disabled]="loading"
+          class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 font-semibold rounded-lg text-base px-5 py-3.5 focus:outline-none transition-all mt-2 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
         >
-          Create Account
+          {{ loading ? 'Creating account...' : 'Create Account' }}
         </button>
       </form>
 

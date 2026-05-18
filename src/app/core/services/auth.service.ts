@@ -1,70 +1,105 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { Observable, of, throwError } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
-import { environment } from '../../../environments/environment';
 import { AuthResponse, LoginRequest, RegisterRequest } from '../models';
 import { User } from '../models';
+import { UserTouristService } from './user-tourist.service';
+
+interface StoredUser {
+  id: number;
+  email: string;
+  password: string;
+  full_name: string;
+  role: 'tourist' | 'provider' | 'admin';
+  phone?: string;
+  created_at: string;
+  updated_at: string;
+}
+
+const USERS_KEY = 'itinera_users';
+const TOKEN_KEY = 'auth_token';
+const USER_KEY = 'auth_user';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private readonly baseUrl = `${environment.apiUrl}/auth`;
-
   constructor(
-    private http: HttpClient,
     private router: Router,
-  ) {}
+    private touristService: UserTouristService,
+  ) {
+    this.seedIfEmpty();
+  }
 
-  /**
-   * Authenticates a user with email and password.
-   * Automatically persists the token and user on success.
-   */
   login(credentials: LoginRequest): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.baseUrl}/login`, credentials).pipe(
-      tap((res) => this.saveToken(res.access_token, res.user)),
-      catchError(this.handleError),
-    );
+    const users = this.getUsers();
+    const stored = users.find((u) => u.email === credentials.email);
+
+    if (!stored || stored.password !== credentials.password) {
+      return throwError(() => new Error('Invalid email or password'));
+    }
+
+    const user = this.toUser(stored);
+    const token = this.generateToken(stored.id);
+    this.persistSession(token, user);
+
+    return of({ access_token: token, token_type: 'Bearer' as const, user }).pipe(delay(300));
   }
 
-  /**
-   * Registers a new tourist or provider account.
-   * Automatically persists the token and user on success.
-   */
   register(data: RegisterRequest): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.baseUrl}/register`, data).pipe(
-      tap((res) => this.saveToken(res.access_token, res.user)),
-      catchError(this.handleError),
-    );
+    const users = this.getUsers();
+
+    if (users.some((u) => u.email === data.email)) {
+      return throwError(() => new Error('A user with this email already exists'));
+    }
+
+    const now = new Date().toISOString();
+    const stored: StoredUser = {
+      id: this.nextId(users),
+      email: data.email,
+      password: data.password,
+      full_name: data.full_name,
+      role: data.role,
+      created_at: now,
+      updated_at: now,
+    };
+
+    users.push(stored);
+    this.setUsers(users);
+
+    const user = this.toUser(stored);
+    const token = this.generateToken(stored.id);
+    this.persistSession(token, user);
+
+    if (data.role === 'tourist') {
+      this.touristService.createTouristProfile(user);
+    }
+
+    return of({ access_token: token, token_type: 'Bearer' as const, user }).pipe(delay(300));
   }
 
-  /**
-   * Logs out the current user by clearing localStorage and navigating to /sign-in.
-   */
   logout(): void {
-    localStorage.removeItem('auth_token');
-    localStorage.removeItem('auth_user');
+    localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem(USER_KEY);
     this.router.navigate(['/sign-in']);
   }
 
-  /**
-   * Requests a new access token using the existing session.
-   * Automatically persists the refreshed token and user on success.
-   */
   refreshToken(): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.baseUrl}/refresh`, {}).pipe(
-      tap((res) => this.saveToken(res.access_token, res.user)),
-      catchError(this.handleError),
-    );
+    const user = this.getCurrentUser();
+    const token = this.getToken();
+
+    if (!user || !token) {
+      return throwError(() => new Error('No active session'));
+    }
+
+    const newToken = this.generateToken(user.id);
+    this.persistSession(newToken, user);
+
+    return of({ access_token: newToken, token_type: 'Bearer' as const, user }).pipe(delay(150));
   }
 
-  /**
-   * Returns the currently authenticated user parsed from localStorage,
-   * or null if no session exists or the stored value is malformed.
-   */
   getCurrentUser(): User | null {
-    const raw = localStorage.getItem('auth_user');
+    const raw = localStorage.getItem(USER_KEY);
     if (!raw) return null;
     try {
       return JSON.parse(raw) as User;
@@ -73,36 +108,84 @@ export class AuthService {
     }
   }
 
-  /**
-   * Returns true if a valid access token is present in localStorage.
-   */
   isAuthenticated(): boolean {
     return !!this.getToken();
   }
 
-  /**
-   * Returns true if the current user's role matches the given role string.
-   */
   hasRole(role: string): boolean {
     return this.getCurrentUser()?.role === role;
   }
 
-  /**
-   * Persists the access token and serialised user object to localStorage.
-   */
   saveToken(token: string, user: User): void {
-    localStorage.setItem('auth_token', token);
-    localStorage.setItem('auth_user', JSON.stringify(user));
+    this.persistSession(token, user);
   }
 
-  /**
-   * Returns the stored access token, or null if not present.
-   */
   getToken(): string | null {
-    return localStorage.getItem('auth_token');
+    return localStorage.getItem(TOKEN_KEY);
   }
 
-  private handleError(error: unknown): Observable<never> {
-    return throwError(() => error);
+  /* ---- localStorage helpers ---- */
+
+  private getUsers(): StoredUser[] {
+    try {
+      return JSON.parse(localStorage.getItem(USERS_KEY) || '[]') as StoredUser[];
+    } catch {
+      return [];
+    }
+  }
+
+  private setUsers(users: StoredUser[]): void {
+    localStorage.setItem(USERS_KEY, JSON.stringify(users));
+  }
+
+  private nextId(users: StoredUser[]): number {
+    return users.reduce((max, u) => Math.max(max, u.id), 0) + 1;
+  }
+
+  private generateToken(userId: number): string {
+    const header = btoa(JSON.stringify({ alg: 'HS256', typ: 'JWT' }));
+    const payload = btoa(
+      JSON.stringify({ sub: userId, iat: Math.floor(Date.now() / 1000) }),
+    );
+    const signature = btoa(
+      Array.from(crypto.getRandomValues(new Uint8Array(16)))
+        .map((b) => b.toString(16).padStart(2, '0'))
+        .join(''),
+    );
+    return `${header}.${payload}.${signature}`;
+  }
+
+  private persistSession(token: string, user: User): void {
+    localStorage.setItem(TOKEN_KEY, token);
+    localStorage.setItem(USER_KEY, JSON.stringify(user));
+  }
+
+  private seedIfEmpty(): void {
+    const users = this.getUsers();
+    if (users.length > 0) return;
+
+    const now = new Date().toISOString();
+    users.push({
+      id: 1,
+      email: 'admin@itinera.com',
+      password: 'admin123',
+      full_name: 'Admin User',
+      role: 'admin',
+      created_at: now,
+      updated_at: now,
+    });
+    this.setUsers(users);
+  }
+
+  private toUser(stored: StoredUser): User {
+    return {
+      id: stored.id,
+      email: stored.email,
+      full_name: stored.full_name,
+      role: stored.role,
+      phone: stored.phone,
+      created_at: new Date(stored.created_at),
+      updated_at: new Date(stored.updated_at),
+    };
   }
 }

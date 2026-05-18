@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LineiconsComponent } from '@lineiconshq/angular-lineicons';
 import { HeartOutlined, HeartSolid } from '@lineiconshq/free-icons';
@@ -8,14 +8,11 @@ import { ToastService } from '../../core/services/toast.service';
 @Component({
   selector: 'app-favorite-btn',
   standalone: true,
-  imports: [
-    CommonModule,
-    LineiconsComponent
-  ],
+  imports: [CommonModule, LineiconsComponent],
   templateUrl: './favorite-btn.html',
-  styleUrl: './favorite-btn.css'
+  styleUrl: './favorite-btn.css',
 })
-export class FavoriteBtn {
+export class FavoriteBtn implements OnInit {
   @Input() serviceId: number = 0;
   @Input() isFavorited: boolean = false;
   @Input() size: 'small' | 'medium' | 'large' = 'medium';
@@ -26,11 +23,28 @@ export class FavoriteBtn {
   readonly HeartSolid = HeartSolid;
 
   isLoading = false;
+  isChecking = true;
 
   constructor(
     private wishlistService: WishlistService,
-    private toastService: ToastService
+    private toastService: ToastService,
   ) {}
+
+  ngOnInit(): void {
+    if (this.serviceId !== 0) {
+      this.wishlistService.isInWishlist(this.serviceId).subscribe({
+        next: (result) => {
+          this.isFavorited = result;
+          this.isChecking = false;
+        },
+        error: () => {
+          this.isChecking = false;
+        },
+      });
+    } else {
+      this.isChecking = false;
+    }
+  }
 
   toggleFavorite(event?: Event): void {
     if (event) {
@@ -56,7 +70,7 @@ export class FavoriteBtn {
           console.error('Error removing from wishlist:', error);
           this.toastService.showError('Failed to remove from wishlist');
           this.isLoading = false;
-        }
+        },
       });
     } else {
       // Add to wishlist
@@ -71,7 +85,7 @@ export class FavoriteBtn {
           console.error('Error adding to wishlist:', error);
           this.toastService.showError('Failed to add to wishlist');
           this.isLoading = false;
-        }
+        },
       });
     }
   }
@@ -81,9 +95,9 @@ export class FavoriteBtn {
     const sizeClasses = {
       small: 'favorite-btn-small',
       medium: 'favorite-btn-medium',
-      large: 'favorite-btn-large'
+      large: 'favorite-btn-large',
     };
-    
+
     return `${baseClasses} ${sizeClasses[this.size]}`;
   }
 
@@ -91,7 +105,7 @@ export class FavoriteBtn {
     const sizes = {
       small: 16,
       medium: 20,
-      large: 24
+      large: 24,
     };
     return sizes[this.size];
   }
